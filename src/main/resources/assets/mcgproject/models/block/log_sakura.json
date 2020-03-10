@@ -1,0 +1,7 @@
+{
+  "parent": "block/cube_column",
+  "textures": {
+    "end": "mcgproject:blocks/nature/log_sakura_top",
+    "side": "mcgproject:blocks/nature/log_sakura"
+  }
+}

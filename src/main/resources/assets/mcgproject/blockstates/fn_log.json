@@ -1,0 +1,23 @@
+{
+  "forge_marker": 1,
+  "defaults": {"model": "cube_all"},
+  "variants": {
+    "inventory": [{}],
+    "meta=0": [{"textures": {"all": "mcgproject:blocks/fn/log_1"}}],
+    "meta=1": [{"textures": {"all": "mcgproject:blocks/fn/log_2"}}],
+    "meta=2": [{"textures": {"all": "mcgproject:blocks/fn/log_3"}}],
+    "meta=3": [{"textures": {"all": "mcgproject:blocks/fn/log_4"}}],
+    "meta=4": [{"textures": {"all": "mcgproject:blocks/fn/log_5"}}],
+    "meta=5": [{"textures": {"all": "mcgproject:blocks/fn/log_6"}}],
+    "meta=6": [{"textures": {"all": "mcgproject:blocks/fn/log_7"}}],
+    "meta=7": [{"textures": {"all": "mcgproject:blocks/fn/log_8"}}],
+    "meta=8": [{"textures": {"all": "mcgproject:blocks/fn/log_9"}}],
+    "meta=9": [{"textures": {"all": "mcgproject:blocks/fn/log_10"}}],
+    "meta=10": [{"textures": {"all": "mcgproject:blocks/fn/log_11"}}],
+    "meta=11": [{"textures": {"all": "mcgproject:blocks/fn/log_12"}}],
+    "meta=12": [{"textures": {"all": "mcgproject:blocks/fn/log_13"}}],
+    "meta=13": [{"textures": {"all": "mcgproject:blocks/fn/log_14"}}],
+    "meta=14": [{"textures": {"all": "mcgproject:blocks/fn/log_15"}}],
+    "meta=15": [{"textures": {"all": "mcgproject:blocks/fn/log_16"}}]
+  }
+}

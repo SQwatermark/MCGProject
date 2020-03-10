@@ -1,0 +1,23 @@
+{
+  "forge_marker": 1,
+  "defaults": {"model": "cube_all"},
+  "variants": {
+    "inventory": [{}],
+    "meta=0": [{"textures": {"all": "mcgproject:blocks/touhou/frame_oak"}}],
+    "meta=1": [{"textures": {"all": "mcgproject:blocks/touhou/frame_oak"}}],
+    "meta=2": [{"textures": {"all": "mcgproject:blocks/touhou/frame_oak"}}],
+    "meta=3": [{"textures": {"all": "mcgproject:blocks/touhou/frame_oak"}}],
+    "meta=4": [{"textures": {"all": "mcgproject:blocks/touhou/frame_jungle"}}],
+    "meta=5": [{"textures": {"all": "mcgproject:blocks/touhou/frame_jungle"}}],
+    "meta=6": [{"textures": {"all": "mcgproject:blocks/touhou/frame_jungle"}}],
+    "meta=7": [{"textures": {"all": "mcgproject:blocks/touhou/frame_jungle"}}],
+    "meta=8": [{"textures": {"all": "mcgproject:blocks/touhou/frame_dark_oak"}}],
+    "meta=9": [{"textures": {"all": "mcgproject:blocks/touhou/frame_dark_oak"}}],
+    "meta=10": [{"textures": {"all": "mcgproject:blocks/touhou/frame_dark_oak"}}],
+    "meta=11": [{"textures": {"all": "mcgproject:blocks/touhou/frame_dark_oak"}}],
+    "meta=12": [{"textures": {"all": "mcgproject:blocks/touhou/frame_oak"}}],
+    "meta=13": [{"textures": {"all": "mcgproject:blocks/touhou/frame_oak"}}],
+    "meta=14": [{"textures": {"all": "mcgproject:blocks/touhou/frame_oak"}}],
+    "meta=15": [{"textures": {"all": "mcgproject:blocks/touhou/frame_oak"}}]
+  }
+}

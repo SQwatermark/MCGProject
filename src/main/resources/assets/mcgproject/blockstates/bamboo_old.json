@@ -1,0 +1,10 @@
+{
+  "forge_marker": 1,
+  "defaults": {"model": "cross"},
+  "variants": {
+    "inventory": [{}],
+    "meta=0": [{"textures": {"cross": "mcgproject:blocks/nature/bamboo_old_shoot"}}],
+    "meta=1": [{"textures": {"cross": "mcgproject:blocks/nature/bamboo_old"}}],
+    "meta=2": [{"textures": {"cross": "mcgproject:blocks/nature/bamboo_old_leaves"}}]
+  }
+}

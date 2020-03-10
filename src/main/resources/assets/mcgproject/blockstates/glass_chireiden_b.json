@@ -1,0 +1,71 @@
+{
+  "forge_marker": 1,
+  "defaults": {"model": "mcgproject:glass_chireiden"},
+  "variants": {
+    "inventory": [{}],
+    "meta=0": [{"textures": {
+      "a": "mcgproject:blocks/classical/glass_chireiden/113",
+      "b": "mcgproject:blocks/classical/glass_chireiden/65"
+    }}],
+    "meta=1": [{"textures": {
+      "a": "mcgproject:blocks/classical/glass_chireiden/97",
+      "b": "mcgproject:blocks/classical/glass_chireiden/81"
+    }}],
+    "meta=2": [{"textures": {
+      "a": "mcgproject:blocks/classical/glass_chireiden/81",
+      "b": "mcgproject:blocks/classical/glass_chireiden/97"
+    }}],
+    "meta=3": [{"textures": {
+      "a": "mcgproject:blocks/classical/glass_chireiden/65",
+      "b": "mcgproject:blocks/classical/glass_chireiden/113"
+    }}],
+    "meta=4": [{"textures": {
+      "a": "mcgproject:blocks/classical/glass_chireiden/114",
+      "b": "mcgproject:blocks/classical/glass_chireiden/66"
+    }}],
+    "meta=5": [{"textures": {
+      "a": "mcgproject:blocks/classical/glass_chireiden/98",
+      "b": "mcgproject:blocks/classical/glass_chireiden/82"
+    }}],
+    "meta=6": [{"textures": {
+      "a": "mcgproject:blocks/classical/glass_chireiden/82",
+      "b": "mcgproject:blocks/classical/glass_chireiden/98"
+    }}],
+    "meta=7": [{"textures": {
+      "a": "mcgproject:blocks/classical/glass_chireiden/66",
+      "b": "mcgproject:blocks/classical/glass_chireiden/114"
+    }}],
+    "meta=8": [{"textures": {
+      "a": "mcgproject:blocks/classical/glass_chireiden/115",
+      "b": "mcgproject:blocks/classical/glass_chireiden/67"
+    }}],
+    "meta=9": [{"textures": {
+      "a": "mcgproject:blocks/classical/glass_chireiden/99",
+      "b": "mcgproject:blocks/classical/glass_chireiden/83"
+    }}],
+    "meta=10": [{"textures": {
+      "a": "mcgproject:blocks/classical/glass_chireiden/83",
+      "b": "mcgproject:blocks/classical/glass_chireiden/99"
+    }}],
+    "meta=11": [{"textures": {
+      "a": "mcgproject:blocks/classical/glass_chireiden/67",
+      "b": "mcgproject:blocks/classical/glass_chireiden/115"
+    }}],
+    "meta=12": [{"textures": {
+      "a": "mcgproject:blocks/classical/glass_chireiden/116",
+      "b": "mcgproject:blocks/classical/glass_chireiden/68"
+    }}],
+    "meta=13": [{"textures": {
+      "a": "mcgproject:blocks/classical/glass_chireiden/100",
+      "b": "mcgproject:blocks/classical/glass_chireiden/84"
+    }}],
+    "meta=14": [{"textures": {
+      "a": "mcgproject:blocks/classical/glass_chireiden/84",
+      "b": "mcgproject:blocks/classical/glass_chireiden/100"
+    }}],
+    "meta=15": [{"textures": {
+      "a": "mcgproject:blocks/classical/glass_chireiden/68",
+      "b": "mcgproject:blocks/classical/glass_chireiden/116"
+    }}]
+  }
+}

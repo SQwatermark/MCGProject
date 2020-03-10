@@ -1,0 +1,15 @@
+[
+{
+  "modid": "mcgproject",
+  "name": "MCG Project",
+  "description": "A Mod built for MineCraft Gensoukyo Server",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "https://gensoukyo.moe",
+  "authorList": ["MineCraft幻想乡"],
+  "credits": "ZUN, Notch",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]

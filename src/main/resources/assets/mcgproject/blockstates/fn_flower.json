@@ -1,0 +1,16 @@
+{
+  "forge_marker": 1,
+  "defaults": {"model": "cross"},
+  "variants": {
+    "inventory": [{}],
+    "meta=0": [{"textures": {"cross": "mcgproject:blocks/fn/flower_1"}}],
+    "meta=1": [{"textures": {"cross": "mcgproject:blocks/fn/flower_2"}}],
+    "meta=2": [{"textures": {"cross": "mcgproject:blocks/fn/flower_3"}}],
+    "meta=3": [{"textures": {"cross": "mcgproject:blocks/fn/flower_4"}}],
+    "meta=4": [{"textures": {"cross": "mcgproject:blocks/fn/flower_5"}}],
+    "meta=5": [{"textures": {"cross": "mcgproject:blocks/fn/flower_6"}}],
+    "meta=6": [{"textures": {"cross": "mcgproject:blocks/fn/flower_7"}}],
+    "meta=7": [{"textures": {"cross": "mcgproject:blocks/fn/flower_8"}}],
+    "meta=8": [{"textures": {"cross": "mcgproject:blocks/fn/flower_9"}}]
+  }
+}

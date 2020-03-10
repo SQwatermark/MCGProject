@@ -1,0 +1,23 @@
+{
+  "forge_marker": 1,
+  "defaults": {"model": "cube_all"},
+  "variants": {
+    "inventory": [{}],
+    "meta=0": [{"textures": {"all": "mcgproject:blocks/fn/leave_17"}}],
+    "meta=1": [{"textures": {"all": "mcgproject:blocks/fn/leave_18"}}],
+    "meta=2": [{"textures": {"all": "mcgproject:blocks/fn/leave_19"}}],
+    "meta=3": [{"textures": {"all": "mcgproject:blocks/fn/leave_20"}}],
+    "meta=4": [{"textures": {"all": "mcgproject:blocks/fn/leave_21"}}],
+    "meta=5": [{"textures": {"all": "mcgproject:blocks/fn/leave_22"}}],
+    "meta=6": [{"textures": {"all": "mcgproject:blocks/fn/leave_23"}}],
+    "meta=7": [{"textures": {"all": "mcgproject:blocks/fn/leave_24"}}],
+    "meta=8": [{"textures": {"all": "mcgproject:blocks/fn/leave_25"}}],
+    "meta=9": [{"textures": {"all": "mcgproject:blocks/fn/leave_26"}}],
+    "meta=10": [{"textures": {"all": "mcgproject:blocks/fn/leave_27"}}],
+    "meta=11": [{"textures": {"all": "mcgproject:blocks/fn/leave_28"}}],
+    "meta=12": [{"textures": {"all": "mcgproject:blocks/fn/leave_29"}}],
+    "meta=13": [{"textures": {"all": "mcgproject:blocks/fn/leave_30"}}],
+    "meta=14": [{"textures": {"all": "mcgproject:blocks/fn/leave_31"}}],
+    "meta=15": [{"textures": {"all": "mcgproject:blocks/fn/leave_32"}}]
+  }
+}

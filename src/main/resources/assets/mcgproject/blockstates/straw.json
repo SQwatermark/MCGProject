@@ -1,0 +1,20 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "cube_column",
+    "textures": {
+      "end": "mcgproject:blocks/farm/straw_top",
+      "side": "mcgproject:blocks/farm/straw_side"
+    }
+  },
+  "variants": {
+    "inventory": [{}],
+    "axis=y": [{}],
+    "axis=z": [{"x": 90}],
+    "axis=x": [{"x": 90, "y": 90}],
+    "axis=none": [{"textures": {
+      "end": "mcgproject:blocks/farm/straw_side",
+      "side": "mcgproject:blocks/farm/straw_side"
+    }}]
+  }
+}

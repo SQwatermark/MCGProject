@@ -1,0 +1,12 @@
+{
+    "forge_marker": 1,
+    "defaults": {
+        "model": "mcgproject:slab_half",
+        "textures": {"all": "blocks/wool_colored_yellow"}
+    },
+    "variants": {
+        "inventory": [{}],
+        "half=bottom": { "model": "mcgproject:slab_half" },
+        "half=top": { "model": "mcgproject:slab_upper" }
+    }
+}

@@ -1,0 +1,21 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "cube_all",
+    "textures": {"all": "mcgproject:blocks/touhou/tatami"}
+  },
+  "variants": {
+    "inventory": [{}],
+    "normal": [{}],
+    "eastwest": {
+      "true": {
+        "y": 90
+      },
+      "false": {}
+    },
+    "withside": {
+      "true": {"textures": {"all": "mcgproject:blocks/touhou/tatami"}},
+      "false": {"textures": {"all": "mcgproject:blocks/touhou/tatami_noside"}}
+    }
+  }
+}

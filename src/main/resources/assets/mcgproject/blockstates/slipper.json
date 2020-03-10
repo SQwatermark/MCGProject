@@ -1,0 +1,19 @@
+{
+  "forge_marker": 1,
+  "defaults": {"model": "mcgproject:slipper"},
+  "variants": {
+    "inventory": [{}],
+    "facing": {
+      "east": {},
+      "west": {"y": 180},
+      "south": {"y": 90},
+      "north": {"y": 270}
+    },
+    "type": {
+      "0": {"textures": {"all": "mcgproject:blocks/touhou/slipper_wooden"}},
+      "1": {"textures": {"all": "mcgproject:blocks/touhou/slipper_wooden"}},
+      "2": {"textures": {"all": "mcgproject:blocks/touhou/slipper_wooden"}},
+      "3": {"textures": {"all": "mcgproject:blocks/touhou/slipper_wooden"}}
+    }
+  }
+}

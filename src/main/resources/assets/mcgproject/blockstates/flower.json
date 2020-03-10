@@ -1,0 +1,12 @@
+{
+  "forge_marker": 1,
+  "defaults": {"model": "cross"},
+  "variants": {
+    "inventory": [{}],
+    "variant=convallaria_majalis": [{"textures": {"cross": "mcgproject:blocks/nature/flower_convallaria_majalis"}}],
+    "variant=iris": [{"textures": {"cross": "mcgproject:blocks/nature/flower_iris"}}],
+    "variant=lycoris": [{"textures": {"cross": "mcgproject:blocks/nature/flower_lycoris"}}],
+    "variant=sunflower": [{"textures": {"cross": "mcgproject:blocks/nature/flower_sunflower"}}],
+    "variant=sunflower_stalk": [{"textures": {"cross": "mcgproject:blocks/nature/flower_sunflower_stalk"}}]
+  }
+}

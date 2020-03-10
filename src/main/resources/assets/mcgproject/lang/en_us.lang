@@ -1,0 +1,52 @@
+itemGroup.mcgproject.touhou=MCG: Touhou
+itemGroup.mcgproject.normal=MCG: Normal
+itemGroup.mcgproject.modern=MCG: Modern
+itemGroup.mcgproject.classical=MCG: Classical
+itemGroup.mcgproject.punk=MCG: Punk
+itemGroup.mcgproject.fantasy=MCG: Fantasy
+itemGroup.mcgproject.nature=MCG: Nature
+itemGroup.mcgproject.religion=MCG: Religion
+itemGroup.mcgproject.battle=MCG: Battle
+itemGroup.mcgproject.farm=MCG: Farm
+
+tile.mcgproject.tatami.name=Tatami
+tile.mcgproject.tatami_noside.name=Tatami
+tile.mcgproject.namako.name=Namako
+tile.mcgproject.plaster.name=Plaster
+
+tile.mcgproject.gap.name=Gap
+
+tile.mcgproject.log_sakura.name=Sakura Log
+
+tile.mcgproject.white_wool_stairs.name=White Wool Stairs
+tile.mcgproject.orange_wool_stairs.name=Orange Wool Stairs
+tile.mcgproject.magenta_wool_stairs.name=Magenta Wool Stairs
+tile.mcgproject.light_blue_wool_stairs.name=Light Blue Wool Stairs
+tile.mcgproject.yellow_wool_stairs.name=Yellow Wool Stairs
+tile.mcgproject.lime_wool_stairs.name=Lime Wool Stairs
+tile.mcgproject.pink_wool_stairs.name=Pink Wool Stairs
+tile.mcgproject.gray_wool_stairs.name=Gray Wool Stairs
+tile.mcgproject.silver_wool_stairs.name=Silver Wool Stairs
+tile.mcgproject.cyan_wool_stairs.name=Cyan Wool Stairs
+tile.mcgproject.purple_wool_stairs.name=Purple Wool Stairs
+tile.mcgproject.blue_wool_stairs.name=Blue Wool Stairs
+tile.mcgproject.brown_wool_stairs.name=Brown Wool Stairs
+tile.mcgproject.green_wool_stairs.name=Green Wool Stairs
+tile.mcgproject.red_wool_stairs.name=Red Wool Stairs
+tile.mcgproject.black_wool_stairs.name=Black Wool Stairs
+tile.mcgproject.white_wool_slab.name=White Wool Slab
+tile.mcgproject.orange_wool_slab.name=Orange Wool Slab
+tile.mcgproject.magenta_wool_slab.name=Magenta Wool Slab
+tile.mcgproject.light_blue_wool_slab.name=Light Blue Wool Slab
+tile.mcgproject.yellow_wool_slab.name=Yellow Wool Slab
+tile.mcgproject.lime_wool_slab.name=Lime Wool Slab
+tile.mcgproject.pink_wool_slab.name=Pink Wool Slab
+tile.mcgproject.gray_wool_slab.name=Gray Wool Slab
+tile.mcgproject.silver_wool_slab.name=Silver Wool Slab
+tile.mcgproject.cyan_wool_slab.name=Cyan Wool Slab
+tile.mcgproject.purple_wool_slab.name=Purple Wool Slab
+tile.mcgproject.blue_wool_slab.name=Blue Wool Slab
+tile.mcgproject.brown_wool_slab.name=Brown Wool Slab
+tile.mcgproject.green_wool_slab.name=Green Wool Slab
+tile.mcgproject.red_wool_slab.name=Red Wool Slab
+tile.mcgproject.black_wool_slab.name=Black Wool Slab

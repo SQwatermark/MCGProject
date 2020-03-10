@@ -1,0 +1,23 @@
+{
+  "forge_marker": 1,
+  "defaults": {"model": "cube_all"},
+  "variants": {
+    "inventory": [{}],
+    "meta=0": [{"textures": {"all": "blocks/wool_colored_white"}}],
+    "meta=1": [{"textures": {"all": "blocks/wool_colored_orange"}}],
+    "meta=2": [{"textures": {"all": "blocks/wool_colored_magenta"}}],
+    "meta=3": [{"textures": {"all": "blocks/wool_colored_light_blue"}}],
+    "meta=4": [{"textures": {"all": "blocks/wool_colored_yellow"}}],
+    "meta=5": [{"textures": {"all": "blocks/wool_colored_lime"}}],
+    "meta=6": [{"textures": {"all": "blocks/wool_colored_pink"}}],
+    "meta=7": [{"textures": {"all": "blocks/wool_colored_gray"}}],
+    "meta=8": [{"textures": {"all": "blocks/wool_colored_silver"}}],
+    "meta=9": [{"textures": {"all": "blocks/wool_colored_cyan"}}],
+    "meta=10": [{"textures": {"all": "blocks/wool_colored_purple"}}],
+    "meta=11": [{"textures": {"all": "blocks/wool_colored_blue"}}],
+    "meta=12": [{"textures": {"all": "blocks/wool_colored_brown"}}],
+    "meta=13": [{"textures": {"all": "blocks/wool_colored_green"}}],
+    "meta=14": [{"textures": {"all": "blocks/wool_colored_red"}}],
+    "meta=15": [{"textures": {"all": "blocks/wool_colored_black"}}]
+  }
+}

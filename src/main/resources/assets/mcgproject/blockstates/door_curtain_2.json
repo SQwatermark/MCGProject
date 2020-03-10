@@ -1,0 +1,21 @@
+{
+  "forge_marker": 1,
+  "defaults": {"model": "mcgproject:door_curtain"},
+  "variants": {
+    "inventory": [{}],
+    "eastwest": {
+      "true": {"y": 90},
+      "false": {}
+    },
+    "type": {
+      "0": {"textures": {"all": "mcgproject:blocks/touhou/door_curtain_silver"}},
+      "1": {"textures": {"all": "mcgproject:blocks/touhou/door_curtain_cyan"}},
+      "2": {"textures": {"all": "mcgproject:blocks/touhou/door_curtain_purple"}},
+      "3": {"textures": {"all": "mcgproject:blocks/touhou/door_curtain_blue"}},
+      "4": {"textures": {"all": "mcgproject:blocks/touhou/door_curtain_brown"}},
+      "5": {"textures": {"all": "mcgproject:blocks/touhou/door_curtain_green"}},
+      "6": {"textures": {"all": "mcgproject:blocks/touhou/door_curtain_red"}},
+      "7": {"textures": {"all": "mcgproject:blocks/touhou/door_curtain_black"}}
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "forge_marker": 1,
+  "defaults": {"model": "mcgproject:log_sakura"},
+  "variants": {
+    "inventory": [{}],
+    "axis=y": { "model": "mcgproject:log_sakura" },
+    "axis=z": { "model": "mcgproject:log_sakura", "x": 90 },
+    "axis=x": { "model": "mcgproject:log_sakura", "x": 90, "y": 90 },
+    "axis=none": { "model": "mcgproject:log_sakura_bark" }
+  }
+}

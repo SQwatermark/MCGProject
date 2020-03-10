@@ -1,0 +1,12 @@
+{
+  "forge_marker": 1,
+  "defaults": {"model": "cube_all"},
+  "variants": {
+    "inventory": [{}],
+    "color=black": [{"textures": {"all": "mcgproject:blocks/touhou/tile_black"}}],
+    "color=blue": [{"textures": {"all": "mcgproject:blocks/touhou/tile_blue"}}],
+    "color=brown": [{"textures": {"all": "mcgproject:blocks/touhou/tile_brown"}}],
+    "color=gray": [{"textures": {"all": "mcgproject:blocks/touhou/tile_gray"}}],
+    "color=ultram": [{"textures": {"all": "mcgproject:blocks/touhou/tile_ultram"}}]
+  }
+}

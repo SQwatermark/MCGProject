@@ -1,0 +1,13 @@
+{
+  "forge_marker": 1,
+  "defaults": {"model": "cube_all"},
+  "variants": {
+    "inventory": [{}],
+    "meta=0": [{"textures": {"all": "mcgproject:blocks/fn/plank_17"}}],
+    "meta=1": [{"textures": {"all": "mcgproject:blocks/fn/plank_18"}}],
+    "meta=2": [{"textures": {"all": "mcgproject:blocks/fn/plank_19"}}],
+    "meta=3": [{"textures": {"all": "mcgproject:blocks/fn/plank_20"}}],
+    "meta=4": [{"textures": {"all": "mcgproject:blocks/fn/plank_21"}}],
+    "meta=5": [{"textures": {"all": "mcgproject:blocks/fn/plank_22"}}]
+  }
+}

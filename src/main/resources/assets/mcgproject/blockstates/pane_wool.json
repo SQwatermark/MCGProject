@@ -1,0 +1,41 @@
+{
+  "forge_marker": 1,
+  "defaults": {"model": "pane_post"},
+  "variants": {
+    "inventory": [{}],
+    "north": {
+      "true": {"submodel": "pane_side"},
+      "false": {"submodel": "pane_noside"}
+    },
+    "east": {
+      "true": {"submodel": "pane_side", "y": 90},
+      "false": {"submodel": "pane_noside_alt"}
+    },
+    "south": {
+      "true": {"submodel": "pane_side_alt"},
+      "false": {"submodel": "pane_noside_alt", "y": 90}
+    },
+    "west": {
+      "true": {"submodel": "pane_side_alt", "y": 90},
+      "false": {"submodel": "pane_noside", "y": 270}
+    },
+    "color": {
+      "white": {"textures": {"pane": "blocks/wool_colored_white", "edge": "blocks/wool_colored_white"}},
+      "orange": {"textures": {"pane": "blocks/wool_colored_orange", "edge": "blocks/wool_colored_orange"}},
+      "magenta": {"textures": {"pane": "blocks/wool_colored_magenta", "edge": "blocks/wool_colored_magenta"}},
+      "light_blue": {"textures": {"pane": "blocks/wool_colored_light_blue", "edge": "blocks/wool_colored_light_blue"}},
+      "yellow": {"textures": {"pane": "blocks/wool_colored_yellow", "edge": "blocks/wool_colored_yellow"}},
+      "lime": {"textures": {"pane": "blocks/wool_colored_lime", "edge": "blocks/wool_colored_lime"}},
+      "pink": {"textures": {"pane": "blocks/wool_colored_pink", "edge": "blocks/wool_colored_pink"}},
+      "gray": {"textures": {"pane": "blocks/wool_colored_gray", "edge": "blocks/wool_colored_gray"}},
+      "silver": {"textures": {"pane": "blocks/wool_colored_silver", "edge": "blocks/wool_colored_silver"}},
+      "cyan": {"textures": {"pane": "blocks/wool_colored_cyan", "edge": "blocks/wool_colored_cyan"}},
+      "purple": {"textures": {"pane": "blocks/wool_colored_purple", "edge": "blocks/wool_colored_purple"}},
+      "blue": {"textures": {"pane": "blocks/wool_colored_blue", "edge": "blocks/wool_colored_blue"}},
+      "brown": {"textures": {"pane": "blocks/wool_colored_brown", "edge": "blocks/wool_colored_brown"}},
+      "green": {"textures": {"pane": "blocks/wool_colored_green", "edge": "blocks/wool_colored_green"}},
+      "red": {"textures": {"pane": "blocks/wool_colored_red", "edge": "blocks/wool_colored_red"}},
+      "black": {"textures": {"pane": "blocks/wool_colored_black", "edge": "blocks/wool_colored_black"}}
+    }
+  }
+}

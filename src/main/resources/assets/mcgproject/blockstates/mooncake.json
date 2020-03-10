@@ -1,0 +1,25 @@
+{
+  "forge_marker": 1,
+  "defaults": {"model": "cube"},
+  "variants": {
+    "inventory": [{}],
+    "meta=0": [{"textures": {
+      "particle": "mcgproject:blocks/farm/mooncake_1",
+      "down": "mcgproject:blocks/farm/mooncake_3",
+      "up": "mcgproject:blocks/farm/mooncake_2",
+      "north": "mcgproject:blocks/farm/mooncake_1",
+      "east": "mcgproject:blocks/farm/mooncake_1",
+      "south": "mcgproject:blocks/farm/mooncake_1",
+      "west": "mcgproject:blocks/farm/mooncake_1"
+    }}],
+    "meta=1": [{"textures": {
+      "particle": "mcgproject:blocks/farm/mooncake_1",
+      "down": "mcgproject:blocks/farm/mooncake_3",
+      "up": "mcgproject:blocks/farm/mooncake_3",
+      "north": "mcgproject:blocks/farm/mooncake_1",
+      "east": "mcgproject:blocks/farm/mooncake_1",
+      "south": "mcgproject:blocks/farm/mooncake_1",
+      "west": "mcgproject:blocks/farm/mooncake_1"
+    }}]
+  }
+}
