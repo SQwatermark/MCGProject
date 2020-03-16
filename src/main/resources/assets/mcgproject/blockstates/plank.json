@@ -15,7 +15,11 @@
       "8": {"textures": {"all": "mcgproject:blocks/touhou/shitamiitabari_oak_2"}},
       "9": {"textures": {"all": "mcgproject:blocks/touhou/shitamiitabari_jungle_2"}},
       "10": {"textures": {"all": "mcgproject:blocks/touhou/shitamiitabari_dark_oak_2"}},
-      "11": {"textures": {"all": "mcgproject:blocks/touhou/shitamiitabari_oak_2"}}
+      "11": {"textures": {"all": "mcgproject:blocks/touhou/shitamiitabari_oak_2"}},
+      "12": {"textures": {"all": "mcgproject:blocks/touhou/plank_oak_refined_2"}},
+      "13": {"textures": {"all": "mcgproject:blocks/touhou/plank_jungle_refined_2"}},
+      "14": {"textures": {"all": "mcgproject:blocks/touhou/plank_dark_oak_refined_2"}},
+      "15": {"textures": {"all": "mcgproject:blocks/touhou/plank_oak_refined_2"}}
     }
   }
 }

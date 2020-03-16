@@ -51,7 +51,7 @@ public class ModBlock {
         blocks8.add(new BlockDecoration2x8(Material.CLOTH, "door_curtain_1", MCGTabs.TOUHOU, SoundType.CLOTH));
         blocks8.add(new BlockDecoration2x8(Material.CLOTH, "door_curtain_2", MCGTabs.TOUHOU, SoundType.CLOTH));
         //blocks16.add(new BlockInteger16(Material.CLAY, "frame", MCGTabs.TOUHOU, SoundType.STONE));
-        blocks12.add(new BlockInteger12(Material.WOOD, "plank", MCGTabs.TOUHOU, SoundType.WOOD));
+        blocks16.add(new BlockInteger16(Material.WOOD, "plank", MCGTabs.TOUHOU, SoundType.WOOD));
         blocks4.add(new BlockDecoration4x4(Material.WOOD, "slipper", MCGTabs.TOUHOU, SoundType.WOOD));
         blocks2.add(new BlockWindow(Material.WOOD, "window", MCGTabs.TOUHOU, SoundType.WOOD));
         blocks3.add(new BlockWoodPane("pane_wood"));
