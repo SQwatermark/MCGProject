@@ -1,5 +1,6 @@
 package moe.gensoukyo.mcgproject.common.creativetab;
 
+import moe.gensoukyo.mcgproject.common.init.ModBlock;
 import moe.gensoukyo.mcgproject.core.MCGProject;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Items;
@@ -11,7 +12,7 @@ public class MCGTabs {
     {
         @Override
         public ItemStack createIcon() {
-            return new ItemStack(Items.APPLE);
+            return new ItemStack(ModBlock.NAMAKO);
         }
     };
 
@@ -19,7 +20,7 @@ public class MCGTabs {
     {
         @Override
         public ItemStack createIcon() {
-            return new ItemStack(Items.APPLE);
+            return new ItemStack(ModBlock.WOOL_GLOWING);
         }
     };
 
@@ -27,7 +28,7 @@ public class MCGTabs {
     {
         @Override
         public ItemStack createIcon() {
-            return new ItemStack(Items.APPLE);
+            return new ItemStack(ModBlock.MARBLE_BLACK);
         }
     };
 
@@ -35,7 +36,7 @@ public class MCGTabs {
     {
         @Override
         public ItemStack createIcon() {
-            return new ItemStack(Items.APPLE);
+            return new ItemStack(ModBlock.BLOCK_CHIREIDEN);
         }
     };
 
@@ -43,7 +44,7 @@ public class MCGTabs {
     {
         @Override
         public ItemStack createIcon() {
-            return new ItemStack(Items.APPLE);
+            return new ItemStack(ModBlock.GAP);
         }
     };
 
@@ -51,7 +52,7 @@ public class MCGTabs {
     {
         @Override
         public ItemStack createIcon() {
-            return new ItemStack(Items.APPLE);
+            return new ItemStack(ModBlock.FLOWER);
         }
     };
 
