@@ -11,23 +11,20 @@ public class ClientProxy extends CommonProxy {
 
     @Override
     @EventHandler
-    public void preInit(FMLPreInitializationEvent event)
-    {
+    public void preInit(FMLPreInitializationEvent event) {
         super.preInit(event);
         MinecraftForge.EVENT_BUS.register(ModelMapper.instance());
     }
 
     @Override
     @EventHandler
-    public void init(FMLInitializationEvent event)
-    {
+    public void init(FMLInitializationEvent event) {
         super.init(event);
     }
 
     @Override
     @EventHandler
-    public void postInit(FMLPostInitializationEvent event)
-    {
+    public void postInit(FMLPostInitializationEvent event) {
         super.postInit(event);
     }
 

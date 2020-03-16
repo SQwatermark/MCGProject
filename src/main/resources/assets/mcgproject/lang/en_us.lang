@@ -50,3 +50,5 @@ tile.mcgproject.brown_wool_slab.name=Brown Wool Slab
 tile.mcgproject.green_wool_slab.name=Green Wool Slab
 tile.mcgproject.red_wool_slab.name=Red Wool Slab
 tile.mcgproject.black_wool_slab.name=Black Wool Slab
+
+item.mcgproject.mcg_boat.name=MCG Boat

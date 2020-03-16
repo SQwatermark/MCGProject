@@ -1,5 +1,6 @@
 package moe.gensoukyo.mcgproject.common.init;
 
+import moe.gensoukyo.mcgproject.common.item.ItemMCGBoat;
 import moe.gensoukyo.mcgproject.core.MCGProject;
 import net.minecraft.item.Item;
 import net.minecraftforge.event.RegistryEvent;
@@ -21,6 +22,8 @@ public final class ModItem {
         return instance;
     }
 
+    public static ItemMCGBoat ITEM_MCG_BOAT;
+
     /**
      * 注册所有物品
      * @param event Item注册事件
@@ -30,6 +33,9 @@ public final class ModItem {
     public void register(RegistryEvent.Register<Item> event)
     {
         MCGProject.logger.info("MCGProject: registering items");
+
+        ITEM_MCG_BOAT = new ItemMCGBoat();
+        event.getRegistry().register(ITEM_MCG_BOAT);
     }
 
 }

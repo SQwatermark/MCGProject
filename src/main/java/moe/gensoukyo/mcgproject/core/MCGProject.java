@@ -16,16 +16,12 @@ import org.apache.logging.log4j.Logger;
 @Mod(modid = MCGProject.ID, name = MCGProject.NAME, version = MCGProject.VERSION)
 public class MCGProject {
 
-    public static MCGProject instance;
+    @Mod.Instance
+    public static MCGProject INSTANCE;
     public static final String ID = "mcgproject";
     public static final String NAME = "MCGProject";
     public static final String VERSION = "1.0.10";
     public static Logger logger;
-
-    @SuppressWarnings("unused")
-    public static MCGProject instance() {
-        return instance;
-    }
 
     @SidedProxy(clientSide = "moe.gensoukyo.mcgproject.core.ClientProxy",
             serverSide = "moe.gensoukyo.mcgproject.core.CommonProxy")
@@ -33,21 +29,20 @@ public class MCGProject {
 
     @SuppressWarnings("unused")
     @EventHandler
-    public void preInit(FMLPreInitializationEvent event)
-    {
+    public void preInit(FMLPreInitializationEvent event) {
         logger = event.getModLog();
         proxy.preInit(event);
     }
 
     @SuppressWarnings("unused")
     @EventHandler
-    public void init(FMLInitializationEvent event){
+    public void init(FMLInitializationEvent event) {
         proxy.init(event);
     }
 
     @SuppressWarnings("unused")
     @EventHandler
-    public void postInit(FMLPostInitializationEvent event){
+    public void postInit(FMLPostInitializationEvent event) {
         proxy.postInit(event);
     }
 
