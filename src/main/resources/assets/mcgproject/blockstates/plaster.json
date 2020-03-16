@@ -7,7 +7,7 @@
       "0": {"textures": {"all": "mcgproject:blocks/touhou/plaster"}},
       "1": {"textures": {"all": "mcgproject:blocks/touhou/plaster_2"}},
       "2": {"textures": {"all": "mcgproject:blocks/touhou/plaster_3"}},
-      "3": {"textures": {"all": "mcgproject:blocks/touhou/plaster"}}
+      "3": {"textures": {"all": "mcgproject:blocks/touhou/plaster_4"}}
     }
   }
 }

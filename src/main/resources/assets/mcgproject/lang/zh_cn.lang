@@ -9,12 +9,16 @@ itemGroup.mcgproject.religion=MCG: 宗教
 itemGroup.mcgproject.battle=MCG: 战斗
 itemGroup.mcgproject.farm=MCG: 农业与食物
 itemGroup.mcgproject.clothes=MCG: 服装（尚未完善 请勿使用）
+itemGroup.mcgproject.fn=被遗忘的大自然（移植）
 
 //东方
 tile.mcgproject.tatami_0.name=榻榻米
 tile.mcgproject.tatami_1.name=榻榻米（无边线）
 tile.mcgproject.namako.name=海鼠壁
-tile.mcgproject.plaster.name=灰泥
+tile.mcgproject.plaster_0.name=白色灰泥
+tile.mcgproject.plaster_1.name=浅灰色灰泥
+tile.mcgproject.plaster_2.name=深灰色灰泥
+tile.mcgproject.plaster_3.name=黄色灰泥
 tile.mcgproject.window_0.name=纸窗
 tile.mcgproject.window_1.name=斜纹纸窗
 tile.mcgproject.pane_wood_0.name=纸窗
@@ -25,7 +29,7 @@ tile.mcgproject.blocks_wood_1.name=稗田邸天花板
 tile.mcgproject.blocks_wood_2.name=竹篱
 tile.mcgproject.blocks_wood_3.name=预留
 tile.mcgproject.lantern_0.name=纸灯笼
-tile.mcgproject.lantern_1.name=预留
+tile.mcgproject.lantern_1.name=明亮的纸窗
 
 tile.mcgproject.tile_0.name=黑瓦
 tile.mcgproject.tile_1.name=蓝瓦
@@ -77,14 +81,22 @@ tile.mcgproject.frame_13.name=预留
 tile.mcgproject.frame_14.name=预留
 tile.mcgproject.frame_15.name=预留
 
-tile.mcgproject.plank_0.name=精致橡木木板
-tile.mcgproject.plank_1.name=精致丛林木板
-tile.mcgproject.plank_2.name=精致深色橡木木板
+tile.mcgproject.plank_0.name=精制橡木木板
+tile.mcgproject.plank_1.name=精制丛林木板
+tile.mcgproject.plank_2.name=精制深色橡木木板
 tile.mcgproject.plank_3.name=预留
-tile.mcgproject.plank_4.name=橡木板壁
-tile.mcgproject.plank_5.name=丛林木板壁
-tile.mcgproject.plank_6.name=深色橡木板壁
+tile.mcgproject.plank_4.name=橡木板壁（3x2）
+tile.mcgproject.plank_5.name=丛林木板壁（3x2）
+tile.mcgproject.plank_6.name=深色橡木板壁（3x2）
 tile.mcgproject.plank_7.name=预留
+tile.mcgproject.plank_8.name=橡木板壁（2x1）
+tile.mcgproject.plank_9.name=丛林木板壁（2x1）
+tile.mcgproject.plank_10.name=深色橡木板壁（2x1）
+tile.mcgproject.plank_11.name=预留
+tile.mcgproject.plank_12.name=精制橡木木板（条状）
+tile.mcgproject.plank_13.name=精制丛林木板（条状）
+tile.mcgproject.plank_14.name=精制深色橡木木板（条状）
+tile.mcgproject.plank_15.name=预留
 
 tile.mcgproject.slipper_0.name=木拖鞋
 tile.mcgproject.slipper_1.name=预留
@@ -109,6 +121,9 @@ tile.mcgproject.dirt_1.name=预留
 tile.mcgproject.dirt_2.name=预留
 tile.mcgproject.dirt_3.name=预留
 tile.mcgproject.leaves_sakura_glowing.name=发光樱花树叶
+tile.mcgproject.bamboo_old_0.name=竹笋
+tile.mcgproject.bamboo_old_0.name=竹子
+tile.mcgproject.bamboo_old_0.name=竹叶
 
 //农业与食物
 tile.mcgproject.mooncake_0.name=月饼
@@ -249,6 +264,11 @@ tile.mcgproject.pane_wool_14.name=红色羊毛板
 tile.mcgproject.pane_wool_15.name=黑色羊毛板
 tile.mcgproject.stairs_glass.name=玻璃楼梯
 tile.mcgproject.slab_glass.name=玻璃台阶
+tile.mcgproject.trapdoor_spruce.name=云杉木活板门
+tile.mcgproject.trapdoor_birch.name=白桦木活板门
+tile.mcgproject.trapdoor_jungle.name=丛林木活板门
+tile.mcgproject.trapdoor_acacia.name=金合欢木活板门
+tile.mcgproject.trapdoor_dark_oak.name=深色橡木活板门
 
 //服饰
 item.mcgproject.rumia_helmet.name=头饰（露米娅）
@@ -263,6 +283,9 @@ item.mcgproject.cirno_helmet.name=头饰（琪露诺）
 item.mcgproject.cirno_chestplate.name=上衣（琪露诺）
 item.mcgproject.cirno_leggings.name=裙子（琪露诺）
 item.mcgproject.cirno_boots.name=鞋子（琪露诺）
+
+//fn
+
 
 advancements.mcgproject.title=欢迎来到幻想乡
 advancements.mcgproject.title.desc=你醒啦？MCG有进度系统啦
