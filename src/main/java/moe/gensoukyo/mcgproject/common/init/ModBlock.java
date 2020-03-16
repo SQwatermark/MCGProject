@@ -34,6 +34,14 @@ public class ModBlock {
         return instance;
     }
 
+    public static Block TILE = new BlockTile();
+    public static Block NAMAKO = new BlockMCG(Material.CLAY, "namako", MCGTabs.TOUHOU);
+    public static Block FLOWER = new BlockMCGFlower("flower");
+    public static Block GAP = new BlockMCG(Material.WOOD, "gap", MCGTabs.FANTASY);
+    public static Block BLOCK_CHIREIDEN = new BlockInteger8(Material.GLASS, "glass_chireiden", MCGTabs.CLASSICAL, SoundType.GLASS).setLightLevel(0.67F);
+    public static Block MARBLE_BLACK = new BlockInteger2(Material.ROCK, "marble", MCGTabs.MODERN, SoundType.STONE);
+    public static Block WOOL_GLOWING = new BlockInteger16(Material.CLOTH, "wool_glowing", MCGTabs.NORMAL, SoundType.CLOTH).setLightLevel(1.0F);
+
     /**
      * 实例化方块，并将实例化的方块分配到相应链表
      */
@@ -42,9 +50,8 @@ public class ModBlock {
         MCGProject.logger.info("MCGProject: loading blocks");
 
         //东方
-        Block TILE = new BlockTile();
 
-        blocks1.add(new BlockMCG(Material.CLAY, "namako", MCGTabs.TOUHOU));
+        blocks1.add(NAMAKO);
         blocks4.add(new BlockInteger4(Material.CLAY, "plaster", MCGTabs.TOUHOU, SoundType.STONE));
         blocks2.add(new BlockTatami());
         blocks5.add(TILE);
@@ -65,7 +72,7 @@ public class ModBlock {
 
         //自然
         blocks1.add(new BlockMCGLog("log_sakura"));
-        blocks5.add(new BlockMCGFlower("flower"));
+        blocks5.add(FLOWER);
         blocks2.add(new BlockMCGMushroom("mushroom"));
         blocks1.add(new BlockTranslucent(Material.CLOTH, "cloud", MCGTabs.NATURE, SoundType.CLOTH));
         blocks2.add(new BlockInteger2(Material.GROUND, "dirt", MCGTabs.NATURE, SoundType.GROUND));
@@ -73,10 +80,10 @@ public class ModBlock {
         blocks3.add(new BlockBambooOld("bamboo_old"));
 
         //幻想
-        blocks1.add(new BlockMCG(Material.WOOD, "gap", MCGTabs.FANTASY));
+        blocks1.add(GAP);
 
         //古典
-        blocks8.add(new BlockInteger8(Material.GLASS, "glass_chireiden", MCGTabs.CLASSICAL, SoundType.GLASS).setLightLevel(0.67F));
+        blocks8.add(BLOCK_CHIREIDEN);
         blocks16.add(new BlockInteger16(Material.GLASS, "glass_chireiden_a", MCGTabs.CLASSICAL, SoundType.GLASS).setLightLevel(0.67F));
         blocks16.add(new BlockInteger16(Material.GLASS, "glass_chireiden_b", MCGTabs.CLASSICAL, SoundType.GLASS).setLightLevel(0.67F));
         blocks4.add(new BlockRotate4x4(Material.CLOTH, "carpet_red_rotation", MCGTabs.CLASSICAL, SoundType.CLOTH));
@@ -85,7 +92,6 @@ public class ModBlock {
         blocks4.add(new BlockInteger4(Material.ROCK, "brick_chireiden", MCGTabs.CLASSICAL, SoundType.STONE));
 
         //现代
-        Block MARBLE_BLACK = new BlockInteger2(Material.ROCK, "marble", MCGTabs.MODERN, SoundType.STONE);
         blocks2.add(MARBLE_BLACK);
         blocks1.add(new BlockMCGStairs(MARBLE_BLACK.getDefaultState(), "stairs_marble_black", MCGTabs.MODERN, SoundType.STONE));
         blocks1.add(new BlockMCGStairs(MARBLE_BLACK.getDefaultState(), "stairs_marble_white", MCGTabs.MODERN, SoundType.STONE));
@@ -100,7 +106,7 @@ public class ModBlock {
         blocks1.add(new BlockMCGLog("straw", MCGTabs.FARM, SoundType.PLANT));
 
         //原版拓展
-        blocks16.add(new BlockInteger16(Material.CLOTH, "wool_glowing", MCGTabs.NORMAL, SoundType.CLOTH).setLightLevel(1.0F));
+        blocks16.add(WOOL_GLOWING);
         blocks16.add(new BlockWoolPane("pane_wool"));
         blocks1.add(new BlockTransparentStairs(Blocks.GLASS.getDefaultState(), "stairs_glass", MCGTabs.NORMAL, SoundType.GLASS));
         blocks1.add(new BlockTransparentSlab(Blocks.GLASS, 0, "slab_glass", MCGTabs.NORMAL));

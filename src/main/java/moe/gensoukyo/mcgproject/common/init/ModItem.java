@@ -12,9 +12,6 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
  */
 public final class ModItem {
 
-    /**
-     * 单例模式
-     */
     private static ModItem instance;
     public static ModItem instance()
     {
