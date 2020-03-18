@@ -4,7 +4,6 @@ import moe.gensoukyo.mcgproject.common.init.ModArmor;
 import moe.gensoukyo.mcgproject.common.init.ModBlock;
 import moe.gensoukyo.mcgproject.common.init.ModEntity;
 import moe.gensoukyo.mcgproject.common.init.ModItem;
-import moe.gensoukyo.mcgproject.common.network.NetworkWrapper;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;

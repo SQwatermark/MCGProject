@@ -1,5 +1,6 @@
 package moe.gensoukyo.mcgproject.common.init;
 
+import moe.gensoukyo.mcgproject.common.backpack.GensoChest;
 import moe.gensoukyo.mcgproject.common.block.*;
 import moe.gensoukyo.mcgproject.common.block.enums.EnumTileColor;
 import moe.gensoukyo.mcgproject.common.creativetab.MCGTabs;
@@ -81,6 +82,7 @@ public class ModBlock {
 
         //幻想
         blocks1.add(GAP);
+        blocks1.add(new GensoChest());
 
         //古典
         blocks8.add(BLOCK_CHIREIDEN);

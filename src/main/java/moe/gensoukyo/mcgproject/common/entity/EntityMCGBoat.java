@@ -2,7 +2,6 @@ package moe.gensoukyo.mcgproject.common.entity;
 
 import moe.gensoukyo.mcgproject.common.init.ModItem;
 import moe.gensoukyo.mcgproject.common.network.*;
-import moe.gensoukyo.mcgproject.core.MCGProject;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.entity.EntityPlayerSP;
@@ -22,6 +21,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import javax.annotation.Nonnull;
+import java.lang.reflect.Field;
 import java.util.Arrays;
 import java.util.List;
 
@@ -31,8 +31,38 @@ import java.util.List;
  */
 public class EntityMCGBoat extends EntityBoat {
 
-    public float threshold = 0.2F;
+    private static Field status; //field_184469_aF
+    private static Field lastYd; // field_184473_aH
+
+    static {
+        try {
+            status = EntityBoat.class.getDeclaredField("field_184469_aF");
+            status.setAccessible(true);
+            lastYd = EntityBoat.class.getDeclaredField("field_184473_aH");
+            lastYd.setAccessible(true);
+        } catch (Exception ignored) {
+            status = null;
+            lastYd = null;
+        }
+    }
+
+    public Status getStatus() {
+        try {
+            return (Status) status.get(this);
+        } catch (Exception ignored) {
+            return Status.IN_AIR;
+        }
+    }
+
+    public void setLastYd(double v) {
+        try {
+            lastYd.set(this, v);
+        } catch (Exception ignored) { }
+    }
+
+    public float threshold = 0.1F;
     public float damage = 10.0F;
+    public float mass = 10.0F;
     public float jump = 0.4F;
 
     /**
@@ -61,6 +91,15 @@ public class EntityMCGBoat extends EntityBoat {
     /**
      * @apiNote 给NPC预留的方法
      * @param boat 船实体
+     * @param mass 船体质量（撞击速率倍数）
+     * */
+    public static void setBoatMass(EntityMCGBoat boat, float mass) {
+        boat.mass = mass;
+    }
+
+    /**
+     * @apiNote 给NPC预留的方法
+     * @param boat 船实体
      * @param jump 起跳速度
      * */
     public static void setBoatJump(EntityMCGBoat boat, float jump) {
@@ -79,6 +118,8 @@ public class EntityMCGBoat extends EntityBoat {
     protected void readEntityFromNBT(@Nonnull NBTTagCompound tagCompound) {
         if (tagCompound.hasKey("jump"))
             jump = tagCompound.getFloat("jump");
+        if (tagCompound.hasKey("mass"))
+            mass = tagCompound.getFloat("mass");
         if (tagCompound.hasKey("damage"))
             damage = tagCompound.getFloat("damage");
         if (tagCompound.hasKey("threshold"))
@@ -88,6 +129,7 @@ public class EntityMCGBoat extends EntityBoat {
     @Override
     protected void writeEntityToNBT(@Nonnull NBTTagCompound tagCompound) {
         tagCompound.setFloat("jump", jump);
+        tagCompound.setFloat("mass", mass);
         tagCompound.setFloat("damage", damage);
         tagCompound.setFloat("threshold", threshold);
     }
@@ -144,19 +186,21 @@ public class EntityMCGBoat extends EntityBoat {
 
             Vec3d vec = this.getLookVec().normalize();
             BlockPos pos = new BlockPos(this.getPositionVector().add(vec));
-            if (!this.world.isAirBlock(pos) || !this.world.isAirBlock(pos.up())) {
-                double slopeHeight = pos.getY() + getBlockHeight(pos) - this.posY;
-                if (!this.world.isAirBlock(pos.up()))
-                    slopeHeight += getBlockHeight(pos.up());
-                if (slopeHeight > 0 && slopeHeight <= 0.5 && this.vel != 0)
-                    this.motionY += (0.5 * this.jump);
+            if (world.getBlockState(pos).getMaterial() != Material.WATER) {
+                if (!this.world.isAirBlock(pos) || !this.world.isAirBlock(pos.up())) {
+                    double slopeHeight = pos.getY() + getBlockHeight(pos) - this.posY;
+                    if (!this.world.isAirBlock(pos.up()))
+                        slopeHeight += getBlockHeight(pos.up());
+                    if (slopeHeight > 0 && slopeHeight <= 0.5 && this.vel != 0)
+                        this.motionY += (0.5 * this.jump);
+                }
             }
 
             EntityPlayerSP player = (EntityPlayerSP) this.getControllingPassenger();
             player.movementInput.updatePlayerMoveState();
             player.updateEntityActionState();
             player.moveVertical = player.movementInput.jump ? 1.0F : 0.0F;
-            if (Math.abs(this.motionY) <= 0.5 * this.jump)
+            if (this.onGround && Math.abs(this.motionY) <= 0.5 * this.jump)
                 this.motionY += (player.moveVertical * this.jump);
         }
     }
@@ -177,7 +221,7 @@ public class EntityMCGBoat extends EntityBoat {
         if (!this.world.isRemote) {
             for (Entity entity : this.getPassengers())
                 if (!(entity instanceof EntityPlayer))
-                    this.removePassenger(entity);
+                    entity.dismountRidingEntity();
         }
     }
 
@@ -204,18 +248,32 @@ public class EntityMCGBoat extends EntityBoat {
                     effect.getPotion().affectEntity(null, null, living, effect.getAmplifier(), 1.0F);
             Vec3d tar = entity.getPositionVector();
             Vec3d src = this.getPositionVector();
-            Vec3d vec = tar.subtract(src).normalize().scale(this.vel * 2);
+            Vec3d vec = tar.subtract(src).normalize().scale(this.vel * this.mass);
             living.addVelocity(vec.x, vec.y, vec.z);
         }
     }
 
+    /**
+     * @apiNote 删除让船撞坏的代码
+     * */
     @Override
     protected void updateFallState(double dist, boolean fall, IBlockState state, BlockPos pos) {
-        // 防止船撞坏
-        if (!this.isRiding() && fall && this.fallDistance > 3.0F)
-            return;
+        this.setLastYd(this.motionY);
+        if (!this.isRiding()) {
+            if (fall) {
+                if (this.fallDistance > 3.0F) {
+                    if (getStatus() != EntityBoat.Status.ON_LAND) {
+                        this.fallDistance = 0.0F;
+                        return;
+                    }
+                    this.fall(this.fallDistance, 1.0F);
+                }
 
-        super.updateFallState(dist, fall, state, pos);
+                this.fallDistance = 0.0F;
+            } else if (this.world.getBlockState((new BlockPos(this)).down()).getMaterial() != Material.WATER && dist < 0.0D) {
+                this.fallDistance = (float)((double)this.fallDistance - dist);
+            }
+        }
     }
 
 }
