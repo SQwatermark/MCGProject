@@ -1,7 +1,6 @@
 itemGroup.mcgproject.touhou=MCG: 东方
 itemGroup.mcgproject.normal=MCG: 原版拓展
-itemGroup.mcgproject.modern=MCG: 现代
-itemGroup.mcgproject.classical=MCG: 古典
+itemGroup.mcgproject.european=MCG: 西方
 itemGroup.mcgproject.punk=MCG: 朋克
 itemGroup.mcgproject.fantasy=MCG: 幻想
 itemGroup.mcgproject.nature=MCG: 自然
@@ -131,7 +130,7 @@ tile.mcgproject.mooncake_1.name=月饼（无花纹）
 tile.mcgproject.shit.name=有机肥
 tile.mcgproject.straw.name=草垛
 
-//古典
+//西方
 tile.mcgproject.glass_chireiden_0.name=地灵殿彩绘砖1
 tile.mcgproject.glass_chireiden_1.name=地灵殿彩绘砖2
 tile.mcgproject.glass_chireiden_2.name=地灵殿彩绘砖3
@@ -186,8 +185,8 @@ tile.mcgproject.brick_chireiden_0.name=地灵殿黑砖
 tile.mcgproject.brick_chireiden_1.name=地灵殿红砖
 tile.mcgproject.brick_chireiden_2.name=地灵殿红黑瓷砖
 tile.mcgproject.brick_chireiden_3.name=地灵殿红黑瓷砖（反）
-
-//现代
+tile.mcgproject.wall_marisa_0.name=魔理沙家内墙
+tile.mcgproject.wall_marisa_1.name=魔理沙家外墙
 tile.mcgproject.marble_0.name=黑色大理石
 tile.mcgproject.marble_1.name=白色大理石
 tile.mcgproject.stairs_marble_black.name=黑色大理石楼梯
