@@ -13,10 +13,11 @@ public class NetworkWrapper {
 
     public static SimpleNetworkWrapper INSTANCE;
 
-    static  {
+    static {
         INSTANCE = NetworkRegistry.INSTANCE.newSimpleChannel(MCGProject.ID);
 
         INSTANCE.registerMessage(BoatHandler.class, BoatPacket.class, 0, Side.SERVER);
+        INSTANCE.registerMessage(BackpackGuiHandler.class, BackpackPacket.class, 1, Side.CLIENT);
     }
 
 }
