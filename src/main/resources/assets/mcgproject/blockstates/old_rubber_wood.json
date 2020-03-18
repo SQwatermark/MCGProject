@@ -3,8 +3,8 @@
   "defaults": {
     "model": "cube_column",
     "textures": {
-      "end": "mcgproject:blocks/nature/log_sakura_top",
-      "side": "mcgproject:blocks/nature/log_sakura"
+      "end": "mcgproject:blocks/old/rubber_wood_top",
+      "side": "mcgproject:blocks/old/rubber_wood_side"
     }
   },
   "variants": {
@@ -22,7 +22,7 @@
       "none": {
         "model": "block/cube_all",
         "textures": {
-          "all": "mcgproject:blocks/nature/log_sakura"
+          "all": "mcgproject:blocks/old/rubber_wood_side"
         }
       }
     }
