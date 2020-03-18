@@ -24,15 +24,7 @@ public class MCGTabs {
         }
     };
 
-    public static final CreativeTabs MODERN = new CreativeTabs(getLabel("modern"))
-    {
-        @Override
-        public ItemStack createIcon() {
-            return new ItemStack(ModBlock.MARBLE_BLACK);
-        }
-    };
-
-    public static final CreativeTabs CLASSICAL = new CreativeTabs(getLabel("classical"))
+    public static final CreativeTabs EUROPEAN = new CreativeTabs(getLabel("european"))
     {
         @Override
         public ItemStack createIcon() {

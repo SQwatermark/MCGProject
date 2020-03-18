@@ -39,8 +39,8 @@ public class ModBlock {
     public static Block NAMAKO = new BlockMCG(Material.CLAY, "namako", MCGTabs.TOUHOU);
     public static Block FLOWER = new BlockMCGFlower("flower");
     public static Block GAP = new BlockMCG(Material.WOOD, "gap", MCGTabs.FANTASY);
-    public static Block BLOCK_CHIREIDEN = new BlockInteger8(Material.GLASS, "glass_chireiden", MCGTabs.CLASSICAL, SoundType.GLASS).setLightLevel(0.67F);
-    public static Block MARBLE_BLACK = new BlockInteger2(Material.ROCK, "marble", MCGTabs.MODERN, SoundType.STONE);
+    public static Block BLOCK_CHIREIDEN = new BlockInteger8(Material.GLASS, "glass_chireiden", MCGTabs.EUROPEAN, SoundType.GLASS).setLightLevel(0.67F);
+    public static Block MARBLE_BLACK = new BlockInteger2(Material.ROCK, "marble", MCGTabs.EUROPEAN, SoundType.STONE);
     public static Block WOOL_GLOWING = new BlockInteger16(Material.CLOTH, "wool_glowing", MCGTabs.NORMAL, SoundType.CLOTH).setLightLevel(1.0F);
 
     /**
@@ -51,7 +51,6 @@ public class ModBlock {
         MCGProject.logger.info("MCGProject: loading blocks");
 
         //东方
-
         blocks1.add(NAMAKO);
         blocks4.add(new BlockInteger4(Material.CLAY, "plaster", MCGTabs.TOUHOU, SoundType.STONE));
         blocks2.add(new BlockTatami());
@@ -84,23 +83,24 @@ public class ModBlock {
         blocks1.add(GAP);
         blocks1.add(new GensoChest());
 
-        //古典
+        //西方
         blocks8.add(BLOCK_CHIREIDEN);
-        blocks16.add(new BlockInteger16(Material.GLASS, "glass_chireiden_a", MCGTabs.CLASSICAL, SoundType.GLASS).setLightLevel(0.67F));
-        blocks16.add(new BlockInteger16(Material.GLASS, "glass_chireiden_b", MCGTabs.CLASSICAL, SoundType.GLASS).setLightLevel(0.67F));
-        blocks4.add(new BlockRotate4x4(Material.CLOTH, "carpet_red_rotation", MCGTabs.CLASSICAL, SoundType.CLOTH));
-        blocks4.add(new BlockRotate4x4(Material.CLOTH, "carpet_blue_rotation", MCGTabs.CLASSICAL, SoundType.CLOTH));
-        blocks2.add(new BlockInteger2(Material.CLOTH, "carpet_blank", MCGTabs.CLASSICAL, SoundType.CLOTH));
-        blocks4.add(new BlockInteger4(Material.ROCK, "brick_chireiden", MCGTabs.CLASSICAL, SoundType.STONE));
+        blocks16.add(new BlockInteger16(Material.GLASS, "glass_chireiden_a", MCGTabs.EUROPEAN, SoundType.GLASS).setLightLevel(0.67F));
+        blocks16.add(new BlockInteger16(Material.GLASS, "glass_chireiden_b", MCGTabs.EUROPEAN, SoundType.GLASS).setLightLevel(0.67F));
+        blocks4.add(new BlockRotate4x4(Material.CLOTH, "carpet_red_rotation", MCGTabs.EUROPEAN, SoundType.CLOTH));
+        blocks4.add(new BlockRotate4x4(Material.CLOTH, "carpet_blue_rotation", MCGTabs.EUROPEAN, SoundType.CLOTH));
+        blocks2.add(new BlockInteger2(Material.CLOTH, "carpet_blank", MCGTabs.EUROPEAN, SoundType.CLOTH));
+        blocks4.add(new BlockInteger4(Material.ROCK, "brick_chireiden", MCGTabs.EUROPEAN, SoundType.STONE));
+        blocks2.add(new BlockInteger2(Material.CLAY, "wall_marisa", MCGTabs.EUROPEAN, SoundType.STONE));
 
         //现代
         blocks2.add(MARBLE_BLACK);
-        blocks1.add(new BlockMCGStairs(MARBLE_BLACK.getDefaultState(), "stairs_marble_black", MCGTabs.MODERN, SoundType.STONE));
-        blocks1.add(new BlockMCGStairs(MARBLE_BLACK.getDefaultState(), "stairs_marble_white", MCGTabs.MODERN, SoundType.STONE));
+        blocks1.add(new BlockMCGStairs(MARBLE_BLACK.getDefaultState(), "stairs_marble_black", MCGTabs.EUROPEAN, SoundType.STONE));
+        blocks1.add(new BlockMCGStairs(MARBLE_BLACK.getDefaultState(), "stairs_marble_white", MCGTabs.EUROPEAN, SoundType.STONE));
         blocks1.add(new BlockMCGSlab(MARBLE_BLACK, 0, "slab_marble_black"));
         blocks1.add(new BlockMCGSlab(MARBLE_BLACK, 1, "slab_marble_white"));
-        blocks1.add(new BlockMCG(Material.ROCK, "road_block", MCGTabs.MODERN, SoundType.STONE));
-        blocks1.add(new BlockMCG(Material.CLOTH, "newspaper", MCGTabs.MODERN, SoundType.CLOTH));
+        blocks1.add(new BlockMCG(Material.ROCK, "road_block", MCGTabs.EUROPEAN, SoundType.STONE));
+        blocks1.add(new BlockMCG(Material.CLOTH, "newspaper", MCGTabs.EUROPEAN, SoundType.CLOTH));
 
         //农业与食物
         blocks2.add(new BlockInteger2(Material.CAKE, "mooncake", MCGTabs.FARM, SoundType.SNOW));
