@@ -52,7 +52,9 @@ public class ModelMapper {
             bind(entity, renderEntity.get(entity));
         }
 
+        registerModel(ModItem.ITEM_META_CHANGER);
         registerModel(ModItem.ITEM_MCG_BOAT);
+
         registerModel(RanstoneBlock.ITEM);
         registerModel(RanstoneComparator.ITEM);
         registerModel(RanstoneRepeater.ITEM);

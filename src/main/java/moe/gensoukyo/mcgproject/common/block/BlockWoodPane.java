@@ -47,8 +47,10 @@ public class BlockWoodPane extends BlockPane {
     @Override
     public IBlockState getStateFromMeta(int meta)
     {
-        return this.getDefaultState()
+        if(meta <= 2 && meta >= 0) return this.getDefaultState()
                 .withProperty(META, meta);
+        else return this.getDefaultState()
+                .withProperty(META, 0);
     }
 
     @Override
