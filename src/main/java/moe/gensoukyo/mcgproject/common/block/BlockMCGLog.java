@@ -28,7 +28,7 @@ public class BlockMCGLog extends BlockLog {
         this.setTranslationKey(MCGProject.ID + "." + registryName);
         this.setCreativeTab(tab);
         this.blockState.getBaseState().withProperty(LOG_AXIS, BlockLog.EnumAxis.Y);
-        this.setSoundType(SoundType.PLANT);
+        this.setSoundType(soundType);
     }
 
     @Nonnull

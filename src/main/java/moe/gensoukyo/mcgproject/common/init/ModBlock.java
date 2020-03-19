@@ -43,7 +43,7 @@ public class ModBlock {
     public static Block FLOWER = new BlockMCGFlower("flower");
     public static Block GAP = new BlockMCG(Material.WOOD, "gap", MCGTabs.FANTASY);
     public static Block BLOCK_CHIREIDEN = new BlockInteger8(Material.GLASS, "glass_chireiden", MCGTabs.EUROPEAN, SoundType.GLASS).setLightLevel(0.67F);
-    public static Block MARBLE_BLACK = new BlockInteger2(Material.ROCK, "marble", MCGTabs.EUROPEAN, SoundType.STONE);
+    public static Block MARBLE = new BlockInteger2(Material.ROCK, "marble", MCGTabs.EUROPEAN, SoundType.STONE);
     public static Block WOOL_GLOWING = new BlockInteger16(Material.CLOTH, "wool_glowing", MCGTabs.NORMAL, SoundType.CLOTH).setLightLevel(1.0F);
 
     /**
@@ -79,7 +79,7 @@ public class ModBlock {
         blocks2.add(new BlockMCGMushroom("mushroom"));
         blocks1.add(new BlockTranslucent(Material.CLOTH, "cloud", MCGTabs.NATURE, SoundType.CLOTH));
         blocks2.add(new BlockInteger2(Material.GROUND, "dirt", MCGTabs.NATURE, SoundType.GROUND));
-        blocks1.add(new BlockMCGLeaves("leaves_sakura_glowing").setLightLevel(1.0F));
+        blocks1.add(new BlockMCGLeaves("leaves_sakura_glowing").setLightLevel(0.3F));
         blocks3.add(new BlockBambooOld("bamboo_old"));
 
         //幻想
@@ -97,11 +97,11 @@ public class ModBlock {
         blocks2.add(new BlockInteger2(Material.CLAY, "wall_marisa", MCGTabs.EUROPEAN, SoundType.STONE));
 
         //现代
-        blocks2.add(MARBLE_BLACK);
-        blocks1.add(new BlockMCGStairs(MARBLE_BLACK.getDefaultState(), "stairs_marble_black", MCGTabs.EUROPEAN, SoundType.STONE));
-        blocks1.add(new BlockMCGStairs(MARBLE_BLACK.getDefaultState(), "stairs_marble_white", MCGTabs.EUROPEAN, SoundType.STONE));
-        blocks1.add(new BlockMCGSlab(MARBLE_BLACK, 0, "slab_marble_black"));
-        blocks1.add(new BlockMCGSlab(MARBLE_BLACK, 1, "slab_marble_white"));
+        blocks2.add(MARBLE);
+        blocks1.add(new BlockMCGStairs(MARBLE.getDefaultState(), "stairs_marble_black", MCGTabs.EUROPEAN, SoundType.STONE));
+        blocks1.add(new BlockMCGStairs(MARBLE.getDefaultState(), "stairs_marble_white", MCGTabs.EUROPEAN, SoundType.STONE));
+        blocks1.add(new BlockMCGSlab(MARBLE, 0, "slab_marble_black"));
+        blocks1.add(new BlockMCGSlab(MARBLE, 1, "slab_marble_white"));
         blocks1.add(new BlockMCG(Material.ROCK, "road_block", MCGTabs.EUROPEAN, SoundType.STONE));
         blocks1.add(new BlockMCG(Material.CLOTH, "newspaper", MCGTabs.EUROPEAN, SoundType.CLOTH));
 
@@ -125,15 +125,22 @@ public class ModBlock {
             blocks1.add(new BlockMCGSlab(Blocks.WOOL, color.getMetadata(), String.format("slab_wool_%s", color.getName()), MCGTabs.NORMAL));
         }
 
-        //fn
-        blocks16.add(new BlockInteger16(Material.WOOD, "fn_log", MCGTabs.FN, SoundType.WOOD));
-        blocks16.add(new BlockInteger16(Material.WOOD, "fn_plank", MCGTabs.FN, SoundType.WOOD));
-        blocks6.add(new BlockInteger6(Material.WOOD, "fn_plank2", MCGTabs.FN, SoundType.WOOD));
-        blocks8.add(new BlockInteger8(Material.ROCK, "fn_bricks", MCGTabs.FN, SoundType.STONE));
-        blocks9.add(new BlockFNFlower("fn_flower").setCreativeTab(MCGTabs.FN));
-        blocks16.add(new BlockMCGLeaves16("fn_leaves").setCreativeTab(MCGTabs.FN));
-        blocks16.add(new BlockMCGLeaves16("fn_leaves2").setCreativeTab(MCGTabs.FN));
-        blocks16.add(new BlockTransparent16(Material.GLASS, "fn_glass", MCGTabs.FN, SoundType.GLASS));
+        //old
+        blocks16.add(new BlockInteger16(Material.WOOD, "fn_log", MCGTabs.OLD, SoundType.WOOD));
+        blocks16.add(new BlockInteger16(Material.WOOD, "fn_plank", MCGTabs.OLD, SoundType.WOOD));
+        blocks6.add(new BlockInteger6(Material.WOOD, "fn_plank2", MCGTabs.OLD, SoundType.WOOD));
+        blocks8.add(new BlockInteger8(Material.ROCK, "fn_bricks", MCGTabs.OLD, SoundType.STONE));
+        blocks9.add(new BlockFNFlower("fn_flower").setCreativeTab(MCGTabs.OLD));
+        blocks16.add(new BlockMCGLeaves16("fn_leaves").setCreativeTab(MCGTabs.OLD));
+        blocks16.add(new BlockMCGLeaves16("fn_leaves2").setCreativeTab(MCGTabs.OLD));
+        blocks16.add(new BlockTransparent16(Material.GLASS, "fn_glass", MCGTabs.OLD, SoundType.GLASS));
+        blocks12.add(new BlockInteger12(Material.ROCK, "old_stone", MCGTabs.OLD, SoundType.STONE));
+        blocks1.add(new BlockMCG(Material.ROCK, "old_brick_marble", MCGTabs.OLD, SoundType.STONE));
+        blocks1.add(new BlockMCGLog("old_rubber_wood", MCGTabs.OLD, SoundType.WOOD));
+        blocks16.add(new BlockTranslucent16(Material.GLASS, "old_glass", MCGTabs.OLD, SoundType.GLASS));
+        blocks16.add(new BlockTranslucent16(Material.GLASS, "old_glass_bright", MCGTabs.OLD, SoundType.GLASS).setLightLevel(1.0F));
+        blocks1.add(new BlockRotate4(Material.ROCK, "old_furnace_on", MCGTabs.OLD, SoundType.STONE));
+        blocks1.add(new BlockRotate4(Material.ROCK, "old_furnace_off", MCGTabs.OLD, SoundType.STONE));
 
         //将所有链表的引用合并到ArrayList
         addArrayList();

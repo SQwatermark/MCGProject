@@ -1,6 +1,0 @@
-{
-  "parent": "block/cube_all",
-  "textures": {
-    "all": "mcgproject:blocks/nature/log_sakura"
-  }
-}

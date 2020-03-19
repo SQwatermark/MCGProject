@@ -1,0 +1,23 @@
+{
+  "forge_marker": 1,
+  "defaults": {"model": "cube_all"},
+  "variants": {
+    "inventory": [{}],
+    "meta=0": [{"textures": {"all": "mcgproject:blocks/old/cglass_01"}}],
+    "meta=1": [{"textures": {"all": "mcgproject:blocks/old/cglass_02"}}],
+    "meta=2": [{"textures": {"all": "mcgproject:blocks/old/cglass_03"}}],
+    "meta=3": [{"textures": {"all": "mcgproject:blocks/old/cglass_04"}}],
+    "meta=4": [{"textures": {"all": "mcgproject:blocks/old/cglass_05"}}],
+    "meta=5": [{"textures": {"all": "mcgproject:blocks/old/cglass_06"}}],
+    "meta=6": [{"textures": {"all": "mcgproject:blocks/old/cglass_07"}}],
+    "meta=7": [{"textures": {"all": "mcgproject:blocks/old/cglass_08"}}],
+    "meta=8": [{"textures": {"all": "mcgproject:blocks/old/cglass_09"}}],
+    "meta=9": [{"textures": {"all": "mcgproject:blocks/old/cglass_10"}}],
+    "meta=10": [{"textures": {"all": "mcgproject:blocks/old/cglass_11"}}],
+    "meta=11": [{"textures": {"all": "mcgproject:blocks/old/cglass_12"}}],
+    "meta=12": [{"textures": {"all": "mcgproject:blocks/old/cglass_13"}}],
+    "meta=13": [{"textures": {"all": "mcgproject:blocks/old/cglass_14"}}],
+    "meta=14": [{"textures": {"all": "mcgproject:blocks/old/cglass_15"}}],
+    "meta=15": [{"textures": {"all": "mcgproject:blocks/old/cglass_16"}}]
+  }
+}
