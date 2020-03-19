@@ -20,7 +20,7 @@
         "y": 90
       },
       "none": {
-        "model": "block/cube_all",
+        "model": "cube_all",
         "textures": {
           "all": "mcgproject:blocks/old/rubber_wood_side"
         }
