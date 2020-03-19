@@ -70,7 +70,7 @@ public class ModBlock {
             blocks1.add(new BlockMCGSlab(TILE, color.getMeta(), String.format("slab_tile_%s", color.getName())));
         }
 
-        //自然
+        //自然与农业
         blocks1.add(new BlockMCGLog("log_sakura"));
         blocks5.add(FLOWER);
         blocks2.add(new BlockMCGMushroom("mushroom"));
@@ -78,6 +78,9 @@ public class ModBlock {
         blocks2.add(new BlockInteger2(Material.GROUND, "dirt", MCGTabs.NATURE, SoundType.GROUND));
         blocks1.add(new BlockMCGLeaves("leaves_sakura_glowing").setLightLevel(0.3F));
         blocks3.add(new BlockBambooOld("bamboo_old"));
+        blocks2.add(new BlockInteger2(Material.CAKE, "mooncake", MCGTabs.NATURE, SoundType.SNOW));
+        blocks1.add(new BlockMCG(Material.GROUND, "shit", MCGTabs.NATURE, SoundType.GROUND));
+        blocks1.add(new BlockMCGLog("straw", MCGTabs.NATURE, SoundType.PLANT));
 
         //幻想
         blocks1.add(GAP);
@@ -101,11 +104,6 @@ public class ModBlock {
         blocks1.add(new BlockMCGSlab(MARBLE, 1, "slab_marble_white"));
         blocks1.add(new BlockMCG(Material.ROCK, "road_block", MCGTabs.EUROPEAN, SoundType.STONE));
         blocks1.add(new BlockMCG(Material.CLOTH, "newspaper", MCGTabs.EUROPEAN, SoundType.CLOTH));
-
-        //农业与食物
-        blocks2.add(new BlockInteger2(Material.CAKE, "mooncake", MCGTabs.FARM, SoundType.SNOW));
-        blocks1.add(new BlockMCG(Material.GROUND, "shit", MCGTabs.FARM, SoundType.GROUND));
-        blocks1.add(new BlockMCGLog("straw", MCGTabs.FARM, SoundType.PLANT));
 
         //原版拓展
         blocks16.add(WOOL_GLOWING);

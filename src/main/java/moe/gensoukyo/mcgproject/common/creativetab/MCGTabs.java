@@ -48,14 +48,6 @@ public class MCGTabs {
         }
     };
 
-    public static final CreativeTabs FARM = new CreativeTabs(getLabel("farm"))
-    {
-        @Override
-        public ItemStack createIcon() {
-            return new ItemStack(Items.APPLE);
-        }
-    };
-
     public static final CreativeTabs CLOTHES = new CreativeTabs(getLabel("clothes"))
     {
         @Override

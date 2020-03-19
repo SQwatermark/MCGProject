@@ -42,6 +42,7 @@ public class ModelMapper {
         }
 
         registerModel(ModItem.ITEM_MCG_BOAT);
+        registerModel(ModItem.ITEM_META_CHANGER);
     }
 
     private static void registerModel(Item item) {
