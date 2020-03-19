@@ -53,3 +53,11 @@ tile.mcgproject.red_wool_slab.name=Red Wool Slab
 tile.mcgproject.black_wool_slab.name=Black Wool Slab
 
 item.mcgproject.mcg_boat.name=MCG Boat
+
+tile.mcgproject.blockRanstone.name=Ranstone
+item.mcgproject.comparator.name=Ranstone Comparator
+item.mcgproject.diode.name=Ranstone Diode
+tile.mcgproject.notGate.name=Ranstone Not-Gate
+item.mcgproject.ranstone.name=Ranstone Wire
+tile.mcgproject.rantoneDust.name=Ranstone Dust
+tile.mcgproject.ranstonePiston.name=Ranstone Piston

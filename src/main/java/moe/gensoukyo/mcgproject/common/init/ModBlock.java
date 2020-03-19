@@ -6,6 +6,7 @@ import moe.gensoukyo.mcgproject.common.block.enums.EnumTileColor;
 import moe.gensoukyo.mcgproject.common.creativetab.MCGTabs;
 import moe.gensoukyo.mcgproject.common.item.ItemBlockWithMeta;
 import moe.gensoukyo.mcgproject.common.item.ItemMCGBlock;
+import moe.gensoukyo.mcgproject.common.ranstone.*;
 import moe.gensoukyo.mcgproject.core.MCGProject;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
@@ -14,10 +15,12 @@ import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.Item;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -147,6 +150,24 @@ public class ModBlock {
         for (LinkedList<Block> i : arrayList) {
             event.getRegistry().registerAll(i.toArray(new Block[0]));
         }
+
+        RanstoneBlock.initBlock();
+        RanstoneComparator.initBlock();
+        RanstoneRepeater.initBlock();
+        RanstoneTorch.initBlock();
+        RanstoneWire.initBlock();
+        RanstonePiston.Base.initBlock();
+        RanstonePiston.Extension.initBlock();
+        RanstonePiston.Moving.initBlock();
+        event.getRegistry().registerAll(
+                RanstoneBlock.BLOCK,
+                RanstoneComparator.BLOCK, RanstoneComparator.BLOCK_N,
+                RanstoneRepeater.BLOCK, RanstoneRepeater.BLOCK_N,
+                RanstoneTorch.BLOCK, RanstoneTorch.BLOCK_N,
+                RanstoneWire.BLOCK,
+                RanstonePiston.Base.BLOCK, RanstonePiston.Extension.BLOCK, RanstonePiston.Moving.BLOCK);
+
+        GameRegistry.registerTileEntity(RanstonePiston.TilePiston.class, new ResourceLocation(MCGProject.ID, "tileRanstonePiston"));
     }
 
     /**
@@ -165,6 +186,17 @@ public class ModBlock {
         for (LinkedHashMap<Block, Item> i : arrayList2) {
             event.getRegistry().registerAll(i.values().toArray(new Item[0]));
         }
+
+        RanstoneBlock.initItem();
+        RanstoneComparator.initItem();
+        RanstoneRepeater.initItem();
+        RanstoneTorch.initItem();
+        RanstoneWire.initItem();
+        RanstonePiston.Base.initItem();
+        event.getRegistry().registerAll(
+                RanstoneBlock.ITEM, RanstoneComparator.ITEM,
+                RanstoneRepeater.ITEM, RanstoneTorch.ITEM,
+                RanstoneWire.ITEM, RanstonePiston.Base.ITEM);
     }
 
     /**

@@ -1,0 +1,9 @@
+{
+    "variants": {
+        "facing=up":  { "model": "mcgproject:unlit_ranstone_torch" },
+        "facing=east":  { "model": "mcgproject:unlit_ranstone_torch_wall" },
+        "facing=south":  { "model": "mcgproject:unlit_ranstone_torch_wall", "y": 90 },
+        "facing=west":  { "model": "mcgproject:unlit_ranstone_torch_wall", "y": 180 },
+        "facing=north":  { "model": "mcgproject:unlit_ranstone_torch_wall", "y": 270 }
+    }
+}
