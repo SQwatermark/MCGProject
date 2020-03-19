@@ -1,0 +1,6 @@
+{
+    "parent": "block/torch",
+    "textures": {
+        "torch": "mcgproject:blocks/ranstone/ranstone_torch_off"
+    }
+}

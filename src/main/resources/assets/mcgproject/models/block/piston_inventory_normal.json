@@ -1,0 +1,8 @@
+{
+    "parent": "block/cube_bottom_top",
+    "textures": {
+        "bottom": "mcgproject:blocks/ranstone/piston_bottom",
+        "side": "mcgproject:blocks/ranstone/piston_side",
+        "top": "mcgproject:blocks/ranstone/piston_top_normal"
+    }
+}
