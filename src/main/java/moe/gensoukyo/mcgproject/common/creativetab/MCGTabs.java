@@ -64,7 +64,7 @@ public class MCGTabs {
         }
     };
 
-    public static final CreativeTabs FN = new CreativeTabs(getLabel("fn"))
+    public static final CreativeTabs OLD = new CreativeTabs(getLabel("old"))
     {
         @Override
         public ItemStack createIcon() {

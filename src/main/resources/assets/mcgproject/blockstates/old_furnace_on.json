@@ -1,0 +1,21 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "orientable",
+    "textures": {
+      "top": "mcgproject:blocks/old/furnace_on_top",
+      "front": "mcgproject:blocks/old/furnace_on_front",
+      "side": "mcgproject:blocks/old/furnace_side"
+    }
+  },
+  "variants": {
+    "inventory": [{}],
+    "normal": [{}],
+    "facing": {
+      "east": {"y": 270},
+      "west": {"y": 90},
+      "south": {},
+      "north": {"y": 180}
+    }
+  }
+}
