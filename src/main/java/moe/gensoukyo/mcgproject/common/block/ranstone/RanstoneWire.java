@@ -1,4 +1,4 @@
-package moe.gensoukyo.mcgproject.common.ranstone;
+package moe.gensoukyo.mcgproject.common.block.ranstone;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
