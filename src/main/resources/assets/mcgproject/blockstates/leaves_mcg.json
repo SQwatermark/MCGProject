@@ -1,0 +1,15 @@
+{
+  "forge_marker": 1,
+  "defaults": {"model": "cube_all"},
+  "variants": {
+    "inventory": [{}],
+    "meta=0": [{"textures": {"all": "mcgproject:blocks/nature/leaves_biloba"}}],
+    "meta=1": [{"textures": {"all": "mcgproject:blocks/nature/leaves_maple_fire"}}],
+    "meta=2": [{"textures": {"all": "mcgproject:blocks/nature/leaves_maple_golden"}}],
+    "meta=3": [{"textures": {"all": "mcgproject:blocks/nature/leaves_maple_orange"}}],
+    "meta=4": [{"textures": {"all": "mcgproject:blocks/nature/leaves_sakura_pink"}}],
+    "meta=5": [{"textures": {"all": "mcgproject:blocks/nature/leaves_sakura_purple"}}],
+    "meta=6": [{"textures": {"all": "mcgproject:blocks/nature/leaves_biloba"}}],
+    "meta=7": [{"textures": {"all": "mcgproject:blocks/nature/leaves_biloba"}}]
+  }
+}
