@@ -12,9 +12,9 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 
-public class ItemPowerTool extends Item {
+public class XItemPowerTool extends Item {
 
-    public ItemPowerTool() {
+    public XItemPowerTool() {
         this.setMaxStackSize(1);
         this.setCreativeTab(MCGTabs.FANTASY);
         this.setRegistryName(MCGProject.ID, "powertool");
