@@ -1,0 +1,22 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "piston_head_normal"
+  },
+  "variants": {
+    "normal": [{}],
+    "inventory": [{}],
+    "facing": {
+      "up": { "x": 270 },
+      "down": { "x": 90 },
+      "north": {  },
+      "south": { "y": 180 },
+      "west": { "y": 270 },
+      "east": { "y": 90 }
+    },
+    "type": {
+      "normal": {  },
+      "sticky": { "model": "piston_head_sticky" }
+    }
+  }
+}

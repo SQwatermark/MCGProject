@@ -1,0 +1,5 @@
+{
+    "variants": {
+        "normal": { "model": "mcgproject:ranstone_block" }
+    }
+}

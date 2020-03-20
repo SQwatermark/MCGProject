@@ -1,0 +1,8 @@
+{
+    "parent": "block/piston",
+    "textures": {
+        "bottom": "mcgproject:blocks/ranstone/piston_bottom",
+        "side": "mcgproject:blocks/ranstone/piston_side",
+        "platform": "mcgproject:blocks/ranstone/piston_top_normal"
+    }
+}

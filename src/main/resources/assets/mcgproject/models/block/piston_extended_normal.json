@@ -1,0 +1,8 @@
+{
+    "parent": "block/piston_extended",
+    "textures": {
+        "bottom": "mcgproject:blocks/ranstone/piston_bottom",
+        "side": "mcgproject:blocks/ranstone/piston_side",
+        "inside": "mcgproject:blocks/ranstone/piston_inner"
+    }
+}
