@@ -11,6 +11,9 @@ import net.minecraft.entity.item.EntityBoat;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.network.datasync.DataParameter;
+import net.minecraft.network.datasync.DataSerializers;
+import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.potion.PotionType;
 import net.minecraft.util.math.BlockPos;
@@ -59,10 +62,10 @@ public class EntityMCGBoat extends EntityBoat {
         } catch (Exception ignored) { }
     }
 
-    public float threshold = 0.1F;
-    public float damage = 10.0F;
-    public float mass = 10.0F;
-    public float jump = 0.4F;
+    public static final DataParameter<Float> THRESHOLD = EntityDataManager.createKey(EntityMCGBoat.class, DataSerializers.FLOAT);
+    public static final DataParameter<Float> DAMAGE = EntityDataManager.createKey(EntityMCGBoat.class, DataSerializers.FLOAT);
+    public static final DataParameter<Float> MASS = EntityDataManager.createKey(EntityMCGBoat.class, DataSerializers.FLOAT);
+    public static final DataParameter<Float> JUMP = EntityDataManager.createKey(EntityMCGBoat.class, DataSerializers.FLOAT);
 
     /**
      * @apiNote 客户端-服务端同步用，用于撞击判定，不需要存入NBT
@@ -75,7 +78,7 @@ public class EntityMCGBoat extends EntityBoat {
      * @param threshold 撞击阈值速度
      * */
     public static void setThreshold(EntityMCGBoat boat, float threshold) {
-        boat.threshold = threshold;
+        boat.dataManager.set(THRESHOLD, threshold);
     }
 
     /**
@@ -84,7 +87,7 @@ public class EntityMCGBoat extends EntityBoat {
      * @param damage 撞击伤害
      * */
     public static void setMaxDamage(EntityMCGBoat boat, float damage) {
-        boat.damage = damage;
+        boat.dataManager.set(DAMAGE, damage);
     }
 
     /**
@@ -93,7 +96,7 @@ public class EntityMCGBoat extends EntityBoat {
      * @param mass 船体质量（撞击速率倍数）
      * */
     public static void setBoatMass(EntityMCGBoat boat, float mass) {
-        boat.mass = mass;
+        boat.dataManager.set(MASS, mass);
     }
 
     /**
@@ -102,8 +105,22 @@ public class EntityMCGBoat extends EntityBoat {
      * @param jump 起跳速度
      * */
     public static void setBoatJump(EntityMCGBoat boat, float jump) {
-        boat.jump = jump;
+        boat.dataManager.set(JUMP, jump);
     }
+
+    /**
+     * @apiNote 给NPC预留的方法
+     * @param boat 船实体
+     * @param step 自动跳跃高度
+     * */
+    public static void setStepHeight(EntityMCGBoat boat, float step) {
+        boat.stepHeight = step;
+    }
+
+    public float getThreshold() { return dataManager.get(THRESHOLD); }
+    public float getMaxDamage() { return dataManager.get(DAMAGE); }
+    public float getBoatMass() { return dataManager.get(MASS); }
+    public float getBoatJump() { return dataManager.get(JUMP); }
 
     public EntityMCGBoat(World world) {
         super(world);
@@ -116,23 +133,32 @@ public class EntityMCGBoat extends EntityBoat {
     }
 
     @Override
+    protected void entityInit() {
+        super.entityInit();
+        dataManager.register(THRESHOLD, 0.1F);
+        dataManager.register(DAMAGE, 10.0F);
+        dataManager.register(MASS, 10.0F);
+        dataManager.register(JUMP, 0.4F);
+    }
+
+    @Override
     protected void readEntityFromNBT(@Nonnull NBTTagCompound tagCompound) {
         if (tagCompound.hasKey("jump"))
-            jump = tagCompound.getFloat("jump");
+            dataManager.set(JUMP, tagCompound.getFloat("jump"));
         if (tagCompound.hasKey("mass"))
-            mass = tagCompound.getFloat("mass");
+            dataManager.set(MASS, tagCompound.getFloat("mass"));
         if (tagCompound.hasKey("damage"))
-            damage = tagCompound.getFloat("damage");
+            dataManager.set(DAMAGE, tagCompound.getFloat("damage"));
         if (tagCompound.hasKey("threshold"))
-            threshold = tagCompound.getFloat("threshold");
+            dataManager.set(THRESHOLD, tagCompound.getFloat("threshold"));
     }
 
     @Override
     protected void writeEntityToNBT(@Nonnull NBTTagCompound tagCompound) {
-        tagCompound.setFloat("jump", jump);
-        tagCompound.setFloat("mass", mass);
-        tagCompound.setFloat("damage", damage);
-        tagCompound.setFloat("threshold", threshold);
+        tagCompound.setFloat("jump", getBoatJump());
+        tagCompound.setFloat("mass", getBoatMass());
+        tagCompound.setFloat("damage", getMaxDamage());
+        tagCompound.setFloat("threshold", getThreshold());
     }
 
     @Override
@@ -183,8 +209,8 @@ public class EntityMCGBoat extends EntityBoat {
             player.movementInput.updatePlayerMoveState();
             player.updateEntityActionState();
             player.moveVertical = player.movementInput.jump ? 1.0F : 0.0F;
-            if (this.onGround && Math.abs(this.motionY) <= 0.5 * this.jump)
-                this.motionY += (player.moveVertical * this.jump);
+            if (this.onGround && Math.abs(this.motionY) <= 0.5 * this.getBoatJump())
+                this.motionY += (player.moveVertical * this.getBoatJump());
         }
     }
 
@@ -217,9 +243,9 @@ public class EntityMCGBoat extends EntityBoat {
         super.applyEntityCollision(entity);
 
         // 撞击生物并造成伤害
-        if (entity instanceof EntityLivingBase && !this.isPassenger(entity) && this.vel > this.threshold) {
+        if (entity instanceof EntityLivingBase && !this.isPassenger(entity) && this.vel > this.getThreshold()) {
             EntityLivingBase living = (EntityLivingBase) entity;
-            living.setHealth(living.getHealth() - (float) (this.damage * this.vel / this.getMaxSpeed()));
+            living.setHealth(living.getHealth() - (float) (this.getMaxDamage() * this.vel / this.getMaxSpeed()));
             PotionType type;
             type = PotionType.getPotionTypeForName("weakness");
             if (type != null)
@@ -231,7 +257,7 @@ public class EntityMCGBoat extends EntityBoat {
                     effect.getPotion().affectEntity(null, null, living, effect.getAmplifier(), 1.0F);
             Vec3d tar = entity.getPositionVector();
             Vec3d src = this.getPositionVector();
-            Vec3d vec = tar.subtract(src).normalize().scale(this.vel * this.mass);
+            Vec3d vec = tar.subtract(src).normalize().scale(this.vel * this.getBoatMass());
             living.addVelocity(vec.x, vec.y, vec.z);
         }
     }
