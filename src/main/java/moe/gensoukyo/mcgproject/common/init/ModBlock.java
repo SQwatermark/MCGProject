@@ -6,7 +6,7 @@ import moe.gensoukyo.mcgproject.common.block.enums.EnumTileColor;
 import moe.gensoukyo.mcgproject.common.creativetab.MCGTabs;
 import moe.gensoukyo.mcgproject.common.item.ItemBlockWithMeta;
 import moe.gensoukyo.mcgproject.common.item.ItemMCGBlock;
-import moe.gensoukyo.mcgproject.common.ranstone.*;
+import moe.gensoukyo.mcgproject.common.block.ranstone.*;
 import moe.gensoukyo.mcgproject.core.MCGProject;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
@@ -55,18 +55,17 @@ public class ModBlock {
 
         //东方
         blocks1.add(NAMAKO);
-        blocks4.add(new BlockInteger4(Material.CLAY, "plaster", MCGTabs.TOUHOU, SoundType.STONE));
         blocks2.add(new BlockTatami());
+        blocks4.add(new BlockInteger4(Material.CLAY, "plaster", MCGTabs.TOUHOU, SoundType.STONE));
+        blocks16.add(new BlockInteger16(Material.WOOD, "plank", MCGTabs.TOUHOU, SoundType.WOOD));
+        blocks4.add(new BlockInteger4(Material.WOOD, "blocks_wood", MCGTabs.TOUHOU, SoundType.WOOD));
         blocks5.add(TILE);
+        blocks2.add(new BlockWindow(Material.WOOD, "window", MCGTabs.TOUHOU, SoundType.WOOD));
+        blocks2.add(new BlockInteger2(Material.WOOD, "lantern", MCGTabs.TOUHOU, SoundType.WOOD).setLightLevel(1.0F));
         blocks8.add(new BlockDecoration2x8(Material.CLOTH, "door_curtain_1", MCGTabs.TOUHOU, SoundType.CLOTH));
         blocks8.add(new BlockDecoration2x8(Material.CLOTH, "door_curtain_2", MCGTabs.TOUHOU, SoundType.CLOTH));
-        //blocks16.add(new BlockInteger16(Material.CLAY, "frame", MCGTabs.TOUHOU, SoundType.STONE));
-        blocks16.add(new BlockInteger16(Material.WOOD, "plank", MCGTabs.TOUHOU, SoundType.WOOD));
-        blocks4.add(new BlockDecoration4x4(Material.WOOD, "slipper", MCGTabs.TOUHOU, SoundType.WOOD));
-        blocks2.add(new BlockWindow(Material.WOOD, "window", MCGTabs.TOUHOU, SoundType.WOOD));
         blocks3.add(new BlockWoodPane("pane_wood"));
-        blocks4.add(new BlockInteger4(Material.WOOD, "blocks_wood", MCGTabs.TOUHOU, SoundType.WOOD));
-        blocks2.add(new BlockInteger2(Material.WOOD, "lantern", MCGTabs.TOUHOU, SoundType.WOOD).setLightLevel(1.0F));
+        blocks4.add(new BlockDecoration4x4(Material.WOOD, "slipper", MCGTabs.TOUHOU, SoundType.WOOD));
 
         for (EnumTileColor color : EnumTileColor.values()) {
             blocks1.add(new BlockMCGStairs(TILE.getDefaultState(), String.format("stairs_tile_%s", color.getName()), MCGTabs.TOUHOU, SoundType.STONE));
@@ -80,6 +79,7 @@ public class ModBlock {
         blocks1.add(new BlockTranslucent(Material.CLOTH, "cloud", MCGTabs.NATURE, SoundType.CLOTH));
         blocks2.add(new BlockInteger2(Material.GROUND, "dirt", MCGTabs.NATURE, SoundType.GROUND));
         blocks1.add(new BlockMCGLeaves("leaves_sakura_glowing").setLightLevel(0.3F));
+        blocks8.add(new BlockMCGLeaves8("leaves_mcg"));
         blocks3.add(new BlockBambooOld("bamboo_old"));
         blocks2.add(new BlockInteger2(Material.CAKE, "mooncake", MCGTabs.NATURE, SoundType.SNOW));
         blocks1.add(new BlockMCG(Material.GROUND, "shit", MCGTabs.NATURE, SoundType.GROUND));

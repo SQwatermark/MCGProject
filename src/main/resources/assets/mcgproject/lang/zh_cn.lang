@@ -120,6 +120,14 @@ tile.mcgproject.leaves_sakura_glowing.name=发光樱花树叶
 tile.mcgproject.bamboo_old_0.name=竹笋
 tile.mcgproject.bamboo_old_1.name=竹子
 tile.mcgproject.bamboo_old_2.name=竹叶
+tile.mcgproject.leaves_mcg_0=银杏树叶
+tile.mcgproject.leaves_mcg_1=红枫树叶
+tile.mcgproject.leaves_mcg_2=黄枫树叶
+tile.mcgproject.leaves_mcg_3=橙枫树叶
+tile.mcgproject.leaves_mcg_4=粉樱树叶
+tile.mcgproject.leaves_mcg_5=紫樱树叶
+tile.mcgproject.leaves_mcg_6=预留
+tile.mcgproject.leaves_mcg_7=预留
 
 //农业与食物
 tile.mcgproject.mooncake_0.name=月饼

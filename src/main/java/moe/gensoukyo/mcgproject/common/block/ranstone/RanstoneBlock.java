@@ -1,4 +1,4 @@
-package moe.gensoukyo.mcgproject.common.ranstone;
+package moe.gensoukyo.mcgproject.common.block.ranstone;
 
 import moe.gensoukyo.mcgproject.core.MCGProject;
 import net.minecraft.block.BlockCompressedPowered;
