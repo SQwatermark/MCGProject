@@ -1,10 +1,5 @@
 package moe.gensoukyo.mcgproject.common.block;
 
-import moe.gensoukyo.mcgproject.common.creativetab.MCGTabs;
-import moe.gensoukyo.mcgproject.core.MCGProject;
-import net.minecraft.block.BlockPane;
-import net.minecraft.block.SoundType;
-import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyInteger;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
@@ -20,22 +15,17 @@ import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.NotNull;
 
-public class BlockWoodPane extends BlockPane {
+public class BlockMCGLeaves8 extends BlockMCGLeaves {
 
-    public BlockWoodPane(String registryName) {
-        super(Material.WOOD, false);
-        this.setDefaultState(this.blockState.getBaseState().withProperty(NORTH, Boolean.FALSE).withProperty(EAST, Boolean.TRUE).withProperty(SOUTH, Boolean.FALSE).withProperty(WEST, Boolean.TRUE).withProperty(META, 0));
-        this.setCreativeTab(MCGTabs.TOUHOU);
-        this.setSoundType(SoundType.WOOD);
-        this.setRegistryName(registryName);
-        this.setTranslationKey(MCGProject.ID + "." + registryName);
+    public BlockMCGLeaves8(String registryName) {
+        super(registryName);
     }
 
-    public static PropertyInteger META = PropertyInteger.create("meta", 0, 2);
+    public static PropertyInteger META = PropertyInteger.create("meta", 0, 7);
 
-    protected BlockStateContainer createBlockState()
-    {
-        return new BlockStateContainer(this, NORTH, EAST, WEST, SOUTH, META);
+    @Override
+    protected BlockStateContainer createBlockState() {
+        return new BlockStateContainer(this, META);
     }
 
     @Override
@@ -47,10 +37,8 @@ public class BlockWoodPane extends BlockPane {
     @Override
     public IBlockState getStateFromMeta(int meta)
     {
-        if(meta <= 2 && meta >= 0) return this.getDefaultState()
+        return this.getDefaultState()
                 .withProperty(META, meta);
-        else return this.getDefaultState()
-                .withProperty(META, 0);
     }
 
     @Override
@@ -72,5 +60,4 @@ public class BlockWoodPane extends BlockPane {
     {
         return new ItemStack(Item.getItemFromBlock(this), 1, this.getMetaFromState(state));
     }
-
 }
