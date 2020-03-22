@@ -98,6 +98,13 @@ tile.mcgproject.slipper_1.name=预留
 tile.mcgproject.slipper_2.name=预留
 tile.mcgproject.slipper_3.name=预留
 
+tile.mcgproject.dirt_0.name=土路方块
+tile.mcgproject.dirt_1.name=土路方块（灰）
+tile.mcgproject.dirt_2.name=石子路
+tile.mcgproject.dirt_3.name=预留
+tile.mcgproject.slab_dirt_stone.name=石子路台阶
+tile.mcgproject.stairs_dirt_stone.name=石子路楼梯
+
 //幻想
 tile.mcgproject.gap.name=隙间
 tile.mcgproject.GensoChest.name=幻想箱
@@ -112,22 +119,18 @@ tile.mcgproject.flower_4.name=向日葵茎
 tile.mcgproject.mushroom_0.name=可疑的蘑菇
 tile.mcgproject.mushroom_1.name=预留
 tile.mcgproject.cloud.name=云
-tile.mcgproject.dirt_0.name=土路方块
-tile.mcgproject.dirt_1.name=预留
-tile.mcgproject.dirt_2.name=预留
-tile.mcgproject.dirt_3.name=预留
 tile.mcgproject.leaves_sakura_glowing.name=发光樱花树叶
 tile.mcgproject.bamboo_old_0.name=竹笋
 tile.mcgproject.bamboo_old_1.name=竹子
 tile.mcgproject.bamboo_old_2.name=竹叶
-tile.mcgproject.leaves_mcg_0=银杏树叶
-tile.mcgproject.leaves_mcg_1=红枫树叶
-tile.mcgproject.leaves_mcg_2=黄枫树叶
-tile.mcgproject.leaves_mcg_3=橙枫树叶
-tile.mcgproject.leaves_mcg_4=粉樱树叶
-tile.mcgproject.leaves_mcg_5=紫樱树叶
-tile.mcgproject.leaves_mcg_6=预留
-tile.mcgproject.leaves_mcg_7=预留
+tile.mcgproject.leaves_mcg_0.name=银杏树叶
+tile.mcgproject.leaves_mcg_1.name=红枫树叶
+tile.mcgproject.leaves_mcg_2.name=黄枫树叶
+tile.mcgproject.leaves_mcg_3.name=橙枫树叶
+tile.mcgproject.leaves_mcg_4.name=粉樱树叶
+tile.mcgproject.leaves_mcg_5.name=紫樱树叶
+tile.mcgproject.leaves_mcg_6.name=实心树叶（藤蔓雕刻元件）
+tile.mcgproject.leaves_mcg_7.name=预留
 
 //农业与食物
 tile.mcgproject.mooncake_0.name=月饼

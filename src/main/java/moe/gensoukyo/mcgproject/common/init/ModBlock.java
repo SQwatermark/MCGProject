@@ -66,6 +66,10 @@ public class ModBlock {
         blocks8.add(new BlockDecoration2x8(Material.CLOTH, "door_curtain_2", MCGTabs.TOUHOU, SoundType.CLOTH));
         blocks3.add(new BlockWoodPane("pane_wood"));
         blocks4.add(new BlockDecoration4x4(Material.WOOD, "slipper", MCGTabs.TOUHOU, SoundType.WOOD));
+        Block MCGDIRT = new BlockInteger4(Material.GROUND, "dirt", MCGTabs.NATURE, SoundType.GROUND);
+        blocks4.add(MCGDIRT);
+        blocks1.add(new BlockMCGStairs(MCGDIRT.getDefaultState(), "stairs_dirt_stone", MCGTabs.NATURE, SoundType.GROUND));
+        blocks1.add(new BlockMCGSlab(MCGDIRT, 2, "slab_dirt_stone", MCGTabs.NATURE));
 
         for (EnumTileColor color : EnumTileColor.values()) {
             blocks1.add(new BlockMCGStairs(TILE.getDefaultState(), String.format("stairs_tile_%s", color.getName()), MCGTabs.TOUHOU, SoundType.STONE));
@@ -77,7 +81,6 @@ public class ModBlock {
         blocks5.add(FLOWER);
         blocks2.add(new BlockMCGMushroom("mushroom"));
         blocks1.add(new BlockTranslucent(Material.CLOTH, "cloud", MCGTabs.NATURE, SoundType.CLOTH));
-        blocks2.add(new BlockInteger2(Material.GROUND, "dirt", MCGTabs.NATURE, SoundType.GROUND));
         blocks1.add(new BlockMCGLeaves("leaves_sakura_glowing").setLightLevel(0.3F));
         blocks8.add(new BlockMCGLeaves8("leaves_mcg"));
         blocks3.add(new BlockBambooOld("bamboo_old"));
