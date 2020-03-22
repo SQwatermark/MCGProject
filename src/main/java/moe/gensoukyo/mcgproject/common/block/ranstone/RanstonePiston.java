@@ -26,6 +26,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.Iterator;
 import java.util.List;
@@ -45,6 +46,12 @@ public class RanstonePiston {
             super(false);
             setRegistryName(MCGProject.ID, "ranstone_piston");
             setTranslationKey(MCGProject.ID + "." + "ranstonePiston");
+        }
+
+        @Override
+        @Nonnull
+        public EnumPushReaction getPushReaction(IBlockState state) {
+            return EnumPushReaction.NORMAL;
         }
 
         public void onBlockPlacedBy(World world, BlockPos pos, IBlockState state, EntityLivingBase player, ItemStack stack) {
@@ -224,11 +231,11 @@ public class RanstonePiston {
                 world.setBlockToAir(pos.offset(facing));
             }
 
-            BlockPistonStructureHelper BlockPistonStructureHelper = new BlockPistonStructureHelper(world, pos, facing, val);
-            if (!BlockPistonStructureHelper.canMove()) {
+            BlockPistonStructureHelper helper = new BlockPistonStructureHelper(world, pos, facing, val);
+            if (!helper.canMove()) {
                 return false;
             } else {
-                List<BlockPos> list = BlockPistonStructureHelper.getBlocksToMove();
+                List<BlockPos> list = helper.getBlocksToMove();
                 List<IBlockState> list1 = Lists.newArrayList();
 
                 for(int i = 0; i < list.size(); ++i) {
@@ -236,7 +243,7 @@ public class RanstonePiston {
                     list1.add(world.getBlockState(blockpos).getActualState(world, blockpos));
                 }
 
-                List<BlockPos> list2 = BlockPistonStructureHelper.getBlocksToDestroy();
+                List<BlockPos> list2 = helper.getBlocksToDestroy();
                 int k = list.size() + list2.size();
                 IBlockState[] aiblockstate = new IBlockState[k];
                 EnumFacing enumfacing = val ? facing : facing.getOpposite();
