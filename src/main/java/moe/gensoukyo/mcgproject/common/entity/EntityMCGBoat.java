@@ -108,10 +108,12 @@ public class EntityMCGBoat extends EntityBoat {
 
     public EntityMCGBoat(World world) {
         super(world);
+        this.stepHeight = 0.5F;
     }
 
     public EntityMCGBoat(World world, double x, double y, double z) {
         super(world, x, y, z);
+        this.stepHeight = 0.5F;
     }
 
     @Override
@@ -168,12 +170,6 @@ public class EntityMCGBoat extends EntityBoat {
         return isOnSoftSurface() ? 2.5F : 1.667F;
     }
 
-    public double getBlockHeight(BlockPos pos) {
-        IBlockState state = this.world.getBlockState(pos);
-        AxisAlignedBB box = state.getBoundingBox(this.world, pos);
-        return box.maxY;
-    }
-
     /**
      * @apiNote 把客户端的船速率同步至服务端
      * @apiNote 同时实现船起跳的功能
@@ -183,18 +179,6 @@ public class EntityMCGBoat extends EntityBoat {
         if (this.getControllingPassenger() instanceof EntityPlayerSP) {
             BoatPacket packet = new BoatPacket(this);
             NetworkWrapper.INSTANCE.sendToServer(packet);
-
-            Vec3d vec = this.getLookVec().normalize();
-            BlockPos pos = new BlockPos(this.getPositionVector().add(vec));
-            if (world.getBlockState(pos).getMaterial() != Material.WATER) {
-                if (!this.world.isAirBlock(pos) || !this.world.isAirBlock(pos.up())) {
-                    double slopeHeight = pos.getY() + getBlockHeight(pos) - this.posY;
-                    if (!this.world.isAirBlock(pos.up()))
-                        slopeHeight += getBlockHeight(pos.up());
-                    if (slopeHeight > 0 && slopeHeight <= 0.5 && this.vel != 0)
-                        this.motionY += (0.5 * this.jump);
-                }
-            }
 
             EntityPlayerSP player = (EntityPlayerSP) this.getControllingPassenger();
             player.movementInput.updatePlayerMoveState();
