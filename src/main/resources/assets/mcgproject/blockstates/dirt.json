@@ -5,7 +5,7 @@
     "inventory": [{}],
     "meta=0": [{"textures": {"all": "mcgproject:blocks/touhou/dirt_way"}}],
     "meta=1": [{"textures": {"all": "mcgproject:blocks/touhou/dirt_way_2"}}],
-    "meta=2": [{"textures": {"all": "mcgproject:blocks/touhou/dirt_way"}}],
+    "meta=2": [{"textures": {"all": "mcgproject:blocks/nature/dirt_stone"}}],
     "meta=3": [{"textures": {"all": "mcgproject:blocks/touhou/dirt_way"}}]
   }
 }
