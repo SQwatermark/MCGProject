@@ -31,6 +31,7 @@ import java.util.List;
  * @author drzzm32
  * @date 2020/3/10
  */
+@MCGEntity("mcg_boat")
 public class EntityMCGBoat extends EntityBoat {
 
     private static Field status; //field_184469_aF
@@ -209,7 +210,7 @@ public class EntityMCGBoat extends EntityBoat {
             player.movementInput.updatePlayerMoveState();
             player.updateEntityActionState();
             player.moveVertical = player.movementInput.jump ? 1.0F : 0.0F;
-            if (this.onGround && Math.abs(this.motionY) <= 0.5 * this.getBoatJump())
+            if ((this.onGround || this.getStatus() == Status.IN_WATER) && Math.abs(this.motionY) <= 0.5 * this.getBoatJump())
                 this.motionY += (player.moveVertical * this.getBoatJump());
         }
     }
@@ -234,6 +235,17 @@ public class EntityMCGBoat extends EntityBoat {
         }
     }
 
+    public Vec3d getMotionVector() {
+        return new Vec3d(this.motionX, this.motionY, this.motionZ);
+    }
+
+    public void setVelocity(Vec3d vec) {
+        this.motionX = vec.x;
+        this.motionY = vec.y;
+        this.motionZ = vec.z;
+        this.isAirBorne = true;
+    }
+
     /**
      * @apiNote 船与实体碰撞
      * @param entity 目标实体
@@ -242,9 +254,33 @@ public class EntityMCGBoat extends EntityBoat {
     public void applyEntityCollision(Entity entity) {
         super.applyEntityCollision(entity);
 
+        // 撞击船然后按动量守恒
+        if (entity instanceof EntityMCGBoat && !this.isPassenger(entity)) {
+            EntityMCGBoat boat = (EntityMCGBoat) entity;
+            Vec3d v1 = this.getMotionVector(), v2 = boat.getMotionVector();
+            float m1 = this.getBoatMass(), m2 = boat.getBoatMass();
+            Vec3d va = v1.scale(m1 - m2).add(v2.scale(2 * m2)).scale(1 / (m1 + m2));
+            Vec3d vb = v2.scale(m2 - m1).add(v1.scale(2 * m1)).scale(1 / (m1 + m2));
+            if (boat.getPassengers().isEmpty()) {
+                boat.addVelocity(vb.x, vb.y, vb.z);
+            } else {
+                this.setVelocity(va);
+                boat.setVelocity(vb);
+            }
+        }
+
         // 撞击生物并造成伤害
         if (entity instanceof EntityLivingBase && !this.isPassenger(entity) && this.vel > this.getThreshold()) {
             EntityLivingBase living = (EntityLivingBase) entity;
+
+            if (living instanceof EntityPlayer && ((EntityPlayer) living).isCreative()) {
+                Vec3d tar = living.getPositionVector();
+                Vec3d src = this.getPositionVector();
+                Vec3d vec = tar.subtract(src).normalize().scale(this.vel * this.getBoatMass());
+                living.addVelocity(vec.x, vec.y, vec.z);
+                return;
+            }
+
             living.setHealth(living.getHealth() - (float) (this.getMaxDamage() * this.vel / this.getMaxSpeed()));
             PotionType type;
             type = PotionType.getPotionTypeForName("weakness");
@@ -255,7 +291,7 @@ public class EntityMCGBoat extends EntityBoat {
             if (type != null)
                 for (PotionEffect effect : type.getEffects())
                     effect.getPotion().affectEntity(null, null, living, effect.getAmplifier(), 1.0F);
-            Vec3d tar = entity.getPositionVector();
+            Vec3d tar = living.getPositionVector();
             Vec3d src = this.getPositionVector();
             Vec3d vec = tar.subtract(src).normalize().scale(this.vel * this.getBoatMass());
             living.addVelocity(vec.x, vec.y, vec.z);
