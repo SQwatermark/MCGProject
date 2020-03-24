@@ -1,6 +1,7 @@
 package moe.gensoukyo.mcgproject.common.init;
 
 import moe.gensoukyo.mcgproject.common.entity.EntityMCGBoat;
+import moe.gensoukyo.mcgproject.common.entity.butterfly.*;
 import moe.gensoukyo.mcgproject.core.MCGProject;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
@@ -26,8 +27,7 @@ public class ModEntity {
     public static LinkedList<Class<? extends Entity>> entities;
 
     private static void register(int index, Class<? extends Entity> entity) {
-        String name = entity.getName().replace(ModEntity.class.getPackage().getName(), "");
-        name = name.replace(".", "_").substring(1).replace("$", "_").toLowerCase();
+        String name = entity.getSimpleName().toLowerCase();
         EntityRegistry.registerModEntity(
                 new ResourceLocation(MCGProject.ID, name),
                 entity, name, index, MCGProject.INSTANCE,
@@ -46,6 +46,13 @@ public class ModEntity {
         entities = new LinkedList<>();
 
         entities.add(EntityMCGBoat.class);
+
+        entities.add(EntityButterfly.class);
+        entities.add(EntityButterfly1.class);
+        entities.add(EntityCloudShimmer.class);
+        entities.add(EntityIllukini.class);
+        entities.add(EntityRubySile.class);
+
     }
 
 }
