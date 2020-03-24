@@ -2,6 +2,7 @@ package moe.gensoukyo.mcgproject.common.init;
 
 import moe.gensoukyo.mcgproject.common.entity.EntityMCGBoat;
 import moe.gensoukyo.mcgproject.common.entity.butterfly.*;
+import moe.gensoukyo.mcgproject.common.entity.MCGEntity;
 import moe.gensoukyo.mcgproject.core.MCGProject;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
@@ -28,6 +29,8 @@ public class ModEntity {
 
     private static void register(int index, Class<? extends Entity> entity) {
         String name = entity.getSimpleName().toLowerCase();
+        if (entity.isAnnotationPresent(MCGEntity.class))
+            name = entity.getAnnotation(MCGEntity.class).value();
         EntityRegistry.registerModEntity(
                 new ResourceLocation(MCGProject.ID, name),
                 entity, name, index, MCGProject.INSTANCE,
