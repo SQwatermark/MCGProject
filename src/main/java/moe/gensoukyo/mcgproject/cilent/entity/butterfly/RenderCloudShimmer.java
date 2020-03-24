@@ -28,7 +28,7 @@ public class RenderCloudShimmer extends RenderLiving<EntityCloudShimmer>
      */
     protected ResourceLocation getEntityTexture(EntityCloudShimmer entity)
     {
-        return new ResourceLocation(MCGProject.ID, "textures/entity/butterfly/cloud_shimmer.png");
+        return new ResourceLocation(MCGProject.ID, "textures/entity/butterfly/cloudshimmer.png");
     }
     
     public static class Factory implements IRenderFactory<EntityCloudShimmer> {

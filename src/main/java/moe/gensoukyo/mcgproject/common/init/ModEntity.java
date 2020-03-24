@@ -49,7 +49,6 @@ public class ModEntity {
         entities = new LinkedList<>();
 
         entities.add(EntityMCGBoat.class);
-
         entities.add(EntityButterfly.class);
         entities.add(EntityButterfly1.class);
         entities.add(EntityCloudShimmer.class);

@@ -28,7 +28,7 @@ public class RenderRubySile extends RenderLiving<EntityRubySile>
      */
     protected ResourceLocation getEntityTexture(EntityRubySile entity)
     {
-            return new ResourceLocation(MCGProject.ID, "textures/entity/butterfly/ruby_sile.png");
+            return new ResourceLocation(MCGProject.ID, "textures/entity/butterfly/rubysile.png");
     }
     
     public static class Factory implements IRenderFactory<EntityRubySile> {

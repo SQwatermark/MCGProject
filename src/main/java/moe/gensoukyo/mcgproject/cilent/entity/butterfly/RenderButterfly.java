@@ -1,6 +1,6 @@
 package moe.gensoukyo.mcgproject.cilent.entity.butterfly;
 
-import moe.gensoukyo.mcgproject.cilent.model.butterfly.ModelTest;
+import moe.gensoukyo.mcgproject.cilent.model.butterfly.ModelButterfly;
 import moe.gensoukyo.mcgproject.common.entity.butterfly.EntityButterfly;
 import moe.gensoukyo.mcgproject.core.MCGProject;
 import net.minecraft.client.renderer.GlStateManager;
@@ -19,7 +19,7 @@ public class RenderButterfly extends RenderLiving<EntityButterfly>
 
     public RenderButterfly(RenderManager renderManagerIn)
     {
-        super(renderManagerIn, new ModelTest(), 0F);
+        super(renderManagerIn, new ModelButterfly(), 0F);
     }
 
     
@@ -28,7 +28,7 @@ public class RenderButterfly extends RenderLiving<EntityButterfly>
      */
     protected ResourceLocation getEntityTexture(EntityButterfly entity)
     {
-        return new ResourceLocation(MCGProject.ID, "textures/entity//butterfly/butterfly.png");
+        return new ResourceLocation(MCGProject.ID, "textures/entity/butterfly/butterfly.png");
     }
     
     public static class Factory implements IRenderFactory<EntityButterfly> {

@@ -28,7 +28,7 @@ public class RenderIllukini extends RenderLiving<EntityIllukini>
      */
     protected ResourceLocation getEntityTexture(EntityIllukini entity)
     {
-        return new ResourceLocation(MCGProject.ID, "textures/entity/butterfly/illikini.png");
+        return new ResourceLocation(MCGProject.ID, "textures/entity/butterfly/illukini.png");
     }
     
     public static class Factory implements IRenderFactory<EntityIllukini> {
