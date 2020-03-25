@@ -1,9 +1,11 @@
 package moe.gensoukyo.mcgproject.cilent.model.butterfly;
 
+import moe.gensoukyo.mcgproject.common.util.MathMCG;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
-import net.minecraft.util.math.MathHelper;
+
+import static moe.gensoukyo.mcgproject.common.util.MathMCG.degToRad;
 
 /**
  * ModelButterfly - Either Mojang or a mod author
@@ -62,19 +64,17 @@ public class ModelCloudShimmer extends ModelBase {
     
     public void setRotationAngles(float f, float f1, float f2, float f3, float f4, float f5, Entity entity)
     {
-
+        float swing;
         if(entity.motionY!=0D||entity.motionX!=0D||entity.motionZ!=0D) {
-            Wing4.rotateAngleZ= MathHelper.sin(f2*0.6f);
-            Wing3.rotateAngleZ=-MathHelper.sin(f2*0.6f);
+            swing = MathMCG.swing(f2, 0.6f, 1);
+            Wing4.rotateAngleZ= swing;
+            Wing3.rotateAngleZ=-swing;
         }else {
-            Wing4.rotateAngleZ=-degToRad(70)- MathHelper.sin(f2*0.05f)*0.05f;
-            Wing3.rotateAngleZ= degToRad(70)+ MathHelper.sin(f2*0.05f)*0.05f;
+            swing = MathMCG.swing(f2, 0.05f, 0.05f);
+            Wing4.rotateAngleZ=-degToRad(70)- swing;
+            Wing3.rotateAngleZ= degToRad(70)+ swing;
         }
     }
 
-    public float degToRad(float degrees)
-    {
-        return degrees * (float)Math.PI / 180 ;
-    }
 
 }
