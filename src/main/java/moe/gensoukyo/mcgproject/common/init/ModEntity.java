@@ -1,5 +1,6 @@
 package moe.gensoukyo.mcgproject.common.init;
 
+import moe.gensoukyo.mcgproject.common.entity.EntityKaginawa;
 import moe.gensoukyo.mcgproject.common.entity.EntityMCGBoat;
 import moe.gensoukyo.mcgproject.common.entity.butterfly.*;
 import moe.gensoukyo.mcgproject.common.entity.MCGEntity;
@@ -54,6 +55,7 @@ public class ModEntity {
         entities.add(EntityCloudShimmer.class);
         entities.add(EntityIllukini.class);
         entities.add(EntityRubySile.class);
+        entities.add(EntityKaginawa.class);
 
     }
 

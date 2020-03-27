@@ -33,7 +33,14 @@ minecraft {
     // makeObfSourceJar = false // an Srg named sources jar is made by default. uncomment this to disable.
 }
 
+repositories {
+    flatDir {
+        dirs 'libs'
+    }
+}
+
 dependencies {
+    compile fileTree(dir: 'libs', include: '*.jar')
     implementation 'org.jetbrains:annotations:15.0'
 
     // you may put jars on which you depend on in ./libs

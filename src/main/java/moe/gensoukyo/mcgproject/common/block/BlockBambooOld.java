@@ -31,6 +31,7 @@ public class BlockBambooOld extends BlockMCGBush {
         this.setSoundType(SoundType.WOOD);
     }
 
+    @NotNull
     @Override
     protected BlockStateContainer createBlockState() {
         return new BlockStateContainer(this, META);
@@ -42,6 +43,7 @@ public class BlockBambooOld extends BlockMCGBush {
         return state.getValue(META);
     }
 
+    @NotNull
     @Override
     public IBlockState getStateFromMeta(int meta)
     {
@@ -49,6 +51,7 @@ public class BlockBambooOld extends BlockMCGBush {
                 .withProperty(META, meta);
     }
 
+    @NotNull
     @Override
     public IBlockState getStateForPlacement(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer)
     {
