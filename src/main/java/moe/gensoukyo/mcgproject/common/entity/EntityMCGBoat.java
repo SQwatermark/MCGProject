@@ -1,7 +1,8 @@
 package moe.gensoukyo.mcgproject.common.entity;
 
 import moe.gensoukyo.mcgproject.common.init.ModItem;
-import moe.gensoukyo.mcgproject.common.network.*;
+import moe.gensoukyo.mcgproject.common.network.BoatPacket;
+import moe.gensoukyo.mcgproject.common.network.NetworkWrapper;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.entity.EntityPlayerSP;
@@ -320,5 +321,6 @@ public class EntityMCGBoat extends EntityBoat {
             }
         }
     }
+
 
 }

@@ -1,10 +1,12 @@
 package moe.gensoukyo.mcgproject.cilent.init;
 
 import moe.gensoukyo.mcgproject.cilent.entity.RenderMCGBoat;
+import moe.gensoukyo.mcgproject.cilent.entity.butterfly.*;
 import moe.gensoukyo.mcgproject.cilent.tileentity.TileRanstonePistonRenderer;
-import moe.gensoukyo.mcgproject.common.entity.EntityMCGBoat;
-import moe.gensoukyo.mcgproject.common.init.ModItem;
 import moe.gensoukyo.mcgproject.common.block.ranstone.*;
+import moe.gensoukyo.mcgproject.common.entity.EntityMCGBoat;
+import moe.gensoukyo.mcgproject.common.entity.butterfly.*;
+import moe.gensoukyo.mcgproject.common.init.ModItem;
 import moe.gensoukyo.mcgproject.core.MCGProject;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.entity.Entity;
@@ -74,22 +76,15 @@ public class ModelMapper {
                         "inventory"));
     }
 
-    private static void registerModel(Item item, int metadata) {
-        ModelLoader.setCustomModelResourceLocation(item, metadata,
-                new ModelResourceLocation(Objects.requireNonNull(item.getRegistryName()),
-                        "inventory" + metadata));
-    }
-
-    private static void registerModel(Item item, int metadata, String variantIn) {
-        ModelLoader.setCustomModelResourceLocation(item, metadata,
-                new ModelResourceLocation(Objects.requireNonNull(item.getRegistryName()),
-                        variantIn));
-    }
-
     static {
         renderEntity = new LinkedHashMap<>();
 
         renderEntity.put(EntityMCGBoat.class, RenderMCGBoat.FACTORY);
+        renderEntity.put(EntityButterfly.class, RenderButterfly.FACTORY);
+        renderEntity.put(EntityButterfly1.class, RenderButterfly1.FACTORY);
+        renderEntity.put(EntityCloudShimmer.class, RenderCloudShimmer.FACTORY);
+        renderEntity.put(EntityIllukini.class, RenderIllukini.FACTORY);
+        renderEntity.put(EntityRubySile.class, RenderRubySile.FACTORY);
     }
 
 }

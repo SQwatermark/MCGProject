@@ -6,7 +6,7 @@ itemGroup.mcgproject.nature=MCG: 自然与农业
 itemGroup.mcgproject.clothes=MCG: 服装（尚未完善 请勿使用）
 itemGroup.mcgproject.old=旧版移植
 
-//东方
+# 东方
 tile.mcgproject.tatami_0.name=榻榻米
 tile.mcgproject.tatami_1.name=榻榻米（无边线）
 tile.mcgproject.namako.name=海鼠壁
@@ -59,23 +59,6 @@ tile.mcgproject.door_curtain_2_5.name=绿色门帘
 tile.mcgproject.door_curtain_2_6.name=红色门帘
 tile.mcgproject.door_curtain_2_7.name=黑色门帘
 
-tile.mcgproject.frame_0.name=橡木框架1
-tile.mcgproject.frame_1.name=橡木框架2
-tile.mcgproject.frame_2.name=橡木框架3
-tile.mcgproject.frame_3.name=橡木框架4
-tile.mcgproject.frame_4.name=丛林木框架1
-tile.mcgproject.frame_5.name=丛林木框架2
-tile.mcgproject.frame_6.name=丛林木框架3
-tile.mcgproject.frame_7.name=丛林木框架4
-tile.mcgproject.frame_8.name=深色橡木框架1
-tile.mcgproject.frame_9.name=深色橡木框架2
-tile.mcgproject.frame_10.name=深色橡木框架3
-tile.mcgproject.frame_11.name=深色橡木框架4
-tile.mcgproject.frame_12.name=预留
-tile.mcgproject.frame_13.name=预留
-tile.mcgproject.frame_14.name=预留
-tile.mcgproject.frame_15.name=预留
-
 tile.mcgproject.plank_0.name=精制橡木木板
 tile.mcgproject.plank_1.name=精制丛林木板
 tile.mcgproject.plank_2.name=精制深色橡木木板
@@ -105,11 +88,11 @@ tile.mcgproject.dirt_3.name=预留
 tile.mcgproject.slab_dirt_stone.name=石子路台阶
 tile.mcgproject.stairs_dirt_stone.name=石子路楼梯
 
-//幻想
+# 幻想
 tile.mcgproject.gap.name=隙间
 tile.mcgproject.GensoChest.name=幻想箱
 
-//自然
+# 自然
 tile.mcgproject.log_sakura.name=樱木
 tile.mcgproject.flower_0.name=铃兰
 tile.mcgproject.flower_1.name=鸢尾
@@ -132,13 +115,13 @@ tile.mcgproject.leaves_mcg_5.name=紫樱树叶
 tile.mcgproject.leaves_mcg_6.name=实心树叶（藤蔓雕刻元件）
 tile.mcgproject.leaves_mcg_7.name=预留
 
-//农业与食物
+# 农业与食物
 tile.mcgproject.mooncake_0.name=月饼
 tile.mcgproject.mooncake_1.name=月饼（无花纹）
 tile.mcgproject.shit.name=有机肥
 tile.mcgproject.straw.name=草垛
 
-//西方
+# 西方
 tile.mcgproject.glass_chireiden_0.name=地灵殿彩绘砖1
 tile.mcgproject.glass_chireiden_1.name=地灵殿彩绘砖2
 tile.mcgproject.glass_chireiden_2.name=地灵殿彩绘砖3
@@ -204,7 +187,7 @@ tile.mcgproject.slab_marble_white.name=白色大理石台阶
 tile.mcgproject.road_block.name=路障
 tile.mcgproject.newspaper.name=报纸
 
-//通用
+# 通用
 tile.mcgproject.stairs_wool_white.name=白色羊毛楼梯
 tile.mcgproject.stairs_wool_orange.name=橙色羊毛楼梯
 tile.mcgproject.stairs_wool_magenta.name=品红色羊毛楼梯
@@ -277,7 +260,7 @@ tile.mcgproject.trapdoor_jungle.name=丛林木活板门
 tile.mcgproject.trapdoor_acacia.name=金合欢木活板门
 tile.mcgproject.trapdoor_dark_oak.name=深色橡木活板门
 
-//服饰
+# 服饰
 item.mcgproject.rumia_helmet.name=头饰（露米娅）
 item.mcgproject.rumia_chestplate.name=上衣（露米娅）
 item.mcgproject.rumia_leggings.name=裙子（露米娅）
