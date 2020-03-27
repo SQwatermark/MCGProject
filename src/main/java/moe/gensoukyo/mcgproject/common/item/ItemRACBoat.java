@@ -1,7 +1,7 @@
 package moe.gensoukyo.mcgproject.common.item;
 
 import moe.gensoukyo.mcgproject.common.creativetab.MCGTabs;
-import moe.gensoukyo.mcgproject.common.entity.boat.EntityMCGBoat;
+import moe.gensoukyo.mcgproject.common.entity.boat.EntityRACBoat;
 import moe.gensoukyo.mcgproject.core.MCGProject;
 import net.minecraft.block.Block;
 import net.minecraft.client.util.ITooltipFlag;
@@ -30,22 +30,22 @@ import java.util.List;
 
 /**
  * @author drzzm32
- * @date 2020/3/15
+ * @date 2020/3/27
  */
-public class ItemMCGBoat extends Item {
+public class ItemRACBoat extends Item {
 
-    public ItemMCGBoat() {
+    public ItemRACBoat() {
         this.setMaxStackSize(1);
         this.setCreativeTab(MCGTabs.FANTASY);
-        this.setRegistryName(MCGProject.ID, "mcg_boat");
-        this.setTranslationKey(MCGProject.ID + "." + "mcg_boat");
+        this.setRegistryName(MCGProject.ID, "rac_boat");
+        this.setTranslationKey(MCGProject.ID + "." + "rac_boat");
     }
 
     @Override
     @SideOnly(Side.CLIENT)
     public void addInformation(ItemStack stack, @Nullable World world, List<String> list, ITooltipFlag flag) {
-        list.add(TextFormatting.LIGHT_PURPLE + "Nice Boat");
-        list.add(TextFormatting.DARK_PURPLE + "easy to drive");
+        list.add(TextFormatting.AQUA + "Racing Boat");
+        list.add(TextFormatting.DARK_AQUA + "no so easy to drive");
     }
 
     @Override
@@ -84,12 +84,12 @@ public class ItemMCGBoat extends Item {
 
             if (hasEntity) {
                 return ActionResult.newResult(EnumActionResult.PASS, stack);
-            } else if (result.typeOfHit != net.minecraft.util.math.RayTraceResult.Type.BLOCK) {
+            } else if (result.typeOfHit != RayTraceResult.Type.BLOCK) {
                 return ActionResult.newResult(EnumActionResult.PASS, stack);
             } else {
                 Block block = world.getBlockState(result.getBlockPos()).getBlock();
                 boolean inWater = block == Blocks.WATER || block == Blocks.FLOWING_WATER;
-                EntityMCGBoat boat = new EntityMCGBoat(world, result.hitVec.x, inWater ? result.hitVec.y - 0.12D : result.hitVec.y, result.hitVec.z);
+                EntityRACBoat boat = new EntityRACBoat(world, result.hitVec.x, inWater ? result.hitVec.y - 0.12D : result.hitVec.y, result.hitVec.z);
                 boat.rotationYaw = player.rotationYaw;
                 if (!world.getCollisionBoxes(boat, boat.getEntityBoundingBox().grow(-0.1D)).isEmpty()) {
                     return ActionResult.newResult(EnumActionResult.FAIL, stack);

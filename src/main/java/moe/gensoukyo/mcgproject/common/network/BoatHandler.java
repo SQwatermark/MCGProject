@@ -1,6 +1,6 @@
 package moe.gensoukyo.mcgproject.common.network;
 
-import moe.gensoukyo.mcgproject.common.entity.EntityMCGBoat;
+import moe.gensoukyo.mcgproject.common.entity.boat.EntityMCGBoat;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
@@ -18,6 +18,9 @@ public class BoatHandler implements IMessageHandler<BoatPacket, IMessage> {
         if (player.getRidingEntity() instanceof EntityMCGBoat) {
             EntityMCGBoat boat = (EntityMCGBoat) player.getRidingEntity();
             boat.vel = packet.vel;
+            boat.motionX = packet.vx;
+            boat.motionY = packet.vy;
+            boat.motionZ = packet.vz;
         }
 
         return null;
