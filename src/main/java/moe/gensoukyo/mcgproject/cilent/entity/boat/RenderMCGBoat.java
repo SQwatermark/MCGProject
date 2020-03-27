@@ -1,6 +1,6 @@
-package moe.gensoukyo.mcgproject.cilent.entity;
+package moe.gensoukyo.mcgproject.cilent.entity.boat;
 
-import moe.gensoukyo.mcgproject.common.entity.EntityMCGBoat;
+import moe.gensoukyo.mcgproject.common.entity.boat.EntityMCGBoat;
 import moe.gensoukyo.mcgproject.core.MCGProject;
 import net.minecraft.client.model.IMultipassModel;
 import net.minecraft.client.model.ModelBase;
@@ -23,7 +23,7 @@ public class RenderMCGBoat extends Render<EntityMCGBoat> {
 
     public static IRenderFactory<EntityMCGBoat> FACTORY = RenderMCGBoat::new;
 
-    private static final ResourceLocation TEXTURE = new ResourceLocation(MCGProject.ID, "textures/entity/mcg_boat.png");
+    private static final ResourceLocation TEXTURE = new ResourceLocation(MCGProject.ID, "textures/entity/boat/mcg_boat.png");
     protected ModelBase modelBoat = new ModelBoat();
 
     public RenderMCGBoat(RenderManager manager) {

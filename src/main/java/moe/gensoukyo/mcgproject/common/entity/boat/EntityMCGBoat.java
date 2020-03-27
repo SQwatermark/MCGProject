@@ -1,5 +1,6 @@
-package moe.gensoukyo.mcgproject.common.entity;
+package moe.gensoukyo.mcgproject.common.entity.boat;
 
+import moe.gensoukyo.mcgproject.common.entity.MCGEntity;
 import moe.gensoukyo.mcgproject.common.init.ModItem;
 import moe.gensoukyo.mcgproject.common.network.BoatPacket;
 import moe.gensoukyo.mcgproject.common.network.NetworkWrapper;
@@ -17,7 +18,12 @@ import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.potion.PotionType;
+import net.minecraft.util.DamageSource;
+import net.minecraft.util.EntityDamageSourceIndirect;
+import net.minecraft.util.EnumHand;
+import net.minecraft.util.MovementInput;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
@@ -33,7 +39,7 @@ import java.util.List;
  * @date 2020/3/10
  */
 @MCGEntity("mcg_boat")
-public class EntityMCGBoat extends EntityBoat {
+public class EntityMCGBoat extends EntityBoat implements IBoat {
 
     private static Field status; //field_184469_aF
     private static Field lastYd; // field_184473_aH
@@ -68,61 +74,78 @@ public class EntityMCGBoat extends EntityBoat {
     public static final DataParameter<Float> DAMAGE = EntityDataManager.createKey(EntityMCGBoat.class, DataSerializers.FLOAT);
     public static final DataParameter<Float> MASS = EntityDataManager.createKey(EntityMCGBoat.class, DataSerializers.FLOAT);
     public static final DataParameter<Float> JUMP = EntityDataManager.createKey(EntityMCGBoat.class, DataSerializers.FLOAT);
+    public static final DataParameter<Float> MAXV = EntityDataManager.createKey(EntityMCGBoat.class, DataSerializers.FLOAT);
+    public static final DataParameter<Float> MINV = EntityDataManager.createKey(EntityMCGBoat.class, DataSerializers.FLOAT);
+    public static final DataParameter<Float> ACC = EntityDataManager.createKey(EntityMCGBoat.class, DataSerializers.FLOAT);
+    public static final DataParameter<Float> BRK = EntityDataManager.createKey(EntityMCGBoat.class, DataSerializers.FLOAT);
+
+    public static final DataParameter<Integer> COLOR = EntityDataManager.createKey(EntityMCGBoat.class, DataSerializers.VARINT);
 
     /**
      * @apiNote 客户端-服务端同步用，用于撞击判定，不需要存入NBT
      * */
-    public double vel = 0;
+    public double prevVel = 0, vel = 0;
 
-    /**
-     * @apiNote 给NPC预留的方法
-     * @param boat 船实体
-     * @param threshold 撞击阈值速度
-     * */
-    public static void setThreshold(EntityMCGBoat boat, float threshold) {
-        boat.dataManager.set(THRESHOLD, threshold);
+    public void setThreshold(float threshold) { dataManager.set(THRESHOLD, threshold); }
+    public void setMaxDamage(float damage) { dataManager.set(DAMAGE, damage); }
+    public void setBoatMass(float mass) { dataManager.set(MASS, mass); }
+    public void setBoatJump(float jump) { dataManager.set(JUMP, jump); }
+    public void setBoatMaxV(float vel) { dataManager.set(MAXV, vel); }
+    public void setBoatMinV(float vel) { dataManager.set(MINV, vel); }
+    public void setBoatAcc(float vel) { dataManager.set(ACC, vel); }
+    public void setBoatBrk(float vel) { dataManager.set(BRK, vel); }
+
+    public float getThreshold() {
+        float val = dataManager.get(THRESHOLD);
+        val = MathHelper.clamp(val, 0, 8.0F);
+        dataManager.set(THRESHOLD, val);
+        return val;
+    }
+    public float getMaxDamage() {
+        float val = dataManager.get(DAMAGE);
+        val = MathHelper.clamp(val, 0, 9961.0F);
+        dataManager.set(DAMAGE, val);
+        return val;
+    }
+    public float getBoatMass() {
+        float val = dataManager.get(MASS);
+        val = MathHelper.clamp(val, 1.0F, 100.0F);
+        dataManager.set(MASS, val);
+        return val;
+    }
+    public float getBoatJump() {
+        float val = dataManager.get(JUMP);
+        val = MathHelper.clamp(val, 0, 8.0F);
+        dataManager.set(JUMP, val);
+        return val;
+    }
+    public float getBoatMaxV() {
+        float val = dataManager.get(MAXV);
+        val = MathHelper.clamp(val, 0, 8.0F);
+        dataManager.set(MAXV, val);
+        return val;
+    }
+    public float getBoatMinV() {
+        float val = dataManager.get(MINV);
+        val = MathHelper.clamp(val, 0, 8.0F);
+        dataManager.set(MINV, val);
+        return val;
+    }
+    public float getBoatAcc() {
+        float val = dataManager.get(ACC);
+        val = MathHelper.clamp(val, 0, 1.0F);
+        dataManager.set(ACC, val);
+        return val;
+    }
+    public float getBoatBrk() {
+        float val = dataManager.get(BRK);
+        val = MathHelper.clamp(val, 0, 1.0F);
+        dataManager.set(BRK, val);
+        return val;
     }
 
-    /**
-     * @apiNote 给NPC预留的方法
-     * @param boat 船实体
-     * @param damage 撞击伤害
-     * */
-    public static void setMaxDamage(EntityMCGBoat boat, float damage) {
-        boat.dataManager.set(DAMAGE, damage);
-    }
-
-    /**
-     * @apiNote 给NPC预留的方法
-     * @param boat 船实体
-     * @param mass 船体质量（撞击速率倍数）
-     * */
-    public static void setBoatMass(EntityMCGBoat boat, float mass) {
-        boat.dataManager.set(MASS, mass);
-    }
-
-    /**
-     * @apiNote 给NPC预留的方法
-     * @param boat 船实体
-     * @param jump 起跳速度
-     * */
-    public static void setBoatJump(EntityMCGBoat boat, float jump) {
-        boat.dataManager.set(JUMP, jump);
-    }
-
-    /**
-     * @apiNote 给NPC预留的方法
-     * @param boat 船实体
-     * @param step 自动跳跃高度
-     * */
-    public static void setStepHeight(EntityMCGBoat boat, float step) {
-        boat.stepHeight = step;
-    }
-
-    public float getThreshold() { return dataManager.get(THRESHOLD); }
-    public float getMaxDamage() { return dataManager.get(DAMAGE); }
-    public float getBoatMass() { return dataManager.get(MASS); }
-    public float getBoatJump() { return dataManager.get(JUMP); }
+    public void setBoatColor(int color) { dataManager.set(COLOR, color); }
+    public int getBoatColor() { return dataManager.get(COLOR); }
 
     public EntityMCGBoat(World world) {
         super(world);
@@ -141,6 +164,21 @@ public class EntityMCGBoat extends EntityBoat {
         dataManager.register(DAMAGE, 10.0F);
         dataManager.register(MASS, 10.0F);
         dataManager.register(JUMP, 0.4F);
+        dataManager.register(MAXV, 2.5F);
+        dataManager.register(MINV, 1.667F);
+        dataManager.register(ACC, 0.05F);
+        dataManager.register(BRK, 0.05F);
+        
+        dataManager.register(COLOR, 0xFFFFFF);
+    }
+
+    /**
+     * @apiNote 控制乘客数量
+     * @param entity 乘客实体
+     * */
+    @Override
+    protected boolean canFitPassenger(Entity entity) {
+        return this.getPassengers().size() < 2;
     }
 
     @Override
@@ -153,6 +191,17 @@ public class EntityMCGBoat extends EntityBoat {
             dataManager.set(DAMAGE, tagCompound.getFloat("damage"));
         if (tagCompound.hasKey("threshold"))
             dataManager.set(THRESHOLD, tagCompound.getFloat("threshold"));
+        if (tagCompound.hasKey("maxV"))
+            dataManager.set(MAXV, tagCompound.getFloat("maxV"));
+        if (tagCompound.hasKey("minV"))
+            dataManager.set(MINV, tagCompound.getFloat("minV"));
+        if (tagCompound.hasKey("acc"))
+            dataManager.set(ACC, tagCompound.getFloat("acc"));
+        if (tagCompound.hasKey("brk"))
+            dataManager.set(BRK, tagCompound.getFloat("brk"));
+
+        if (tagCompound.hasKey("color"))
+            dataManager.set(COLOR, tagCompound.getInteger("color"));
     }
 
     @Override
@@ -161,6 +210,12 @@ public class EntityMCGBoat extends EntityBoat {
         tagCompound.setFloat("mass", getBoatMass());
         tagCompound.setFloat("damage", getMaxDamage());
         tagCompound.setFloat("threshold", getThreshold());
+        tagCompound.setFloat("maxV", getBoatMaxV());
+        tagCompound.setFloat("minV", getBoatMinV());
+        tagCompound.setFloat("acc", getBoatAcc());
+        tagCompound.setFloat("brk", getBoatBrk());
+
+        tagCompound.setInteger("color", getBoatColor());
     }
 
     @Override
@@ -190,41 +245,51 @@ public class EntityMCGBoat extends EntityBoat {
      * */
     @Override
     public float getBoatGlide() {
-        return isOnSoftSurface() ? 0.976F : 0.984F;
+        return 1 - (getBoatAcc() / getMaxSpeed());
     }
 
     public float getMaxSpeed() {
-        return isOnSoftSurface() ? 2.5F : 1.667F;
+        return isOnSoftSurface() ? getBoatMaxV() : getBoatMinV();
     }
 
     /**
      * @apiNote 把客户端的船速率同步至服务端
-     * @apiNote 同时实现船起跳的功能
+     * @apiNote 同时实现船起跳及加速的功能
      * */
     @SideOnly(Side.CLIENT)
-    public void doBoatJump() {
+    public void controlBoatExtra() {
         if (this.getControllingPassenger() instanceof EntityPlayerSP) {
             BoatPacket packet = new BoatPacket(this);
             NetworkWrapper.INSTANCE.sendToServer(packet);
 
             EntityPlayerSP player = (EntityPlayerSP) this.getControllingPassenger();
-            player.movementInput.updatePlayerMoveState();
+            MovementInput input = player.movementInput;
+            input.updatePlayerMoveState();
             player.updateEntityActionState();
-            player.moveVertical = player.movementInput.jump ? 1.0F : 0.0F;
+            player.moveVertical = input.jump ? 1.0F : 0.0F;
             if ((this.onGround || this.getStatus() == Status.IN_WATER) && Math.abs(this.motionY) <= 0.5 * this.getBoatJump())
                 this.motionY += (player.moveVertical * this.getBoatJump());
+
+            float acc = 0;
+            if (input.forwardKeyDown)
+                acc += (getBoatAcc() - 0.04F);
+            if (input.backKeyDown)
+                acc -= (getBoatBrk() - 0.005F);
+            this.motionX += (MathHelper.sin(-this.rotationYaw * 0.017453292F) * acc);
+            this.motionZ += (MathHelper.cos(this.rotationYaw * 0.017453292F) * acc);
         }
     }
 
     @Override
     public void onUpdate() {
-        // 使船能够空格起跳
+        // 使船能够空格起跳，及额外加速
         // TODO: 你能信，船的核心代码是客户端执行
         if (this.world.isRemote)
-            doBoatJump();
+            controlBoatExtra();
 
         super.onUpdate();
 
+        this.prevVel = vel;
         this.vel = Math.sqrt(
                 this.motionX * this.motionX + this.motionY * this.motionY + this.motionZ * this.motionZ);
 
@@ -322,5 +387,51 @@ public class EntityMCGBoat extends EntityBoat {
         }
     }
 
+    /**
+     * @apiNote 让船耐打一点
+     * @param source 攻击源
+     * @param value 伤害值
+     * */
+    @Override
+    public boolean attackEntityFrom(@Nonnull DamageSource source, float value) {
+        if (this.isEntityInvulnerable(source)) {
+            return false;
+        } else if (!this.world.isRemote && !this.isDead) {
+            if (source instanceof EntityDamageSourceIndirect && source.getTrueSource() != null && this.isPassenger(source.getTrueSource())) {
+                return false;
+            } else {
+                this.setForwardDirection(-this.getForwardDirection());
+                this.setTimeSinceHit(10);
+                this.setDamageTaken(this.getDamageTaken() + value);
+                this.markVelocityChanged();
+                boolean flag = source.getTrueSource() instanceof EntityPlayer && ((EntityPlayer)source.getTrueSource()).capabilities.isCreativeMode;
+                if (flag || this.getDamageTaken() > 40.0F) {
+                    if (!flag && this.world.getGameRules().getBoolean("doEntityDrops")) {
+                        this.dropItemWithOffset(this.getItemBoat(), 1, 0.0F);
+                    }
+
+                    this.setDead();
+                }
+
+                return true;
+            }
+        } else {
+            return true;
+        }
+    }
+
+    /**
+     * @apiNote 防止玩家抢别人的船
+     * @param player 玩家实体
+     * @param hand 玩家的手
+     * */
+    @Override
+    public boolean processInitialInteract(EntityPlayer player, EnumHand hand) {
+        if (player.isRiding()) {
+            return false;
+        } else {
+            return super.processInitialInteract(player, hand);
+        }
+    }
 
 }

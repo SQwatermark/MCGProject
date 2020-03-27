@@ -1,10 +1,12 @@
 package moe.gensoukyo.mcgproject.cilent.init;
 
-import moe.gensoukyo.mcgproject.cilent.entity.RenderMCGBoat;
+import moe.gensoukyo.mcgproject.cilent.entity.boat.RenderMCGBoat;
+import moe.gensoukyo.mcgproject.cilent.entity.boat.RenderRACBoat;
 import moe.gensoukyo.mcgproject.cilent.entity.butterfly.*;
 import moe.gensoukyo.mcgproject.cilent.tileentity.TileRanstonePistonRenderer;
 import moe.gensoukyo.mcgproject.common.block.ranstone.*;
-import moe.gensoukyo.mcgproject.common.entity.EntityMCGBoat;
+import moe.gensoukyo.mcgproject.common.entity.boat.EntityMCGBoat;
+import moe.gensoukyo.mcgproject.common.entity.boat.EntityRACBoat;
 import moe.gensoukyo.mcgproject.common.entity.butterfly.*;
 import moe.gensoukyo.mcgproject.common.init.ModItem;
 import moe.gensoukyo.mcgproject.core.MCGProject;
@@ -50,6 +52,7 @@ public class ModelMapper {
         registerModel(ModItem.ITEM_META_CHANGER);
         //registerModel(ModItem.ITEM_POWERTOOL);
         registerModel(ModItem.ITEM_MCG_BOAT);
+        registerModel(ModItem.ITEM_RAC_BOAT);
         registerModel(ModItem.ITEM_GEN_BIG_OAK);
 
         registerModel(RanstoneBlock.ITEM);
@@ -80,6 +83,7 @@ public class ModelMapper {
         renderEntity = new LinkedHashMap<>();
 
         renderEntity.put(EntityMCGBoat.class, RenderMCGBoat.FACTORY);
+        renderEntity.put(EntityRACBoat.class, RenderRACBoat.FACTORY);
         renderEntity.put(EntityButterfly.class, RenderButterfly.FACTORY);
         renderEntity.put(EntityButterfly1.class, RenderButterfly1.FACTORY);
         renderEntity.put(EntityCloudShimmer.class, RenderCloudShimmer.FACTORY);
