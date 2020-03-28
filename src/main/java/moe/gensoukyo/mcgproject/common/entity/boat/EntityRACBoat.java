@@ -19,12 +19,14 @@ public class EntityRACBoat extends EntityMCGBoat {
 
     public EntityRACBoat(World world) {
         super(world);
-        this.stepHeight = 1.0F;
+        this.stepHeight = 0.75F;
+        this.setSize(1.375F, 0.8125F);
     }
 
     public EntityRACBoat(World world, double x, double y, double z) {
         super(world, x, y, z);
-        this.stepHeight = 1.0F;
+        this.stepHeight = 0.75F;
+        this.setSize(1.375F, 0.8125F);
     }
 
     @Override
@@ -33,9 +35,9 @@ public class EntityRACBoat extends EntityMCGBoat {
 
         dataManager.set(MAXV, 3.0F); // 216km/h
         dataManager.set(MINV, 1.0F); // 72km/h
-        dataManager.set(ACC, 0.2F);
-        dataManager.set(BRK, 0.1F);
-        dataManager.set(JUMP, 0.8F);
+        dataManager.set(ACC, 0.1F);
+        dataManager.set(BRK, 0.05F);
+        dataManager.set(JUMP, 0.5F);
     }
 
     /**
@@ -63,7 +65,7 @@ public class EntityRACBoat extends EntityMCGBoat {
             if (vec.length() < 0.05)
                 vec = vec.add(0, -this.rand.nextGaussian() * 0.1 - 0.3, 0);
 
-            Vec3d off = new Vec3d(-0.4375, 0.6875, 1);
+            Vec3d off = new Vec3d(-0.4375, 0.75, 1);
             Vec3d par = pos.add(off.rotateYaw((float) ((180 - this.rotationYaw) / 180 * Math.PI)));
             Vec3d ext = IBoat.vVec(vec).scale(this.rand.nextGaussian() * 0.05);
             Vec3d pav = vec.scale(-0.5).add(ext);
@@ -71,7 +73,7 @@ public class EntityRACBoat extends EntityMCGBoat {
                     par.x, par.y, par.z,
                     pav.x, pav.y, pav.z, 0
             );
-            off = new Vec3d(0.4375, 0.6875, 1);
+            off = new Vec3d(0.4375, 0.75, 1);
             par = pos.add(off.rotateYaw((float) ((180 - this.rotationYaw) / 180 * Math.PI)));
             ext = IBoat.vVec(vec).scale(this.rand.nextGaussian() * 0.05);
             pav = vec.scale(-0.5).add(ext);
