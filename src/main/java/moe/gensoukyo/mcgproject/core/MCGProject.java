@@ -23,7 +23,7 @@ public class MCGProject {
 
     public static final String ID = "mcgproject";
     public static final String NAME = "MCGProject";
-    public static final String VERSION = "1.0.13";
+    public static final String VERSION = "1.0.14";
     public static Logger logger;
 
     @SidedProxy(clientSide = "moe.gensoukyo.mcgproject.core.ClientProxy",
@@ -32,7 +32,8 @@ public class MCGProject {
 
     @SuppressWarnings("unused")
     @EventHandler
-    public void preInit(FMLPreInitializationEvent event) {
+    public void preInit(FMLPreInitializationEvent event)
+    {
         logger = event.getModLog();
         proxy.preInit(event);
     }
@@ -50,7 +51,8 @@ public class MCGProject {
     }
 
     @EventHandler
-    public void serverLoad(FMLServerStartingEvent event) {
+    public void serverLoad(FMLServerStartingEvent event)
+    {
         event.registerServerCommand(new BackpackCore.BackpackCommand());
         event.registerServerCommand(new BackpackCore.BackpackManageCommand());
     }
