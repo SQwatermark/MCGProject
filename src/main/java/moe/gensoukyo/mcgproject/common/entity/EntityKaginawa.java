@@ -10,8 +10,10 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Objects;
 
 /**
- * 普通的钩绳
- *   存在时间 40 tick
+ * @author SQwatermark
+ * @date 2020/3/27
+ * 普通的钩绳，在竹 mod 的钩绳基础上进行了修改
+ *   存在时间 50 tick
  *   速度为 1.5F
  *   不精准度为 1.0F
  *   重力 0.03 F
@@ -54,7 +56,7 @@ public class EntityKaginawa extends EntityThrowable {
 
     public void onUpdate() {
         super.onUpdate();
-        if (this.ticksExisted > 40) {
+        if (this.ticksExisted > 50) {
             this.setDead();
         }
 

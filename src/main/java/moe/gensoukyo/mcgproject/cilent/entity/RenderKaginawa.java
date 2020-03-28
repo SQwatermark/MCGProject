@@ -20,6 +20,12 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * @author SQwatermark
+ * @date 2020/3/27
+ * 钩绳
+ * 修改自原版的钓鱼竿的渲染代码
+ */
 @SideOnly(Side.CLIENT)
 public class RenderKaginawa extends Render<EntityKaginawa>
 {
