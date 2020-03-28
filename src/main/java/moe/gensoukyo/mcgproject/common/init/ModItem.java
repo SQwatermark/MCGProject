@@ -1,5 +1,6 @@
 package moe.gensoukyo.mcgproject.common.init;
 
+import moe.gensoukyo.mcgproject.common.item.*;
 import moe.gensoukyo.mcgproject.common.item.ItemGenBigOak;
 import moe.gensoukyo.mcgproject.common.item.ItemMCGBoat;
 import moe.gensoukyo.mcgproject.common.item.ItemMetaChanger;
@@ -27,6 +28,7 @@ public final class ModItem {
     public static ItemMetaChanger ITEM_META_CHANGER;
     //public static ItemPowerTool ITEM_POWERTOOL;
     public static ItemGenBigOak ITEM_GEN_BIG_OAK;
+    public static ItemKaginawa ITEM_KAGINAWA;
 
     /**
      * 注册所有物品
@@ -43,10 +45,12 @@ public final class ModItem {
         ITEM_META_CHANGER = new ItemMetaChanger();
         //ITEM_POWERTOOL = new ItemPowerTool();
         ITEM_GEN_BIG_OAK = new ItemGenBigOak();
+        ITEM_KAGINAWA = new ItemKaginawa();
         event.getRegistry().register(ITEM_MCG_BOAT);
         event.getRegistry().register(ITEM_RAC_BOAT);
         event.getRegistry().register(ITEM_META_CHANGER);
         //event.getRegistry().register(ITEM_POWERTOOL);
         event.getRegistry().register(ITEM_GEN_BIG_OAK);
+        event.getRegistry().register(ITEM_KAGINAWA);
     }
 }

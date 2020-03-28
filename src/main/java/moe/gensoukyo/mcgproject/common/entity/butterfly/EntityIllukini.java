@@ -7,6 +7,7 @@ import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
 
+//代码取自 kathairis mod 并进行了修改，仅用于测试
 @MCGEntity("butterfly_3")
 public class EntityIllukini extends EntityBasicButterfly
 {

@@ -15,6 +15,10 @@ import org.jetbrains.annotations.NotNull;
 import java.util.List;
 import java.util.Random;
 
+/**
+ * @author SQwatermark
+ * 修改自 Minecraft 原版代码
+ */
 public class WorldGenTestTree extends WorldGenAbstractTree
 {
     private Random rand;

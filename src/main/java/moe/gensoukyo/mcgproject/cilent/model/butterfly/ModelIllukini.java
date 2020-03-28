@@ -7,6 +7,9 @@ import net.minecraft.entity.Entity;
 
 import static moe.gensoukyo.mcgproject.common.util.MathMCG.degToRad;
 
+/**
+ * 代码取自 kathairis mod 并进行了修改，仅用于测试
+ */
 public class ModelIllukini extends ModelBase {
     public ModelRenderer Head;
     public ModelRenderer Wing4;
@@ -67,7 +70,8 @@ public class ModelIllukini extends ModelBase {
         modelRenderer.rotateAngleY = y;
         modelRenderer.rotateAngleZ = z;
     }
-    
+
+    @Override
     public void setRotationAngles(float f, float f1, float f2, float f3, float f4, float f5, Entity entity)
     {
         float swing;

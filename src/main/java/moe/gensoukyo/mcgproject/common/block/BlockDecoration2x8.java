@@ -10,6 +10,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nullable;
 
@@ -30,6 +31,7 @@ public class BlockDecoration2x8 extends BlockRotate2x8 {
         return false;
     }
 
+    @NotNull
     @SideOnly(Side.CLIENT)
     public BlockRenderLayer getRenderLayer()
     {
@@ -37,7 +39,7 @@ public class BlockDecoration2x8 extends BlockRotate2x8 {
     }
 
     @Nullable
-    public AxisAlignedBB getCollisionBoundingBox(IBlockState blockState, IBlockAccess worldIn, BlockPos pos)
+    public AxisAlignedBB getCollisionBoundingBox(IBlockState blockState, @NotNull IBlockAccess worldIn, @NotNull BlockPos pos)
     {
         return NULL_AABB;
     }

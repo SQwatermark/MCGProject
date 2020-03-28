@@ -1,10 +1,12 @@
 package moe.gensoukyo.mcgproject.cilent.init;
 
+import moe.gensoukyo.mcgproject.cilent.entity.RenderKaginawa;
 import moe.gensoukyo.mcgproject.cilent.entity.boat.RenderMCGBoat;
 import moe.gensoukyo.mcgproject.cilent.entity.boat.RenderRACBoat;
 import moe.gensoukyo.mcgproject.cilent.entity.butterfly.*;
 import moe.gensoukyo.mcgproject.cilent.tileentity.TileRanstonePistonRenderer;
 import moe.gensoukyo.mcgproject.common.block.ranstone.*;
+import moe.gensoukyo.mcgproject.common.entity.EntityKaginawa;
 import moe.gensoukyo.mcgproject.common.entity.boat.EntityMCGBoat;
 import moe.gensoukyo.mcgproject.common.entity.boat.EntityRACBoat;
 import moe.gensoukyo.mcgproject.common.entity.butterfly.*;
@@ -54,6 +56,7 @@ public class ModelMapper {
         registerModel(ModItem.ITEM_MCG_BOAT);
         registerModel(ModItem.ITEM_RAC_BOAT);
         registerModel(ModItem.ITEM_GEN_BIG_OAK);
+        registerModel(ModItem.ITEM_KAGINAWA);
 
         registerModel(RanstoneBlock.ITEM);
         registerModel(RanstoneComparator.ITEM);
@@ -89,6 +92,7 @@ public class ModelMapper {
         renderEntity.put(EntityCloudShimmer.class, RenderCloudShimmer.FACTORY);
         renderEntity.put(EntityIllukini.class, RenderIllukini.FACTORY);
         renderEntity.put(EntityRubySile.class, RenderRubySile.FACTORY);
+        renderEntity.put(EntityKaginawa.class, RenderKaginawa.FACTORY);
     }
 
 }

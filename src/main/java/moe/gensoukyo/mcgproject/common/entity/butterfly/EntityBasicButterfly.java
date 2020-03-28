@@ -19,6 +19,7 @@ import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nullable;
 
+//代码取自 kathairis mod 并进行了修改，仅用于测试
 public abstract class EntityBasicButterfly extends EntityAmbientCreature
 {
     private static final DataParameter<Integer> VARIANT = EntityDataManager.createKey(EntityBasicButterfly.class, DataSerializers.VARINT);
@@ -146,7 +147,7 @@ public abstract class EntityBasicButterfly extends EntityAmbientCreature
     {
     }
 
-    protected void updateFallState(double y, boolean onGroundIn, IBlockState state, BlockPos pos)
+    protected void updateFallState(double y, boolean onGroundIn, @NotNull IBlockState state, @NotNull BlockPos pos)
     {
     }
 
@@ -184,7 +185,7 @@ public abstract class EntityBasicButterfly extends EntityAmbientCreature
 
     public int getVariant()
     {
-        return MathHelper.clamp(this.dataManager.get(VARIANT), 0, ButterflyType.META_LOOKUP.length);
+        return MathHelper.clamp(this.dataManager.get(VARIANT), 0, ButterflyType.values().length-1);
     }
 
     public float getEyeHeight()
@@ -200,7 +201,6 @@ public abstract class EntityBasicButterfly extends EntityAmbientCreature
         ILLUKINI(3,"illukini"),
         RUBYSILE(4,"ruby_sile");
 
-        private static final EntityBasicButterfly.ButterflyType[] META_LOOKUP = new EntityBasicButterfly.ButterflyType[values().length];
         private final int meta;
         private final String name;
 
@@ -219,14 +219,6 @@ public abstract class EntityBasicButterfly extends EntityAmbientCreature
         @Override
         public String getName() {
             return name;
-        }
-
-        static
-        {
-            for (EntityBasicButterfly.ButterflyType blockstone$enumtype : values())
-            {
-                META_LOOKUP[blockstone$enumtype.getMetadata()] = blockstone$enumtype;
-            }
         }
 
     }
