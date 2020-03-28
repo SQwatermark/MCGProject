@@ -6,13 +6,12 @@ import moe.gensoukyo.mcgproject.core.MCGProject;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.item.IItemPropertyGetter;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.EnumActionResult;
-import net.minecraft.util.EnumHand;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.*;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
@@ -27,21 +26,26 @@ import java.util.List;
  * @date 2020/3/27
  * 普通的钩绳
  *   存在时间 50 tick
- *   速度为 2.0F
+ *   速度为 1.8F
  *   不精准度为 1.0F
  *   重力 0.03 F
  *   不会对玩家产生向下的速度
  */
 public class ItemKaginawa extends Item {
 
-    float speed = 1.8F;
+    final float defaultSpeed = 1.8F;
+    final int defaultAge = 50;
+    final float defaultInaccuracy = 1.0F;
+    final int defaultOnceDamage = 16;
+
+    NBTTagCompound nbtTagCompound;
 
     public ItemKaginawa() {
         this.setMaxStackSize(1);
         this.setCreativeTab(MCGTabs.FANTASY);
         this.setRegistryName(MCGProject.ID, "kaginawa");
         this.setTranslationKey(MCGProject.ID + "." + "kaginawa");
-        this.setMaxDamage(256);
+        this.setMaxDamage(1024);
         this.addPropertyOverride(new ResourceLocation("cast"), new IItemPropertyGetter()
         {
             @SideOnly(Side.CLIENT)
@@ -92,20 +96,53 @@ public class ItemKaginawa extends Item {
     }
 
     public void act(World worldIn, EntityPlayer playerIn, @NotNull EnumHand handIn) {
+
+        //初始化钩子参数
+        float speed = defaultSpeed;
+        int age = defaultAge;
+        float inaccuracy = defaultInaccuracy;
+        int onceDamage = defaultOnceDamage;
         ItemStack itemStack = playerIn.getHeldItem(handIn);
-        //挥手
+        if (!itemStack.hasTagCompound()) {
+            nbtTagCompound = new NBTTagCompound();
+            nbtTagCompound.setFloat("speed", defaultSpeed);
+            nbtTagCompound.setInteger("age", defaultAge);
+            nbtTagCompound.setFloat("inaccuracy", defaultInaccuracy);
+            nbtTagCompound.setInteger("onceDamage", defaultOnceDamage);
+            itemStack.setTagCompound(nbtTagCompound);
+        } else {
+            nbtTagCompound = itemStack.getTagCompound();
+            assert nbtTagCompound != null;
+            if (nbtTagCompound.hasKey("speed")) {
+                speed = nbtTagCompound.getFloat("speed");
+            }
+            if (nbtTagCompound.hasKey("age")) {
+                age = nbtTagCompound.getInteger("age");
+            }
+            if (nbtTagCompound.hasKey("inaccuracy")) {
+                inaccuracy = nbtTagCompound.getFloat("inaccuracy");
+            }
+            if (nbtTagCompound.hasKey("onceDamage")) {
+                onceDamage = nbtTagCompound.getInteger("onceDamage");
+            }
+        }
+
+        //挥手动作
         playerIn.swingArm(handIn);
-        //抛出钩子
-        EntityKaginawa hook = new EntityKaginawa(worldIn, playerIn);
-        MCGProject.proxy.kagimap.put(playerIn, hook);
+        //播放音效
+        worldIn.playSound(null, playerIn.posX, playerIn.posY, playerIn.posZ, SoundEvents.ENTITY_SNOWBALL_THROW,
+                SoundCategory.NEUTRAL, 0.5F, 0.4F / (itemRand.nextFloat() * 0.4F + 0.8F));
+        EntityKaginawa hook = new EntityKaginawa(worldIn, playerIn, age);
+        hook.shoot(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 0.0F, speed, inaccuracy);
+
         if (!worldIn.isRemote) {
+            MCGProject.proxy.kagimap.put(playerIn, hook);
             worldIn.spawnEntity(hook);
+            //钩绳损坏值++
+            itemStack.damageItem(onceDamage, playerIn);
         } else {
             worldIn.joinEntityInSurroundings(hook);
         }
-        hook.shoot(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 0.0F, this.speed, 1.0F);
-        //钩绳损坏值++
-        itemStack.damageItem(3, playerIn);
 
     }
 
