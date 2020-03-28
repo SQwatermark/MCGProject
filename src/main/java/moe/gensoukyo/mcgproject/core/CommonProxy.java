@@ -19,7 +19,8 @@ public class CommonProxy {
     public WeakHashMap<Entity, EntityKaginawa> kagimap = new WeakHashMap();
 
     @EventHandler
-    public void preInit(FMLPreInitializationEvent event) {
+    public void preInit(FMLPreInitializationEvent event)
+    {
         MinecraftForge.EVENT_BUS.register(ModItem.instance());
         MinecraftForge.EVENT_BUS.register(ModBlock.instance());
         MinecraftForge.EVENT_BUS.register(ModArmor.instance());
@@ -27,12 +28,14 @@ public class CommonProxy {
     }
 
     @EventHandler
-    public void init(FMLInitializationEvent event) {
+    public void init(FMLInitializationEvent event)
+    {
 
     }
 
     @EventHandler
-    public void postInit(FMLPostInitializationEvent event) {
+    public void postInit(FMLPostInitializationEvent event)
+    {
 
     }
 

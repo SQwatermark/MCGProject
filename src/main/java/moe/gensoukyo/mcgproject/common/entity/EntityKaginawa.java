@@ -5,17 +5,22 @@ import net.minecraft.entity.projectile.EntityThrowable;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
 
+/**
+ * 普通的钩绳
+ *   存在时间 40 tick
+ *   速度为 1.5F
+ *   不精准度为 1.0F
+ *   重力 0.03 F
+ *   不会对玩家产生向下的速度
+ */
 @MCGEntity("kaginawa")
 public class EntityKaginawa extends EntityThrowable {
 
-    private double vMotionX;
-    private double vMotionY;
-    private double vMotionZ;
-    private int timelimit;
-
+    @SuppressWarnings("unused")
     public EntityKaginawa(World worldIn) {
         super(worldIn);
         this.setDead();
@@ -23,7 +28,6 @@ public class EntityKaginawa extends EntityThrowable {
 
     public EntityKaginawa(World worldIn, EntityLivingBase throwerIn) {
         super(worldIn, throwerIn);
-        this.timelimit = 0;
     }
 
     public void shoot(double x, double y, double z, float velocity, float inaccuracy)
@@ -43,35 +47,36 @@ public class EntityKaginawa extends EntityThrowable {
         this.motionZ = z;
         float f1 = MathHelper.sqrt(x * x + z * z);
         this.rotationYaw = (float)(MathHelper.atan2(x, z) * (180D / Math.PI));
-        this.rotationPitch = (float)(MathHelper.atan2(y, (double)f1) * (180D / Math.PI));
+        this.rotationPitch = (float)(MathHelper.atan2(y, f1) * (180D / Math.PI));
         this.prevRotationYaw = this.rotationYaw;
         this.prevRotationPitch = this.rotationPitch;
     }
 
     public void onUpdate() {
         super.onUpdate();
-        if (this.timelimit++ > 60) {
+        if (this.ticksExisted > 40) {
             this.setDead();
         }
 
     }
 
-    protected void onImpact(RayTraceResult result)
+    protected void onImpact(@NotNull RayTraceResult result)
     {
-        this.vMotionX = (this.posX - Objects.requireNonNull(this.getThrower()).posX) / 7.0D;
+        double vMotionX = (this.posX - Objects.requireNonNull(this.getThrower()).posX) / 7.0D;
 
+        double vMotionY;
         if (this.posY - this.getThrower().posY > 0.0D) {
-            this.vMotionY = (this.posY - this.getThrower().posY) / (10.0D - Math.pow(this.posY - this.getThrower().posY - 30.0D, 2.0D) / 95.0D);
+            vMotionY = (this.posY - this.getThrower().posY) / (10.0D - Math.pow(this.posY - this.getThrower().posY - 30.0D, 2.0D) / 95.0D);
         } else {
-            this.vMotionY = 0.4D;
+            vMotionY = 0.4D;
         }
 
-        this.vMotionZ = (this.posZ - this.getThrower().posZ) / 7.0D;
+        double vMotionZ = (this.posZ - this.getThrower().posZ) / 7.0D;
         if (this.world.isRemote) {
             EntityLivingBase var10000 = this.getThrower();
-            var10000.motionX += this.vMotionX;
-            var10000.motionY += this.vMotionY;
-            var10000.motionZ += this.vMotionZ;
+            var10000.motionX += vMotionX;
+            var10000.motionY += vMotionY;
+            var10000.motionZ += vMotionZ;
         }
         this.getThrower().fallDistance = 0.0F;
 

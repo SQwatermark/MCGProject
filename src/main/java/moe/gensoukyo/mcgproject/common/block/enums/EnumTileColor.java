@@ -13,7 +13,7 @@ public enum EnumTileColor implements IStringSerializable
     ULTRAM(4);
     private final int meta;
 
-    private EnumTileColor(int meta){
+    EnumTileColor(int meta){
         this.meta = meta;
     }
     public int getMeta() {
