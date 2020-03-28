@@ -34,11 +34,11 @@ public class ItemKaginawa extends Item {
     float speed = 2.0F;
 
     public ItemKaginawa() {
-        this.setMaxDamage(0);
         this.setMaxStackSize(1);
         this.setCreativeTab(MCGTabs.FANTASY);
         this.setRegistryName(MCGProject.ID, "kaginawa");
         this.setTranslationKey(MCGProject.ID + "." + "kaginawa");
+        this.setMaxDamage(256);
         this.addPropertyOverride(new ResourceLocation("cast"), new IItemPropertyGetter()
         {
             @SideOnly(Side.CLIENT)
@@ -64,34 +64,43 @@ public class ItemKaginawa extends Item {
         });
     }
 
+    /**
+     * 持有物品右键时执行的操作，判断是否应该抛出钩绳
+     * 玩家和钩子实体的对应关系用 WeakHashMap 记录，如果玩家正在抛出钩绳，右键就不会有效果
+     */
     @NotNull
     @Override
     public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, @NotNull EnumHand handIn) {
-        playerIn.swingArm(handIn);
-        if (MCGProject.proxy.kagimap.containsKey(playerIn)) {
-            if (MCGProject.proxy.kagimap.get(playerIn).isDead) {
-                EntityKaginawa et = new EntityKaginawa(worldIn, playerIn);
-                MCGProject.proxy.kagimap.put(playerIn, et);
-                if (!worldIn.isRemote) {
-                    worldIn.spawnEntity(et);
-                } else {
-                    worldIn.joinEntityInSurroundings(et);
-                }
-                et.shoot(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 0.0F, this.speed, 1.0F);
-            }
-        } else {
-            EntityKaginawa et = new EntityKaginawa(worldIn, playerIn);
-            MCGProject.proxy.kagimap.put(playerIn, et);
-            if (!worldIn.isRemote) {
-                worldIn.spawnEntity(et);
-            } else {
-                worldIn.joinEntityInSurroundings(et);
-            }
-            et.shoot(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 0.0F, this.speed, 1.0F);
-        }
 
-        return new ActionResult<>(EnumActionResult.SUCCESS, playerIn.getHeldItem(handIn));
+        if (MCGProject.proxy.kagimap.containsKey(playerIn) && !MCGProject.proxy.kagimap.get(playerIn).isDead) {
+            return new ActionResult<>(EnumActionResult.FAIL, playerIn.getHeldItem(handIn));
+        } else {
+            act(worldIn, playerIn, handIn);
+            return new ActionResult<>(EnumActionResult.SUCCESS, playerIn.getHeldItem(handIn));
+        }
     }
 
+    public void act(World worldIn, EntityPlayer playerIn, @NotNull EnumHand handIn) {
+        ItemStack itemStack = playerIn.getHeldItem(handIn);
+        //挥手
+        playerIn.swingArm(handIn);
+        //抛出钩子
+        EntityKaginawa hook = new EntityKaginawa(worldIn, playerIn);
+        MCGProject.proxy.kagimap.put(playerIn, hook);
+        if (!worldIn.isRemote) {
+            worldIn.spawnEntity(hook);
+        } else {
+            worldIn.joinEntityInSurroundings(hook);
+        }
+        hook.shoot(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 0.0F, this.speed, 1.0F);
+        //钩绳损坏值++
+        itemStack.damageItem(3, playerIn);
+
+    }
+
+    public int getItemEnchantability()
+    {
+        return 1;
+    }
 
 }
