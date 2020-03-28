@@ -34,13 +34,14 @@ import java.util.List;
 public class ItemKaginawa extends Item {
 
     final float defaultSpeed = 1.8F;
-    final int defaultAge = 50;
-    final float defaultInaccuracy = 1.0F;
+    final int defaultAge = 45;
+    final float defaultInaccuracy = 0.5F;
     final int defaultOnceDamage = 16;
 
     NBTTagCompound nbtTagCompound;
 
-    public ItemKaginawa() {
+    public ItemKaginawa()
+    {
         this.setMaxStackSize(1);
         this.setCreativeTab(MCGTabs.FANTASY);
         this.setRegistryName(MCGProject.ID, "kaginawa");
@@ -73,9 +74,8 @@ public class ItemKaginawa extends Item {
 
     @Override
     @SideOnly(Side.CLIENT)
-    public void addInformation(ItemStack stack, @Nullable World world, List<String> list, ITooltipFlag flag) {
-        list.add("右键释放钩绳");
-        list.add("钩子存在时间为50tick");
+    public void addInformation(ItemStack stack, @Nullable World world, List<String> list, ITooltipFlag flag)
+    {
         list.add(TextFormatting.DARK_RED + "当心落地");
     }
 
@@ -85,7 +85,8 @@ public class ItemKaginawa extends Item {
      */
     @NotNull
     @Override
-    public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, @NotNull EnumHand handIn) {
+    public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, @NotNull EnumHand handIn)
+    {
 
         if (MCGProject.proxy.kagimap.containsKey(playerIn) && !MCGProject.proxy.kagimap.get(playerIn).isDead) {
             return new ActionResult<>(EnumActionResult.FAIL, playerIn.getHeldItem(handIn));
@@ -93,9 +94,11 @@ public class ItemKaginawa extends Item {
             act(worldIn, playerIn, handIn);
             return new ActionResult<>(EnumActionResult.SUCCESS, playerIn.getHeldItem(handIn));
         }
+
     }
 
-    public void act(World worldIn, EntityPlayer playerIn, @NotNull EnumHand handIn) {
+    public void act(World worldIn, EntityPlayer playerIn, @NotNull EnumHand handIn)
+    {
 
         //初始化钩子参数
         float speed = defaultSpeed;
