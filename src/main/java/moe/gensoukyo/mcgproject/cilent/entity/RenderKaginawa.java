@@ -1,6 +1,7 @@
 package moe.gensoukyo.mcgproject.cilent.entity;
 
 import moe.gensoukyo.mcgproject.common.entity.EntityKaginawa;
+import moe.gensoukyo.mcgproject.common.item.ItemKaginawa;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.GlStateManager;
@@ -73,7 +74,7 @@ public class RenderKaginawa extends Render<EntityKaginawa>
             int k = entityplayer.getPrimaryHand() == EnumHandSide.RIGHT ? 1 : -1;
             ItemStack itemstack = entityplayer.getHeldItemMainhand();
 
-            if (!(itemstack.getItem() instanceof net.minecraft.item.ItemFishingRod))
+            if (!(itemstack.getItem() instanceof ItemKaginawa))
             {
                 k = -k;
             }
@@ -142,4 +143,5 @@ public class RenderKaginawa extends Render<EntityKaginawa>
     {
         return FISH_PARTICLES;
     }
+
 }
