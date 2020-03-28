@@ -19,7 +19,19 @@ import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nullable;
 
+/**
+ * @author SQwatermark
+ * @date 2020/3/27
+ * 普通的钩绳
+ *   存在时间 50 tick
+ *   速度为 2.0F
+ *   不精准度为 1.0F
+ *   重力 0.03 F
+ *   不会对玩家产生向下的速度
+ */
 public class ItemKaginawa extends Item {
+
+    float speed = 2.0F;
 
     public ItemKaginawa() {
         this.setMaxDamage(0);
@@ -30,7 +42,7 @@ public class ItemKaginawa extends Item {
         this.addPropertyOverride(new ResourceLocation("cast"), new IItemPropertyGetter()
         {
             @SideOnly(Side.CLIENT)
-            public float apply(ItemStack stack, @Nullable World worldIn, @Nullable EntityLivingBase entityIn)
+            public float apply(@NotNull ItemStack stack, @Nullable World worldIn, @Nullable EntityLivingBase entityIn)
             {
                 if (entityIn == null)
                 {
@@ -65,7 +77,7 @@ public class ItemKaginawa extends Item {
                 } else {
                     worldIn.joinEntityInSurroundings(et);
                 }
-                et.shoot(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 0.0F, 1.5F, 1.0F);
+                et.shoot(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 0.0F, this.speed, 1.0F);
             }
         } else {
             EntityKaginawa et = new EntityKaginawa(worldIn, playerIn);
@@ -75,7 +87,7 @@ public class ItemKaginawa extends Item {
             } else {
                 worldIn.joinEntityInSurroundings(et);
             }
-            et.shoot(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 0.0F, 1.5F, 1.0F);
+            et.shoot(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 0.0F, this.speed, 1.0F);
         }
 
         return new ActionResult<>(EnumActionResult.SUCCESS, playerIn.getHeldItem(handIn));
