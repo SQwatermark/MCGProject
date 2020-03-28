@@ -277,6 +277,10 @@ public class EntityMCGBoat extends EntityBoat implements IBoat {
                 acc -= (getBoatBrk() - 0.005F);
             this.motionX += (MathHelper.sin(-this.rotationYaw * 0.017453292F) * acc);
             this.motionZ += (MathHelper.cos(this.rotationYaw * 0.017453292F) * acc);
+
+            this.motionX = MathHelper.clamp(this.motionX, -8, 8);
+            this.motionY = MathHelper.clamp(this.motionY, -8, 8);
+            this.motionZ = MathHelper.clamp(this.motionZ, -8, 8);
         }
     }
 
@@ -368,10 +372,10 @@ public class EntityMCGBoat extends EntityBoat implements IBoat {
      * @apiNote 删除让船撞坏的代码
      * */
     @Override
-    protected void updateFallState(double dist, boolean fall, IBlockState state, BlockPos pos) {
+    protected void updateFallState(double dist, boolean onGround, IBlockState state, BlockPos pos) {
         this.setLastYd(this.motionY);
         if (!this.isRiding()) {
-            if (fall) {
+            if (onGround) {
                 if (this.fallDistance > 3.0F) {
                     if (getStatus() != EntityBoat.Status.ON_LAND) {
                         this.fallDistance = 0.0F;
