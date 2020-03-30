@@ -26,7 +26,6 @@ public final class ModItem {
     public static ItemMCGBoat ITEM_MCG_BOAT;
     public static ItemRACBoat ITEM_RAC_BOAT;
     public static ItemMetaChanger ITEM_META_CHANGER;
-    //public static ItemPowerTool ITEM_POWERTOOL;
     public static ItemGenBigOak ITEM_GEN_BIG_OAK;
     public static ItemKaginawa ITEM_KAGINAWA;
 
@@ -43,13 +42,11 @@ public final class ModItem {
         ITEM_MCG_BOAT = new ItemMCGBoat();
         ITEM_RAC_BOAT = new ItemRACBoat();
         ITEM_META_CHANGER = new ItemMetaChanger();
-        //ITEM_POWERTOOL = new ItemPowerTool();
         ITEM_GEN_BIG_OAK = new ItemGenBigOak();
         ITEM_KAGINAWA = new ItemKaginawa();
         event.getRegistry().register(ITEM_MCG_BOAT);
         event.getRegistry().register(ITEM_RAC_BOAT);
         event.getRegistry().register(ITEM_META_CHANGER);
-        //event.getRegistry().register(ITEM_POWERTOOL);
         event.getRegistry().register(ITEM_GEN_BIG_OAK);
         event.getRegistry().register(ITEM_KAGINAWA);
     }

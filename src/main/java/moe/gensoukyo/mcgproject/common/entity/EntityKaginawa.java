@@ -8,6 +8,7 @@ import net.minecraft.world.World;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
+import java.util.Random;
 
 /**
  * @author SQwatermark
@@ -22,14 +23,18 @@ import java.util.Objects;
 @MCGEntity("kaginawa")
 public class EntityKaginawa extends EntityThrowable {
 
+    int age = 50;
+    Random random = new Random();
+
     @SuppressWarnings("unused")
     public EntityKaginawa(World worldIn) {
         super(worldIn);
         this.setDead();
     }
 
-    public EntityKaginawa(World worldIn, EntityLivingBase throwerIn) {
+    public EntityKaginawa(World worldIn, EntityLivingBase throwerIn, int ageIn) {
         super(worldIn, throwerIn);
+        this.age = ageIn;
     }
 
     public void shoot(double x, double y, double z, float velocity, float inaccuracy)
@@ -38,9 +43,9 @@ public class EntityKaginawa extends EntityThrowable {
         x = x / (double)f;
         y = y / (double)f;
         z = z / (double)f;
-        x = x + 0.0037499999161809683D * (double)inaccuracy;
-        y = y + 0.0037499999161809683D * (double)inaccuracy;
-        z = z + 0.0037499999161809683D * (double)inaccuracy;
+        x = x + rand.nextGaussian() * 0.007499999832361937D * (double)inaccuracy;
+        y = y + rand.nextGaussian() * 0.007499999832361937D * (double)inaccuracy;
+        z = z + rand.nextGaussian() * 0.007499999832361937D * (double)inaccuracy;
         x = x * (double)velocity;
         y = y * (double)velocity;
         z = z * (double)velocity;
@@ -56,7 +61,7 @@ public class EntityKaginawa extends EntityThrowable {
 
     public void onUpdate() {
         super.onUpdate();
-        if (this.ticksExisted > 50) {
+        if (this.ticksExisted > age) {
             this.setDead();
         }
 
