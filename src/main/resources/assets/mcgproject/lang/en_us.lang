@@ -279,6 +279,7 @@ item.mcgproject.rac_boat.name=RAC Boat
 item.mcgproject.meta_changer.name=河童的调试棒
 item.mcgproject.generator_big_oak.name=Big Oak Generator
 item.mcgproject.kaginawa.name=Grabbing Hook
+item.mcgproject.block_info_displayer.name=Block Info Dispayer
 
 tile.mcgproject.blockRanstone.name=Ranstone
 item.mcgproject.comparator.name=Ranstone Comparator
