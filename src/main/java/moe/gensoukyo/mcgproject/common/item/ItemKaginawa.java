@@ -25,11 +25,13 @@ import java.util.List;
  * @author SQwatermark
  * @date 2020/3/27
  * 普通的钩绳
- *   存在时间 50 tick
- *   速度为 1.8F
- *   不精准度为 1.0F
- *   重力 0.03 F
- *   不会对玩家产生向下的速度
+ *   存在时间 45 tick，速度为 1.8F，不精准度为 1.0F，重力 0.03 F，不会对玩家产生向下的速度
+ * 可用 NBT 数据修改的参数：
+ * key              value
+ * speed            钩子运动速度
+ * age              钩子存在时间/tick
+ * inaccuracy       方向精准程度，默认1.0f几乎无偏离，明显的偏离会在值为几十的时候显现出来
+ * onceDamage       使用一次消耗的耐久，总耐久为1024，默认值为16，也就是使用次数限定64次
  */
 public class ItemKaginawa extends Item {
 

@@ -58,6 +58,8 @@ public class ModBlock {
         blocks2.add(new BlockTatami());
         blocks4.add(new BlockInteger4(Material.CLAY, "plaster", MCGTabs.TOUHOU, SoundType.STONE));
         blocks16.add(new BlockInteger16(Material.WOOD, "plank", MCGTabs.TOUHOU, SoundType.WOOD));
+        blocks16.add(new BlockInteger16(Material.WOOD, "plank_2", MCGTabs.TOUHOU, SoundType.WOOD));
+        blocks6.add(new BlockInteger6(Material.WOOD, "plank_3", MCGTabs.TOUHOU, SoundType.WOOD));
         blocks4.add(new BlockInteger4(Material.WOOD, "blocks_wood", MCGTabs.TOUHOU, SoundType.WOOD));
         blocks5.add(TILE);
         blocks2.add(new BlockWindow(Material.WOOD, "window", MCGTabs.TOUHOU, SoundType.WOOD));

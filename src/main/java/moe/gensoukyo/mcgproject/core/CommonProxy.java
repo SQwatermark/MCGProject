@@ -1,10 +1,7 @@
 package moe.gensoukyo.mcgproject.core;
 
 import moe.gensoukyo.mcgproject.common.entity.EntityKaginawa;
-import moe.gensoukyo.mcgproject.common.init.ModArmor;
-import moe.gensoukyo.mcgproject.common.init.ModBlock;
-import moe.gensoukyo.mcgproject.common.init.ModEntity;
-import moe.gensoukyo.mcgproject.common.init.ModItem;
+import moe.gensoukyo.mcgproject.common.init.*;
 import net.minecraft.entity.Entity;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod.EventHandler;
@@ -25,6 +22,7 @@ public class CommonProxy {
         MinecraftForge.EVENT_BUS.register(ModBlock.instance());
         MinecraftForge.EVENT_BUS.register(ModArmor.instance());
         MinecraftForge.EVENT_BUS.register(ModEntity.instance());
+        MinecraftForge.EVENT_BUS.register(ModTileEntity.instance());
     }
 
     @EventHandler

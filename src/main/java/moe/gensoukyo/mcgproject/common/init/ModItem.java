@@ -14,7 +14,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
  * @author SQwatermark
  * @date 2020/2/14
  */
-public final class ModItem {
+public class ModItem {
 
     private static ModItem instance;
     public static ModItem instance()
