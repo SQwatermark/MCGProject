@@ -19,8 +19,10 @@ public class BackpackGuiHandler implements IMessageHandler<BackpackPacket, IMess
     @SideOnly(Side.CLIENT)
     public void showBackpack(int window, BackpackCore.Backpack backpack) {
         Minecraft mc = Minecraft.getMinecraft();
-        mc.displayGuiScreen(new GuiGensoChest(mc.player.inventory, backpack));
-        mc.player.openContainer.windowId = window;
+        mc.addScheduledTask(() -> {
+            mc.displayGuiScreen(new GuiGensoChest(mc.player.inventory, backpack));
+            mc.player.openContainer.windowId = window;
+        });
     }
 
     @Override
@@ -30,6 +32,7 @@ public class BackpackGuiHandler implements IMessageHandler<BackpackPacket, IMess
             BackpackCore.Backpack backpack = packet.getBackpack();
             showBackpack(packet.getWindowId(), new BackpackCore.Backpack(backpack.id, backpack.type));
         }
+
         return null;
     }
 
