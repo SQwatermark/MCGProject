@@ -16,8 +16,9 @@ public class NetworkWrapper {
     static {
         INSTANCE = NetworkRegistry.INSTANCE.newSimpleChannel(MCGProject.ID);
 
-        INSTANCE.registerMessage(BoatHandler.class, BoatPacket.class, 0, Side.SERVER);
-        INSTANCE.registerMessage(BackpackGuiHandler.class, BackpackPacket.class, 1, Side.CLIENT);
+        INSTANCE.registerMessage(BackpackGuiHandler.class, BackpackPacket.class, 0, Side.CLIENT);
+        INSTANCE.registerMessage(BoatStCHandler.class, BoatPacket.class, 1, Side.CLIENT);
+        INSTANCE.registerMessage(BoatCtSHandler.class, BoatPacket.class, 2, Side.SERVER);
     }
 
 }

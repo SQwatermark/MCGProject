@@ -85,6 +85,10 @@ public class EntityMCGBoat extends EntityBoat implements IBoat {
      * @apiNote 客户端-服务端同步用，用于撞击判定，不需要存入NBT
      * */
     public double prevVel = 0, vel = 0;
+    /**
+     * @apiNote 这三个数值只在服务端使用，好像不能使用motionXYZ
+     * */
+    public double vx, vy, vz;
 
     public void setThreshold(float threshold) { dataManager.set(THRESHOLD, threshold); }
     public void setMaxDamage(float damage) { dataManager.set(DAMAGE, damage); }
@@ -249,7 +253,7 @@ public class EntityMCGBoat extends EntityBoat implements IBoat {
     }
 
     public float getMaxSpeed() {
-        return isOnSoftSurface() ? getBoatMaxV() : getBoatMinV();
+        return isOnSoftSurface() ? getBoatMinV() : getBoatMaxV();
     }
 
     /**
@@ -257,8 +261,12 @@ public class EntityMCGBoat extends EntityBoat implements IBoat {
      * @apiNote 同时实现船起跳及加速的功能
      * */
     @SideOnly(Side.CLIENT)
-    public void controlBoatExtra() {
+    public void updateBoatExtra() {
         if (this.getControllingPassenger() instanceof EntityPlayerSP) {
+            this.prevVel = vel;
+            this.vel = Math.sqrt(
+                    this.motionX * this.motionX + this.motionY * this.motionY + this.motionZ * this.motionZ);
+
             BoatPacket packet = new BoatPacket(this);
             NetworkWrapper.INSTANCE.sendToServer(packet);
 
@@ -289,13 +297,9 @@ public class EntityMCGBoat extends EntityBoat implements IBoat {
         // 使船能够空格起跳，及额外加速
         // TODO: 你能信，船的核心代码是客户端执行
         if (this.world.isRemote)
-            controlBoatExtra();
+            updateBoatExtra();
 
         super.onUpdate();
-
-        this.prevVel = vel;
-        this.vel = Math.sqrt(
-                this.motionX * this.motionX + this.motionY * this.motionY + this.motionZ * this.motionZ);
 
         // 禁止非人类生物上船
         if (!this.world.isRemote) {
@@ -306,14 +310,22 @@ public class EntityMCGBoat extends EntityBoat implements IBoat {
     }
 
     public Vec3d getMotionVector() {
-        return new Vec3d(this.motionX, this.motionY, this.motionZ);
+        if (world.isRemote)
+            return new Vec3d(this.motionX, this.motionY, this.motionZ);
+        else
+            return new Vec3d(this.vx, this.vy, this.vz);
     }
 
     public void setVelocity(Vec3d vec) {
-        this.motionX = vec.x;
-        this.motionY = vec.y;
-        this.motionZ = vec.z;
-        this.isAirBorne = true;
+        if (!world.isRemote) {
+            BoatPacket packet = new BoatPacket(this, vec);
+            NetworkWrapper.INSTANCE.sendToDimension(packet, packet.dim);
+        } else {
+            this.motionX = vec.x;
+            this.motionY = vec.y;
+            this.motionZ = vec.z;
+            this.isAirBorne = true;
+        }
     }
 
     /**
@@ -322,8 +334,6 @@ public class EntityMCGBoat extends EntityBoat implements IBoat {
      * */
     @Override
     public void applyEntityCollision(Entity entity) {
-        super.applyEntityCollision(entity);
-
         // 撞击船然后按动量守恒
         if (entity instanceof EntityMCGBoat && !this.isPassenger(entity)) {
             EntityMCGBoat boat = (EntityMCGBoat) entity;
@@ -337,6 +347,8 @@ public class EntityMCGBoat extends EntityBoat implements IBoat {
                 this.setVelocity(va);
                 boat.setVelocity(vb);
             }
+
+            return;
         }
 
         // 撞击生物并造成伤害
@@ -365,7 +377,11 @@ public class EntityMCGBoat extends EntityBoat implements IBoat {
             Vec3d src = this.getPositionVector();
             Vec3d vec = tar.subtract(src).normalize().scale(this.vel * this.getBoatMass());
             living.addVelocity(vec.x, vec.y, vec.z);
+
+            return;
         }
+
+        super.applyEntityCollision(entity);
     }
 
     /**
