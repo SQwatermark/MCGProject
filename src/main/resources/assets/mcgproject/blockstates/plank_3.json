@@ -1,0 +1,17 @@
+{
+  "forge_marker": 1,
+  "defaults": {"model": "cube_all"},
+  "variants": {
+    "inventory": [{}],
+    "meta": {
+      "0": {"textures": {"all": "mcgproject:blocks/touhou/plank_oak_full"}},
+      "1": {"textures": {"all": "mcgproject:blocks/touhou/plank_jungle_full"}},
+      "2": {"textures": {"all": "mcgproject:blocks/touhou/plank_dark_oak_full"}},
+      "3": {"textures": {"all": "mcgproject:blocks/touhou/plank_redwood_full"}},
+      "4": {"textures": {"all": "mcgproject:blocks/touhou/plank_brown_full"}},
+      "5": {"textures": {"all": "mcgproject:blocks/touhou/plank_oak_full"}},
+      "6": {"textures": {"all": "mcgproject:blocks/touhou/plank_oak_full"}},
+      "7": {"textures": {"all": "mcgproject:blocks/touhou/plank_oak_full"}}
+    }
+  }
+}

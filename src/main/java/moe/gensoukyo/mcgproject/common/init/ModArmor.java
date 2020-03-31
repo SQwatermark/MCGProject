@@ -18,7 +18,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import java.util.LinkedList;
 import java.util.Objects;
 
-public final class ModArmor {
+public class ModArmor {
 
     private static ModArmor instance;
     public static ModArmor instance()

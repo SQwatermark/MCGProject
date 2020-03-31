@@ -14,7 +14,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
  * @author SQwatermark
  * @date 2020/2/14
  */
-public final class ModItem {
+public class ModItem {
 
     private static ModItem instance;
     public static ModItem instance()
@@ -28,6 +28,7 @@ public final class ModItem {
     public static ItemMetaChanger ITEM_META_CHANGER;
     public static ItemGenBigOak ITEM_GEN_BIG_OAK;
     public static ItemKaginawa ITEM_KAGINAWA;
+    public static ItemBlockInfo ITEM_BLOCK_INFO;
 
     /**
      * 注册所有物品
@@ -44,10 +45,12 @@ public final class ModItem {
         ITEM_META_CHANGER = new ItemMetaChanger();
         ITEM_GEN_BIG_OAK = new ItemGenBigOak();
         ITEM_KAGINAWA = new ItemKaginawa();
+        ITEM_BLOCK_INFO = new ItemBlockInfo();
         event.getRegistry().register(ITEM_MCG_BOAT);
         event.getRegistry().register(ITEM_RAC_BOAT);
         event.getRegistry().register(ITEM_META_CHANGER);
         event.getRegistry().register(ITEM_GEN_BIG_OAK);
         event.getRegistry().register(ITEM_KAGINAWA);
+        event.getRegistry().register(ITEM_BLOCK_INFO);
     }
 }

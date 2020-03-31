@@ -52,11 +52,11 @@ public class ModelMapper {
         }
 
         registerModel(ModItem.ITEM_META_CHANGER);
-        //registerModel(ModItem.ITEM_POWERTOOL);
         registerModel(ModItem.ITEM_MCG_BOAT);
         registerModel(ModItem.ITEM_RAC_BOAT);
         registerModel(ModItem.ITEM_GEN_BIG_OAK);
         registerModel(ModItem.ITEM_KAGINAWA);
+        registerModel(ModItem.ITEM_BLOCK_INFO);
 
         registerModel(RanstoneBlock.ITEM);
         registerModel(RanstoneComparator.ITEM);
