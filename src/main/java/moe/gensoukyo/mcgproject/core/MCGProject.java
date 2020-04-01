@@ -2,6 +2,7 @@ package moe.gensoukyo.mcgproject.core;
 
 
 import moe.gensoukyo.mcgproject.common.backpack.BackpackCore;
+import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.SidedProxy;
@@ -36,6 +37,7 @@ public class MCGProject {
     {
         logger = event.getModLog();
         proxy.preInit(event);
+        FluidRegistry.enableUniversalBucket();
     }
 
     @SuppressWarnings("unused")

@@ -1,0 +1,12 @@
+{
+  "name": "剪切",
+  "icon": "minecraft:writable_book",
+  "category": "clipboard",
+  "sortnum": 1,
+  "pages": [
+    {
+      "type": "text",
+      "text": "待续"
+    }
+  ]
+}

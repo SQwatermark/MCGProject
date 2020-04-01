@@ -1,0 +1,14 @@
+{
+  "name": "魔豆",
+  "icon": "mcgproject:generator_big_oak",
+  "category": "items",
+  "sortnum": 0,
+  "pages": [
+    {
+      "type": "spotlight",
+      "item": "mcgproject:generator_big_oak",
+      "title": "魔豆",
+      "text": "充满生命魔力的魔豆，只要种下就会立刻生长出大型橡树。$(br2)不过即便如此，橡树也只能长在树苗可以生长的地方。$(br2)$(m)不要问为什么豆子可以长出橡树，问就是魔法"
+    }
+  ]
+}

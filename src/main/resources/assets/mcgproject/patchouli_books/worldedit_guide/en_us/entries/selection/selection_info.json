@@ -1,0 +1,36 @@
+{
+  "name": "选区信息",
+  "icon": "minecraft:writable_book",
+  "category": "selection",
+  "sortnum": 4,
+  "pages": [
+    {
+      "type": "text",
+      "text": "WorldEdit 提供了一些可以得到选择的区域的信息的命令。$(li)$(l:selection/selection_info#size)$(t:点击跳转)获取选区大小 size$()$(li)$(l:selection/selection_info#count)$(t:点击跳转)获取一种方块的数量 count$()$(li)$(l:selection/selection_info#distr)$(t:点击跳转)获取方块的分布律 distr$()$(li)$(l:selection/selection_info#center)$(t:点击跳转)找到选区中心 center$()"
+    },
+    {
+      "type": "text",
+      "title": "获取选区大小",
+      "anchor": "size",
+      "text": "$(li)//size [-c]$(br2)显示选区内的方块数量。不计算空气方块。$(br)使用-c标签会对剪贴板进行计算。"
+    },
+    {
+      "type": "text",
+      "title": "获取一种方块的数量",
+      "anchor": "count",
+      "text": "$(li)//count [-d] <方块种类>$(br2)显示选区内一种指定方块的数量。$(br)使用-d标签可以支持不同附加值的方块。$(br2)例子: $(li)//count torch$(li)//count -d torch:1"
+    },
+    {
+      "type": "text",
+      "title": "获取方块的分布律",
+      "anchor": "distr",
+      "text": "$(li)//distr [-cd]$(br2)显示选区内的方块各种方块的比例。$(br)使用-c标签会对剪贴板内容进行计算。$(br)使用-d标签会对不同附加值的方块进行区分。"
+    },
+    {
+      "type": "text",
+      "title": "找到选区中心",
+      "anchor": "center",
+      "text": "$(li)//center <方块类型>$(br2)会在选区中心位置放上一个(或8个)方块"
+    }
+  ]
+}

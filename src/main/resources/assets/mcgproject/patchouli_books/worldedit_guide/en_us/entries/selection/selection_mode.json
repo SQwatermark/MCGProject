@@ -1,0 +1,54 @@
+{
+  "name": "选区模式",
+  "icon": "minecraft:writable_book",
+  "category": "selection",
+  "sortnum": 1,
+  "pages": [
+    {
+      "type": "text",
+      "text": "WorldEdit内置7种不同的选区模式$(br)分别为: $(li)$(l:selection/selection_mode#cuboid)$(t:默认的选区模式\n左键选择第一个点\n右键选择第二个点)长方体 cuboid$()$(li)$(l:selection/selection_mode#extend)$(t:左键选择第一个点。\n之后每次右键都将长方体区域扩展至选中位置。\n可以用于选中整座建筑。)扩展长方体 extend$()$(li)$(l:selection/selection_mode#poly)$(t:左键点击选择第一个选择点。\n之后所有的选择点使用右键点击。\n每次右键点击选择都会增加一个新的点。)棱柱 poly$()$(li)$(l:selection/selection_mode#ellipsoid)$(t:左键点击选择中心，右键点击扩大选区。)椭球 ellipsoid$()$(li)$(l:selection/selection_mode#sphere)$(t:左键点击选择中心，右键点击扩大选区。)球体 sphere$()$(li)$(l:selection/selection_mode#cyl)$(t:左键点击选择中心，右键点击扩大选区。\n第一次右键点击可以扩大圆柱体的底面，第二次右键点击可以提升圆柱体的高度。)圆柱体 cyl$()$(li)$(l:selection/selection_mode#convex)$(t:左键点击选择第一个点，其余的点使用右键点击选择。)多面体 convex$()$(br2)切换选区模式的指令是$(li)//sel <选区模式>"
+    },
+    {
+      "type": "text",
+      "title": "长方体选区模式",
+      "anchor": "cuboid",
+      "text": "$(br)默认的选区模式，指令是//sel cuboid"
+    },
+    {
+      "type": "text",
+      "title": "扩展长方体选区模式",
+      "anchor": "extend",
+      "text": "$(br)指令是//sel extend"
+    },
+    {
+      "type": "text",
+      "title": "棱柱选区模式",
+      "anchor": "poly",
+      "text": "$(br)指令是//sel poly"
+    },
+    {
+      "type": "text",
+      "title": "椭球选区模式",
+      "anchor": "ellipsoid",
+      "text": "$(br)指令是//sel ellipsoid"
+    },
+    {
+      "type": "text",
+      "title": "球体选区模式",
+      "anchor": "sphere",
+      "text": "$(br)指令是//sel sphere"
+    },
+    {
+      "type": "text",
+      "title": "圆柱体选区模式",
+      "anchor": "cyl",
+      "text": "$(br)指令是//sel cyl"
+    },
+    {
+      "type": "text",
+      "title": "多面体选区模式",
+      "anchor": "convex",
+      "text": "$(br)指令是//sel convex"
+    }
+  ]
+}

@@ -1,0 +1,84 @@
+{
+  "name": "选区操作",
+  "icon": "minecraft:writable_book",
+  "category": "selection",
+  "sortnum": 3,
+  "pages": [
+    {
+      "type": "text",
+      "text": "操作类型: $(li)$(l:selection/selection_operation#set)$(t:点击跳转)放置 set$()$(li)$(l:selection/selection_operation#replace)$(t:点击跳转)替换 replace$()$(li)$(l:selection/selection_operation#walls)$(t:点击跳转)围墙 walls/outline$()$(li)$(l:selection/selection_operation#overlay)$(t:点击跳转)覆盖 overlay$()$(li)$(l:selection/selection_operation#stack)$(t:点击跳转)重复 stack$()$(li)$(l:selection/selection_operation#move)$(t:点击跳转)移动 move$()$(li)$(l:selection/selection_operation#smooth)$(t:点击跳转)平滑 smooth$()$(li)$(l:selection/selection_operation#naturalize)$(t:点击跳转)自然化 naturalize$()$(li)$(l:selection/selection_operation#setbiome)$(t:点击跳转)修改生物群系 setbiome$()$(li)$(l:selection/selection_operation#hollow)$(t:点击跳转)镂空 hollow$()$(li)$(l:selection/selection_operation#line)$(t:点击跳转)线条 line/curve$()$(li)$(l:selection/selection_operation#deform)$(t:点击跳转)选区变形 deform$()"
+    },
+    {
+      "type": "text",
+      "title": "放置",
+      "anchor": "set",
+      "text": "$(li)//set <方块种类>$(br2)例子: $(li)//set grass$(li)//set 0$(li)//set 25%stone,50%ironore,25%coalore"
+    },
+    {
+      "type": "text",
+      "title": "替换",
+      "anchor": "replace",
+      "text": "$(li)//replace [要替换掉的方块] <用于替换的方块>$(br2)只写一种参数会替换所有非空气方块。$(br2)例子: $(li)//replace grass$(li)//replace grass,dirt diamondore$(li)//replace stone 70%goldore,30%diamondore"
+    },
+    {
+      "type": "text",
+      "title": "围墙",
+      "anchor": "walls",
+      "text": "$(li)//walls <方块种类>$(li)//outline <方块种类>$(br2)两者的区别是，walls不包含地板和天花板，而outline包含。$(br)outline也可以写成faces"
+    },
+    {
+      "type": "text",
+      "title": "覆盖",
+      "anchor": "overlay",
+      "text": "$(li)//overlay <方块种类>$(br2)选区内的方块表面覆盖一层另一种方块。"
+    },
+    {
+      "type": "text",
+      "title": "重复",
+      "anchor": "stack",
+      "text": "$(li)//stack <次数> [方向]$(br2)这个命令会向你所看的方向重复放置你的选区内容。$(br2)额外参数: $(li)方向不填默认为玩家朝向$(li)-m <蒙版>将会只重复指定方块$(li)-e将会同时重复放置实体$(li)-b将会同时重复生物群系$(br2)例子: $(li)//stack 50 west"
+    },
+    {
+      "type": "text",
+      "title": "移动",
+      "anchor": "move",
+      "text": "$(li)//move <距离> [方向] [填充方块]$(br2)额外参数: $(li)可以填写原位置留下的方块，可用于地形的移动$(li)添加-s参数可以同时移动选区本身。$(li)此外stack有的参数它都有$(br2)例子: $(li)//move 2$(li)//move 2 west stone$(li)//move -s 2 down"
+    },
+    {
+      "type": "text",
+      "title": "平滑",
+      "anchor": "smooth",
+      "text": "$(li)//smooth [迭代次数]$(br2)直观来说，迭代次数越高，平滑程度越高。$(br2)对于任何陡峭和复杂的区域，如洞穴、悬崖、塑像等，与其说是平滑，不如说是泥石流"
+    },
+    {
+      "type": "text",
+      "title": "自然化",
+      "anchor": "naturalize",
+      "text": "$(li)//naturalize$(br2)以顶层草方块，下方 3 格泥土方块，泥土方块下方原石方块的构造对选区内方块进行替换。"
+    },
+    {
+      "type": "text",
+      "title": "修改生物群系",
+      "anchor": "setbiome",
+      "text": "$(li)//setbiome <生物群系>$(br2)设置生物群系后无法立刻显示，这是因为生物群系数据不是实时同步的，客户端需要刷新区块才能从服务器接收到新数据"
+    },
+    {
+      "type": "text",
+      "title": "镂空",
+      "anchor": "hollow",
+      "text": "$(li)//hollow [外壳厚度] [填充方块类型]$(br2)默认外壳厚度为1，填充方块为空气"
+    },
+    {
+      "type": "text",
+      "title": "线条",
+      "anchor": "line",
+      "text": "$(li)//line <方块类型> [直径]$(li)//curve <方块类型> [直径]$(br2)要绘制直线，在cuboid选区模式下使用//line指令。$(br)要绘制曲线，在convex选区模式下使用//curve指令。$(br2)额外参数: $(li)-h让线条空心"
+    },
+    {
+      "type": "text",
+      "title": "选区变形",
+      "anchor": "deform",
+      "text": "$(li)//deform <表达式>$(br2)使用$(l:https://www.mcbbs.net/thread-544415-1-1.html) 自定义表达式$()$(br2)标签: $(li)-r使用全局坐标，默认使用相对于选区的局部坐标$(li)-o会使变换时使用全局坐标，同时将坐标系原点移动到玩家位置$(li)如果不使用标签，坐标取值范围会被归一化为区间[-1,1]"
+    }
+  ]
+}

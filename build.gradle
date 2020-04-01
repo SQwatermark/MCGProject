@@ -43,6 +43,7 @@ dependencies {
     compile fileTree(dir: 'libs', include: '*.jar')
     implementation 'org.jetbrains:annotations:15.0'
     deobfCompile('noppes.npcs:CustomNPCs_1.12.2-(01Oct19)')
+    deobfCompile('vazkii:Patchouli-1.0-20')
 
     // you may put jars on which you depend on in ./libs
     // or you may define them like so..

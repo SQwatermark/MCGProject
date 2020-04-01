@@ -1,0 +1,14 @@
+{
+  "name": "方块勘探仪",
+  "icon": "mcgproject:block_info_displayer",
+  "category": "items",
+  "sortnum": 0,
+  "pages": [
+    {
+      "type": "spotlight",
+      "item": "mcgproject:block_info_displayer",
+      "title": "方块勘探仪",
+      "text": "来自河童的神秘技术，可以用于获取一堆看不懂的信息$(li)右击方块可获取方块ID"
+    }
+  ]
+}

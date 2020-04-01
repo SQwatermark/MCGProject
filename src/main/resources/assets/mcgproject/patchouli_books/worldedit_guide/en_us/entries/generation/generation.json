@@ -1,0 +1,36 @@
+{
+  "name": "生成",
+  "icon": "minecraft:writable_book",
+  "category": "generation",
+  "sortnum": 0,
+  "pages": [
+    {
+      "type": "text",
+      "text": "形状: $(li)$(l:generation/generation#cyl)$(t:点击跳转)圆柱 cyl$()$(li)$(l:generation/generation#sphere)$(t:点击跳转)球体 sphere$()$(li)$(l:generation/generation#pyramid)$(t:点击跳转)金字塔 pyramid$()$(li)$(l:generation/generation#generate)$(t:点击跳转)复杂形状 generate$()"
+    },
+    {
+      "type": "text",
+      "title": "生成圆柱",
+      "anchor": "cyl",
+      "text": "$(li)//cyl <方块> <半径> [高度]$(li)//hcyl <方块> <半径> [高度]$(br2)cyl生成实心圆柱，hcyl生成空心圆柱。$(br)玩家位置为圆柱底面圆心$(br)想做圆形生成高度为1的圆柱就可以了。$(br2)生成椭圆柱: $(li)//(h)cyl <方块> <东西半径>,<南北半径> [高度]"
+    },
+    {
+      "type": "text",
+      "title": "生成球体",
+      "anchor": "sphere",
+      "text": "$(li)//sphere <方块> <半径>$(li)//hsphere <方块> <半径>$(br2)可以使用-r参数将球体底部设置为玩家位置。$(br2)生成椭球体$(li)//(h)sphere <方块> <南北半径> <上下半径> <东西半径>"
+    },
+    {
+      "type": "text",
+      "title": "生成金字塔",
+      "anchor": "pyramid",
+      "text": "$(li)//pyramid <方块> <大小>$(li)//hpyramid <方块> <大小>"
+    },
+    {
+      "type": "text",
+      "title": "编写复杂的形状",
+      "anchor": "generate",
+      "text": "$(li)//generate <方块> <函数>$(br2)比较复杂，感兴趣可以看看$(l:https://www.mcbbs.net/thread-535283-1-1.html)参考资料$()"
+    }
+  ]
+}

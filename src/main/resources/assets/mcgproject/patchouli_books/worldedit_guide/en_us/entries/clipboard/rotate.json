@@ -1,0 +1,12 @@
+{
+  "name": "旋转",
+  "icon": "minecraft:writable_book",
+  "category": "clipboard",
+  "sortnum": 3,
+  "pages": [
+    {
+      "type": "text",
+      "text": "待续"
+    }
+  ]
+}

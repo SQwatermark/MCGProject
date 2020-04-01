@@ -1,0 +1,12 @@
+{
+  "name": "Schematic",
+  "icon": "minecraft:writable_book",
+  "category": "clipboard",
+  "sortnum": 5,
+  "pages": [
+    {
+      "type": "text",
+      "text": "待续"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "name": "方块种类",
+  "icon": "minecraft:writable_book",
+  "category": "selection",
+  "sortnum": 6,
+  "pages": [
+    {
+      "type": "text",
+      "text": "待续"
+    }
+  ]
+}

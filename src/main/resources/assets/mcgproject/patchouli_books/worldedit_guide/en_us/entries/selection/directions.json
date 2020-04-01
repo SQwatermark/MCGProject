@@ -1,0 +1,12 @@
+{
+  "name": "方向",
+  "icon": "minecraft:writable_book",
+  "category": "selection",
+  "sortnum": 5,
+  "pages": [
+    {
+      "type": "text",
+      "text": "可选的方向: $(li)east,west,north,south,up,down$(li)forward,back,left,right$(br2)以上方向可简写为: $(li)E,W,N,S,U,D$(li)F,B,L,R$(br2)通常情况下，不填方向则默认为玩家朝向"
+    }
+  ]
+}

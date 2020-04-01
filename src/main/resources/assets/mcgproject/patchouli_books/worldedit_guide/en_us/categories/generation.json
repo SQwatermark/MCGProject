@@ -1,0 +1,6 @@
+{
+  "name": "生成",
+  "description": "用指令生成一些特定的基础形状",
+  "icon": "minecraft:flint_and_steel",
+  "sortnum": 3
+}

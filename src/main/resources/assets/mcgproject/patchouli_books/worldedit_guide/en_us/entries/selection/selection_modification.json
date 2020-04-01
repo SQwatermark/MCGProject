@@ -1,0 +1,36 @@
+{
+  "name": "选区调整",
+  "icon": "minecraft:writable_book",
+  "category": "selection",
+  "sortnum": 2,
+  "pages": [
+    {
+      "type": "text",
+      "text": "调整类型: $(li)$(l:selection/selection_modification#expand)$(t:点击跳转)扩大 expand$()$(li)$(l:selection/selection_modification#contract)$(t:点击跳转)缩小 contract$()$(li)$(l:selection/selection_modification#outset)$(t:点击跳转)外扩/内缩 outset/inset$()$(li)$(l:selection/selection_modification#shift)$(t:点击跳转)平移 shift$()"
+    },
+    {
+      "type": "text",
+      "title": "扩大选区",
+      "anchor": "expand",
+      "text": "$(li)//expand <数量> [反方向数量] [方向]$(li)//expand vert$(br2)例子: $(li)//expand 10 up$(li)//expand vert将选区扩展到基岩和255。"
+    },
+    {
+      "type": "text",
+      "title": "缩小选区",
+      "anchor": "contract",
+      "text": "$(li)//contract <数量> <反方向数量> [方向]$(br2)例子: $(li)//contract 10 up将选区的底部向上缩10块。"
+    },
+    {
+      "type": "text",
+      "title": "外扩/内缩选区",
+      "anchor": "outset",
+      "text": "$(li)//outset <数量>$(li)//inset <数量>$(br2)将选区同时往六个方向扩展/缩小$(br2)额外参数: $(li)-v限制在上下方向$(li)-h限制在四周方向$(br2)例子: $(li)//outset -v 5$(li)//inset -h 5"
+    },
+    {
+      "type": "text",
+      "title": "平移选区",
+      "anchor": "shift",
+      "text": "$(li)//shift <数量> [方向]$(br2)只会移动选区本身，要移动选区内容需要用//move指令。"
+    }
+  ]
+}

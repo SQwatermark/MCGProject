@@ -1,0 +1,48 @@
+{
+  "name": "传送",
+  "icon": "minecraft:writable_book",
+  "category": "teleport",
+  "sortnum": 5,
+  "pages": [
+    {
+      "type": "text",
+      "text": ""
+    },
+    {
+      "type": "text",
+      "title": "脱出",
+      "anchor": "unstuck",
+      "text": "$(li)/unstuck$(br2)当被封在方块里时，使用这个指令传送到最高空位$(br)建议不用这个而用Essentials的/top指令"
+    },
+    {
+      "type": "text",
+      "title": "上升/下降一层",
+      "anchor": "ascend",
+      "text": "$(li)/ascend [层数] 上升指定层数$(li)/descend [层数] 下降指定层数$(br2)在分层的建筑中用起来很方便，不用找楼梯和或$(m)破坏楼板$()了"
+    },
+    {
+      "type": "text",
+      "title": "传送到顶层",
+      "anchor": "ceil",
+      "text": "$(li)/ceil "
+    },
+    {
+      "type": "text",
+      "title": "穿墙",
+      "anchor": "thru",
+      "text": "$(li)/thru$(br2)指南针的效果相同"
+    },
+    {
+      "type": "text",
+      "title": "跳跃",
+      "anchor": "jumpto",
+      "text": "$(li)/jumpto或/j$(br2)建议使用Essentials的/jump"
+    },
+    {
+      "type": "text",
+      "title": "上升一段距离",
+      "anchor": "up",
+      "text": "$(li)/up <距离>$(br2)向上传送一段距离并在脚下生成玻璃，但是无法穿过障碍物，可以用于在半空中找到落脚点。但是要用于选区，建议使用/pos1和/pos2"
+    }
+  ]
+}

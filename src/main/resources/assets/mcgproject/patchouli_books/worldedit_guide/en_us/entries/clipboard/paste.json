@@ -1,0 +1,12 @@
+{
+  "name": "粘贴",
+  "icon": "minecraft:writable_book",
+  "category": "clipboard",
+  "sortnum": 2,
+  "pages": [
+    {
+      "type": "text",
+      "text": "待续"
+    }
+  ]
+}

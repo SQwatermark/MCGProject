@@ -1,0 +1,19 @@
+{
+  "name": "选区方法",
+  "icon": "minecraft:writable_book",
+  "category": "selection",
+  "sortnum": 0,
+  "pages": [
+    {
+      "type": "spotlight",
+      "item": "minecraft:wooden_axe",
+      "title": "选区工具",
+      "text": "默认的选区工具是木斧，在第一个物品槽空出的情况下，使用指令//wand可以立刻获得一个木斧"
+    },
+    {
+      "type": "text",
+      "title": "其它选区方法",
+      "text": "$(br)此外还有两种与木斧等价的选区方式: $(li)//pos1和//pos2: 选择玩家位置，如果要选中空中的点就用这个指令吧，不需要 /up 1 再选中玻璃$(li)//hpos1和//hpos2: 选择准星指向位置$(li)//chunk: 选中玩家所在区块"
+    }
+  ]
+}

@@ -13,7 +13,7 @@ import java.util.WeakHashMap;
 
 public class CommonProxy {
 
-    public WeakHashMap<Entity, EntityKaginawa> kagimap = new WeakHashMap();
+    public WeakHashMap<Entity, EntityKaginawa> kagimap = new WeakHashMap<>();
 
     @EventHandler
     public void preInit(FMLPreInitializationEvent event)
@@ -23,6 +23,7 @@ public class CommonProxy {
         MinecraftForge.EVENT_BUS.register(ModArmor.instance());
         MinecraftForge.EVENT_BUS.register(ModEntity.instance());
         MinecraftForge.EVENT_BUS.register(ModTileEntity.instance());
+        //MinecraftForge.EVENT_BUS.register(ModFluid.instance());
     }
 
     @EventHandler

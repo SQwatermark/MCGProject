@@ -1,0 +1,19 @@
+{
+  "name": "钩绳",
+  "icon": "mcgproject:kaginawa",
+  "category": "items",
+  "sortnum": 0,
+  "pages": [
+    {
+      "type": "spotlight",
+      "item": "mcgproject:kaginawa",
+      "title": "钩绳",
+      "text": "忍者的必备道具，右键释放。$(li)可以勾住实体$(li)钩绳一旦放出，必须等到勾住东西或者到达时限消失才能再次放出（但是似乎有bug）$(li)钩绳可以给玩家一个向上的初始速度，只要落地前对地面释放钩绳就可以避免摔伤。$(li)因为SQ还不会写渲染，所以直接用了钓鱼竿的。"
+    },
+    {
+      "type": "text",
+      "title": "钩绳",
+      "text": "$(br2)可以通过nbt数据自定义参数: $(li)speed 钩子运动速度$(li)age 钩子存在的时间/tick$(li)inaccuracy 偏移程度，大约设置为几十可以看出明显的偏移$(li)onceDamage 使用一次消耗的耐久，总耐久为1024，默认使用一次消耗16，即使用次数限定为64次"
+    }
+  ]
+}
