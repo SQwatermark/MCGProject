@@ -1,0 +1,12 @@
+{
+  "forge_marker": 1,
+  "defaults": {"model": "cube_all"},
+  "variants": {
+    "inventory": [{}],
+    "meta": {
+      "0": {"textures": {"all": "mcgproject:blocks/touhou/rock_garden"}},
+      "1": {"textures": {"all": "mcgproject:blocks/touhou/rock_garden22"}},
+      "2": {"textures": {"all": "mcgproject:blocks/touhou/rock_garden33"}}
+    }
+  }
+}

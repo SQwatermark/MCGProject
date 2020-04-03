@@ -1,6 +1,6 @@
 {
   "name": "剪贴板",
-  "description": "剪贴板",
+  "description": "剪贴板目前只支持长方体选区。$(br2)和历史记录一样，你的剪贴板保存在你的会话中，因此在下线10分钟后就会被清除。$(br2)你可以用 /clearclipboard 清空剪贴板",
   "icon": "minecraft:paper",
   "sortnum": 1
 }

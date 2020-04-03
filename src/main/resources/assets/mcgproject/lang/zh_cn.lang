@@ -88,6 +88,10 @@ tile.mcgproject.dirt_3.name=预留
 tile.mcgproject.slab_dirt_stone.name=石子路台阶
 tile.mcgproject.stairs_dirt_stone.name=石子路楼梯
 
+tile.mcgproject.karesansui_0.name=枯山水
+tile.mcgproject.karesansui_1.name=枯山水（2x）
+tile.mcgproject.karesansui_2.name=枯山水（3x）
+
 # 幻想
 tile.mcgproject.gap.name=隙间
 tile.mcgproject.GensoChest.name=幻想箱
@@ -112,8 +116,9 @@ tile.mcgproject.leaves_mcg_2.name=黄枫树叶
 tile.mcgproject.leaves_mcg_3.name=橙枫树叶
 tile.mcgproject.leaves_mcg_4.name=粉樱树叶
 tile.mcgproject.leaves_mcg_5.name=紫樱树叶
-tile.mcgproject.leaves_mcg_6.name=实心树叶（藤蔓雕刻元件）
+tile.mcgproject.leaves_mcg_6.name=预留
 tile.mcgproject.leaves_mcg_7.name=预留
+tile.mcgproject.leaves_vine.name=藤蔓雕刻元件
 
 # 农业与食物
 tile.mcgproject.mooncake_0.name=月饼

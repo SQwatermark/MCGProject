@@ -6,7 +6,7 @@
   "pages": [
     {
       "type": "text",
-      "text": "待续"
+      "text": "$(li)//<schematic|schem> <save|load> [<格式>] <文件名>$(li)//<schematic|schem> list$(br2)将剪贴板的内容导入/导出$(br2)只能保存在服务器文件文件夹中$(br2)不知道是什么的文件不要随便读取"
     }
   ]
 }

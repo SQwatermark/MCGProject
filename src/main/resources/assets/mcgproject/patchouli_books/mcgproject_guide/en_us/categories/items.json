@@ -1,6 +1,6 @@
 {
   "name": "道具",
   "description": "道具",
-  "icon": "minecraft:generator_big_tree",
+  "icon": "mcgproject:generator_big_oak",
   "sortnum": 1
 }

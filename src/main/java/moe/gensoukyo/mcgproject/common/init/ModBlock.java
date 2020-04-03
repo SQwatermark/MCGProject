@@ -70,6 +70,7 @@ public class ModBlock {
         blocks4.add(MCGDIRT);
         blocks1.add(new BlockMCGStairs(MCGDIRT.getDefaultState(), "stairs_dirt_stone", MCGTabs.NATURE, SoundType.GROUND));
         blocks1.add(new BlockMCGSlab(MCGDIRT, 2, "slab_dirt_stone", MCGTabs.NATURE));
+        blocks3.add(new BlockInteger3(Material.SAND, "karesansui", MCGTabs.TOUHOU, SoundType.SAND));
 
         for (EnumTileColor color : EnumTileColor.values()) {
             blocks1.add(new BlockMCGStairs(TILE.getDefaultState(), String.format("stairs_tile_%s", color.getName()), MCGTabs.TOUHOU, SoundType.STONE));
