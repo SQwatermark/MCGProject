@@ -84,15 +84,15 @@ public class ModelButterfly extends ModelBase {
         if(entity.motionY!=0D||entity.motionX!=0D||entity.motionZ!=0D) {
             swing = MathMCG.swing(f2, 0.6f, 1f);
             Wing4.rotateAngleZ =  swing;
-            Wing1.rotateAngleZ -= swing;
-            Wing3.rotateAngleZ -= swing;
+            Wing1.rotateAngleZ = -swing;
+            Wing3.rotateAngleZ = -swing;
             Wing2.rotateAngleZ =  swing;
         }else {
             swing = MathMCG.swing(f2, 0.05f, 0.05f);
-            Wing4.rotateAngleZ += degToRad(70) - swing;
-            Wing2.rotateAngleZ += degToRad(70) - swing;
-            Wing1.rotateAngleZ -= degToRad(70) - swing;
-            Wing3.rotateAngleZ -= degToRad(70) - swing;
+            Wing4.rotateAngleZ = +degToRad(70) - swing;
+            Wing2.rotateAngleZ = +degToRad(70) - swing;
+            Wing1.rotateAngleZ = -degToRad(70) - swing;
+            Wing3.rotateAngleZ = -degToRad(70) - swing;
         }
 
     }

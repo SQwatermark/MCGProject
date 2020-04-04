@@ -8,7 +8,6 @@ import net.minecraft.world.World;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
-import java.util.Random;
 
 /**
  * @author SQwatermark
@@ -24,7 +23,6 @@ import java.util.Random;
 public class EntityKaginawa extends EntityThrowable {
 
     int age = 50;
-    Random random = new Random();
 
     @SuppressWarnings("unused")
     public EntityKaginawa(World worldIn) {

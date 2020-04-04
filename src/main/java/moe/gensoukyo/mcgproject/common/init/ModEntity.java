@@ -56,8 +56,9 @@ public class ModEntity {
         entities.add(EntityButterfly1.class);
         entities.add(EntityCloudShimmer.class);
         entities.add(EntityIllukini.class);
-        entities.add(EntityRubySile.class);
+        entities.add(EntitySkylight.class);
         entities.add(EntityKaginawa.class);
+        entities.add(EntityRubySile.class);
 
     }
 

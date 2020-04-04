@@ -1,10 +1,6 @@
 package moe.gensoukyo.mcgproject.common.init;
 
 import moe.gensoukyo.mcgproject.common.item.*;
-import moe.gensoukyo.mcgproject.common.item.ItemGenBigOak;
-import moe.gensoukyo.mcgproject.common.item.ItemMCGBoat;
-import moe.gensoukyo.mcgproject.common.item.ItemMetaChanger;
-import moe.gensoukyo.mcgproject.common.item.ItemRACBoat;
 import moe.gensoukyo.mcgproject.core.MCGProject;
 import net.minecraft.item.Item;
 import net.minecraftforge.event.RegistryEvent;

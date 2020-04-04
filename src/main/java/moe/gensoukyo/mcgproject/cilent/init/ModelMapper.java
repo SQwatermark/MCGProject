@@ -91,8 +91,9 @@ public class ModelMapper {
         renderEntity.put(EntityButterfly1.class, RenderButterfly1.FACTORY);
         renderEntity.put(EntityCloudShimmer.class, RenderCloudShimmer.FACTORY);
         renderEntity.put(EntityIllukini.class, RenderIllukini.FACTORY);
-        renderEntity.put(EntityRubySile.class, RenderRubySile.FACTORY);
+        renderEntity.put(EntitySkylight.class, RenderSkylight.FACTORY);
         renderEntity.put(EntityKaginawa.class, RenderKaginawa.FACTORY);
+        renderEntity.put(EntityRubySile.class, RenderRubySile.FACTORY);
     }
 
 }
