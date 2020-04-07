@@ -25,9 +25,11 @@ public class BlockMCGFlower extends BlockMCGBush {
 
     public static final PropertyEnum<EnumFlowerVariant> VARIANT = PropertyEnum.create("variant", EnumFlowerVariant.class);
 
+    @NotNull
     @Override
     protected BlockStateContainer createBlockState() {return new BlockStateContainer(this, VARIANT);}
 
+    @NotNull
     @SuppressWarnings("deprecation")
     @Override
     public IBlockState getStateFromMeta(int meta)
@@ -35,6 +37,7 @@ public class BlockMCGFlower extends BlockMCGBush {
         return getDefaultState().withProperty(VARIANT, EnumFlowerVariant.values()[meta]);
     }
 
+    @NotNull
     @SuppressWarnings("deprecation")
     @Override
     public IBlockState getStateForPlacement(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer)

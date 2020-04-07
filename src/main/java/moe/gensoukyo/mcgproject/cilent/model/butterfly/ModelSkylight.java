@@ -1,18 +1,22 @@
 package moe.gensoukyo.mcgproject.cilent.model.butterfly;
 
+import moe.gensoukyo.mcgproject.common.util.MathMCG;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.Entity;
-import net.minecraft.util.math.MathHelper;
 
-import static moe.gensoukyo.mcgproject.common.util.MathMCG.degToRad;
+import java.util.Random;
 
 /**
  * ModelButterfly - Either Mojang or a mod author
  * Created using Tabula 7.0.0
  */
 public class ModelSkylight extends ModelBase {
+
+    Random random = new Random();
+    float phase = random.nextFloat()*2*3.14f;
+
     public ModelRenderer Head;
     public ModelRenderer Wing4;
     public ModelRenderer Wing3;
@@ -153,13 +157,9 @@ public class ModelSkylight extends ModelBase {
     
     public void setRotationAngles(float f, float f1, float f2, float f3, float f4, float f5, Entity entity)
     {
-	      super.setRotationAngles(f, f1, f2, f3, f4, f5, entity);
-	    	if(entity.motionY!=0D||entity.motionX!=0D||entity.motionZ!=0D) {
-	        	Wing4.rotateAngleZ= MathHelper.sin(f2*0.6f);
-	        	Wing3.rotateAngleZ=-MathHelper.sin(f2*0.6f);
-	    	}else {
-	        	Wing4.rotateAngleZ= degToRad(70)- MathHelper.sin(f2*0.05f)*0.05f;
-	        	Wing3.rotateAngleZ=-degToRad(70)+ MathHelper.sin(f2*0.05f)*0.05f;
-	    	}
+        float swing;
+        swing = MathMCG.swing(f2, 0.6f, 1, phase);
+        Wing4.rotateAngleZ= swing;
+        Wing3.rotateAngleZ=-swing;
     }
 }

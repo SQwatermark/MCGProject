@@ -1,0 +1,49 @@
+{
+  "name": "蝴蝶",
+  "icon": "minecraft:paper",
+  "category": "entities",
+  "sortnum": 0,
+  "pages": [
+    {
+      "type": "text",
+      "title": "蝴蝶",
+      "text": "蝴蝶的模型取自$(l:https://www.curseforge.com/minecraft/mc-mods/beta-kathairis)Kathairis模组$()"
+    },
+    {
+      "type": "entity",
+      "entity": "mcgproject:butterfly_0",
+      "offset": -0.35,
+      "name": "红蝴蝶"
+    },
+    {
+      "type": "entity",
+      "entity": "mcgproject:butterfly_1",
+      "offset": -0.35,
+      "name": "蓝蝴蝶"
+    },
+    {
+      "type": "entity",
+      "entity": "mcgproject:butterfly_2",
+      "offset": -0.35,
+      "name": "白蝴蝶"
+    },
+    {
+      "type": "entity",
+      "entity": "mcgproject:butterfly_3",
+      "offset": -0.35,
+      "name": "伊露基尼"
+    },
+    {
+      "type": "entity",
+      "entity": "mcgproject:butterfly_4",
+      "offset": -0.35,
+      "name": "飞蛾"
+    },
+    {
+      "type": "entity",
+      "entity": "mcgproject:butterfly_5",
+      "offset": -0.35,
+      "name": "红宝石"
+    }
+  ]
+}

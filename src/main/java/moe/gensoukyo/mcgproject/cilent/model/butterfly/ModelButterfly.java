@@ -5,7 +5,7 @@ import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 
-import static moe.gensoukyo.mcgproject.common.util.MathMCG.degToRad;
+import java.util.Random;
 
 /**
  * 代码取自 kathairis mod 并进行了修改，仅用于测试
@@ -13,6 +13,10 @@ import static moe.gensoukyo.mcgproject.common.util.MathMCG.degToRad;
  * Created using Tabula 7.0.0
  */
 public class ModelButterfly extends ModelBase {
+
+    Random random = new Random();
+    float phase = random.nextFloat()*2*3.14f;
+
     public ModelRenderer Head;
     public ModelRenderer Wing4;
     public ModelRenderer Wing3;
@@ -81,20 +85,11 @@ public class ModelButterfly extends ModelBase {
     public void setRotationAngles(float f, float f1, float f2, float f3, float f4, float f5, Entity entity)
     {
         float swing;
-        if(entity.motionY!=0D||entity.motionX!=0D||entity.motionZ!=0D) {
-            swing = MathMCG.swing(f2, 0.6f, 1f);
-            Wing4.rotateAngleZ =  swing;
-            Wing1.rotateAngleZ = -swing;
-            Wing3.rotateAngleZ = -swing;
-            Wing2.rotateAngleZ =  swing;
-        }else {
-            swing = MathMCG.swing(f2, 0.05f, 0.05f);
-            Wing4.rotateAngleZ = +degToRad(70) - swing;
-            Wing2.rotateAngleZ = +degToRad(70) - swing;
-            Wing1.rotateAngleZ = -degToRad(70) - swing;
-            Wing3.rotateAngleZ = -degToRad(70) - swing;
-        }
-
+        swing = MathMCG.swing(f2, 0.6f, 1f, phase);
+        Wing4.rotateAngleZ =  swing;
+        Wing1.rotateAngleZ = -swing;
+        Wing3.rotateAngleZ = -swing;
+        Wing2.rotateAngleZ =  swing;
     }
 
 }

@@ -6,7 +6,7 @@
   "version": "${version}",
   "mcversion": "${mcversion}",
   "url": "https://gensoukyo.moe",
-  "authorList": ["MineCraft幻想乡"],
+  "authorList": ["MineCraftGensoukyo"],
   "credits": "ZUN, Notch",
   "logoFile": "",
   "screenshots": [],
