@@ -60,10 +60,6 @@ public class SignPacket implements IMessage {
         buffer.writeInt(x);
         buffer.writeInt(y);
         buffer.writeInt(z);
-        buffer.writeInt(text0.length());
-        buffer.writeInt(text1.length());
-        buffer.writeInt(text2.length());
-        buffer.writeInt(text3.length());
         buffer.writeString(text0);
         buffer.writeString(text1);
         buffer.writeString(text2);
@@ -76,14 +72,10 @@ public class SignPacket implements IMessage {
         x = buffer.readInt();
         y = buffer.readInt();
         z = buffer.readInt();
-        int i1 = buffer.readInt();
-        int i2 = buffer.readInt();
-        int i3 = buffer.readInt();
-        int i4 = buffer.readInt();
-        text0 = buffer.readString(i1);
-        text1 = buffer.readString(i2);
-        text2 = buffer.readString(i3);
-        text3 = buffer.readString(i4);
+        text0 = buffer.readString(1024);
+        text1 = buffer.readString(1024);
+        text2 = buffer.readString(1024);
+        text3 = buffer.readString(1024);
     }
 
 }
