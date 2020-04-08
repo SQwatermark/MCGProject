@@ -2,6 +2,7 @@ package moe.gensoukyo.mcgproject.core;
 
 
 import moe.gensoukyo.mcgproject.common.backpack.BackpackCore;
+import moe.gensoukyo.mcgproject.common.feature.BetterSign;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
@@ -42,6 +43,7 @@ public class MCGProject {
     @EventHandler
     public void init(FMLInitializationEvent event) {
         proxy.init(event);
+        new BetterSign();
     }
 
     @EventHandler

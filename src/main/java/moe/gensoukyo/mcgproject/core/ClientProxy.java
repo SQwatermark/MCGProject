@@ -29,9 +29,6 @@ public class ClientProxy extends CommonProxy {
             st.start();
         }
 
-        super.preInit(event);
-        MinecraftForge.EVENT_BUS.register(ModelMapper.instance());
-
         //加载图标，方法取自 https://www.curseforge.com/minecraft/mc-mods/its-the-little-things
         File di = Paths.get(event.getModConfigurationDirectory().getAbsolutePath(), "mcgproject").toFile();
         MCGProject.logger.info(di);
@@ -67,6 +64,10 @@ public class ClientProxy extends CommonProxy {
 
         //加载窗口标题（预加载阶段）
         Display.setTitle("Minecraft幻想乡1.12.2");
+
+        super.preInit(event);
+        MinecraftForge.EVENT_BUS.register(ModelMapper.instance());
+
     }
 
     @Override
