@@ -39,6 +39,9 @@ public class BetterSign {
 		return instance;
 	}
 
+	/**
+	 * 牌子刚放下时要取消打开 GUI 的事件，只有右键点击牌子时才能打开
+	 */
 	boolean cancel = true;
 
 	@SubscribeEvent
@@ -51,7 +54,7 @@ public class BetterSign {
 		if(!entityPlayer.isSneaking() && entityPlayer.getHeldItemMainhand().getItem() != Items.SIGN || event.getUseBlock() == Result.DENY || !entityPlayer.isCreative()) return;
 
 		TileEntity tile = event.getWorld().getTileEntity(event.getPos());
-		if(tile instanceof TileEntitySign && entityPlayer.capabilities.allowEdit && !event.getEntity().isSneaking()) {
+		if(tile instanceof TileEntitySign && entityPlayer.capabilities.allowEdit) {
 			TileEntitySign sign = (TileEntitySign) tile;
 			sign.setPlayer(entityPlayer);
 			ObfuscationReflectionHelper.setPrivateValue(TileEntitySign.class, sign, true, "field_145916_j");
