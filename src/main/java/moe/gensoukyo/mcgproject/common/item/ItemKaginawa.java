@@ -89,14 +89,12 @@ public class ItemKaginawa extends Item {
     @Override
     public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, @NotNull EnumHand handIn)
     {
-
         if (MCGProject.proxy.kagimap.containsKey(playerIn) && !MCGProject.proxy.kagimap.get(playerIn).isDead) {
             return new ActionResult<>(EnumActionResult.FAIL, playerIn.getHeldItem(handIn));
         } else {
             act(worldIn, playerIn, handIn);
             return new ActionResult<>(EnumActionResult.SUCCESS, playerIn.getHeldItem(handIn));
         }
-
     }
 
     public void act(World worldIn, EntityPlayer playerIn, @NotNull EnumHand handIn)
@@ -141,16 +139,17 @@ public class ItemKaginawa extends Item {
         hook.shoot(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 0.0F, speed, inaccuracy);
 
         if (!worldIn.isRemote) {
-            MCGProject.proxy.kagimap.put(playerIn, hook);
             worldIn.spawnEntity(hook);
             //钩绳损坏值++
             itemStack.damageItem(onceDamage, playerIn);
         } else {
             worldIn.joinEntityInSurroundings(hook);
         }
+        MCGProject.proxy.kagimap.put(playerIn, hook);
 
     }
 
+    @Override
     public int getItemEnchantability()
     {
         return 1;

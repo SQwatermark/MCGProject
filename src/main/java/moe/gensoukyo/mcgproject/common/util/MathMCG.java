@@ -21,8 +21,8 @@ public class MathMCG {
      * @param amplitude 肢体摆动幅度，蝴蝶飞行时为1f，停歇时为0.05f
      * @return 当前时刻肢体摆动弧度
      */
-    public static float swing(float tick, float speed, float amplitude) {
-        return MathHelper.sin(tick*speed)*amplitude;
+    public static float swing(float tick, float speed, float amplitude, float phase) {
+        return MathHelper.sin(tick*speed + phase)*amplitude;
     }
 
 }

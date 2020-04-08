@@ -2,15 +2,16 @@ package moe.gensoukyo.mcgproject.core;
 
 
 import moe.gensoukyo.mcgproject.common.backpack.BackpackCore;
+import moe.gensoukyo.mcgproject.common.feature.BetterSign;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.SidedProxy;
-import net.minecraftforge.fml.common.event.FMLInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
+import net.minecraftforge.fml.common.event.*;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import org.apache.logging.log4j.Logger;
+import org.lwjgl.opengl.Display;
 
 /**
  * @author SQwatermark
@@ -24,29 +25,27 @@ public class MCGProject {
 
     public static final String ID = "mcgproject";
     public static final String NAME = "MCGProject";
-    public static final String VERSION = "1.0.15";
+    public static final String VERSION = "1.0.17";
     public static Logger logger;
 
     @SidedProxy(clientSide = "moe.gensoukyo.mcgproject.core.ClientProxy",
             serverSide = "moe.gensoukyo.mcgproject.core.CommonProxy")
     public static CommonProxy proxy;
 
-    @SuppressWarnings("unused")
     @EventHandler
     public void preInit(FMLPreInitializationEvent event)
     {
         logger = event.getModLog();
-        proxy.preInit(event);
         FluidRegistry.enableUniversalBucket();
+        proxy.preInit(event);
     }
 
-    @SuppressWarnings("unused")
     @EventHandler
     public void init(FMLInitializationEvent event) {
         proxy.init(event);
+        new BetterSign();
     }
 
-    @SuppressWarnings("unused")
     @EventHandler
     public void postInit(FMLPostInitializationEvent event) {
         proxy.postInit(event);
@@ -57,6 +56,13 @@ public class MCGProject {
     {
         event.registerServerCommand(new BackpackCore.BackpackCommand());
         event.registerServerCommand(new BackpackCore.BackpackManageCommand());
+    }
+
+    @Mod.EventHandler
+    @SideOnly(Side.CLIENT)
+    public void construction(FMLLoadCompleteEvent event) {
+        //加载窗口标题（加载完成）
+        Display.setTitle("Minecraft幻想乡1.12.2");
     }
 
 }

@@ -1,5 +1,6 @@
 package moe.gensoukyo.mcgproject.common.entity;
 
+import moe.gensoukyo.mcgproject.core.MCGProject;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.projectile.EntityThrowable;
 import net.minecraft.util.math.MathHelper;
@@ -8,7 +9,6 @@ import net.minecraft.world.World;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
-import java.util.Random;
 
 /**
  * @author SQwatermark
@@ -24,7 +24,6 @@ import java.util.Random;
 public class EntityKaginawa extends EntityThrowable {
 
     int age = 50;
-    Random random = new Random();
 
     @SuppressWarnings("unused")
     public EntityKaginawa(World worldIn) {
@@ -86,9 +85,12 @@ public class EntityKaginawa extends EntityThrowable {
             var10000.motionZ += vMotionZ;
         }
         this.getThrower().fallDistance = 0.0F;
-
         this.setDead();
-
     }
 
+    @Override
+    public void setDead() {
+        super.setDead();
+        MCGProject.proxy.kagimap.remove(this.getThrower());
+    }
 }

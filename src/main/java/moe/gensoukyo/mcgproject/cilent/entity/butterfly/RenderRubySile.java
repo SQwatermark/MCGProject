@@ -12,7 +12,8 @@ import net.minecraftforge.fml.client.registry.IRenderFactory;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-//代码取自 kathairis mod 并进行了修改，仅用于测试
+import javax.annotation.Nullable;
+
 @SideOnly(Side.CLIENT)
 public class RenderRubySile extends RenderLiving<EntityRubySile>
 {
@@ -23,13 +24,10 @@ public class RenderRubySile extends RenderLiving<EntityRubySile>
         super(renderManagerIn, new ModelRubySile(), 0F);
     }
 
-    
-    /**
-     * Returns the location of an entity's texture. Doesn't seem to be called unless you call Render.bindEntityTexture.
-     */
-    protected ResourceLocation getEntityTexture(EntityRubySile entity)
-    {
-            return new ResourceLocation(MCGProject.ID, "textures/entity/butterfly/rubysile.png");
+    @Nullable
+    @Override
+    protected ResourceLocation getEntityTexture(EntityRubySile entity) {
+        return new ResourceLocation(MCGProject.ID, "textures/entity/butterfly/rubysile.png");
     }
     
     public static class Factory implements IRenderFactory<EntityRubySile> {
