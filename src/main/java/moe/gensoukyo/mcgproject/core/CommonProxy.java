@@ -4,6 +4,7 @@ import moe.gensoukyo.mcgproject.common.entity.EntityKaginawa;
 import moe.gensoukyo.mcgproject.common.feature.MoreBannerPatterns;
 import moe.gensoukyo.mcgproject.common.feature.BetterSign;
 import moe.gensoukyo.mcgproject.common.init.*;
+import moe.gensoukyo.mcgproject.common.util.EntityPool;
 import net.minecraft.entity.Entity;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod.EventHandler;
@@ -27,6 +28,8 @@ public class CommonProxy {
         MinecraftForge.EVENT_BUS.register(ModTileEntity.instance());
         MinecraftForge.EVENT_BUS.register(BetterSign.instance());
         //MinecraftForge.EVENT_BUS.register(ModFluid.instance());
+
+        MinecraftForge.EVENT_BUS.register(EntityPool.instance());
     }
 
     @EventHandler
