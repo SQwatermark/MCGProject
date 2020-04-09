@@ -1,6 +1,7 @@
 package moe.gensoukyo.mcgproject.common.network;
 
 import moe.gensoukyo.mcgproject.core.MCGProject;
+import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import net.minecraftforge.fml.relauncher.Side;
@@ -13,7 +14,7 @@ public class NetworkWrapper {
 
     public static SimpleNetworkWrapper INSTANCE;
 
-    static {
+    public NetworkWrapper(FMLPreInitializationEvent event) {
         INSTANCE = NetworkRegistry.INSTANCE.newSimpleChannel(MCGProject.ID);
 
         INSTANCE.registerMessage(BackpackGuiHandler.class, BackpackPacket.class, 0, Side.CLIENT);

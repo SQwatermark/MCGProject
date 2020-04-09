@@ -2,6 +2,7 @@ package moe.gensoukyo.mcgproject.cilent.gui;
 
 import moe.gensoukyo.mcgproject.common.network.NetworkWrapper;
 import moe.gensoukyo.mcgproject.common.network.SignPacket;
+import moe.gensoukyo.mcgproject.core.MCGProject;
 import net.minecraft.block.Block;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
@@ -50,6 +51,8 @@ public class GuiBetterSign extends GuiScreen {
 			
 			String text = sign.signText[i].getFormattedText();
 			text = text.replace("§", "&");
+			text = text.replace("&r", "");
+			sign.signText[focusedField] = new TextComponentString(text);
 			defaultStrings[i] = text;
 			field.setText(text);
 			
@@ -90,9 +93,6 @@ public class GuiBetterSign extends GuiScreen {
 		default:
 			textFields.forEach((field) -> field.textboxKeyTyped(typedChar, keyCode));
 			String input = textFields.get(focusedField).getText();
-			if(input.contains("\\&")) input = input.replace("\\&", "&");
-			else input = input.replace("&", "§");
-			input = input.replace("§r", "");
 			sign.signText[focusedField] = new TextComponentString(input);
 		}
 	}
@@ -190,7 +190,12 @@ public class GuiBetterSign extends GuiScreen {
 	@Override
 	public void onGuiClosed() {
 		Keyboard.enableRepeatEvents(false);
+		sign.signText[0] = new TextComponentString(sign.signText[0].getFormattedText().replace("&", "§"));
+		sign.signText[1] = new TextComponentString(sign.signText[1].getFormattedText().replace("&", "§"));
+		sign.signText[2] = new TextComponentString(sign.signText[2].getFormattedText().replace("&", "§"));
+		sign.signText[3] = new TextComponentString(sign.signText[3].getFormattedText().replace("&", "§"));
 		NetworkWrapper.INSTANCE.sendToServer(new SignPacket(sign.getPos(), sign.signText));
+		MCGProject.logger.info("GUI已关闭");
 	}
 	
 	void tabFocus(int change) {

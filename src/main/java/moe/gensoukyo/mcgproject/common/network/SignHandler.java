@@ -13,7 +13,7 @@ import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 public class SignHandler implements IMessageHandler<SignPacket, IMessage> {
     @Override
     public IMessage onMessage(SignPacket packet, MessageContext context) {
-        MCGProject.logger.info("好了");
+        MCGProject.logger.info("onMessage开始执行");
         EntityPlayerMP player = context.getServerHandler().player;
         WorldServer world = player.getServerWorld();
         world.addScheduledTask(() -> {
@@ -25,7 +25,6 @@ public class SignHandler implements IMessageHandler<SignPacket, IMessage> {
                 sign.signText[1] = new TextComponentString(packet.getText1());
                 sign.signText[2] = new TextComponentString(packet.getText2());
                 sign.signText[3] = new TextComponentString(packet.getText3());
-                sign.setEditable(true);
                 sign.markDirty();
             }
         });
