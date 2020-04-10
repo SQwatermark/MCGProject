@@ -4,6 +4,7 @@ import moe.gensoukyo.mcgproject.common.creativetab.MCGTabs;
 import moe.gensoukyo.mcgproject.core.MCGProject;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
@@ -33,7 +34,7 @@ public class ItemMetaChanger extends Item {
     @SideOnly(Side.CLIENT)
     public void addInformation(ItemStack stack, @Nullable World world, List<String> list, ITooltipFlag flag)
     {
-        list.add("尝试切换方块的所有方块状态");
+        list.add(I18n.format("tooltip.mcgproject.itemmetachanger"));
     }
 
     /**

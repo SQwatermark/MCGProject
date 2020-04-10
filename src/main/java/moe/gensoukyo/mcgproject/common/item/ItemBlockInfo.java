@@ -6,6 +6,7 @@ import moe.gensoukyo.mcgproject.core.MCGProject;
 import net.minecraft.block.Block;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
@@ -37,7 +38,7 @@ public class ItemBlockInfo extends Item {
     @SideOnly(Side.CLIENT)
     public void addInformation(ItemStack stack, @Nullable World world, List<String> list, ITooltipFlag flag)
     {
-        list.add("右击显示方块信息");
+        list.add(I18n.format("tooltip.mcgproject.itemblockinfo"));
     }
 
     @Override

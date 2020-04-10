@@ -1,6 +1,5 @@
 package moe.gensoukyo.mcgproject.common.network;
 
-import moe.gensoukyo.mcgproject.core.MCGProject;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntitySign;
@@ -13,7 +12,6 @@ import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 public class SignHandler implements IMessageHandler<SignPacket, IMessage> {
     @Override
     public IMessage onMessage(SignPacket packet, MessageContext context) {
-        MCGProject.logger.info("onMessage开始执行");
         EntityPlayerMP player = context.getServerHandler().player;
         WorldServer world = player.getServerWorld();
         world.addScheduledTask(() -> {
