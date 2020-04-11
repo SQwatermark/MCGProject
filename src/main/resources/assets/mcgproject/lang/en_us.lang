@@ -293,3 +293,11 @@ tile.mcgproject.notGate.name=Ranstone Not-Gate
 item.mcgproject.ranstone.name=Ranstone Wire
 tile.mcgproject.rantoneDust.name=Ranstone Dust
 tile.mcgproject.ranstonePiston.name=Ranstone Piston
+
+gui.mcgproject.bettersign.shift=Shift
+gui.mcgproject.bettersign.clear=Clear
+
+tooltip.mcgproject.itemblockinfo=Right click to view the block information
+tooltip.mcgproject.itemgenbigoak=Right click to generate a big oak
+tooltip.mcgproject.itemmetachanger=Try to cycle the blockstates
+tooltip.mcgproject.itemkaginawa=Be careful of fall

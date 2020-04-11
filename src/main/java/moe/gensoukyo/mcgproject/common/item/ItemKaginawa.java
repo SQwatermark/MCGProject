@@ -3,6 +3,7 @@ package moe.gensoukyo.mcgproject.common.item;
 import moe.gensoukyo.mcgproject.common.creativetab.MCGTabs;
 import moe.gensoukyo.mcgproject.common.entity.EntityKaginawa;
 import moe.gensoukyo.mcgproject.core.MCGProject;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -78,7 +79,7 @@ public class ItemKaginawa extends Item {
     @SideOnly(Side.CLIENT)
     public void addInformation(ItemStack stack, @Nullable World world, List<String> list, ITooltipFlag flag)
     {
-        list.add(TextFormatting.DARK_RED + "当心落地");
+        list.add(TextFormatting.DARK_RED + I18n.format("tooltip.mcgproject.itemkaginawa"));
     }
 
     /**

@@ -1,7 +1,6 @@
 package moe.gensoukyo.mcgproject.common.network;
 
 import io.netty.buffer.ByteBuf;
-import moe.gensoukyo.mcgproject.core.MCGProject;
 import net.minecraft.network.PacketBuffer;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.ITextComponent;
@@ -77,7 +76,6 @@ public class SignPacket implements IMessage {
         text1 = buffer.readString(1024);
         text2 = buffer.readString(1024);
         text3 = buffer.readString(1024);
-        MCGProject.logger.info("fromBytes已执行完毕");
     }
 
 }

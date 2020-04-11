@@ -1,15 +1,14 @@
 package moe.gensoukyo.mcgproject.cilent.gui;
 
+import moe.gensoukyo.mcgproject.core.MCGProject;
 import net.minecraft.block.Block;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.GuiTextField;
-import net.minecraft.client.network.NetHandlerPlayClient;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.tileentity.TileEntityRendererDispatcher;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.init.Blocks;
-import net.minecraft.network.play.client.CPacketUpdateSign;
 import net.minecraft.tileentity.TileEntitySign;
 import net.minecraft.util.ChatAllowedCharacters;
 import net.minecraft.util.text.TextComponentString;
@@ -24,7 +23,7 @@ import java.util.List;
  * 开源协议：Attribution-NonCommercial-ShareAlike 3.0 Unported
  * 此为 SQwatermark 修改的版本
  */
-public class GuiBetterSign extends GuiScreen {
+public class XGuiBetterSign extends GuiScreen {
 
 	public final TileEntitySign sign;
 
@@ -32,7 +31,7 @@ public class GuiBetterSign extends GuiScreen {
 	private List<GuiTextField> textFields;
 	private String[] defaultStrings;
 
- 	public GuiBetterSign(TileEntitySign sign) {
+ 	public XGuiBetterSign(TileEntitySign sign) {
 		this.sign = sign;
 	}
 
@@ -48,7 +47,10 @@ public class GuiBetterSign extends GuiScreen {
 			field.setValidator(this::validateText);
 			field.setMaxStringLength(100);
 			
-			String text = sign.signText[i].getUnformattedText();
+			String text = sign.signText[i].getFormattedText();
+			text = text.replace("§", "&");
+			text = text.replace("&r", "");
+			sign.signText[focusedField] = new TextComponentString(text);
 			defaultStrings[i] = text;
 			field.setText(text);
 			
@@ -56,12 +58,6 @@ public class GuiBetterSign extends GuiScreen {
 
 		}
 		textFields.get(focusedField).setFocused(true);
-
-		addButton(new GuiButton(4, width / 2 + 5, height / 4 + 120, 120, 20, I18n.format("gui.done")));
-		addButton(new GuiButton(5, width / 2 - 125, height / 4 + 120, 120, 20, I18n.format("gui.cancel")));
-		addButton(new GuiButton(6, width / 2 - 41, 147, 40, 20, I18n.format("gui.mcgproject.bettersign.shift")));
-		addButton(new GuiButton(7, width / 2 - 41, (123), 40, 20, I18n.format("gui.mcgproject.bettersign.clear")));
-
 		sign.setEditable(false);
 	}
 	
@@ -94,7 +90,8 @@ public class GuiBetterSign extends GuiScreen {
 			tabFocus(1);
 		default:
 			textFields.forEach((field) -> field.textboxKeyTyped(typedChar, keyCode));
-			sign.signText[focusedField] = new TextComponentString(textFields.get(focusedField).getText());
+			String input = textFields.get(focusedField).getText();
+			sign.signText[focusedField] = new TextComponentString(input);
 		}
 	}
 	
@@ -191,12 +188,13 @@ public class GuiBetterSign extends GuiScreen {
 	@Override
 	public void onGuiClosed() {
 		Keyboard.enableRepeatEvents(false);
-		NetHandlerPlayClient nethandlerplayclient = this.mc.getConnection();
+		//sign.signText[0] = new TextComponentString(sign.signText[0].getFormattedText().replace("&", "§"));
+		//sign.signText[1] = new TextComponentString(sign.signText[1].getFormattedText().replace("&", "§"));
+		//sign.signText[2] = new TextComponentString(sign.signText[2].getFormattedText().replace("&", "§"));
+		//sign.signText[3] = new TextComponentString(sign.signText[3].getFormattedText().replace("&", "§"));
+		//NetworkWrapper.INSTANCE.sendToServer(new SignPacket(sign.getPos(), sign.signText));
 
-		if(nethandlerplayclient != null)
-			nethandlerplayclient.sendPacket(new CPacketUpdateSign(sign.getPos(), sign.signText));
-
-		sign.setEditable(true);
+		MCGProject.logger.info("GUI已关闭");
 	}
 	
 	void tabFocus(int change) {

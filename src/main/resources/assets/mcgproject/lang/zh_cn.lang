@@ -293,3 +293,11 @@ tile.mcgproject.notGate.name=蓝石非门
 item.mcgproject.ranstone.name=蓝石线
 tile.mcgproject.rantoneDust.name=蓝石粉
 tile.mcgproject.ranstonePiston.name=蓝石活塞
+
+gui.mcgproject.bettersign.shift=移位
+gui.mcgproject.bettersign.clear=清空
+
+tooltip.mcgproject.itemblockinfo=右键查看方块信息
+tooltip.mcgproject.itemgenbigoak=右击即可种下大橡树
+tooltip.mcgproject.itemmetachanger=尝试切换方块的所有方块状态
+tooltip.mcgproject.itemkaginawa=当心落地
