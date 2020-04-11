@@ -5,9 +5,11 @@ import moe.gensoukyo.mcgproject.common.feature.BetterSign;
 import moe.gensoukyo.mcgproject.common.feature.MoreBannerPatterns;
 import moe.gensoukyo.mcgproject.common.init.*;
 import moe.gensoukyo.mcgproject.common.network.NetworkWrapper;
+import moe.gensoukyo.mcgproject.common.util.CustomNPCsHook;
 import moe.gensoukyo.mcgproject.common.util.EntityPool;
 import net.minecraft.entity.Entity;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
@@ -30,6 +32,10 @@ public class CommonProxy {
         MinecraftForge.EVENT_BUS.register(BetterSign.instance());
         MinecraftForge.EVENT_BUS.register(EntityPool.instance());
         new NetworkWrapper(event);
+        if (Loader.isModLoaded("customnpcs")) {
+            MCGProject.logger.info("Register CustomNPCs Hook");
+            MinecraftForge.EVENT_BUS.register(CustomNPCsHook.instance());
+        }
     }
 
     @EventHandler
