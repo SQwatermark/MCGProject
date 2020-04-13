@@ -1,10 +1,13 @@
 package moe.gensoukyo.mcgproject.cilent.model.butterfly;
 
 import moe.gensoukyo.mcgproject.common.util.MathMCG;
+import moe.gensoukyo.mcgproject.core.Information;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.Entity;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.Random;
 
@@ -12,6 +15,8 @@ import java.util.Random;
  * ModelButterfly - Either Mojang or a mod author
  * Created using Tabula 7.0.0
  */
+@Information(author = "Kathairis Team", licence = "LGPL-3.0", source = "https://github.com/Krevik/Kathairis")
+@SideOnly(Side.CLIENT)
 public class ModelSkylight extends ModelBase {
 
     Random random = new Random();

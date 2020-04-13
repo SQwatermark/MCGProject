@@ -1,17 +1,22 @@
-package moe.gensoukyo.mcgproject.common.feature;
+package moe.gensoukyo.mcgproject.cilent.feature;
 
-import moe.gensoukyo.mcgproject.common.util.IconLoader;
-import moe.gensoukyo.mcgproject.common.util.ShouterThread;
+import moe.gensoukyo.mcgproject.cilent.util.IconLoader;
+import moe.gensoukyo.mcgproject.cilent.util.ShouterThread;
+import moe.gensoukyo.mcgproject.core.Information;
 import moe.gensoukyo.mcgproject.core.MCGProject;
 import moe.gensoukyo.mcgproject.core.MCG;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ServerData;
 import net.minecraft.client.multiplayer.ServerList;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import org.lwjgl.opengl.Display;
 
 import java.io.File;
 import java.nio.file.Paths;
 
+@Information(author = {"Zlepper", "SQwatermark"}, licence = "All Rights Reserved", source = "https://github.com/zlepper/itlt")
+@SideOnly(Side.CLIENT)
 public class ItitFeatures {
 
     public static void yellAtJava32x() {

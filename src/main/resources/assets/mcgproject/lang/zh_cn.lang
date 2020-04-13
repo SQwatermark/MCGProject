@@ -9,7 +9,8 @@ itemGroup.mcgproject.old=旧版移植
 # 东方
 tile.mcgproject.tatami_0.name=榻榻米
 tile.mcgproject.tatami_1.name=榻榻米（无边线）
-tile.mcgproject.namako.name=海鼠壁
+tile.mcgproject.namako_0.name=海鼠壁（CTM）
+tile.mcgproject.namako_1.name=海鼠壁
 tile.mcgproject.plaster_0.name=白色灰泥
 tile.mcgproject.plaster_1.name=浅灰色灰泥
 tile.mcgproject.plaster_2.name=深灰色灰泥

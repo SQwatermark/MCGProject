@@ -1,6 +1,7 @@
 package moe.gensoukyo.mcgproject.common.feature;
 
 import moe.gensoukyo.mcgproject.cilent.gui.GuiBetterSign;
+import moe.gensoukyo.mcgproject.core.Information;
 import net.minecraft.client.gui.inventory.GuiEditSign;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
@@ -22,14 +23,12 @@ import net.minecraftforge.fml.relauncher.SideOnly;
  * Quark is Open Source and distributed under the
  * CC-BY-NC-SA 3.0 License: https://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_GB
  *
- * File Created @ [19/03/2016, 00:21:42 (GMT)]
- *
  * 此文件为 SQwatermark 修改的版本
  * 创造模式才能打开牌子
  * 手中持有告示牌的情况下，可以直接右击打开
  * 手中未持有告示牌的情况下，按住ctrl右击才可以打开
- * 可以用 & 编辑样式代码，可以用转义字符 \& 输入 &
  */
+@Information(author = {"Vazkii", "SQwatermark"}, licence = "CC-BY-NC-SA 3.0", source = "https://github.com/Vazkii/Quark")
 public class BetterSign {
 
 	private static BetterSign instance;

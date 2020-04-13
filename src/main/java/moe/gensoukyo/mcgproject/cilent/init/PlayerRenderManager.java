@@ -1,11 +1,12 @@
 package moe.gensoukyo.mcgproject.cilent.init;
 
-import moe.gensoukyo.mcgproject.cilent.entity.RenderMCGPlayer;
+import moe.gensoukyo.mcgproject.cilent.entity.RendererMCGPlayer;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.entity.RenderPlayer;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+@SideOnly(Side.CLIENT)
 public class PlayerRenderManager {
 
     private static PlayerRenderManager instance;
@@ -18,10 +19,9 @@ public class PlayerRenderManager {
         this.addRenderLayer();
     }
 
-    @SideOnly(Side.CLIENT)
     public void addRenderLayer() {
         for (RenderPlayer playerRender : Minecraft.getMinecraft().getRenderManager().getSkinMap().values()) {
-            playerRender.addLayer(new RenderMCGPlayer());
+            playerRender.addLayer(new RendererMCGPlayer());
         }
     }
 }

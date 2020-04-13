@@ -12,7 +12,7 @@ import net.minecraftforge.fml.client.registry.IRenderFactory;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-//代码取自 kathairis mod 并进行了修改，仅用于测试
+//代码取自 kathairis mod 并进行了修改
 @SideOnly(Side.CLIENT)
 public class RenderCloudShimmer extends RenderLiving<EntityCloudShimmer>
 {

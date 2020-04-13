@@ -4,12 +4,15 @@ import moe.gensoukyo.mcgproject.cilent.model.obj.WavefrontObject;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import org.lwjgl.opengl.GL11;
 
 /**
  * @author drzzm32
  * @date 2020/3/27
  */
+@SideOnly(Side.CLIENT)
 public class RendererHelper {
 
     public static void beginSpecialLightingNoDepth() {

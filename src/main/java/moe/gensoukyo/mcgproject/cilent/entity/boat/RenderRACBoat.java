@@ -11,8 +11,9 @@ import net.minecraft.entity.item.EntityBoat;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.MathHelper;
 import net.minecraftforge.fml.client.registry.IRenderFactory;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import org.lwjgl.opengl.GL11;
-import org.lwjgl.opengl.GL45;
 
 import javax.annotation.Nonnull;
 
@@ -20,6 +21,7 @@ import javax.annotation.Nonnull;
  * @author drzzm32
  * @date 2020/3/27
  */
+@SideOnly(Side.CLIENT)
 public class RenderRACBoat extends Render<EntityRACBoat> {
 
     public static IRenderFactory<EntityRACBoat> FACTORY = RenderRACBoat::new;
