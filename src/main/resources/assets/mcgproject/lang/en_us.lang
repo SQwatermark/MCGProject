@@ -293,6 +293,8 @@ tile.mcgproject.notGate.name=Ranstone Not-Gate
 item.mcgproject.ranstone.name=Ranstone Wire
 tile.mcgproject.rantoneDust.name=Ranstone Dust
 tile.mcgproject.ranstonePiston.name=Ranstone Piston
+tile.mcgproject.blockSticker.name=Sticker
+tile.mcgproject.blockStickerLit.name=Sticker(Lit)
 
 gui.mcgproject.bettersign.shift=Shift
 gui.mcgproject.bettersign.clear=Clear

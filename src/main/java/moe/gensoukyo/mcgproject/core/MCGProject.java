@@ -4,6 +4,7 @@ package moe.gensoukyo.mcgproject.core;
 import moe.gensoukyo.mcgproject.common.backpack.BackpackCore;
 import moe.gensoukyo.mcgproject.common.feature.BetterSign;
 import moe.gensoukyo.mcgproject.common.network.NetworkWrapper;
+import moe.gensoukyo.mcgproject.common.tileentity.TileSticker;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
@@ -54,10 +55,10 @@ public class MCGProject {
     }
 
     @EventHandler
-    public void serverLoad(FMLServerStartingEvent event)
-    {
+    public void serverLoad(FMLServerStartingEvent event) {
         event.registerServerCommand(new BackpackCore.BackpackCommand());
         event.registerServerCommand(new BackpackCore.BackpackManageCommand());
+        event.registerServerCommand(new TileSticker.RefreshCommand());
     }
 
     @Mod.EventHandler

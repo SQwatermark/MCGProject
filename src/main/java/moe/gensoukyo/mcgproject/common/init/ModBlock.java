@@ -15,12 +15,10 @@ import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.Item;
-import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -177,7 +175,8 @@ public class ModBlock {
                 RanstoneWire.BLOCK,
                 RanstonePiston.Base.BLOCK, RanstonePiston.Extension.BLOCK, RanstonePiston.Moving.BLOCK);
 
-        GameRegistry.registerTileEntity(RanstonePiston.TilePiston.class, new ResourceLocation(MCGProject.ID, "tileRanstonePiston"));
+        BlockSticker.initBlock();
+        event.getRegistry().registerAll(BlockSticker.BLOCK, BlockSticker.BLOCK_LIT);
     }
 
     /**
@@ -207,6 +206,9 @@ public class ModBlock {
                 RanstoneBlock.ITEM, RanstoneComparator.ITEM,
                 RanstoneRepeater.ITEM, RanstoneTorch.ITEM,
                 RanstoneWire.ITEM, RanstonePiston.Base.ITEM);
+
+        BlockSticker.initItem();
+        event.getRegistry().registerAll(BlockSticker.ITEM, BlockSticker.ITEM_LIT);
     }
 
     /**

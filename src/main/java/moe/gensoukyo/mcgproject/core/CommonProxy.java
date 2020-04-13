@@ -4,7 +4,7 @@ import moe.gensoukyo.mcgproject.common.entity.EntityKaginawa;
 import moe.gensoukyo.mcgproject.common.feature.MoreBannerPatterns;
 import moe.gensoukyo.mcgproject.common.feature.BetterSign;
 import moe.gensoukyo.mcgproject.common.init.*;
-import moe.gensoukyo.mcgproject.common.util.CustomNPCsHook;
+import moe.gensoukyo.mcgproject.common.feature.CustomNPCsHook;
 import moe.gensoukyo.mcgproject.common.util.EntityPool;
 import net.minecraft.entity.Entity;
 import net.minecraftforge.common.MinecraftForge;
