@@ -1,8 +1,7 @@
 package moe.gensoukyo.mcgproject.core;
 
-import moe.gensoukyo.mcgproject.cilent.init.PlayerRenderManager;
-import moe.gensoukyo.mcgproject.cilent.init.ModelMapper;
 import moe.gensoukyo.mcgproject.cilent.feature.ItitFeatures;
+import moe.gensoukyo.mcgproject.cilent.init.ModelMapper;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -39,15 +38,12 @@ public class ClientProxy extends CommonProxy {
     @EventHandler
     public void init(FMLInitializationEvent event) {
         super.init(event);
-        MinecraftForge.EVENT_BUS.register(PlayerRenderManager.instance());
     }
 
     @Override
     @EventHandler
     public void postInit(FMLPostInitializationEvent event) {
         super.postInit(event);
-        //修改玩家渲染
-        //PlayerRenderManager.instance();
     }
 
 }

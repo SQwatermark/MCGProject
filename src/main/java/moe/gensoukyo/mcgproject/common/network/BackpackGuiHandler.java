@@ -1,7 +1,7 @@
 package moe.gensoukyo.mcgproject.common.network;
 
 import moe.gensoukyo.mcgproject.cilent.gui.GuiGensoChest;
-import moe.gensoukyo.mcgproject.common.feature.backpack.BackpackCore;
+import moe.gensoukyo.mcgproject.common.backpack.BackpackCore;
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;

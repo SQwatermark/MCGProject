@@ -1,4 +1,4 @@
-package moe.gensoukyo.mcgproject.common.feature.backpack;
+package moe.gensoukyo.mcgproject.common.backpack;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Container;

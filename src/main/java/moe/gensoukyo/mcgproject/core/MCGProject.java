@@ -1,7 +1,7 @@
 package moe.gensoukyo.mcgproject.core;
 
 
-import moe.gensoukyo.mcgproject.common.feature.backpack.BackpackCore;
+import moe.gensoukyo.mcgproject.common.backpack.BackpackCore;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.*;

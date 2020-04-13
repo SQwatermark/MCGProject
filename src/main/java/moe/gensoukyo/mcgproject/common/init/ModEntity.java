@@ -61,7 +61,6 @@ public class ModEntity {
         entities.add(EntitySkylight.class);
         entities.add(EntityKaginawa.class);
         entities.add(EntityRubySile.class);
-        //entities.add(EntityGap.class);
 
     }
 

@@ -33,8 +33,7 @@ public class ItemGenBigOak extends Item {
 
     @Override
     @SideOnly(Side.CLIENT)
-    public void addInformation(ItemStack stack, @Nullable World world, List<String> list, ITooltipFlag flag)
-    {
+    public void addInformation(ItemStack stack, @Nullable World world, List<String> list, ITooltipFlag flag) {
         list.add(TextFormatting.DARK_GREEN + I18n.format("tooltip.mcgproject.itemgenbigoak"));
     }
 
@@ -45,8 +44,7 @@ public class ItemGenBigOak extends Item {
         return EnumActionResult.SUCCESS;
     }
 
-    public void generateTree(World worldIn, BlockPos pos, Random rand)
-    {
+    public void generateTree(World worldIn, BlockPos pos, Random rand) {
         if (!net.minecraftforge.event.terraingen.TerrainGen.saplingGrowTree(worldIn, rand, pos)) return;
         WorldGenerator worldgenerator = new WorldGenBigTree(true);
         worldgenerator.generate(worldIn, rand, pos);

@@ -14,8 +14,8 @@ import net.minecraftforge.common.ISpecialArmor;
 
 public class ItemMCGArmor extends ItemArmor implements ISpecialArmor {
 
-    public ItemMCGArmor(String name, ArmorMaterial material, EntityEquipmentSlot slot)
-    {
+    public ItemMCGArmor(String name, ArmorMaterial material, EntityEquipmentSlot slot) {
+
         super(material, 0, slot);
         String a;
         switch (slot){
@@ -31,22 +31,19 @@ public class ItemMCGArmor extends ItemArmor implements ISpecialArmor {
     }
 
     @Override
-    public String getArmorTexture(ItemStack stack, Entity entity, EntityEquipmentSlot slot, String type)
-    {
+    public String getArmorTexture(ItemStack stack, Entity entity, EntityEquipmentSlot slot, String type) {
         return null;
     }
 
     @Override
-    public void onArmorTick(World world, EntityPlayer player, ItemStack item)
-    {
+    public void onArmorTick(World world, EntityPlayer player, ItemStack item) {
         // 穿在身上的时候的每时每刻都会调用的方法，可以用来追加药水效果什么的
     }
 
     // ISpecialArmor 接口实现开始
 
     @Override
-    public ArmorProperties getProperties(EntityLivingBase player, ItemStack armor, DamageSource source, double damage, int slot)
-    {
+    public ArmorProperties getProperties(EntityLivingBase player, ItemStack armor, DamageSource source, double damage, int slot) {
         return new ArmorProperties(0, 1.0, 100);
     }
 
@@ -56,8 +53,7 @@ public class ItemMCGArmor extends ItemArmor implements ISpecialArmor {
     }
 
     @Override
-    public void damageArmor(EntityLivingBase entity, ItemStack stack, DamageSource source, int damage, int slot)
-    {
+    public void damageArmor(EntityLivingBase entity, ItemStack stack, DamageSource source, int damage, int slot) {
 
     }
 

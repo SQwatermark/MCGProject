@@ -1,6 +1,6 @@
 package moe.gensoukyo.mcgproject.common.init;
 
-import moe.gensoukyo.mcgproject.common.feature.backpack.GensoChest;
+import moe.gensoukyo.mcgproject.common.backpack.GensoChest;
 import moe.gensoukyo.mcgproject.common.block.*;
 import moe.gensoukyo.mcgproject.common.block.enums.EnumTileColor;
 import moe.gensoukyo.mcgproject.common.creativetab.MCGTabs;

@@ -1,4 +1,4 @@
-package moe.gensoukyo.mcgproject.common.feature.backpack;
+package moe.gensoukyo.mcgproject.common.backpack;
 
 import com.google.common.collect.Lists;
 import moe.gensoukyo.mcgproject.common.network.BackpackPacket;

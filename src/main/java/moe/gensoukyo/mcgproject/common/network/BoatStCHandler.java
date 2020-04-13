@@ -3,7 +3,6 @@ package moe.gensoukyo.mcgproject.common.network;
 import moe.gensoukyo.mcgproject.common.entity.boat.EntityMCGBoat;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
-import net.minecraft.world.World;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
