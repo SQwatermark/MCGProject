@@ -1,4 +1,4 @@
-package moe.gensoukyo.mcgproject.common.util;
+package moe.gensoukyo.mcgproject.cilent.util;
 
 import javax.swing.*;
 

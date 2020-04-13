@@ -1,4 +1,4 @@
-package moe.gensoukyo.mcgproject.common.backpack;
+package moe.gensoukyo.mcgproject.common.feature.backpack;
 
 import com.google.common.collect.Lists;
 import moe.gensoukyo.mcgproject.common.network.BackpackPacket;
@@ -22,7 +22,6 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraft.world.storage.MapStorage;
 import net.minecraft.world.storage.WorldSavedData;
-import net.minecraftforge.common.DimensionManager;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.PlayerContainerEvent;
 

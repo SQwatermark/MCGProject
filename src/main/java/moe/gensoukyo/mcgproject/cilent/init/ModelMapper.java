@@ -94,6 +94,7 @@ public class ModelMapper {
         renderEntity.put(EntitySkylight.class, RenderSkylight.FACTORY);
         renderEntity.put(EntityKaginawa.class, RenderKaginawa.FACTORY);
         renderEntity.put(EntityRubySile.class, RenderRubySile.FACTORY);
+        //renderEntity.put(EntityGap.class, RenderGap.FACTORY);
     }
 
 }

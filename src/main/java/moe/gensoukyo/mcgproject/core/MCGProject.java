@@ -1,7 +1,7 @@
 package moe.gensoukyo.mcgproject.core;
 
 
-import moe.gensoukyo.mcgproject.common.backpack.BackpackCore;
+import moe.gensoukyo.mcgproject.common.feature.backpack.BackpackCore;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.*;
@@ -28,6 +28,9 @@ public class MCGProject {
 
     public static Logger logger;
     public static File modConfigDi;
+
+    public static final String[] CODERS = {"SQwatermark", "drzzm32"};
+    public static final String[] ARTISTS = {"A1181899594", "河豚骨拉面", "MCG旧版本画师"};
 
     @SidedProxy(clientSide = "moe.gensoukyo.mcgproject.core.ClientProxy",
             serverSide = "moe.gensoukyo.mcgproject.core.CommonProxy")

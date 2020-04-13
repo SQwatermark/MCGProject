@@ -25,6 +25,7 @@ public class ModItem {
     public static ItemGenBigOak ITEM_GEN_BIG_OAK;
     public static ItemKaginawa ITEM_KAGINAWA;
     public static ItemBlockInfo ITEM_BLOCK_INFO;
+    //public static ItemGapGen ITEM_GAP_GEN;
 
     /**
      * 注册所有物品
@@ -42,11 +43,13 @@ public class ModItem {
         ITEM_GEN_BIG_OAK = new ItemGenBigOak();
         ITEM_KAGINAWA = new ItemKaginawa();
         ITEM_BLOCK_INFO = new ItemBlockInfo();
+        //ITEM_GAP_GEN = new ItemGapGen();
         event.getRegistry().register(ITEM_MCG_BOAT);
         event.getRegistry().register(ITEM_RAC_BOAT);
         event.getRegistry().register(ITEM_META_CHANGER);
         event.getRegistry().register(ITEM_GEN_BIG_OAK);
         event.getRegistry().register(ITEM_KAGINAWA);
         event.getRegistry().register(ITEM_BLOCK_INFO);
+        //event.getRegistry().register(ITEM_GAP_GEN);
     }
 }

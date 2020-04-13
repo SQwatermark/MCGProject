@@ -1,5 +1,6 @@
 package moe.gensoukyo.mcgproject.cilent.gui;
 
+import moe.gensoukyo.mcgproject.core.Information;
 import net.minecraft.block.Block;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
@@ -13,6 +14,8 @@ import net.minecraft.network.play.client.CPacketUpdateSign;
 import net.minecraft.tileentity.TileEntitySign;
 import net.minecraft.util.ChatAllowedCharacters;
 import net.minecraft.util.text.TextComponentString;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import org.lwjgl.input.Keyboard;
 
 import java.io.IOException;
@@ -20,10 +23,10 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
- * 可以分别按行编辑的牌子 GUI，取自 Vazkii 的 quark 模组
- * 开源协议：Attribution-NonCommercial-ShareAlike 3.0 Unported
- * 此为 SQwatermark 修改的版本
+ * 可以分别按行编辑的牌子 GUI
  */
+@Information(author = {"Vazkii", "SQwatermark"}, licence = "CC BY-NC-SA 3.0", source = "https://github.com/Vazkii/Quark")
+@SideOnly(Side.CLIENT)
 public class GuiBetterSign extends GuiScreen {
 
 	public final TileEntitySign sign;

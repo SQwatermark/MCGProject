@@ -1,7 +1,7 @@
 package moe.gensoukyo.mcgproject.cilent.gui;
 
-import moe.gensoukyo.mcgproject.common.backpack.BackpackCore;
-import moe.gensoukyo.mcgproject.common.backpack.ContainerGensoChest;
+import moe.gensoukyo.mcgproject.common.feature.backpack.BackpackCore;
+import moe.gensoukyo.mcgproject.common.feature.backpack.ContainerGensoChest;
 import moe.gensoukyo.mcgproject.core.MCGProject;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.inventory.GuiContainer;

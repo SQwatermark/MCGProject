@@ -1,5 +1,6 @@
 package moe.gensoukyo.mcgproject.cilent.entity;
 
+import moe.gensoukyo.mcgproject.core.Information;
 import moe.gensoukyo.mcgproject.core.MCGProject;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
@@ -9,9 +10,13 @@ import net.minecraft.client.renderer.entity.layers.LayerRenderer;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import org.lwjgl.opengl.GL11;
 
-public class RenderMCGPlayer implements LayerRenderer<EntityPlayer> {
+@Information(author = {"RiskyKen", "SQwatermark"}, licence = "CC BY-NC-SA 3.0", source = "https://github.com/RiskyKen/Armourers-Workshop")
+@SideOnly(Side.CLIENT)
+public class RendererMCGPlayer implements LayerRenderer<EntityPlayer> {
 
     ResourceLocation circle = new ResourceLocation(MCGProject.ID, "textures/other/nanoha-circle.png");
 

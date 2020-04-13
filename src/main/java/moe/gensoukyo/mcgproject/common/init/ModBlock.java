@@ -1,6 +1,6 @@
 package moe.gensoukyo.mcgproject.common.init;
 
-import moe.gensoukyo.mcgproject.common.backpack.GensoChest;
+import moe.gensoukyo.mcgproject.common.feature.backpack.GensoChest;
 import moe.gensoukyo.mcgproject.common.block.*;
 import moe.gensoukyo.mcgproject.common.block.enums.EnumTileColor;
 import moe.gensoukyo.mcgproject.common.creativetab.MCGTabs;
@@ -38,7 +38,7 @@ public class ModBlock {
     }
 
     public static Block TILE = new BlockTile();
-    public static Block NAMAKO = new BlockMCG(Material.CLAY, "namako", MCGTabs.TOUHOU);
+    public static Block NAMAKO = new BlockInteger2(Material.CLAY, "namako", MCGTabs.TOUHOU, SoundType.STONE);
     public static Block FLOWER = new BlockMCGFlower("flower");
     public static Block GAP = new BlockMCG(Material.WOOD, "gap", MCGTabs.FANTASY);
     public static Block BLOCK_CHIREIDEN = new BlockInteger8(Material.GLASS, "glass_chireiden", MCGTabs.EUROPEAN, SoundType.GLASS).setLightLevel(0.67F);
@@ -53,7 +53,7 @@ public class ModBlock {
         MCGProject.logger.info("MCGProject: loading blocks");
 
         //东方
-        blocks1.add(NAMAKO);
+        blocks2.add(NAMAKO);
         blocks2.add(new BlockTatami());
         blocks4.add(new BlockInteger4(Material.CLAY, "plaster", MCGTabs.TOUHOU, SoundType.STONE));
         blocks16.add(new BlockInteger16(Material.WOOD, "plank", MCGTabs.TOUHOU, SoundType.WOOD));

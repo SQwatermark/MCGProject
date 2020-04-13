@@ -1,6 +1,6 @@
 package moe.gensoukyo.mcgproject.common.network;
 
-import moe.gensoukyo.mcgproject.common.backpack.BackpackCore;
+import moe.gensoukyo.mcgproject.common.feature.backpack.BackpackCore;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.PacketBuffer;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;

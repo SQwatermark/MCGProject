@@ -1,5 +1,6 @@
 package moe.gensoukyo.mcgproject.core;
 
+@SuppressWarnings("unused")
 public class MCG {
 
     public static final String SERVER_NAME = "Minecraft幻想乡";

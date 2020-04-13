@@ -1,4 +1,8 @@
-package moe.gensoukyo.mcgproject.common.util;
+package moe.gensoukyo.mcgproject.cilent.util;
+
+import moe.gensoukyo.mcgproject.core.Information;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -19,6 +23,8 @@ import java.nio.ByteBuffer;
  *
  * @author Chris Molini
  *****************************************************************************/
+@Information(author = "Chris Molini", licence = "All Rights Reserved", source = "https://github.com/zlepper/itlt")
+@SideOnly(Side.CLIENT)
 public class IconLoader
 {
 
