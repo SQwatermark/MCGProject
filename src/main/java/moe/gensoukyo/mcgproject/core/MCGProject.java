@@ -37,8 +37,7 @@ public class MCGProject {
     public static CommonProxy proxy;
 
     @Mod.EventHandler
-    public void preInit(FMLPreInitializationEvent event)
-    {
+    public void preInit(FMLPreInitializationEvent event) {
         logger = event.getModLog();
         proxy.preInit(event);
     }
@@ -56,16 +55,14 @@ public class MCGProject {
     }
 
     @Mod.EventHandler
-    public void serverLoad(FMLServerStartingEvent event)
-    {
+    public void serverLoad(FMLServerStartingEvent event) {
         event.registerServerCommand(new BackpackCore.BackpackCommand());
         event.registerServerCommand(new BackpackCore.BackpackManageCommand());
     }
 
     @Mod.EventHandler
     @SideOnly(Side.CLIENT)
-    public void loadComplete(FMLLoadCompleteEvent event)
-    {
+    public void loadComplete(FMLLoadCompleteEvent event) {
         //设置窗口标题（加载完成时）
         Display.setTitle("Minecraft幻想乡1.12.2");
     }

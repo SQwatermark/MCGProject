@@ -15,8 +15,7 @@ public class ClientProxy extends CommonProxy {
 
     @Override
     @EventHandler
-    public void preInit(FMLPreInitializationEvent event)
-    {
+    public void preInit(FMLPreInitializationEvent event) {
         //获取mcgproject配置文件目录
         MCGProject.modConfigDi = Paths.get(event.getModConfigurationDirectory().getAbsolutePath(), "mcgproject").toFile();
 

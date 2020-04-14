@@ -4,8 +4,7 @@ import net.minecraft.block.material.Material;
 
 public class MaterialHelper {
 
-    public static String getMaterial(Material materialIn)
-    {
+    public static String getMaterial(Material materialIn) {
         String s = "未知材料";
         if (materialIn == Material.AIR) s = "空气";
         else if (materialIn == Material.GRASS) s = "草";
