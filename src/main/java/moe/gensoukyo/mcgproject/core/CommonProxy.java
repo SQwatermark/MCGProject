@@ -4,8 +4,8 @@ import moe.gensoukyo.mcgproject.common.entity.EntityKaginawa;
 import moe.gensoukyo.mcgproject.common.feature.BetterSign;
 import moe.gensoukyo.mcgproject.common.feature.MoreBannerPatterns;
 import moe.gensoukyo.mcgproject.common.init.*;
+import moe.gensoukyo.mcgproject.common.feature.CustomNPCsHook;
 import moe.gensoukyo.mcgproject.common.network.NetworkWrapper;
-import moe.gensoukyo.mcgproject.common.util.CustomNPCsHook;
 import moe.gensoukyo.mcgproject.common.util.EntityPool;
 import net.minecraft.entity.Entity;
 import net.minecraftforge.common.MinecraftForge;
@@ -22,8 +22,7 @@ public class CommonProxy {
     public WeakHashMap<Entity, EntityKaginawa> kagimap = new WeakHashMap<>();
 
     @EventHandler
-    public void preInit(FMLPreInitializationEvent event)
-    {
+    public void preInit(FMLPreInitializationEvent event) {
         MinecraftForge.EVENT_BUS.register(ModItem.instance());
         MinecraftForge.EVENT_BUS.register(ModBlock.instance());
         MinecraftForge.EVENT_BUS.register(ModArmor.instance());
@@ -39,15 +38,13 @@ public class CommonProxy {
     }
 
     @EventHandler
-    public void init(FMLInitializationEvent event)
-    {
+    public void init(FMLInitializationEvent event) {
         //添加旗帜图案
         new MoreBannerPatterns();
     }
 
     @EventHandler
-    public void postInit(FMLPostInitializationEvent event)
-    {
+    public void postInit(FMLPostInitializationEvent event) {
 
     }
 
