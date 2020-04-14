@@ -3,7 +3,6 @@ package moe.gensoukyo.mcgproject.common.tileentity;
 import com.google.common.collect.Lists;
 import moe.gensoukyo.mcgproject.common.network.NetworkWrapper;
 import moe.gensoukyo.mcgproject.common.network.StickerRefreshPacket;
-import moe.gensoukyo.mcgproject.core.MCGProject;
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.entity.player.EntityPlayer;
@@ -218,7 +217,7 @@ public class TileSticker extends AbstractTileEntity implements ITickable {
                     nowFrames += 1;
                 if (nowFrames >= totalFrames) {
                     nowFrames = 0;
-                    frameCounter = 0;
+                    frameCounter = -1;
                 }
                 break;
             case ANIMATE_LOOP_INV:
@@ -231,7 +230,7 @@ public class TileSticker extends AbstractTileEntity implements ITickable {
                     nowFrames += 1;
                 if (nowFrames >= totalFrames) {
                     nowFrames = 0;
-                    frameCounter = 0;
+                    frameCounter = -1;
                 }
                 break;
             case ANIMATE_SCROLL_V:
@@ -242,9 +241,10 @@ public class TileSticker extends AbstractTileEntity implements ITickable {
                 v = (double) frameHeight / (double) height;
                 if ((frameCounter / frameTime) % 2 == 0)
                     nowFrames += ((double) frameExtend / (double) frameTime);
+                else nowFrames = (int) (nowFrames / frameExtend) * frameExtend;
                 if (nowFrames > totalFrames - frameExtend) {
                     nowFrames = 0;
-                    frameCounter = 0;
+                    frameCounter = -1;
                 }
                 break;
             case ANIMATE_SCROLL_V_INV:
@@ -255,9 +255,10 @@ public class TileSticker extends AbstractTileEntity implements ITickable {
                 v = (double) frameHeight / (double) height;
                 if ((frameCounter / frameTime) % 2 == 0)
                     nowFrames += ((double) frameExtend / (double) frameTime);
+                else nowFrames = (int) (nowFrames / frameExtend) * frameExtend;
                 if (nowFrames > totalFrames - frameExtend) {
                     nowFrames = 0;
-                    frameCounter = 0;
+                    frameCounter = -1;
                 }
                 break;
             case ANIMATE_SCROLL_H:
@@ -268,9 +269,10 @@ public class TileSticker extends AbstractTileEntity implements ITickable {
                 v = 1;
                 if ((frameCounter / frameTime) % 2 == 0)
                     nowFrames += ((double) frameExtend / (double) frameTime);
+                else nowFrames = (int) (nowFrames / frameExtend) * frameExtend;
                 if (nowFrames > totalFrames - frameExtend) {
                     nowFrames = 0;
-                    frameCounter = 0;
+                    frameCounter = -1;
                 }
                 break;
             case ANIMATE_SCROLL_H_INV:
@@ -281,9 +283,10 @@ public class TileSticker extends AbstractTileEntity implements ITickable {
                 v = 1;
                 if ((frameCounter / frameTime) % 2 == 0)
                     nowFrames += ((double) frameExtend / (double) frameTime);
+                else nowFrames = (int) (nowFrames / frameExtend) * frameExtend;
                 if (nowFrames > totalFrames - frameExtend) {
                     nowFrames = 0;
-                    frameCounter = 0;
+                    frameCounter = -1;
                 }
                 break;
             default:

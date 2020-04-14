@@ -23,11 +23,8 @@ import javax.annotation.Nonnull;
  */
 public class TileStickerRenderer extends TileEntitySpecialRenderer<TileSticker> {
 
-    // TODO: 后面需要正确设置这些路径
-    //private static final String DEFAULT_RES = "";
-    private static final String DEFAULT_URL = "";
     private static final String DEFAULT_RES = MCGProject.ID + ":" + "textures/sticker/";
-    //private static final String DEFAULT_URL = "http://update.gensoukyo.moe:8080/";
+    private static final String DEFAULT_URL = "http://update.gensoukyo.moe:9961/";
 
     private final ResourceLocation defTexture = new ResourceLocation(
             MCGProject.ID, "textures/blocks/fantasy/gap.png");
@@ -118,10 +115,18 @@ public class TileStickerRenderer extends TileEntitySpecialRenderer<TileSticker> 
             case TileSticker.ANIMATE_SCROLL_V_INV:
             case TileSticker.ANIMATE_SCROLL_H:
             case TileSticker.ANIMATE_SCROLL_H_INV:
-                x = sticker.px + (sticker.x - sticker.px) * partialTicks;
-                y = sticker.py + (sticker.y - sticker.py) * partialTicks;
-                u = sticker.pu + (sticker.u - sticker.pu) * partialTicks;
-                v = sticker.pv + (sticker.v - sticker.pv) * partialTicks;
+                if (Math.abs(sticker.x - sticker.px) > 0.5)
+                    x = sticker.x;
+                else x = sticker.px + (sticker.x - sticker.px) * partialTicks;
+                if (Math.abs(sticker.y - sticker.py) > 0.5)
+                    y = sticker.y;
+                else y = sticker.py + (sticker.y - sticker.py) * partialTicks;
+                if (Math.abs(sticker.u - sticker.pu) > 0.5)
+                    u = sticker.u;
+                else u = sticker.pu + (sticker.u - sticker.pu) * partialTicks;
+                if (Math.abs(sticker.v - sticker.pv) > 0.5)
+                    v = sticker.v;
+                else v = sticker.pv + (sticker.v - sticker.pv) * partialTicks;
             default:
                 break;
         }
