@@ -1,7 +1,7 @@
 package moe.gensoukyo.mcgproject.core;
 
-
 import moe.gensoukyo.mcgproject.common.backpack.BackpackCore;
+import moe.gensoukyo.mcgproject.common.tileentity.TileSticker;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.*;
@@ -58,6 +58,7 @@ public class MCGProject {
     public void serverLoad(FMLServerStartingEvent event) {
         event.registerServerCommand(new BackpackCore.BackpackCommand());
         event.registerServerCommand(new BackpackCore.BackpackManageCommand());
+        event.registerServerCommand(new TileSticker.RefreshCommand());
     }
 
     @Mod.EventHandler

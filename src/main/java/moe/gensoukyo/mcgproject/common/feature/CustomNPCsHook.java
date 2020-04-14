@@ -1,10 +1,12 @@
-package moe.gensoukyo.mcgproject.common.util;
+package moe.gensoukyo.mcgproject.common.feature;
 
+import moe.gensoukyo.mcgproject.common.util.EntityPool;
 import moe.gensoukyo.mcgproject.core.MCGProject;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityList;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.math.BlockPos;
+import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 import noppes.npcs.api.IWorld;
@@ -14,6 +16,7 @@ import noppes.npcs.entity.EntityNPCInterface;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
+import java.lang.reflect.Method;
 import java.util.LinkedHashMap;
 import java.util.concurrent.locks.ReentrantLock;
 
@@ -93,6 +96,13 @@ public class CustomNPCsHook {
                 lock.unlock();
             }
         }
+
+        @Override
+        public void clear() {
+            lock.lock();
+            super.clear();
+            lock.unlock();
+        }
     }
 
     public static class MCGHandler extends ServerCloneController {
@@ -128,13 +138,39 @@ public class CustomNPCsHook {
         }
 
         /**
-         * @apiNote 早期加载及运行中 set 方法更新
+         * @apiNote 用于强制刷新存储
+         * */
+        public void refresh() {
+            Class<?> cls = ServerCloneController.class;
+            try {
+                Method method = cls.getDeclaredMethod("loadClones");
+                method.setAccessible(true);
+                POOL.clear();
+                DO_SAVE = true;
+                method.invoke(this);
+            } catch (Exception ignored) { }
+            DO_SAVE = false;
+        }
+
+        /**
+         * @apiNote 早期加载及运行中 set, add 方法更新
          * */
         @Override
         public void saveClone(int tab, String name, NBTTagCompound compound) {
             if (!LOADED || DO_SAVE)
                 put(tab, name, compound);
             super.saveClone(tab, name, compound);
+        }
+
+        /**
+         * @apiNote 游戏内GUI应该是调用的这个方法
+         * */
+        @Override
+        public String addClone(NBTTagCompound compound, String name, int tab) {
+            DO_SAVE = true;
+            String res = super.addClone(compound, name, tab);
+            DO_SAVE = false;
+            return res;
         }
 
         /**

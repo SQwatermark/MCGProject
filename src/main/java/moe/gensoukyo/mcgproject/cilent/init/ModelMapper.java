@@ -5,12 +5,15 @@ import moe.gensoukyo.mcgproject.cilent.entity.boat.RenderMCGBoat;
 import moe.gensoukyo.mcgproject.cilent.entity.boat.RenderRACBoat;
 import moe.gensoukyo.mcgproject.cilent.entity.butterfly.*;
 import moe.gensoukyo.mcgproject.cilent.tileentity.TileRanstonePistonRenderer;
+import moe.gensoukyo.mcgproject.cilent.tileentity.TileStickerRenderer;
+import moe.gensoukyo.mcgproject.common.block.BlockSticker;
 import moe.gensoukyo.mcgproject.common.block.ranstone.*;
 import moe.gensoukyo.mcgproject.common.entity.EntityKaginawa;
 import moe.gensoukyo.mcgproject.common.entity.boat.EntityMCGBoat;
 import moe.gensoukyo.mcgproject.common.entity.boat.EntityRACBoat;
 import moe.gensoukyo.mcgproject.common.entity.butterfly.*;
 import moe.gensoukyo.mcgproject.common.init.ModItem;
+import moe.gensoukyo.mcgproject.common.tileentity.TileSticker;
 import moe.gensoukyo.mcgproject.core.MCGProject;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.entity.Entity;
@@ -65,7 +68,11 @@ public class ModelMapper {
         registerModel(RanstoneWire.ITEM);
         registerModel(RanstonePiston.Base.ITEM);
 
+        registerModel(BlockSticker.ITEM);
+        registerModel(BlockSticker.ITEM_LIT);
+
         ClientRegistry.bindTileEntitySpecialRenderer(RanstonePiston.TilePiston.class, new TileRanstonePistonRenderer());
+        ClientRegistry.bindTileEntitySpecialRenderer(TileSticker.class, new TileStickerRenderer());
     }
 
     @SubscribeEvent
