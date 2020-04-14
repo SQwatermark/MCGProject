@@ -43,15 +43,13 @@ public class ItemKaginawa extends Item {
 
     NBTTagCompound nbtTagCompound;
 
-    public ItemKaginawa()
-    {
+    public ItemKaginawa() {
         this.setMaxStackSize(1);
         this.setCreativeTab(MCGTabs.FANTASY);
         this.setRegistryName(MCGProject.ID, "kaginawa");
         this.setTranslationKey(MCGProject.ID + "." + "kaginawa");
         this.setMaxDamage(1024);
-        this.addPropertyOverride(new ResourceLocation("cast"), new IItemPropertyGetter()
-        {
+        this.addPropertyOverride(new ResourceLocation("cast"), new IItemPropertyGetter() {
             @SideOnly(Side.CLIENT)
             public float apply(@NotNull ItemStack stack, @Nullable World worldIn, @Nullable EntityLivingBase entityIn)
             {
@@ -77,8 +75,7 @@ public class ItemKaginawa extends Item {
 
     @Override
     @SideOnly(Side.CLIENT)
-    public void addInformation(ItemStack stack, @Nullable World world, List<String> list, ITooltipFlag flag)
-    {
+    public void addInformation(ItemStack stack, @Nullable World world, List<String> list, ITooltipFlag flag) {
         list.add(TextFormatting.DARK_RED + I18n.format("tooltip.mcgproject.itemkaginawa"));
     }
 
@@ -88,8 +85,7 @@ public class ItemKaginawa extends Item {
      */
     @NotNull
     @Override
-    public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, @NotNull EnumHand handIn)
-    {
+    public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, @NotNull EnumHand handIn) {
         if (MCGProject.proxy.kagimap.containsKey(playerIn) && !MCGProject.proxy.kagimap.get(playerIn).isDead) {
             return new ActionResult<>(EnumActionResult.FAIL, playerIn.getHeldItem(handIn));
         } else {
@@ -98,8 +94,7 @@ public class ItemKaginawa extends Item {
         }
     }
 
-    public void act(World worldIn, EntityPlayer playerIn, @NotNull EnumHand handIn)
-    {
+    public void act(World worldIn, EntityPlayer playerIn, @NotNull EnumHand handIn) {
 
         //初始化钩子参数
         float speed = defaultSpeed;

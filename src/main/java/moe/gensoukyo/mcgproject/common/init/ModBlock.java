@@ -30,14 +30,13 @@ import java.util.Objects;
 public class ModBlock {
 
     private static ModBlock instance;
-    public static ModBlock instance()
-    {
+    public static ModBlock instance() {
         if(instance == null) instance = new ModBlock();
         return instance;
     }
 
     public static Block TILE = new BlockTile();
-    public static Block NAMAKO = new BlockMCG(Material.CLAY, "namako", MCGTabs.TOUHOU);
+    public static Block NAMAKO = new BlockInteger2(Material.CLAY, "namako", MCGTabs.TOUHOU, SoundType.STONE);
     public static Block FLOWER = new BlockMCGFlower("flower");
     public static Block GAP = new BlockMCG(Material.WOOD, "gap", MCGTabs.FANTASY);
     public static Block BLOCK_CHIREIDEN = new BlockInteger8(Material.GLASS, "glass_chireiden", MCGTabs.EUROPEAN, SoundType.GLASS).setLightLevel(0.67F);
@@ -52,7 +51,7 @@ public class ModBlock {
         MCGProject.logger.info("MCGProject: loading blocks");
 
         //东方
-        blocks1.add(NAMAKO);
+        blocks2.add(NAMAKO);
         blocks2.add(new BlockTatami());
         blocks4.add(new BlockInteger4(Material.CLAY, "plaster", MCGTabs.TOUHOU, SoundType.STONE));
         blocks16.add(new BlockInteger16(Material.WOOD, "plank", MCGTabs.TOUHOU, SoundType.WOOD));
@@ -152,8 +151,7 @@ public class ModBlock {
      * 注册方块
      */
     @SubscribeEvent
-    public void registerBlocks(RegistryEvent.Register<Block> event)
-    {
+    public void registerBlocks(RegistryEvent.Register<Block> event) {
         MCGProject.logger.info("MCGProject: registering blocks");
         for (LinkedList<Block> i : arrayList) {
             event.getRegistry().registerAll(i.toArray(new Block[0]));
@@ -183,8 +181,7 @@ public class ModBlock {
      * 注册ItemBlock
      */
     @SubscribeEvent
-    public void registerItemBlocks(RegistryEvent.Register<Item> event)
-    {
+    public void registerItemBlocks(RegistryEvent.Register<Item> event) {
         MCGProject.logger.info("MCGProject: registering ItemBlocks");
         //遍历所有存储Block的链表，实例化ItemBlock并存入LinkedHashMap
         for (int maxMeta = 0; maxMeta < 16; maxMeta++) {
@@ -216,8 +213,7 @@ public class ModBlock {
      */
     @SubscribeEvent
     @SideOnly(Side.CLIENT)
-    public void registerItemBlockModels(ModelRegistryEvent event)
-    {
+    public void registerItemBlockModels(ModelRegistryEvent event) {
         MCGProject.logger.info("MCGProject: registering ItemBlock Models");
         //遍历所有LinkedHashMap, 注册ItemBlock对应模型
         for (int maxMeta = 0; maxMeta < 16; maxMeta++) {
@@ -228,8 +224,7 @@ public class ModBlock {
     }
 
     //模型注册的执行
-    private void setLocation(Item i, int maxMeta)
-    {
+    private void setLocation(Item i, int maxMeta) {
         if(maxMeta == 0) {
             ModelLoader.setCustomModelResourceLocation(i, 0,
                     new ModelResourceLocation(Objects.requireNonNull(i.getRegistryName()), "inventory")
@@ -278,8 +273,7 @@ public class ModBlock {
     private static ArrayList<LinkedList<Block>> arrayList = new ArrayList<>();
     private static ArrayList<LinkedHashMap<Block, Item>> arrayList2 = new ArrayList<>();
 
-    private void addArrayList()
-    {
+    private void addArrayList() {
         arrayList.add(blocks1);
         arrayList.add(blocks2);
         arrayList.add(blocks3);

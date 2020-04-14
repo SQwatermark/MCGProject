@@ -1,15 +1,20 @@
 package moe.gensoukyo.mcgproject.cilent.model.butterfly;
 
 import moe.gensoukyo.mcgproject.common.util.MathMCG;
+import moe.gensoukyo.mcgproject.core.Information;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.Random;
 
 /**
- * 代码取自 kathairis mod 并进行了修改，仅用于测试
+ * 代码取自 kathairis mod 并进行了修改
  */
+@Information(author = "Kathairis Team", licence = "LGPL-3.0", source = "https://github.com/Krevik/Kathairis")
+@SideOnly(Side.CLIENT)
 public class ModelIllukini extends ModelBase {
 
     Random random = new Random();

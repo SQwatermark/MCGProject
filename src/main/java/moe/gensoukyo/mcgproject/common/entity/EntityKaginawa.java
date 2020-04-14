@@ -36,8 +36,7 @@ public class EntityKaginawa extends EntityThrowable {
         this.age = ageIn;
     }
 
-    public void shoot(double x, double y, double z, float velocity, float inaccuracy)
-    {
+    public void shoot(double x, double y, double z, float velocity, float inaccuracy) {
         float f = MathHelper.sqrt(x * x + y * y + z * z);
         x = x / (double)f;
         y = y / (double)f;
@@ -66,8 +65,7 @@ public class EntityKaginawa extends EntityThrowable {
 
     }
 
-    protected void onImpact(@NotNull RayTraceResult result)
-    {
+    protected void onImpact(@NotNull RayTraceResult result) {
         double vMotionX = (this.posX - Objects.requireNonNull(this.getThrower()).posX) / 7.0D;
 
         double vMotionY;
@@ -93,4 +91,5 @@ public class EntityKaginawa extends EntityThrowable {
         super.setDead();
         MCGProject.proxy.kagimap.remove(this.getThrower());
     }
+
 }

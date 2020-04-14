@@ -22,7 +22,8 @@ public class ModFluid {
 
     public static Fluid myFluid;
 
-    private ModFluid() {
+    private ModFluid()
+    {
         myFluid = new MCGWater("example_fluid", new ResourceLocation("mcgproject:blocks/fluid/water_white"), new ResourceLocation("mcgproject:blocks/fluid/water_white")).setGaseous(true).setDensity(Integer.MAX_VALUE);
     }
 

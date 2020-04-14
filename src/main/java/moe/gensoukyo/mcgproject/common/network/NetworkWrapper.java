@@ -20,7 +20,6 @@ public class NetworkWrapper {
         INSTANCE.registerMessage(BackpackGuiHandler.class, BackpackPacket.class, 0, Side.CLIENT);
         INSTANCE.registerMessage(BoatStCHandler.class, BoatPacket.class, 1, Side.CLIENT);
         INSTANCE.registerMessage(BoatCtSHandler.class, BoatPacket.class, 2, Side.SERVER);
-        //INSTANCE.registerMessage(SignHandler.class, SignPacket.class, 3, Side.SERVER);
         INSTANCE.registerMessage(StickerHandler.class, StickerPacket.class, 4, Side.SERVER);
         INSTANCE.registerMessage(StickerRefreshHandler.class, StickerRefreshPacket.class, 5, Side.CLIENT);
     }

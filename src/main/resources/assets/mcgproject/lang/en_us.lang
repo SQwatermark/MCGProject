@@ -9,7 +9,8 @@ itemGroup.mcgproject.old=旧版移植
 # 东方
 tile.mcgproject.tatami_0.name=Tatami
 tile.mcgproject.tatami_1.name=Tatami
-tile.mcgproject.namako.name=Namako
+tile.mcgproject.namako_0.name=Namako
+tile.mcgproject.namako_1.name=Namako
 tile.mcgproject.plaster_0.name=Plaster
 tile.mcgproject.plaster_1.name=Plaster
 tile.mcgproject.plaster_2.name=Plaster

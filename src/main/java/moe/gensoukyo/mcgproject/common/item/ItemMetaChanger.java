@@ -32,8 +32,7 @@ public class ItemMetaChanger extends Item {
 
     @Override
     @SideOnly(Side.CLIENT)
-    public void addInformation(ItemStack stack, @Nullable World world, List<String> list, ITooltipFlag flag)
-    {
+    public void addInformation(ItemStack stack, @Nullable World world, List<String> list, ITooltipFlag flag) {
         list.add(I18n.format("tooltip.mcgproject.itemmetachanger"));
     }
 
@@ -41,8 +40,7 @@ public class ItemMetaChanger extends Item {
      * 按顺序切换方块的所有（允许的）状态
      */
     @Override
-    public EnumActionResult onItemUse(EntityPlayer player, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ)
-    {
+    public EnumActionResult onItemUse(EntityPlayer player, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
         IBlockState iblockstate = worldIn.getBlockState(pos);
 
         Collection<IProperty<?>> propertyKeys = iblockstate.getPropertyKeys();
