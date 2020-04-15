@@ -19,13 +19,12 @@ public class StickerRefreshHandler implements IMessageHandler<StickerRefreshPack
         if (context.side == Side.CLIENT) {
             Minecraft mc = Minecraft.getMinecraft();
             mc.addScheduledTask(() -> {
-                World world = mc.world;
                 if (!packet.isGlobal) {
-                    TileEntity te = world.getTileEntity(packet.getPos());
+                    TileEntity te = mc.world.getTileEntity(packet.getPos());
                     if (te instanceof TileSticker)
                         ((TileSticker) te).refresh();
                 } else {
-                    for (TileEntity te : world.loadedTileEntityList) {
+                    for (TileEntity te : mc.world.loadedTileEntityList) {
                         if (te instanceof TileSticker)
                             ((TileSticker) te).refresh();
                     }
