@@ -1,7 +1,7 @@
 package moe.gensoukyo.mcgproject.core;
 
-import moe.gensoukyo.mcgproject.common.backpack.BackpackCore;
-import moe.gensoukyo.mcgproject.common.tileentity.TileSticker;
+import moe.gensoukyo.mcgproject.common.feature.backpack.BackpackCore;
+import moe.gensoukyo.mcgproject.common.feature.sticker.TileSticker;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.*;
@@ -24,7 +24,7 @@ public class MCGProject {
 
     public static final String ID = "mcgproject";
     public static final String NAME = "MCGProject";
-    public static final String VERSION = "1.1.0";
+    public static final String VERSION = "1.1.1";
 
     public static Logger logger;
     public static File modConfigDi;

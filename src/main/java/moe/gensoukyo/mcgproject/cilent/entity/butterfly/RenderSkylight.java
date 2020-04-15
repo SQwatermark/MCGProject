@@ -11,13 +11,12 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.client.registry.IRenderFactory;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import scala.util.Random;
 
 @SideOnly(Side.CLIENT)
 public class RenderSkylight extends RenderLiving<EntitySkylight>
 {
     public static final Factory FACTORY = new Factory();
-    Random random = new Random();
+
     public RenderSkylight(RenderManager renderManagerIn)
     {
         super(renderManagerIn, new ModelSkylight(), 0F);

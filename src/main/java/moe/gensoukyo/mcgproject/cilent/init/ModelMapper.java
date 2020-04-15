@@ -6,14 +6,14 @@ import moe.gensoukyo.mcgproject.cilent.entity.boat.RenderRACBoat;
 import moe.gensoukyo.mcgproject.cilent.entity.butterfly.*;
 import moe.gensoukyo.mcgproject.cilent.tileentity.TileRanstonePistonRenderer;
 import moe.gensoukyo.mcgproject.cilent.tileentity.TileStickerRenderer;
-import moe.gensoukyo.mcgproject.common.block.BlockSticker;
-import moe.gensoukyo.mcgproject.common.block.ranstone.*;
+import moe.gensoukyo.mcgproject.common.feature.sticker.BlockSticker;
+import moe.gensoukyo.mcgproject.common.feature.ranstone.*;
 import moe.gensoukyo.mcgproject.common.entity.EntityKaginawa;
 import moe.gensoukyo.mcgproject.common.entity.boat.EntityMCGBoat;
 import moe.gensoukyo.mcgproject.common.entity.boat.EntityRACBoat;
 import moe.gensoukyo.mcgproject.common.entity.butterfly.*;
 import moe.gensoukyo.mcgproject.common.init.ModItem;
-import moe.gensoukyo.mcgproject.common.tileentity.TileSticker;
+import moe.gensoukyo.mcgproject.common.feature.sticker.TileSticker;
 import moe.gensoukyo.mcgproject.core.MCGProject;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.entity.Entity;
@@ -60,6 +60,8 @@ public class ModelMapper {
         registerModel(ModItem.ITEM_GEN_BIG_OAK);
         registerModel(ModItem.ITEM_KAGINAWA);
         registerModel(ModItem.ITEM_BLOCK_INFO);
+        registerModel(ModItem.ITEM_MCG_FOOD);
+        registerModel(ModItem.ITEM_MCG_DRINK);
 
         registerModel(RanstoneBlock.ITEM);
         registerModel(RanstoneComparator.ITEM);

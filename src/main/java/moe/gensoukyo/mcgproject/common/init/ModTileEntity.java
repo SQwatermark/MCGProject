@@ -1,10 +1,9 @@
 package moe.gensoukyo.mcgproject.common.init;
 
-import moe.gensoukyo.mcgproject.common.block.ranstone.RanstonePiston;
-import moe.gensoukyo.mcgproject.common.tileentity.TileSticker;
+import moe.gensoukyo.mcgproject.common.feature.ranstone.RanstonePiston;
+import moe.gensoukyo.mcgproject.common.feature.sticker.TileSticker;
 import moe.gensoukyo.mcgproject.core.MCGProject;
 import net.minecraft.block.Block;
-import net.minecraft.item.Item;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.RegistryEvent;

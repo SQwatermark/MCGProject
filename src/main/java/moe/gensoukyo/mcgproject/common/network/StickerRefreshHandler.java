@@ -1,6 +1,6 @@
 package moe.gensoukyo.mcgproject.common.network;
 
-import moe.gensoukyo.mcgproject.common.tileentity.TileSticker;
+import moe.gensoukyo.mcgproject.common.feature.sticker.TileSticker;
 import net.minecraft.client.Minecraft;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;

@@ -1,4 +1,4 @@
-package moe.gensoukyo.mcgproject.common.block.ranstone;
+package moe.gensoukyo.mcgproject.common.feature.ranstone;
 
 import com.google.common.base.Predicate;
 import moe.gensoukyo.mcgproject.core.MCGProject;

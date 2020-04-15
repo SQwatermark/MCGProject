@@ -1,7 +1,7 @@
 package moe.gensoukyo.mcgproject.common.network;
 
-import moe.gensoukyo.mcgproject.common.block.BlockSticker;
-import moe.gensoukyo.mcgproject.common.tileentity.TileSticker;
+import moe.gensoukyo.mcgproject.common.feature.sticker.BlockSticker;
+import moe.gensoukyo.mcgproject.common.feature.sticker.TileSticker;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;

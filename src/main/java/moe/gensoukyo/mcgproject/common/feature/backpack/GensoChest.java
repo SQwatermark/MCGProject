@@ -1,4 +1,4 @@
-package moe.gensoukyo.mcgproject.common.backpack;
+package moe.gensoukyo.mcgproject.common.feature.backpack;
 
 import moe.gensoukyo.mcgproject.common.creativetab.MCGTabs;
 import moe.gensoukyo.mcgproject.core.MCGProject;

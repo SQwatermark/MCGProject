@@ -1,10 +1,9 @@
-package moe.gensoukyo.mcgproject.common.block;
+package moe.gensoukyo.mcgproject.common.feature.sticker;
 
 import moe.gensoukyo.mcgproject.cilent.gui.StickerEditor;
 import moe.gensoukyo.mcgproject.common.creativetab.MCGTabs;
 import moe.gensoukyo.mcgproject.common.network.NetworkWrapper;
 import moe.gensoukyo.mcgproject.common.network.StickerPacket;
-import moe.gensoukyo.mcgproject.common.tileentity.TileSticker;
 import moe.gensoukyo.mcgproject.core.MCGProject;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.SoundType;
@@ -15,7 +14,6 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;

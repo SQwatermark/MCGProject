@@ -1,6 +1,6 @@
 package moe.gensoukyo.mcgproject.cilent.tileentity;
 
-import moe.gensoukyo.mcgproject.common.block.ranstone.RanstonePiston;
+import moe.gensoukyo.mcgproject.common.feature.ranstone.RanstonePiston;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockPistonBase;
 import net.minecraft.block.BlockPistonExtension;

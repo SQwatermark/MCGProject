@@ -16,14 +16,6 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 /**
- * This class was created by <Vazkii>. It's distributed as
- * part of the Quark Mod. Get the Source Code in github:
- * https://github.com/Vazkii/Quark
- *
- * Quark is Open Source and distributed under the
- * CC-BY-NC-SA 3.0 License: https://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_GB
- *
- * 此文件为 SQwatermark 修改的版本
  * 创造模式才能打开牌子
  * 手中持有告示牌的情况下，可以直接右击打开
  * 手中未持有告示牌的情况下，按住ctrl右击才可以打开
@@ -32,8 +24,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class BetterSign {
 
 	private static BetterSign instance;
-	public static BetterSign instance()
-	{
+	public static BetterSign instance() {
 		if(instance == null) instance = new BetterSign();
 		return instance;
 	}

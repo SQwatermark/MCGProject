@@ -1,6 +1,6 @@
 package moe.gensoukyo.mcgproject.cilent.gui;
 
-import moe.gensoukyo.mcgproject.common.tileentity.TileSticker;
+import moe.gensoukyo.mcgproject.common.feature.sticker.TileSticker;
 
 import javax.swing.*;
 import java.awt.*;

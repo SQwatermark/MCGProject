@@ -286,6 +286,8 @@ item.mcgproject.meta_changer.name=河童的调试棒
 item.mcgproject.generator_big_oak.name=Big Oak Generator
 item.mcgproject.kaginawa.name=Grabbing Hook
 item.mcgproject.block_info_displayer.name=Block Info Dispayer
+item.mcgproject.mcg_food.name=dango
+item.mcgproject.mcg_drink.name=beer
 
 tile.mcgproject.blockRanstone.name=Ranstone
 item.mcgproject.comparator.name=Ranstone Comparator

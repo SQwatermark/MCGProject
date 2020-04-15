@@ -2,7 +2,7 @@ package moe.gensoukyo.mcgproject.cilent.tileentity;
 
 import moe.gensoukyo.mcgproject.cilent.util.Texture;
 import moe.gensoukyo.mcgproject.cilent.util.TextureLoader;
-import moe.gensoukyo.mcgproject.common.tileentity.TileSticker;
+import moe.gensoukyo.mcgproject.common.feature.sticker.TileSticker;
 import moe.gensoukyo.mcgproject.core.MCGProject;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.BufferBuilder;

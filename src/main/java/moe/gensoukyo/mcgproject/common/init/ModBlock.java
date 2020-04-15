@@ -1,12 +1,13 @@
 package moe.gensoukyo.mcgproject.common.init;
 
-import moe.gensoukyo.mcgproject.common.backpack.GensoChest;
 import moe.gensoukyo.mcgproject.common.block.*;
+import moe.gensoukyo.mcgproject.common.feature.backpack.GensoChest;
 import moe.gensoukyo.mcgproject.common.block.enums.EnumTileColor;
 import moe.gensoukyo.mcgproject.common.creativetab.MCGTabs;
+import moe.gensoukyo.mcgproject.common.feature.sticker.BlockSticker;
 import moe.gensoukyo.mcgproject.common.item.ItemBlockWithMeta;
 import moe.gensoukyo.mcgproject.common.item.ItemMCGBlock;
-import moe.gensoukyo.mcgproject.common.block.ranstone.*;
+import moe.gensoukyo.mcgproject.common.feature.ranstone.*;
 import moe.gensoukyo.mcgproject.core.MCGProject;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;

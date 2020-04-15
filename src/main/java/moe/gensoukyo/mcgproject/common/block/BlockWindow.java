@@ -1,5 +1,6 @@
 package moe.gensoukyo.mcgproject.common.block;
 
+import moe.gensoukyo.mcgproject.common.block.BlockInteger2;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;

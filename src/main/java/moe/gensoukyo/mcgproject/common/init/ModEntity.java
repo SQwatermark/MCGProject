@@ -22,16 +22,14 @@ import java.util.LinkedList;
 public class ModEntity {
 
     private static ModEntity instance;
-    public static ModEntity instance()
-    {
+    public static ModEntity instance() {
         if (instance == null) instance = new ModEntity();
         return instance;
     }
 
     public static LinkedList<Class<? extends Entity>> entities;
 
-    private static void register(int index, Class<? extends Entity> entity)
-    {
+    private static void register(int index, Class<? extends Entity> entity) {
         String name = entity.getSimpleName().toLowerCase();
         if (entity.isAnnotationPresent(MCGEntity.class))
             name = entity.getAnnotation(MCGEntity.class).value();

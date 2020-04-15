@@ -1,8 +1,9 @@
-package moe.gensoukyo.mcgproject.common.tileentity;
+package moe.gensoukyo.mcgproject.common.feature.sticker;
 
 import com.google.common.collect.Lists;
 import moe.gensoukyo.mcgproject.common.network.NetworkWrapper;
 import moe.gensoukyo.mcgproject.common.network.StickerRefreshPacket;
+import moe.gensoukyo.mcgproject.common.tileentity.AbstractTileEntity;
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.entity.player.EntityPlayer;

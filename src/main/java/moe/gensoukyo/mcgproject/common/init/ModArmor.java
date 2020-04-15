@@ -21,8 +21,7 @@ import java.util.Objects;
 public class ModArmor {
 
     private static ModArmor instance;
-    public static ModArmor instance()
-    {
+    public static ModArmor instance() {
         if(instance == null) instance = new ModArmor();
         return instance;
     }
