@@ -4,16 +4,18 @@ import moe.gensoukyo.mcgproject.cilent.entity.RenderKaginawa;
 import moe.gensoukyo.mcgproject.cilent.entity.boat.RenderMCGBoat;
 import moe.gensoukyo.mcgproject.cilent.entity.boat.RenderRACBoat;
 import moe.gensoukyo.mcgproject.cilent.entity.butterfly.*;
+import moe.gensoukyo.mcgproject.cilent.entity.fish.*;
 import moe.gensoukyo.mcgproject.cilent.tileentity.TileRanstonePistonRenderer;
 import moe.gensoukyo.mcgproject.cilent.tileentity.TileStickerRenderer;
-import moe.gensoukyo.mcgproject.common.feature.sticker.BlockSticker;
-import moe.gensoukyo.mcgproject.common.feature.ranstone.*;
 import moe.gensoukyo.mcgproject.common.entity.EntityKaginawa;
 import moe.gensoukyo.mcgproject.common.entity.boat.EntityMCGBoat;
 import moe.gensoukyo.mcgproject.common.entity.boat.EntityRACBoat;
 import moe.gensoukyo.mcgproject.common.entity.butterfly.*;
-import moe.gensoukyo.mcgproject.common.init.ModItem;
+import moe.gensoukyo.mcgproject.common.entity.fish.*;
+import moe.gensoukyo.mcgproject.common.feature.ranstone.*;
+import moe.gensoukyo.mcgproject.common.feature.sticker.BlockSticker;
 import moe.gensoukyo.mcgproject.common.feature.sticker.TileSticker;
+import moe.gensoukyo.mcgproject.common.init.ModItem;
 import moe.gensoukyo.mcgproject.core.MCGProject;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.entity.Entity;
@@ -103,6 +105,11 @@ public class ModelMapper {
         renderEntity.put(EntitySkylight.class, RenderSkylight.FACTORY);
         renderEntity.put(EntityKaginawa.class, RenderKaginawa.FACTORY);
         renderEntity.put(EntityRubySile.class, RenderRubySile.FACTORY);
+        renderEntity.put(EntityCod.class, RenderCod.FACTORY);
+        renderEntity.put(EntitySalmon.class, RenderSalmon.FACTORY);
+        renderEntity.put(EntityTropicalFishA.class, RenderTropicalFishA.FACTORY);
+        renderEntity.put(EntityTropicalFishB.class, RenderTropicalFishB.FACTORY);
+        renderEntity.put(EntityPufferFish.class, RenderPufferFish.FACTORY);
     }
 
 }

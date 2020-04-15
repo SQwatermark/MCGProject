@@ -5,6 +5,7 @@ import moe.gensoukyo.mcgproject.common.entity.MCGEntity;
 import moe.gensoukyo.mcgproject.common.entity.boat.EntityMCGBoat;
 import moe.gensoukyo.mcgproject.common.entity.boat.EntityRACBoat;
 import moe.gensoukyo.mcgproject.common.entity.butterfly.*;
+import moe.gensoukyo.mcgproject.common.entity.fish.*;
 import moe.gensoukyo.mcgproject.core.MCGProject;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
@@ -59,6 +60,11 @@ public class ModEntity {
         entities.add(EntitySkylight.class);
         entities.add(EntityKaginawa.class);
         entities.add(EntityRubySile.class);
+        entities.add(EntityCod.class);
+        entities.add(EntitySalmon.class);
+        entities.add(EntityTropicalFishA.class);
+        entities.add(EntityTropicalFishB.class);
+        entities.add(EntityPufferFish.class);
 
     }
 

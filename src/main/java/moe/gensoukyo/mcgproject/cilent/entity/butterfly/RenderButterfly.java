@@ -44,7 +44,6 @@ public class RenderButterfly extends RenderLiving<EntityButterfly>
     {
     	GlStateManager.scale(0.2, 0.2, 0.2);
         super.applyRotations(entityLiving, p_77043_2_, rotationYaw, partialTicks);
-        
     }
     
 }
