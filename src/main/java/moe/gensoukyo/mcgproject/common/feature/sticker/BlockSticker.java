@@ -105,7 +105,8 @@ public class BlockSticker extends BlockContainer {
         if (te instanceof TileSticker) {
             TileSticker sticker = (TileSticker) te;
             int val = MathHelper.floor((double)((player.rotationYaw + 180.0F) * 8.0F / 360.0F) + 0.5D) & 7;
-            sticker.rotateY = (val * 45 + 180) % 360;
+            sticker.rotateY = (360 - val * 45 + 180) % 360;
+            sticker.refresh();
         }
     }
 
