@@ -1,0 +1,15 @@
+{
+    "forge_marker": 1,
+    "defaults": {
+        "model": "minecraftfuture:barrel"
+    },
+    "variants": {
+        "inventory": [{}],
+        "facing=north": { "model": "minecraftfuture:barrel"},
+        "facing=south": { "model": "minecraftfuture:barrel", "y": 180},
+        "facing=west": { "model": "minecraftfuture:barrel", "y": 270},
+        "facing=east": { "model": "minecraftfuture:barrel", "y": 90},
+        "facing=up": { "model": "minecraftfuture:barrel", "x": -90},
+        "facing=down": { "model": "minecraftfuture:barrel", "x": 90}
+    }
+}

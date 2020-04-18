@@ -17,7 +17,7 @@ public class MaterialHelper {
         else if (materialIn == Material.LAVA) s = "熔岩";
         else if (materialIn == Material.LEAVES) s = "树叶";
         else if (materialIn == Material.PLANTS) s = "植物";
-        else if (materialIn == Material.VINE) s = "藤蔓";
+        else if (materialIn == Material.VINE) s = "植物";
         else if (materialIn == Material.SPONGE) s = "海绵";
         else if (materialIn == Material.CLOTH) s = "布料";
         else if (materialIn == Material.FIRE) s = "火";

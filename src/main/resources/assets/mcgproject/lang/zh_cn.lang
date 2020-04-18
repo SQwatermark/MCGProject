@@ -265,6 +265,20 @@ tile.mcgproject.trapdoor_birch.name=白桦木活板门
 tile.mcgproject.trapdoor_jungle.name=丛林木活板门
 tile.mcgproject.trapdoor_acacia.name=金合欢木活板门
 tile.mcgproject.trapdoor_dark_oak.name=深色橡木活板门
+tile.mcgproject.grass_path_full.name=草径（整块）
+tile.minecraftfuture.barrel.name=木桶
+tile.minecraftfuture.stripped_acacia_log.name=去皮金合欢原木
+tile.minecraftfuture.stripped_oak_log.name=去皮橡木原木
+tile.minecraftfuture.stripped_dark_oak_log.name=去皮深色橡木原木
+tile.minecraftfuture.stripped_spruce_log.name=去皮云杉原木
+tile.minecraftfuture.stripped_birch_log.name=去皮白桦原木
+tile.minecraftfuture.stripped_jungle_log.name=去皮丛林原木
+tile.minecraftfuture.campfire.name=营火
+tile.minecraftfuture.smoothstone.name=平滑石头
+tile.minecraftfuture.composter.name=堆肥桶
+tile.minecraftfuture.stonecutter.name=切石机
+tile.minecraftfuture.bamboo.name=竹子
+tile.minecraftfuture.lantern.name=灯笼
 
 # 服饰
 item.mcgproject.rumia_helmet.name=头饰（露米娅）
@@ -304,5 +318,8 @@ gui.mcgproject.bettersign.clear=清空
 
 tooltip.mcgproject.itemblockinfo=右键查看方块信息
 tooltip.mcgproject.itemgenbigoak=右击即可种下大橡树
-tooltip.mcgproject.itemmetachanger=尝试切换方块的所有方块状态
+tooltip.mcgproject.itemmetachanger=尝试切换方块的所有方块状态（开发者使用）
 tooltip.mcgproject.itemkaginawa=当心落地
+tooltip.minecraftfuture.campfire=用打火石开关
+tooltip.minecraftfuture.composter=用灰化土堆肥
+tooltip.minecraftfuture.bamboo=用骨粉切换形态（暂时只能这么做）

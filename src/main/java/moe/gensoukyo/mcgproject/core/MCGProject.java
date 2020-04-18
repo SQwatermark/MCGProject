@@ -1,7 +1,9 @@
 package moe.gensoukyo.mcgproject.core;
 
+import moe.gensoukyo.mcgproject.common.feature.NoRecipeBook;
 import moe.gensoukyo.mcgproject.common.feature.backpack.BackpackCore;
 import moe.gensoukyo.mcgproject.common.feature.sticker.TileSticker;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.*;
@@ -29,7 +31,9 @@ public class MCGProject {
     public static Logger logger;
     public static File modConfigDi;
 
+    @SuppressWarnings("unused")
     public static final String[] CODERS = {"SQwatermark", "drzzm32"};
+    @SuppressWarnings("unused")
     public static final String[] ARTISTS = {"A1181899594", "河豚骨拉面", "MCG旧版本画师"};
 
     @SidedProxy(clientSide = "moe.gensoukyo.mcgproject.core.ClientProxy",
@@ -67,5 +71,17 @@ public class MCGProject {
         //设置窗口标题（加载完成时）
         Display.setTitle("Minecraft幻想乡1.12.2");
     }
+
+    @Mod.EventHandler
+    @SideOnly(Side.CLIENT)
+    public void constructMod(FMLConstructionEvent event) {
+        MinecraftForge.EVENT_BUS.register(new NoRecipeBook());
+    }
+
+    //TODO: 音效方块
+    //TODO: 图书馆
+    //TODO：荆棘（玩家碰到会掉血）
+    //TODO: 玩家在其中会下陷的泥巴（沼泽）
+    //TODO: 水子的石头
 
 }

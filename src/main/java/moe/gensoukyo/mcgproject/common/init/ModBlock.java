@@ -121,6 +121,7 @@ public class ModBlock {
         blocks1.add(new BlockMCGTrapDoor(Material.WOOD, "trapdoor_jungle", MCGTabs.NORMAL));
         blocks1.add(new BlockMCGTrapDoor(Material.WOOD, "trapdoor_birch", MCGTabs.NORMAL));
         blocks1.add(new BlockMCGTrapDoor(Material.WOOD, "trapdoor_acacia", MCGTabs.NORMAL));
+        blocks1.add(new BlockMCG(Material.GROUND, "grass_path_full", MCGTabs.NORMAL, SoundType.GROUND));
         for (EnumDyeColor color : EnumDyeColor.values()) {
             blocks1.add(new BlockMCGStairs(Blocks.WOOL.getDefaultState(), String.format("stairs_wool_%s", color.getName()), MCGTabs.NORMAL, SoundType.CLOTH));
             blocks1.add(new BlockMCGSlab(Blocks.WOOL, color.getMetadata(), String.format("slab_wool_%s", color.getName()), MCGTabs.NORMAL));

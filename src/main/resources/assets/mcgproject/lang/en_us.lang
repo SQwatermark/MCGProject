@@ -265,6 +265,20 @@ tile.mcgproject.trapdoor_birch.name=白桦木活板门
 tile.mcgproject.trapdoor_jungle.name=丛林木活板门
 tile.mcgproject.trapdoor_acacia.name=金合欢木活板门
 tile.mcgproject.trapdoor_dark_oak.name=深色橡木活板门
+tile.mcgproject.grass_path_full.name=草径（整块）
+tile.minecraftfuture.barrel.name=Barrel
+tile.minecraftfuture.stripped_acacia_log.name=去皮金合欢原木
+tile.minecraftfuture.stripped_oak_log.name=去皮橡木原木
+tile.minecraftfuture.stripped_dark_oak_log.name=去皮深色橡木原木
+tile.minecraftfuture.stripped_spruce_log.name=去皮云杉原木
+tile.minecraftfuture.stripped_birch_log.name=去皮白桦原木
+tile.minecraftfuture.stripped_jungle_log.name=去皮丛林原木
+tile.minecraftfuture.campfire.name=Campfire
+tile.minecraftfuture.smoothstone.name=Smooth Stone
+tile.minecraftfuture.composter.name=Composter
+tile.minecraftfuture.stonecutter.name=Stone Cutter
+tile.minecraftfuture.bamboo.name=Bamboo
+tile.minecraftfuture.lantern.name=Lantern
 
 # 服饰
 item.mcgproject.rumia_helmet.name=头饰（露米娅）
@@ -306,3 +320,6 @@ tooltip.mcgproject.itemblockinfo=Right click to view the block information
 tooltip.mcgproject.itemgenbigoak=Right click to generate a big oak
 tooltip.mcgproject.itemmetachanger=Try to cycle the blockstates
 tooltip.mcgproject.itemkaginawa=Be careful of fall
+tooltip.minecraftfuture.campfire=用打火石开关
+tooltip.minecraftfuture.composter=用灰化土堆肥
+tooltip.minecraftfuture.bamboo=用骨粉切换形态（暂时只能这么做）

@@ -1,8 +1,13 @@
 package moe.gensoukyo.mcgproject.common.item;
 
+import moe.gensoukyo.mcgproject.common.feature.futuremc.BlockBamboo;
+import moe.gensoukyo.mcgproject.common.feature.futuremc.BlockCampfire;
+import moe.gensoukyo.mcgproject.common.feature.futuremc.BlockComposter;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.resources.I18n;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
@@ -12,7 +17,11 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
+import javax.annotation.Nullable;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -53,5 +62,16 @@ public class ItemMCGBlock extends ItemBlock {
         else {
             return EnumActionResult.FAIL;
         }
+    }
+
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void addInformation(ItemStack stack, @Nullable World world, List<String> list, ITooltipFlag flag) {
+        if(Block.getBlockFromItem(stack.getItem()) instanceof BlockCampfire)
+            list.add(I18n.format("tooltip.minecraftfuture.campfire"));
+        if(Block.getBlockFromItem(stack.getItem()) instanceof BlockComposter)
+            list.add(I18n.format("tooltip.minecraftfuture.composter"));
+        if(Block.getBlockFromItem(stack.getItem()) instanceof BlockBamboo)
+            list.add(I18n.format("tooltip.minecraftfuture.bamboo"));
     }
 }

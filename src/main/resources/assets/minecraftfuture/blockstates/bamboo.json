@@ -1,0 +1,19 @@
+{
+    "forge_marker": 1,
+    "defaults": {},
+    "variants": {
+        "thick": {
+            "false": {"model": "minecraftfuture:bamboo_thin"},
+            "true": {"model": "minecraftfuture:bamboo_thick"}
+        },
+        "leaves": {
+            "0": {},
+            "1": {"submodel": {"part1": {"model": "minecraftfuture:bamboo_leaves_0"}}},
+            "2": {"submodel": {"part1": {"model": "minecraftfuture:bamboo_leaves_1"}}}
+        },
+        "mature": {
+            "true": {},
+            "false": {}
+        }
+    }
+}

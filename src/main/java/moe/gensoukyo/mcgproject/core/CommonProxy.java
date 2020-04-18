@@ -4,6 +4,7 @@ import moe.gensoukyo.mcgproject.common.entity.EntityKaginawa;
 import moe.gensoukyo.mcgproject.common.feature.BetterSign;
 import moe.gensoukyo.mcgproject.common.feature.MoreBannerPatterns;
 import moe.gensoukyo.mcgproject.common.feature.NoChicken;
+import moe.gensoukyo.mcgproject.common.feature.futuremc.FMBlock;
 import moe.gensoukyo.mcgproject.common.init.*;
 import moe.gensoukyo.mcgproject.common.feature.CustomNPCsHook;
 import moe.gensoukyo.mcgproject.common.network.NetworkWrapper;
@@ -26,6 +27,7 @@ public class CommonProxy {
     public void preInit(FMLPreInitializationEvent event) {
         MinecraftForge.EVENT_BUS.register(ModItem.instance());
         MinecraftForge.EVENT_BUS.register(ModBlock.instance());
+        MinecraftForge.EVENT_BUS.register(FMBlock.instance());
         MinecraftForge.EVENT_BUS.register(ModArmor.instance());
         MinecraftForge.EVENT_BUS.register(ModEntity.instance());
         MinecraftForge.EVENT_BUS.register(ModTileEntity.instance());
