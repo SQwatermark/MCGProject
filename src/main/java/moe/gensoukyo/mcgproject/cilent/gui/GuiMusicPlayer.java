@@ -197,7 +197,7 @@ public class GuiMusicPlayer extends GuiScreen {
 	protected void actionPerformed(GuiButton button) {
 		if (button.id == 0) {
 			if (streamTextBox.getText() != null && streamTextBox.getText().length() > 0) {
-				if ((!musicPlayer.isPlaying)) {
+				if (!musicPlayer.isPlaying) {
 					if (this.streamTextBox.getText().toLowerCase().contains(".m3u")) {
 						musicPlayer.streamURL = takeFirstEntryFromM3U(this.streamTextBox.getText());
 					}

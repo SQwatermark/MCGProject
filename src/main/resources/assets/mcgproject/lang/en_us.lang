@@ -280,6 +280,13 @@ tile.minecraftfuture.stonecutter.name=Stone Cutter
 tile.minecraftfuture.bamboo.name=Bamboo
 tile.minecraftfuture.lantern.name=Lantern
 
+tile.mcgproject.test_block_1.name=材质测试1
+tile.mcgproject.test_block_2.name=材质测试2
+tile.mcgproject.test_stairs_1.name=材质测试1
+tile.mcgproject.test_stairs_2.name=材质测试2
+tile.mcgproject.test_slabs_1.name=材质测试1
+tile.mcgproject.test_slabs_2.name=材质测试2
+
 # 服饰
 item.mcgproject.rumia_helmet.name=头饰（露米娅）
 item.mcgproject.rumia_chestplate.name=上衣（露米娅）
@@ -302,6 +309,7 @@ item.mcgproject.kaginawa.name=Grabbing Hook
 item.mcgproject.block_info_displayer.name=Block Info Dispayer
 item.mcgproject.mcg_food.name=dango
 item.mcgproject.mcg_drink.name=beer
+item.mcgproject.music_player.name=Jukebox Minecart
 
 tile.mcgproject.blockRanstone.name=Ranstone
 item.mcgproject.comparator.name=Ranstone Comparator

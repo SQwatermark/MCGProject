@@ -11,10 +11,12 @@ public class MP3Player extends PlaybackListener implements Runnable {
 	private String streamURL;
 	private AdvancedPlayer player;
 	private Thread pThread;
+	private EntityMusicPlayer musicPlayer;
 
-	public MP3Player(String mp3url) {
+	public MP3Player(String mp3url, EntityMusicPlayer musicPlayer) {
 		try {
 			streamURL = mp3url;
+			this.musicPlayer = musicPlayer;
 			pThread = new Thread(this);
 			pThread.start();
 		} catch (Exception e) {
@@ -26,6 +28,7 @@ public class MP3Player extends PlaybackListener implements Runnable {
 	public void run() {
 		try {
 			player = new AdvancedPlayer(new URL(streamURL).openStream());
+			player.setMusicPlayer(this.musicPlayer);
 			player.setPlayBackListener(this);
 			player.play();
 		} catch (Exception ignored) {}

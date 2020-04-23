@@ -43,7 +43,8 @@ public class ModBlock {
     public static Block BLOCK_CHIREIDEN = new BlockInteger8(Material.GLASS, "glass_chireiden", MCGTabs.EUROPEAN, SoundType.GLASS).setLightLevel(0.67F);
     public static Block MARBLE = new BlockInteger2(Material.ROCK, "marble", MCGTabs.EUROPEAN, SoundType.STONE);
     public static Block WOOL_GLOWING = new BlockInteger16(Material.CLOTH, "wool_glowing", MCGTabs.NORMAL, SoundType.CLOTH).setLightLevel(1.0F);
-
+    public static Block TEST1 = new BlockRotate4(Material.ROCK, "test_block_1", MCGTabs.OLD, SoundType.STONE);
+    public static Block TEST2 = new BlockRotate4(Material.ROCK, "test_block_2", MCGTabs.OLD, SoundType.STONE);
     /**
      * 实例化方块，并将实例化的方块分配到相应链表
      */
@@ -144,6 +145,12 @@ public class ModBlock {
         blocks1.add(new BlockMCGLog("old_rubber_wood", MCGTabs.OLD, SoundType.WOOD));
         blocks1.add(new BlockRotate4(Material.ROCK, "old_furnace_on", MCGTabs.OLD, SoundType.STONE));
         blocks1.add(new BlockRotate4(Material.ROCK, "old_furnace_off", MCGTabs.OLD, SoundType.STONE));
+        blocks4.add(TEST1);
+        blocks4.add(TEST2);
+        blocks1.add(new BlockMCGSlab(TEST1, 0, "test_slab_1", MCGTabs.OLD));
+        blocks1.add(new BlockMCGSlab(TEST2, 0, "test_slab_2", MCGTabs.OLD));
+        blocks1.add(new BlockMCGStairs(TEST1.getDefaultState(), "test_stairs_1", MCGTabs.OLD, SoundType.STONE));
+        blocks1.add(new BlockMCGStairs(TEST2.getDefaultState(), "test_stairs_2", MCGTabs.OLD, SoundType.STONE));
 
         //将所有链表的引用合并到ArrayList
         addArrayList();

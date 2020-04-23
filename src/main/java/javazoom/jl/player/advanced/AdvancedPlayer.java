@@ -19,17 +19,13 @@
 
 package javazoom.jl.player.advanced;
 
-import java.io.InputStream;
-
-import javazoom.jl.decoder.Bitstream;
-import javazoom.jl.decoder.BitstreamException;
-import javazoom.jl.decoder.Decoder;
-import javazoom.jl.decoder.Header;
-import javazoom.jl.decoder.JavaLayerException;
-import javazoom.jl.decoder.SampleBuffer;
+import javazoom.jl.decoder.*;
 import javazoom.jl.player.AudioDevice;
 import javazoom.jl.player.FactoryRegistry;
+import moe.gensoukyo.mcgproject.common.feature.musicplayer.EntityMusicPlayer;
 import net.minecraft.world.World;
+
+import java.io.InputStream;
 
 /**
  * a hybrid of javazoom.jl.player.Player tweeked to include <code>play(startFrame, endFrame)</code>
@@ -53,6 +49,7 @@ public class AdvancedPlayer
     private float volume = 1f;
     private int posX,posY,posZ;
     private World world;
+    private EntityMusicPlayer musicPlayer;
 
     /**
      * Creates a new <code>Player</code> instance.
@@ -61,7 +58,11 @@ public class AdvancedPlayer
     {
         this(stream, null);
     }
-    
+
+    public void setMusicPlayer(EntityMusicPlayer musicPlayer) {
+        this.musicPlayer = musicPlayer;
+    }
+
     public void setID(World w, int x, int y , int z) {
     	this.posX = x;
     	this.posY = y;
@@ -108,9 +109,8 @@ public class AdvancedPlayer
 
         while (frames-- > 0 && ret)
         {
-            /*if (!(Traincraft.proxy.checkJukeboxEntity(world, id))) {
-            	close();
-            }*/
+            if (this.musicPlayer == null || !this.musicPlayer.isPlaying || this.musicPlayer.isDead)
+                close();
             ret = decodeFrame();
         }
 
@@ -177,6 +177,9 @@ public class AdvancedPlayer
         try
         {
             AudioDevice out = audio;
+            if (closed) {
+                return false;
+            }
 
             if (out == null)
             {

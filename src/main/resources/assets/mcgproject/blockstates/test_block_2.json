@@ -1,0 +1,19 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "cube_all",
+    "textures": {
+      "all": "mcgproject:blocks/normal/wool_colored_green"
+    }
+  },
+  "variants": {
+    "inventory": [{}],
+    "normal": [{}],
+    "facing": {
+      "east": {"y": 270},
+      "west": {"y": 90},
+      "south": {},
+      "north": {"y": 180}
+    }
+  }
+}

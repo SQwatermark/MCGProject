@@ -40,7 +40,7 @@ public class EntityMusicPlayer extends EntityMinecart {
 
     public boolean isPlaying = false;
     public String streamURL = "";
-    public float volume = 1.0f;
+    public float volume = 0.0f;
     public String owner = "";
     
     public boolean isInvalid = false;
@@ -67,7 +67,7 @@ public class EntityMusicPlayer extends EntityMinecart {
         dataManager.register(IS_PLAYING, false);
         dataManager.register(URL, "");
         dataManager.register(OWNER, "");
-        dataManager.register(VOLUME, 1.0F);
+        dataManager.register(VOLUME, 0.0F);
     }
 
     @Override
@@ -176,16 +176,14 @@ public class EntityMusicPlayer extends EntityMinecart {
     }
 
     public void startStream() {
-
         if (!this.isPlaying) {
             this.isPlaying = true;
             if (world.isRemote) {
-                this.mp3Player = new MP3Player(this.streamURL);
+                this.mp3Player = new MP3Player(this.streamURL, this);
                 mp3Player.setVolume(0);
                 MCGProject.proxy.playerList.add(this.mp3Player);
             }
         }
-
     }
 
     public void stopStream() {

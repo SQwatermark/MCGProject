@@ -2,6 +2,8 @@ package moe.gensoukyo.mcgproject.common.feature.musicplayer;
 
 import moe.gensoukyo.mcgproject.common.creativetab.MCGTabs;
 import moe.gensoukyo.mcgproject.core.MCGProject;
+import net.minecraft.block.BlockRailBase;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
@@ -37,7 +39,12 @@ public class ItemMusicPlayer extends Item {
     @NotNull
     @Override
     public EnumActionResult onItemUse(EntityPlayer player, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
-      
+
+        IBlockState iblockstate = worldIn.getBlockState(pos);
+        if (!BlockRailBase.isRailBlock(iblockstate)) {
+            return EnumActionResult.FAIL;
+        }
+
         ItemStack stack = player.getHeldItem(hand);
         if(!worldIn.isRemote) {
             EntityMusicPlayer musicPlayer = new EntityMusicPlayer(worldIn,
