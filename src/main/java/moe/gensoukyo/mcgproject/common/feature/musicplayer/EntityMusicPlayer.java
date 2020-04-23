@@ -31,14 +31,19 @@ public class EntityMusicPlayer extends EntityMinecart {
     public static final DataParameter<Float> VOLUME = EntityDataManager.createKey(EntityMusicPlayer.class, DataSerializers.FLOAT);
 
     public boolean isPlaying = false;
-    public boolean isInvalid = false;
     public String streamURL = "";
     public float volume = 1.0f;
-    public MP3Player mp3Player;
     public String owner = "";
+    
+    public boolean isInvalid = false;
+    public MP3Player mp3Player;
 
     public EntityMusicPlayer(World worldIn) {
         super(worldIn);
+        dataManager.register(IS_PLAYING, isPlaying);
+        dataManager.register(URL, streamURL);
+        dataManager.register(OWNER, owner);
+        dataManager.register(VOLUME, volume);
     }
 
     public EntityMusicPlayer(World worldIn, double x, double y, double z) {
@@ -54,10 +59,6 @@ public class EntityMusicPlayer extends EntityMinecart {
     @Override
     protected void entityInit() {
         super.entityInit();
-        dataManager.register(IS_PLAYING, isPlaying);
-        dataManager.register(URL, streamURL);
-        dataManager.register(OWNER, owner);
-        dataManager.register(VOLUME, volume);
     }
 
     @Override
@@ -91,7 +92,7 @@ public class EntityMusicPlayer extends EntityMinecart {
         }
         if (world.isRemote) {
 
-            if (this.ticksExisted % 10 == 0 && !this.isPlaying() && this.dataManager.get(IS_PLAYING)) {
+            if (this.ticksExisted % 10 == 0 && !this.isPlaying && this.dataManager.get(IS_PLAYING)) {
                 this.streamURL = this.dataManager.get(URL);
                 this.startStream();
             }
@@ -167,10 +168,6 @@ public class EntityMusicPlayer extends EntityMinecart {
         }
     }
 
-    public boolean isPlaying() {
-        return this.isPlaying;
-    }
-
     @Override
     public boolean processInitialInteract(@NotNull EntityPlayer entityPlayer, @NotNull EnumHand hand) {
         this.owner = dataManager.get(OWNER);
@@ -189,7 +186,7 @@ public class EntityMusicPlayer extends EntityMinecart {
     protected void writeEntityToNBT(@NotNull NBTTagCompound nbttagcompound) {
         super.writeEntityToNBT(nbttagcompound);
         nbttagcompound.setString("StreamUrl", this.streamURL);
-        nbttagcompound.setBoolean("isPlaying", this.isPlaying());
+        nbttagcompound.setBoolean("isPlaying", this.isPlaying);
         nbttagcompound.setString("owner", this.owner);
         nbttagcompound.setFloat("volume", this.volume);
     }
