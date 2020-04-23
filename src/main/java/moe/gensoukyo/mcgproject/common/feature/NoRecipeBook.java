@@ -3,6 +3,7 @@ package moe.gensoukyo.mcgproject.common.feature;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiButtonImage;
 import net.minecraft.client.gui.GuiScreen;
+import net.minecraft.client.gui.inventory.GuiCrafting;
 import net.minecraft.client.gui.inventory.GuiInventory;
 import net.minecraftforge.client.event.GuiScreenEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -31,7 +32,7 @@ public class NoRecipeBook {
 
     private void removeRecipeGuide(GuiScreen gui, List<GuiButton> button_list) {
         Iterator<GuiButton> var2 = button_list.iterator();
-        if (gui instanceof GuiInventory) {
+        if (gui instanceof GuiInventory || gui instanceof GuiCrafting) {
             while (true) {
                 GuiButton button;
                 int button_id;

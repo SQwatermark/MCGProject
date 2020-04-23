@@ -1,6 +1,7 @@
 package moe.gensoukyo.mcgproject.cilent.init;
 
 import moe.gensoukyo.mcgproject.cilent.entity.RenderKaginawa;
+import moe.gensoukyo.mcgproject.cilent.entity.RenderMusicPlayer;
 import moe.gensoukyo.mcgproject.cilent.entity.boat.RenderMCGBoat;
 import moe.gensoukyo.mcgproject.cilent.entity.boat.RenderRACBoat;
 import moe.gensoukyo.mcgproject.cilent.entity.butterfly.*;
@@ -12,6 +13,7 @@ import moe.gensoukyo.mcgproject.common.entity.boat.EntityMCGBoat;
 import moe.gensoukyo.mcgproject.common.entity.boat.EntityRACBoat;
 import moe.gensoukyo.mcgproject.common.entity.butterfly.*;
 import moe.gensoukyo.mcgproject.common.entity.fish.*;
+import moe.gensoukyo.mcgproject.common.feature.musicplayer.EntityMusicPlayer;
 import moe.gensoukyo.mcgproject.common.feature.ranstone.*;
 import moe.gensoukyo.mcgproject.common.feature.sticker.BlockSticker;
 import moe.gensoukyo.mcgproject.common.feature.sticker.TileSticker;
@@ -64,6 +66,7 @@ public class ModelMapper {
         registerModel(ModItem.ITEM_BLOCK_INFO);
         registerModel(ModItem.ITEM_MCG_FOOD);
         registerModel(ModItem.ITEM_MCG_DRINK);
+        registerModel(ModItem.ITEM_MUSIC_PLAYER);
 
         registerModel(RanstoneBlock.ITEM);
         registerModel(RanstoneComparator.ITEM);
@@ -110,6 +113,7 @@ public class ModelMapper {
         renderEntity.put(EntityTropicalFishA.class, RenderTropicalFishA.FACTORY);
         renderEntity.put(EntityTropicalFishB.class, RenderTropicalFishB.FACTORY);
         renderEntity.put(EntityPufferFish.class, RenderPufferFish.FACTORY);
+        renderEntity.put(EntityMusicPlayer.class, RenderMusicPlayer.FACTORY);
     }
 
 }

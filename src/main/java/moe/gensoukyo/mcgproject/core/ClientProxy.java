@@ -2,6 +2,8 @@ package moe.gensoukyo.mcgproject.core;
 
 import moe.gensoukyo.mcgproject.cilent.feature.ItitFeatures;
 import moe.gensoukyo.mcgproject.cilent.init.ModelMapper;
+import net.minecraft.client.Minecraft;
+import net.minecraft.util.SoundCategory;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -40,6 +42,10 @@ public class ClientProxy extends CommonProxy {
     @EventHandler
     public void postInit(FMLPostInitializationEvent event) {
         super.postInit(event);
+    }
+
+    public float getJukeboxVolume() {
+        return Minecraft.getMinecraft().gameSettings.getSoundLevel(SoundCategory.RECORDS) * Minecraft.getMinecraft().gameSettings.getSoundLevel(SoundCategory.MASTER);
     }
 
 }

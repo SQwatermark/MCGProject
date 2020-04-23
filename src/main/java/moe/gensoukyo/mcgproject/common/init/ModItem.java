@@ -1,5 +1,6 @@
 package moe.gensoukyo.mcgproject.common.init;
 
+import moe.gensoukyo.mcgproject.common.feature.musicplayer.ItemMusicPlayer;
 import moe.gensoukyo.mcgproject.common.item.*;
 import moe.gensoukyo.mcgproject.core.MCGProject;
 import net.minecraft.item.Item;
@@ -26,6 +27,7 @@ public class ModItem {
     public static ItemBlockInfo ITEM_BLOCK_INFO;
     public static ItemMCGFood ITEM_MCG_FOOD;
     public static ItemMCGDrink ITEM_MCG_DRINK;
+    public static ItemMusicPlayer ITEM_MUSIC_PLAYER;
     /**
      * 注册所有物品
      * @param event Item注册事件
@@ -43,6 +45,7 @@ public class ModItem {
         ITEM_BLOCK_INFO = new ItemBlockInfo();
         ITEM_MCG_FOOD = new ItemMCGFood();
         ITEM_MCG_DRINK = new ItemMCGDrink();
+        ITEM_MUSIC_PLAYER = new ItemMusicPlayer();
 
         event.getRegistry().register(ITEM_MCG_BOAT);
         event.getRegistry().register(ITEM_RAC_BOAT);
@@ -52,5 +55,6 @@ public class ModItem {
         event.getRegistry().register(ITEM_BLOCK_INFO);
         event.getRegistry().register(ITEM_MCG_FOOD);
         event.getRegistry().register(ITEM_MCG_DRINK);
+        event.getRegistry().register(ITEM_MUSIC_PLAYER);
     }
 }

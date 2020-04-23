@@ -22,6 +22,7 @@ public class NetworkWrapper {
         INSTANCE.registerMessage(BoatCtSHandler.class, BoatPacket.class, 2, Side.SERVER);
         INSTANCE.registerMessage(StickerHandler.class, StickerPacket.class, 3, Side.SERVER);
         INSTANCE.registerMessage(StickerRefreshHandler.class, StickerRefreshPacket.class, 4, Side.CLIENT);
+        INSTANCE.registerMessage(MusicPlayerHandler.class, MusicPlayerPacket.class, 5, Side.SERVER);
 
     }
 

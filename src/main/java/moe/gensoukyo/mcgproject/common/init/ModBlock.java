@@ -1,13 +1,13 @@
 package moe.gensoukyo.mcgproject.common.init;
 
 import moe.gensoukyo.mcgproject.common.block.*;
-import moe.gensoukyo.mcgproject.common.feature.backpack.GensoChest;
 import moe.gensoukyo.mcgproject.common.block.enums.EnumTileColor;
 import moe.gensoukyo.mcgproject.common.creativetab.MCGTabs;
+import moe.gensoukyo.mcgproject.common.feature.backpack.GensoChest;
+import moe.gensoukyo.mcgproject.common.feature.ranstone.*;
 import moe.gensoukyo.mcgproject.common.feature.sticker.BlockSticker;
 import moe.gensoukyo.mcgproject.common.item.ItemBlockWithMeta;
 import moe.gensoukyo.mcgproject.common.item.ItemMCGBlock;
-import moe.gensoukyo.mcgproject.common.feature.ranstone.*;
 import moe.gensoukyo.mcgproject.core.MCGProject;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
@@ -87,6 +87,7 @@ public class ModBlock {
         blocks1.add(new BlockMCG(Material.GROUND, "shit", MCGTabs.NATURE, SoundType.GROUND));
         blocks1.add(new BlockMCGLog("straw", MCGTabs.NATURE, SoundType.PLANT));
         blocks1.add(new BlockMCG(Material.LEAVES, "leaves_vine", MCGTabs.NATURE, SoundType.PLANT));
+        blocks1.add(new BlockSpecialLeaves("leaves_special"));
 
         //幻想
         blocks1.add(GAP);
@@ -122,6 +123,8 @@ public class ModBlock {
         blocks1.add(new BlockMCGTrapDoor(Material.WOOD, "trapdoor_birch", MCGTabs.NORMAL));
         blocks1.add(new BlockMCGTrapDoor(Material.WOOD, "trapdoor_acacia", MCGTabs.NORMAL));
         blocks1.add(new BlockMCG(Material.GROUND, "grass_path_full", MCGTabs.NORMAL, SoundType.GROUND));
+        blocks16.add(new BlockTranslucent16(Material.GLASS, "old_glass", MCGTabs.NORMAL, SoundType.GLASS));
+        blocks16.add(new BlockTranslucent16(Material.GLASS, "old_glass_bright", MCGTabs.NORMAL, SoundType.GLASS).setLightLevel(1.0F));
         for (EnumDyeColor color : EnumDyeColor.values()) {
             blocks1.add(new BlockMCGStairs(Blocks.WOOL.getDefaultState(), String.format("stairs_wool_%s", color.getName()), MCGTabs.NORMAL, SoundType.CLOTH));
             blocks1.add(new BlockMCGSlab(Blocks.WOOL, color.getMetadata(), String.format("slab_wool_%s", color.getName()), MCGTabs.NORMAL));
@@ -139,8 +142,6 @@ public class ModBlock {
         blocks12.add(new BlockInteger12(Material.ROCK, "old_stone", MCGTabs.OLD, SoundType.STONE));
         blocks1.add(new BlockMCG(Material.ROCK, "old_brick_marble", MCGTabs.OLD, SoundType.STONE));
         blocks1.add(new BlockMCGLog("old_rubber_wood", MCGTabs.OLD, SoundType.WOOD));
-        blocks16.add(new BlockTranslucent16(Material.GLASS, "old_glass", MCGTabs.OLD, SoundType.GLASS));
-        blocks16.add(new BlockTranslucent16(Material.GLASS, "old_glass_bright", MCGTabs.OLD, SoundType.GLASS).setLightLevel(1.0F));
         blocks1.add(new BlockRotate4(Material.ROCK, "old_furnace_on", MCGTabs.OLD, SoundType.STONE));
         blocks1.add(new BlockRotate4(Material.ROCK, "old_furnace_off", MCGTabs.OLD, SoundType.STONE));
 
