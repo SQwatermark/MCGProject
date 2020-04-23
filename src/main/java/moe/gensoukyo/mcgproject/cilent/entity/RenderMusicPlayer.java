@@ -8,19 +8,10 @@ import net.minecraftforge.fml.client.registry.IRenderFactory;
 
 public class RenderMusicPlayer extends RenderMinecart<EntityMusicPlayer> {
 
-    public static final Factory FACTORY = new Factory();
+    public static final IRenderFactory<EntityMusicPlayer> FACTORY = RenderMusicPlayer::new;
 
     public RenderMusicPlayer(RenderManager renderManagerIn) {
         super(renderManagerIn);
-    }
-
-    public static class Factory implements IRenderFactory<EntityMusicPlayer> {
-
-        @Override
-        public Render<? super EntityMusicPlayer> createRenderFor(RenderManager manager) {
-            return new RenderMusicPlayer(manager);
-        }
-
     }
 
 }

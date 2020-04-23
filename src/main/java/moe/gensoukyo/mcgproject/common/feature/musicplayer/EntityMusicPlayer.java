@@ -2,10 +2,12 @@ package moe.gensoukyo.mcgproject.common.feature.musicplayer;
 
 import moe.gensoukyo.mcgproject.common.entity.MCGEntity;
 import moe.gensoukyo.mcgproject.core.MCGProject;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityMinecart;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.datasync.DataParameter;
@@ -40,10 +42,6 @@ public class EntityMusicPlayer extends EntityMinecart {
 
     public EntityMusicPlayer(World worldIn) {
         super(worldIn);
-        dataManager.register(IS_PLAYING, isPlaying);
-        dataManager.register(URL, streamURL);
-        dataManager.register(OWNER, owner);
-        dataManager.register(VOLUME, volume);
     }
 
     public EntityMusicPlayer(World worldIn, double x, double y, double z) {
@@ -64,8 +62,19 @@ public class EntityMusicPlayer extends EntityMinecart {
     }
 
     @Override
+    @Nonnull
+    public IBlockState getDefaultDisplayTile() {
+        return Blocks.JUKEBOX.getDefaultState();
+    }
+
+    @Override
     protected void entityInit() {
         super.entityInit();
+
+        dataManager.register(IS_PLAYING, false);
+        dataManager.register(URL, "");
+        dataManager.register(OWNER, "");
+        dataManager.register(VOLUME, 1.0F);
     }
 
     @Override
