@@ -37,19 +37,28 @@ public class ItemMusicPlayer extends Item {
     @NotNull
     @Override
     public EnumActionResult onItemUse(EntityPlayer player, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
-        if(!worldIn.isRemote){
-            EntityMusicPlayer musicPlayer = new EntityMusicPlayer(worldIn);
-            musicPlayer.setPosition(pos.getX(), pos.getY(), pos.getZ());
+      
+        ItemStack stack = player.getHeldItem(hand);
+        if(!worldIn.isRemote) {
+            EntityMusicPlayer musicPlayer = new EntityMusicPlayer(worldIn,
+                    (double)pos.getX() + 0.5D,
+                    (double)pos.getY() + 0.0625D,
+                    (double)pos.getZ() + 0.5D);
             musicPlayer.owner = player.getName();
+
+            if (stack.hasDisplayName())
+                musicPlayer.setCustomNameTag(stack.getDisplayName());
+
             worldIn.spawnEntity(musicPlayer);
-            if(!player.isCreative()) {
-                ItemStack itemstack = player.getHeldItem(hand);
-                itemstack.shrink(1);
-                if (itemstack.isEmpty()) {
-                    player.inventory.deleteStack(itemstack);
-                }
+        }
+
+        if(!player.isCreative()) {
+            stack.shrink(1);
+            if (stack.isEmpty()) {
+                player.inventory.deleteStack(stack);
             }
         }
+
         return EnumActionResult.SUCCESS;
     }
 

@@ -6,6 +6,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityMinecart;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
@@ -18,6 +19,8 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import org.jetbrains.annotations.NotNull;
+
+import javax.annotation.Nonnull;
 
 @MCGEntity("music_player")
 public class EntityMusicPlayer extends EntityMinecart {
@@ -41,6 +44,16 @@ public class EntityMusicPlayer extends EntityMinecart {
         dataManager.register(URL, streamURL);
         dataManager.register(OWNER, owner);
         dataManager.register(VOLUME, volume);
+    }
+
+    public EntityMusicPlayer(World worldIn, double x, double y, double z) {
+        super(worldIn, x, y, z);
+    }
+
+    @Override
+    @Nonnull
+    public ItemStack getCartItem() {
+        return ItemStack.EMPTY;
     }
 
     @Override
