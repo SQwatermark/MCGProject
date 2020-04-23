@@ -3,6 +3,8 @@ package moe.gensoukyo.mcgproject.cilent.gui;
 import moe.gensoukyo.mcgproject.common.feature.musicplayer.EntityMusicPlayer;
 import moe.gensoukyo.mcgproject.common.network.MusicPlayerPacket;
 import moe.gensoukyo.mcgproject.common.network.NetworkWrapper;
+import moe.gensoukyo.mcgproject.common.util.MathMCG;
+import moe.gensoukyo.mcgproject.core.Information;
 import moe.gensoukyo.mcgproject.core.MCGProject;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
@@ -22,7 +24,10 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
+import java.util.ArrayList;
+import java.util.Random;
 
+@Information(author = "EternalBlueFlame, SQwatermark", licence = "The MIT License", source = "https://github.com/EternalBlueFlame/Traincraft-5")
 @SideOnly(Side.CLIENT)
 public class GuiMusicPlayer extends GuiScreen {
 
@@ -33,13 +38,21 @@ public class GuiMusicPlayer extends GuiScreen {
 	private int gui_height;
 	private int anim = 0;
 	private String infoText;
+	ArrayList<String> randomMusics = new ArrayList<>();
 	
 	public GuiMusicPlayer(EntityPlayer player, EntityMusicPlayer musicPlayer) {
 		this.musicPlayer = musicPlayer;
 		this.player = player;
 		gui_width = 352;
 		gui_height = 120;
-		infoText = "Paste the link below. (Only .m3u and .pls radio streams)";
+		infoText = "将外链粘贴在下方（可使用网易云的音乐id，支持.m3u和.pls流媒体）";
+		randomMusics.add("26124646");
+		randomMusics.add("774882");
+		randomMusics.add("450222722");
+		randomMusics.add("33211208");
+		randomMusics.add("26134231");
+		randomMusics.add("407685151");
+		randomMusics.add("30251976");
 	}
 
 	@Override
@@ -63,6 +76,7 @@ public class GuiMusicPlayer extends GuiScreen {
 		else {
 			this.buttonList.add(new GuiButton(3, var1 + gui_width - 350, var2 - 10, 43, 10, "已锁定"));
 		}
+		buttonList.add(new GuiButton(6, var1 + gui_width - 296, var2 - 10, 43, 10, "随机"));
 	}
 
 	@Override
@@ -211,6 +225,9 @@ public class GuiMusicPlayer extends GuiScreen {
 			Clipboard clipboard = toolkit.getSystemClipboard();
 			try {
 				String result = (String) clipboard.getData(DataFlavor.stringFlavor);
+				if (MathMCG.isNumeric(result)) {
+					result = "http://music.163.com/song/media/outer/url?id="+ result + ".mp3";
+				}
 				streamTextBox.setText(result);
 			} catch (Exception ignored) {}
 		}
@@ -244,6 +261,9 @@ public class GuiMusicPlayer extends GuiScreen {
 			}
 			NetworkWrapper.INSTANCE.sendToServer(new MusicPlayerPacket(musicPlayer));
 		}
+		if (button.id == 6) {
+			streamTextBox.setText("http://music.163.com/song/media/outer/url?id=" + randomMusics.get(new Random().nextInt(randomMusics.size())) + ".mp3");
+		}
 	}
 
 	@SideOnly(Side.CLIENT)
@@ -272,11 +292,11 @@ public class GuiMusicPlayer extends GuiScreen {
 		int colour2 = (colour1 & 0xfefefe) >> 1 | colour1 & 0xff000000;
 		drawGradientRect(t + 15 - 3, g - 40 - 3, t + textWidth + 3, g + 8 + 3, colour1, colour2);
 		drawGradientRect(t + 15 - 2, g - 40 - 2, t + textWidth + 2, g + 8 + 2, i4, i4);
-		fontRenderer.drawStringWithShadow("When a jukebox is locked,", t + 15, g - 40, -1);
-		fontRenderer.drawStringWithShadow("only its owner can open", t + 15, g + 10 - 40, -1);
-		fontRenderer.drawStringWithShadow("the GUI and destroy it.", t + 15, g + 20 - 40, -1);
-		fontRenderer.drawStringWithShadow("Current state: " + state, t + 15, g + 30 - 40, -1);
-		fontRenderer.drawStringWithShadow("Owner: " + musicPlayer.owner, t + 15, g + 40 - 40, -1);
+		fontRenderer.drawStringWithShadow("在被锁定时，只有", t + 15, g - 40, -1);
+		fontRenderer.drawStringWithShadow("主人和管理员可以", t + 15, g + 10 - 40, -1);
+		fontRenderer.drawStringWithShadow("打开GUI和破坏它", t + 15, g + 20 - 40, -1);
+		fontRenderer.drawStringWithShadow("当前状态: " + state, t + 15, g + 30 - 40, -1);
+		fontRenderer.drawStringWithShadow("主人: " + musicPlayer.owner, t + 15, g + 40 - 40, -1);
 	}
 
 	public boolean intersectsWith(int mouseX, int mouseY) {

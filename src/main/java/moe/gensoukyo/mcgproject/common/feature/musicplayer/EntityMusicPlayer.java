@@ -1,16 +1,21 @@
 package moe.gensoukyo.mcgproject.common.feature.musicplayer;
 
+import com.google.common.collect.Lists;
 import moe.gensoukyo.mcgproject.common.entity.MCGEntity;
+import moe.gensoukyo.mcgproject.common.network.MusicPlayerGuiPacket;
+import moe.gensoukyo.mcgproject.common.network.NetworkWrapper;
 import moe.gensoukyo.mcgproject.core.MCGProject;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityMinecart;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
+import net.minecraft.server.management.UserListOps;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.EnumParticleTypes;
@@ -21,6 +26,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nonnull;
+import java.util.ArrayList;
 
 @MCGEntity("music_player")
 public class EntityMusicPlayer extends EntityMinecart {
@@ -40,10 +46,6 @@ public class EntityMusicPlayer extends EntityMinecart {
 
     public EntityMusicPlayer(World worldIn) {
         super(worldIn);
-        dataManager.register(IS_PLAYING, isPlaying);
-        dataManager.register(URL, streamURL);
-        dataManager.register(OWNER, owner);
-        dataManager.register(VOLUME, volume);
     }
 
     public EntityMusicPlayer(World worldIn, double x, double y, double z) {
@@ -58,27 +60,41 @@ public class EntityMusicPlayer extends EntityMinecart {
     }
 
     @Override
+    protected void entityInit() {
+        super.entityInit();
+        dataManager.register(IS_PLAYING, false);
+        dataManager.register(URL, "");
+        dataManager.register(OWNER, "");
+        dataManager.register(VOLUME, 1.0F);
+    }
+
+    @Override
     @Nonnull
     public ItemStack getCartItem() {
         return ItemStack.EMPTY;
     }
 
+    @NotNull
     @Override
-    protected void entityInit() {
-        super.entityInit();
+    public Type getType() {
+        return Type.RIDEABLE;
     }
 
     @Override
     public boolean attackEntityFrom(DamageSource damagesource, float i) {
-        Entity source = damagesource.getTrueSource();
-        this.owner = dataManager.get(OWNER);
-        if (world.isRemote) {
+        if (!world.isRemote) {
+            Entity source = damagesource.getTrueSource();
+            if (!(source instanceof EntityPlayer)) {
+                return false;
+            }
+            EntityPlayer player = (EntityPlayer)source;
+            this.owner = dataManager.get(OWNER);
+            if(checkPermission(player)) {
+                this.setDead();
+            }
             return true;
         }
-        if(source instanceof EntityPlayer && (source.getName().equals(owner) || this.owner.isEmpty())) {
-            this.setDead();
-        }
-        return true;
+        return false;
     }
 
     @Override
@@ -178,13 +194,11 @@ public class EntityMusicPlayer extends EntityMinecart {
     @Override
     public boolean processInitialInteract(@NotNull EntityPlayer entityPlayer, @NotNull EnumHand hand) {
         this.owner = dataManager.get(OWNER);
-        if (!this.owner.isEmpty() && !entityPlayer.getName().equals(this.owner)) {
-            if (!world.isRemote)
-                entityPlayer.sendMessage(new TextComponentString("已锁定"));
+        if (!checkPermission(entityPlayer)) {
+            if (!world.isRemote) entityPlayer.sendMessage(new TextComponentString("已锁定"));
             return true;
-        }
-        if (world.isRemote) {
-            new DisplayGuiScreenTask(entityPlayer, this);
+        } else if (!world.isRemote) {
+            NetworkWrapper.INSTANCE.sendTo(new MusicPlayerGuiPacket(this), (EntityPlayerMP)entityPlayer);
         }
         return true;
     }
@@ -198,12 +212,6 @@ public class EntityMusicPlayer extends EntityMinecart {
         nbttagcompound.setFloat("volume", this.volume);
     }
 
-    @NotNull
-    @Override
-    public Type getType() {
-        return Type.RIDEABLE;
-    }
-
     @Override
     protected void readEntityFromNBT(NBTTagCompound nbttagcompound) {
         super.readEntityFromNBT(nbttagcompound);
@@ -215,5 +223,15 @@ public class EntityMusicPlayer extends EntityMinecart {
         this.dataManager.set(IS_PLAYING, isPlaying);
         this.dataManager.set(OWNER, owner);
         this.dataManager.set(VOLUME, volume);
+    }
+
+    public boolean checkPermission(EntityPlayer player) {
+        if (player.getName().equals(this.owner) || this.owner.isEmpty()) return true;
+        else if (player.getServer() != null && player.getServer().isDedicatedServer()) {
+            UserListOps ops = player.getServer().getPlayerList().getOppedPlayers();
+            ArrayList<String> list = Lists.newArrayList(ops.getKeys());
+            return list.contains(player.getName());
+        }
+        return false;
     }
 }

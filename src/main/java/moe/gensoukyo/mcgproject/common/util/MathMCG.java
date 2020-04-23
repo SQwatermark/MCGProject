@@ -25,4 +25,17 @@ public class MathMCG {
         return MathHelper.sin(tick*speed + phase)*amplitude;
     }
 
+    /**
+     * 判断字符串是否是纯数字
+     * @param str 字符串
+     * @return 是否
+     */
+    public static boolean isNumeric(String str) {
+        for (int i = str.length(); --i >= 0; ) {
+            if (!Character.isDigit(str.charAt(i))) {
+                return false;
+            }
+        }
+        return true;
+    }
 }
