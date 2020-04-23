@@ -5,11 +5,13 @@ import moe.gensoukyo.mcgproject.common.entity.MCGEntity;
 import moe.gensoukyo.mcgproject.common.network.MusicPlayerGuiPacket;
 import moe.gensoukyo.mcgproject.common.network.NetworkWrapper;
 import moe.gensoukyo.mcgproject.core.MCGProject;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityMinecart;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.datasync.DataParameter;
@@ -78,6 +80,11 @@ public class EntityMusicPlayer extends EntityMinecart {
     @Override
     public Type getType() {
         return Type.RIDEABLE;
+	}
+	
+    @Nonnull
+    public IBlockState getDefaultDisplayTile() {
+        return Blocks.JUKEBOX.getDefaultState();
     }
 
     @Override
