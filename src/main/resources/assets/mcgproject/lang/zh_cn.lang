@@ -96,6 +96,7 @@ tile.mcgproject.karesansui_2.name=枯山水（3x）
 # 幻想
 tile.mcgproject.gap.name=隙间
 tile.mcgproject.GensoChest.name=幻想箱
+tile.mcgproject.realm.name=结界
 
 # 自然
 tile.mcgproject.log_sakura.name=樱木
@@ -279,13 +280,45 @@ tile.minecraftfuture.composter.name=堆肥桶
 tile.minecraftfuture.stonecutter.name=切石机
 tile.minecraftfuture.bamboo.name=竹子
 tile.minecraftfuture.lantern.name=灯笼
+tile.mcgproject.old_glass_0.name=白色透明方块
+tile.mcgproject.old_glass_1.name=橙色透明方块
+tile.mcgproject.old_glass_2.name=品红色透明方块
+tile.mcgproject.old_glass_3.name=淡蓝色透明方块
+tile.mcgproject.old_glass_4.name=黄色透明方块
+tile.mcgproject.old_glass_5.name=黄绿色透明方块
+tile.mcgproject.old_glass_6.name=粉红色透明方块
+tile.mcgproject.old_glass_7.name=灰色透明方块
+tile.mcgproject.old_glass_8.name=淡灰色透明方块
+tile.mcgproject.old_glass_9.name=青色透明方块
+tile.mcgproject.old_glass_10.name=紫色透明方块
+tile.mcgproject.old_glass_11.name=蓝色透明方块
+tile.mcgproject.old_glass_12.name=棕色透明方块
+tile.mcgproject.old_glass_13.name=绿色透明方块
+tile.mcgproject.old_glass_14.name=红色透明方块
+tile.mcgproject.old_glass_15.name=黑色透明方块
+tile.mcgproject.old_glass_bright_0.name=白色发光透明方块
+tile.mcgproject.old_glass_bright_1.name=橙色发光透明方块
+tile.mcgproject.old_glass_bright_2.name=品红色发光透明方块
+tile.mcgproject.old_glass_bright_3.name=淡蓝色发光透明方块
+tile.mcgproject.old_glass_bright_4.name=黄色发光透明方块
+tile.mcgproject.old_glass_bright_5.name=黄绿色发光透明方块
+tile.mcgproject.old_glass_bright_6.name=粉红色发光透明方块
+tile.mcgproject.old_glass_bright_7.name=灰色发光透明方块
+tile.mcgproject.old_glass_bright_8.name=淡灰色发光透明方块
+tile.mcgproject.old_glass_bright_9.name=青色发光透明方块
+tile.mcgproject.old_glass_bright_10.name=紫色发光透明方块
+tile.mcgproject.old_glass_bright_11.name=蓝色发光透明方块
+tile.mcgproject.old_glass_bright_12.name=棕色发光透明方块
+tile.mcgproject.old_glass_bright_13.name=绿色发光透明方块
+tile.mcgproject.old_glass_bright_14.name=红色发光透明方块
+tile.mcgproject.old_glass_bright_15.name=黑色发光透明方块
 
-tile.mcgproject.test_block_1.name=材质测试1
-tile.mcgproject.test_block_2.name=材质测试2
+tile.mcgproject.test_block_1_0.name=材质测试1
+tile.mcgproject.test_block_2_0.name=材质测试2
 tile.mcgproject.test_stairs_1.name=材质测试1
 tile.mcgproject.test_stairs_2.name=材质测试2
-tile.mcgproject.test_slabs_1.name=材质测试1
-tile.mcgproject.test_slabs_2.name=材质测试2
+tile.mcgproject.test_slab_1.name=材质测试1
+tile.mcgproject.test_slab_2.name=材质测试2
 
 # 服饰
 item.mcgproject.rumia_helmet.name=头饰（露米娅）

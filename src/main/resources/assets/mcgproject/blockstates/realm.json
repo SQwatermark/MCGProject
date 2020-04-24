@@ -1,0 +1,54 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "pane_post",
+    "textures": {
+      "pane": "mcgproject:blocks/fantasy/realm",
+      "edge": "mcgproject:blocks/blank"
+    }
+  },
+  "variants": {
+    "inventory": [
+      {
+        "model": "mcgproject:generated",
+        "textures": {"layer0": "mcgproject:blocks/fantasy/realm"}
+      }
+    ],
+    "north": {
+      "true": {
+        "submodel": "pane_side"
+      },
+      "false": {
+        "submodel": "pane_noside"
+      }
+    },
+    "east": {
+      "true": {
+        "submodel": "pane_side",
+        "y": 90
+      },
+      "false": {
+        "submodel": "pane_noside_alt"
+      }
+    },
+    "south": {
+      "true": {
+        "submodel": "pane_side_alt"
+      },
+      "false": {
+        "submodel": "pane_noside_alt",
+        "y": 90
+      }
+    },
+    "west": {
+      "true": {
+        "submodel": "pane_side_alt",
+        "y": 90
+      },
+      "false": {
+        "submodel": "pane_noside",
+        "y": 270
+      }
+    }
+  }
+}

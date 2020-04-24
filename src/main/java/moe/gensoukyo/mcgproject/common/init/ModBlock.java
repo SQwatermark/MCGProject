@@ -93,6 +93,7 @@ public class ModBlock {
         //幻想
         blocks1.add(GAP);
         blocks1.add(new GensoChest());
+        blocks1.add(new BlockRealm());
 
         //西方
         blocks8.add(BLOCK_CHIREIDEN);
