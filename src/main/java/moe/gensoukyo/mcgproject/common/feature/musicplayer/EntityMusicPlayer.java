@@ -37,11 +37,13 @@ public class EntityMusicPlayer extends EntityMinecart {
     public static final DataParameter<String> URL = EntityDataManager.createKey(EntityMusicPlayer.class, DataSerializers.STRING);
     public static final DataParameter<String> OWNER = EntityDataManager.createKey(EntityMusicPlayer.class, DataSerializers.STRING);
     public static final DataParameter<Float> VOLUME = EntityDataManager.createKey(EntityMusicPlayer.class, DataSerializers.FLOAT);
+    public static final DataParameter<Boolean> IMMERSIVE = EntityDataManager.createKey(EntityMusicPlayer.class, DataSerializers.BOOLEAN);
 
     public boolean isPlaying = false;
     public String streamURL = "";
-    public float volume = 0.0f;
+    public float volume = 1.0f;
     public String owner = "";
+    public boolean immersive = false;
     
     public boolean isInvalid = false;
     public MP3Player mp3Player;
@@ -67,7 +69,8 @@ public class EntityMusicPlayer extends EntityMinecart {
         dataManager.register(IS_PLAYING, false);
         dataManager.register(URL, "");
         dataManager.register(OWNER, "");
-        dataManager.register(VOLUME, 0.0F);
+        dataManager.register(VOLUME, 1.0F);
+        dataManager.register(IMMERSIVE, false);
     }
 
     @Override
@@ -88,7 +91,7 @@ public class EntityMusicPlayer extends EntityMinecart {
     }
 
     @Override
-    public boolean attackEntityFrom(DamageSource damagesource, float i) {
+    public boolean attackEntityFrom(@NotNull DamageSource damagesource, float i) {
         if (!world.isRemote) {
             Entity source = damagesource.getTrueSource();
             if (!(source instanceof EntityPlayer)) {
@@ -114,12 +117,15 @@ public class EntityMusicPlayer extends EntityMinecart {
     @Override
     public void onUpdate() {
         super.onUpdate();
+        /*
         if (!world.isRemote && this.ticksExisted % 10 == 0) {
             this.dataManager.set(IS_PLAYING, isPlaying);
             this.dataManager.set(URL, streamURL);
             this.dataManager.set(OWNER, owner);
             this.dataManager.set(VOLUME, volume);
+            this.dataManager.set(IMMERSIVE, immersive);
         }
+         */
         if (world.isRemote) {
 
             if (this.ticksExisted % 10 == 0 && !this.isPlaying && this.dataManager.get(IS_PLAYING)) {
@@ -128,12 +134,12 @@ public class EntityMusicPlayer extends EntityMinecart {
             }
             if ((Minecraft.getMinecraft().player != null) && (this.mp3Player != null) && (!isInvalid)) {
                 volume = dataManager.get(VOLUME);
-                float vol = (float) getDistanceSq(Minecraft.getMinecraft().player.posX,
+                float distanceSq = (float) getDistanceSq(Minecraft.getMinecraft().player.posX,
                         Minecraft.getMinecraft().player.posY, Minecraft.getMinecraft().player.posZ);
-                if (vol >= (volume * 1000.0F)) {
+                if (distanceSq >= (volume * 1000.0F)) {
                     this.mp3Player.setVolume(0.0F);
                 } else {
-                    float v2 = 10000.0F / vol / 100.0F;
+                    float v2 = 10000.0F / distanceSq / 100.0F;
                     if (v2 > 1.0F) {
                         this.mp3Player.setVolume(volume);
                     } else {
@@ -146,10 +152,10 @@ public class EntityMusicPlayer extends EntityMinecart {
                         this.mp3Player.setVolume(v2);
                     }
                 }
-                if (vol == 0) {
+                if (distanceSq == 0) {
                     this.invalidate();
                 }
-                if (this.isPlaying && rand.nextInt(5) == 0 && (this.mp3Player != null && this.mp3Player.isPlaying())) {
+                if (!this.immersive && this.isPlaying && rand.nextInt(5) == 0 && (this.mp3Player != null && this.mp3Player.isPlaying())) {
                     int random2 = rand.nextInt(24) + 1;
                     world.spawnParticle(EnumParticleTypes.NOTE, posX, posY + 1.2D, posZ, random2 / 24.0D, 0.0D, 0.0D);
                 }
@@ -157,15 +163,23 @@ public class EntityMusicPlayer extends EntityMinecart {
         }
     }
 
-    public void receivePacket(String url, boolean playing, float volume, String owner) {
+    @Override
+    public void applyEntityCollision(@NotNull Entity entityIn) {
+        if (this.immersive) return;
+        super.applyEntityCollision(entityIn);
+    }
+
+    public void receivePacket(String url, boolean playing, float volume, String owner, boolean immersive) {
         this.streamURL = url;
         this.isPlaying = playing;
         this.owner = owner;
         this.volume = volume;
+        this.immersive = immersive;
         this.dataManager.set(IS_PLAYING, isPlaying);
         this.dataManager.set(URL, streamURL);
         this.dataManager.set(OWNER, owner);
         this.dataManager.set(VOLUME, volume);
+        this.dataManager.set(IMMERSIVE, immersive);
     }
 
 
@@ -215,6 +229,7 @@ public class EntityMusicPlayer extends EntityMinecart {
         nbttagcompound.setBoolean("isPlaying", this.isPlaying);
         nbttagcompound.setString("owner", this.owner);
         nbttagcompound.setFloat("volume", this.volume);
+        nbttagcompound.setBoolean("immersive", this.immersive);
     }
 
     @Override
@@ -224,10 +239,12 @@ public class EntityMusicPlayer extends EntityMinecart {
         this.isPlaying = nbttagcompound.getBoolean("isPlaying");
         this.owner = nbttagcompound.getString("owner");
         this.volume = nbttagcompound.getFloat("volume");
+        this.immersive = nbttagcompound.getBoolean("immersive");
         this.dataManager.set(URL, streamURL);
         this.dataManager.set(IS_PLAYING, isPlaying);
         this.dataManager.set(OWNER, owner);
         this.dataManager.set(VOLUME, volume);
+        this.dataManager.set(IMMERSIVE, immersive);
     }
 
     public boolean checkPermission(EntityPlayer player) {
@@ -239,4 +256,9 @@ public class EntityMusicPlayer extends EntityMinecart {
         }
         return false;
     }
+
+    //TODO：更柔和的远近渐变
+    //TODO：bgm模式（到达位置播放）和dj模式(同步播放)
+    //TODO：播放音乐期间关闭游戏bgm
+    
 }

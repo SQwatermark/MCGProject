@@ -23,7 +23,8 @@ import javazoom.jl.decoder.*;
 import javazoom.jl.player.AudioDevice;
 import javazoom.jl.player.FactoryRegistry;
 import moe.gensoukyo.mcgproject.common.feature.musicplayer.EntityMusicPlayer;
-import net.minecraft.world.World;
+import net.minecraft.client.Minecraft;
+import net.minecraft.util.SoundCategory;
 
 import java.io.InputStream;
 
@@ -46,10 +47,9 @@ public class AdvancedPlayer
     private int lastPosition = 0;
     /** Listener for the playback process */
     private PlaybackListener listener;
-    private float volume = 1f;
-    private int posX,posY,posZ;
-    private World world;
+    private float volume = 0f;
     private EntityMusicPlayer musicPlayer;
+    private float previousSoundLevel;
 
     /**
      * Creates a new <code>Player</code> instance.
@@ -63,15 +63,10 @@ public class AdvancedPlayer
         this.musicPlayer = musicPlayer;
     }
 
-    public void setID(World w, int x, int y , int z) {
-    	this.posX = x;
-    	this.posY = y;
-    	this.posZ = z;
-    	this.world = w;
-    }
-
     public AdvancedPlayer(InputStream stream, AudioDevice device) throws JavaLayerException
     {
+        previousSoundLevel = Minecraft.getMinecraft().gameSettings.getSoundLevel(SoundCategory.MUSIC);
+        Minecraft.getMinecraft().gameSettings.setSoundLevel(SoundCategory.MUSIC, 0);
         bitstream = new Bitstream(stream);
 
         if (device != null)
@@ -148,6 +143,7 @@ public class AdvancedPlayer
 
     public synchronized void close()
     {
+        Minecraft.getMinecraft().gameSettings.setSoundLevel(SoundCategory.MUSIC, previousSoundLevel);
         AudioDevice out = audio;
         if (out != null)
         {

@@ -12,7 +12,7 @@ public class MusicPlayerHandler implements IMessageHandler<MusicPlayerPacket, IM
     public IMessage onMessage(MusicPlayerPacket message, MessageContext context) {
         Entity entity = context.getServerHandler().player.world.getEntityByID(message.entityID);
         if (entity instanceof EntityMusicPlayer) {
-            ((EntityMusicPlayer) entity).receivePacket(message.url, message.isPlaying, message.volume, message.owner);
+            ((EntityMusicPlayer) entity).receivePacket(message.url, message.isPlaying, message.volume, message.owner, message.immersive);
         }
 
         return null;

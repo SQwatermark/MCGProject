@@ -77,6 +77,7 @@ public class GuiMusicPlayer extends GuiScreen {
 			this.buttonList.add(new GuiButton(3, var1 + gui_width - 350, var2 - 10, 43, 10, "已锁定"));
 		}
 		buttonList.add(new GuiButton(6, var1 + gui_width - 296, var2 - 10, 43, 10, "随机"));
+		buttonList.add(new GuiButton(7, var1 + gui_width - 242, var2 - 10, 43, 10, "沉浸"));
 	}
 
 	@Override
@@ -113,22 +114,18 @@ public class GuiMusicPlayer extends GuiScreen {
 		//fontRenderer.drawString("Date: " + Calendar.getInstance().get(Calendar.MONTH) + " " + Calendar.getInstance().get(Calendar.DATE), var5 - gui_width / 2, var6 - 30, 0xffffffff);
 		
 		if((Minecraft.getMinecraft().player != null) && ((musicPlayer).mp3Player != null) && (!(musicPlayer).isInvalid)) {
-			fontRenderer.drawString("音量: " + (int) Math.ceil(musicPlayer.volume * 100), width / 2 - 26, height / 2 + 18, 0xff0e0e0e);
+			fontRenderer.drawString("音量: " + (int) Math.round(musicPlayer.volume * 100), width / 2 - 26, height / 2 + 18, 0xff0e0e0e);
 		}
 		else {
 			fontRenderer.drawString("音量: 0", width / 2 - 26, height / 2 + 18, 0xff0e0e0e);
 		}
 
-		setText();
+		fontRenderer.drawString(infoText, this.width / 2 - gui_width / 2 + 10, this.height / 2 - 30, -15856114);
 		super.drawScreen(par1, par2, par3);
 		streamTextBox.drawTextBox();
 		if (intersectsWith(par1, par2)) {
 			drawCreativeTabHoveringText(par1, par2);
 		}
-	}
-
-	private void setText() {
-		fontRenderer.drawString(infoText, this.width / 2 - gui_width / 2 + 10, this.height / 2 - 30, -15856114);
 	}
 
 	public void drawSquareCorners(int x, int y, int x0y0, int x1y0, int x0y1, int x1y1, int u, int v) {
@@ -264,6 +261,11 @@ public class GuiMusicPlayer extends GuiScreen {
 		if (button.id == 6) {
 			streamTextBox.setText("http://music.163.com/song/media/outer/url?id=" + randomMusics.get(new Random().nextInt(randomMusics.size())) + ".mp3");
 		}
+		if (button.id == 7) {
+			musicPlayer.immersive = !musicPlayer.immersive;
+			NetworkWrapper.INSTANCE.sendToServer(new MusicPlayerPacket(musicPlayer));
+		}
+
 	}
 
 	@SideOnly(Side.CLIENT)
