@@ -41,6 +41,8 @@ public class TileStickerRenderer extends TileEntitySpecialRenderer<TileSticker> 
         if (sticker.texture == null) {
             if (sticker.url.toLowerCase().equals("null"))
                 sticker.texture = defTexture;
+            else if (sticker.url.startsWith("http"))
+                sticker.texture = TextureLoader.getTexture(sticker, sticker.url);
             else {
                 IResourceManager manager = Minecraft.getMinecraft().getResourceManager();
                 ResourceLocation loc = new ResourceLocation(DEFAULT_RES + sticker.url);
