@@ -1,7 +1,11 @@
 package moe.gensoukyo.mcgproject.cilent.util;
 
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
+
 import javax.swing.*;
 
+@SideOnly(Side.CLIENT)
 public class ShouterThread extends Thread {
 
     private String message;

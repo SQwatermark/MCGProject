@@ -136,21 +136,17 @@ public class EntityMusicPlayer extends EntityMinecart {
                 volume = dataManager.get(VOLUME);
                 float distanceSq = (float) getDistanceSq(Minecraft.getMinecraft().player.posX,
                         Minecraft.getMinecraft().player.posY, Minecraft.getMinecraft().player.posZ);
-                if (distanceSq >= (volume * 1000.0F)) {
-                    this.mp3Player.setVolume(0.0F);
+                float v2 = 10000.0F / distanceSq / 20.0F;
+                if (v2 > 1.0F) {
+                    this.mp3Player.setVolume(volume);
                 } else {
-                    float v2 = 10000.0F / distanceSq / 100.0F;
-                    if (v2 > 1.0F) {
-                        this.mp3Player.setVolume(volume);
+                    float v1 = 1.0f - volume;
+                    if (v2 - v1 > 0) {
+                        v2 = v2 - v1;
                     } else {
-                        float v1 = 1.0f - volume;
-                        if (v2 - v1 > 0) {
-                            v2 = v2 - v1;
-                        } else {
-                            v2 = 0.0f;
-                        }
-                        this.mp3Player.setVolume(v2);
+                        v2 = 0.0f;
                     }
+                    this.mp3Player.setVolume(v2);
                 }
                 if (distanceSq == 0) {
                     this.invalidate();
@@ -257,8 +253,8 @@ public class EntityMusicPlayer extends EntityMinecart {
         return false;
     }
 
-    //TODO：更柔和的远近渐变
-    //TODO：bgm模式（到达位置播放）和dj模式(同步播放)
-    //TODO：播放音乐期间关闭游戏bgm
+    //TODO：更柔和的远近渐变 DONE
+    //TODO：bgm模式（到达位置播放）和dj模式(同步播放) DISCARD
+    //TODO：播放音乐期间关闭游戏bgm DONE
     
 }

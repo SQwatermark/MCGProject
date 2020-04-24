@@ -67,6 +67,8 @@ public class AdvancedPlayer
     {
         previousSoundLevel = Minecraft.getMinecraft().gameSettings.getSoundLevel(SoundCategory.MUSIC);
         Minecraft.getMinecraft().gameSettings.setSoundLevel(SoundCategory.MUSIC, 0);
+        Minecraft.getMinecraft().gameSettings.saveOptions();
+        //Minecraft.getMinecraft().getSoundHandler().setSoundLevel(SoundCategory.MUSIC, 0);
         bitstream = new Bitstream(stream);
 
         if (device != null)
@@ -144,6 +146,8 @@ public class AdvancedPlayer
     public synchronized void close()
     {
         Minecraft.getMinecraft().gameSettings.setSoundLevel(SoundCategory.MUSIC, previousSoundLevel);
+        Minecraft.getMinecraft().gameSettings.saveOptions();
+        //Minecraft.getMinecraft().getSoundHandler().setSoundLevel(SoundCategory.MUSIC, previousSoundLevel);
         AudioDevice out = audio;
         if (out != null)
         {
