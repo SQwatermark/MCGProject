@@ -253,8 +253,6 @@ public class EntityMusicPlayer extends EntityMinecart {
         return false;
     }
 
-    //TODO：更柔和的远近渐变 DONE
     //TODO：bgm模式（到达位置播放）和dj模式(同步播放) DISCARD
-    //TODO：播放音乐期间关闭游戏bgm DONE
     
 }
