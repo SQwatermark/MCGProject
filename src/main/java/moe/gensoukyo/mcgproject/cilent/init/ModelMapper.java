@@ -1,5 +1,6 @@
 package moe.gensoukyo.mcgproject.cilent.init;
 
+import moe.gensoukyo.mcgproject.cilent.entity.RenderApple;
 import moe.gensoukyo.mcgproject.cilent.entity.RenderKaginawa;
 import moe.gensoukyo.mcgproject.cilent.entity.RenderMusicPlayer;
 import moe.gensoukyo.mcgproject.cilent.entity.boat.RenderMCGBoat;
@@ -8,6 +9,7 @@ import moe.gensoukyo.mcgproject.cilent.entity.butterfly.*;
 import moe.gensoukyo.mcgproject.cilent.entity.fish.*;
 import moe.gensoukyo.mcgproject.cilent.tileentity.TileRanstonePistonRenderer;
 import moe.gensoukyo.mcgproject.cilent.tileentity.TileStickerRenderer;
+import moe.gensoukyo.mcgproject.common.feature.applecraft.EntityApple;
 import moe.gensoukyo.mcgproject.common.entity.EntityKaginawa;
 import moe.gensoukyo.mcgproject.common.entity.boat.EntityMCGBoat;
 import moe.gensoukyo.mcgproject.common.entity.boat.EntityRACBoat;
@@ -64,8 +66,9 @@ public class ModelMapper {
         registerModel(ModItem.ITEM_GEN_BIG_OAK);
         registerModel(ModItem.ITEM_KAGINAWA);
         registerModel(ModItem.ITEM_BLOCK_INFO);
-        registerModel(ModItem.ITEM_MCG_FOOD);
-        registerModel(ModItem.ITEM_MCG_DRINK);
+        registerModel(ModItem.ITEM_MCG_FOOD, 94);
+        registerModel(ModItem.ITEM_MCG_DRINK, 30);
+        registerModel(ModItem.ITEM_MCG_PROP, 94);
         registerModel(ModItem.ITEM_MUSIC_PLAYER);
 
         registerModel(RanstoneBlock.ITEM);
@@ -96,6 +99,15 @@ public class ModelMapper {
                         "inventory"));
     }
 
+    private static void registerModel(Item item, int maxMeta) {
+        int t = maxMeta + 1;
+        for (int i = 0; i < t; i++) {
+            ModelLoader.setCustomModelResourceLocation(item, i,
+                    new ModelResourceLocation(Objects.requireNonNull(item.getRegistryName()),
+                            String.valueOf(i)));
+        }
+    }
+
     static {
         renderEntity = new LinkedHashMap<>();
 
@@ -114,6 +126,7 @@ public class ModelMapper {
         renderEntity.put(EntityTropicalFishB.class, RenderTropicalFishB.FACTORY);
         renderEntity.put(EntityPufferFish.class, RenderPufferFish.FACTORY);
         renderEntity.put(EntityMusicPlayer.class, RenderMusicPlayer.FACTORY);
+        renderEntity.put(EntityApple.class, RenderApple.FACTORY);
     }
 
 }

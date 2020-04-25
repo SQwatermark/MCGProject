@@ -3,6 +3,7 @@ package moe.gensoukyo.mcgproject.common.init;
 import moe.gensoukyo.mcgproject.common.block.*;
 import moe.gensoukyo.mcgproject.common.block.enums.EnumTileColor;
 import moe.gensoukyo.mcgproject.common.creativetab.MCGTabs;
+import moe.gensoukyo.mcgproject.common.feature.applecraft.BlockMCGApple;
 import moe.gensoukyo.mcgproject.common.feature.backpack.GensoChest;
 import moe.gensoukyo.mcgproject.common.feature.ranstone.*;
 import moe.gensoukyo.mcgproject.common.feature.sticker.BlockSticker;
@@ -45,6 +46,7 @@ public class ModBlock {
     public static Block WOOL_GLOWING = new BlockInteger16(Material.CLOTH, "wool_glowing", MCGTabs.NORMAL, SoundType.CLOTH).setLightLevel(1.0F);
     public static Block TEST1 = new BlockRotate4(Material.ROCK, "test_block_1", MCGTabs.OLD, SoundType.STONE);
     public static Block TEST2 = new BlockRotate4(Material.ROCK, "test_block_2", MCGTabs.OLD, SoundType.STONE);
+    public static Block BLOCK_APPLE = new BlockMCGApple();
     /**
      * 实例化方块，并将实例化的方块分配到相应链表
      */
@@ -89,6 +91,7 @@ public class ModBlock {
         blocks1.add(new BlockMCGLog("straw", MCGTabs.NATURE, SoundType.PLANT));
         blocks1.add(new BlockMCG(Material.LEAVES, "leaves_vine", MCGTabs.NATURE, SoundType.PLANT));
         blocks1.add(new BlockSpecialLeaves("leaves_special"));
+        blocks1.add(BLOCK_APPLE);
 
         //幻想
         blocks1.add(GAP);

@@ -208,12 +208,15 @@ public class EntityMusicPlayer extends EntityMinecart {
 
     @Override
     public boolean processInitialInteract(@NotNull EntityPlayer entityPlayer, @NotNull EnumHand hand) {
-        this.owner = dataManager.get(OWNER);
-        if (!checkPermission(entityPlayer)) {
-            if (!world.isRemote) entityPlayer.sendMessage(new TextComponentString("已锁定"));
-            return true;
-        } else if (!world.isRemote) {
-            NetworkWrapper.INSTANCE.sendTo(new MusicPlayerGuiPacket(this), (EntityPlayerMP)entityPlayer);
+        if (world.isRemote) {
+            this.owner = dataManager.get(OWNER);
+        } else {
+            if (!checkPermission(entityPlayer)) {
+                entityPlayer.sendMessage(new TextComponentString("已锁定"));
+                return true;
+            } else {
+                NetworkWrapper.INSTANCE.sendTo(new MusicPlayerGuiPacket(this), (EntityPlayerMP)entityPlayer);
+            }
         }
         return true;
     }

@@ -1,6 +1,7 @@
 package moe.gensoukyo.mcgproject.common.creativetab;
 
 import moe.gensoukyo.mcgproject.common.init.ModBlock;
+import moe.gensoukyo.mcgproject.common.init.ModItem;
 import moe.gensoukyo.mcgproject.core.MCGProject;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Items;
@@ -61,6 +62,14 @@ public class MCGTabs {
         @Override
         public ItemStack createIcon() {
             return new ItemStack(Items.APPLE);
+        }
+    };
+
+    public static final CreativeTabs PROP = new CreativeTabs(getLabel("prop"))
+    {
+        @Override
+        public ItemStack createIcon() {
+            return new ItemStack(ModItem.ITEM_MCG_PROP, 1, 34);
         }
     };
 
