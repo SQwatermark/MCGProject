@@ -6,14 +6,18 @@ import java.util.HashSet;
  * @author MrMks
  */
 public class MusicThread extends Thread{
-    private final HashSet<MP3Player> set = new HashSet<>();
-    private boolean running;
-    public MusicThread(){
+    private final HashSet<MusicPlayer> set = new HashSet<>();
+    private final boolean running;
+    private final MusicPlayerManager manager;
+    private boolean startNoticed = false;
+    private boolean stopNoticed = true;
+    public MusicThread(MusicPlayerManager manager){
         running = true;
+        this.manager = manager;
         start();
     }
 
-    public void add(MP3Player player) {
+    public void add(MusicPlayer player) {
         synchronized (set) {
             set.add(player);
         }
@@ -23,10 +27,23 @@ public class MusicThread extends Thread{
     public void run() {
         while (running || !set.isEmpty()) {
             synchronized (set) {
-                for (MP3Player player : set) {
+                for (MusicPlayer player : set) {
                     if (player.isPlaying() && player.isRequestStop()) player.stop();
                 }
                 set.removeIf(player -> !player.isPlaying() && player.isRequestStop());
+                if (set.isEmpty()) {
+                    if (!stopNoticed) {
+                        stopNoticed = true;
+                        startNoticed = false;
+                        manager.onMusicStopped();
+                    }
+                } else {
+                    if (!startNoticed) {
+                        stopNoticed = false;
+                        startNoticed = true;
+                        manager.onMusicStarted();
+                    }
+                }
                 try {
                     set.wait(50);
                 } catch (InterruptedException e) {
@@ -38,7 +55,7 @@ public class MusicThread extends Thread{
 
     public void clean(){
         synchronized (set) {
-            set.forEach(MP3Player::requestStop);
+            set.forEach(MusicPlayer::requestStop);
         }
     }
 
