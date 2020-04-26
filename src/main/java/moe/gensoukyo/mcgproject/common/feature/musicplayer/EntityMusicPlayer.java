@@ -23,8 +23,6 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nonnull;
@@ -39,13 +37,12 @@ public class EntityMusicPlayer extends EntityMinecart {
     public static final DataParameter<Float> VOLUME = EntityDataManager.createKey(EntityMusicPlayer.class, DataSerializers.FLOAT);
     public static final DataParameter<Boolean> IMMERSIVE = EntityDataManager.createKey(EntityMusicPlayer.class, DataSerializers.BOOLEAN);
 
-    public boolean isPlaying = false;
+    public boolean isPlaying;
     public String streamURL = "";
     public float volume = 1.0f;
     public String owner = "";
-    public boolean immersive = false;
-    
-    public boolean isInvalid = false;
+    public boolean immersive;
+
     public MP3Player mp3Player;
 
     public EntityMusicPlayer(World worldIn) {
@@ -117,27 +114,13 @@ public class EntityMusicPlayer extends EntityMinecart {
     @Override
     public void onUpdate() {
         super.onUpdate();
-        /*
-        if (!world.isRemote && this.ticksExisted % 10 == 0) {
-            this.dataManager.set(IS_PLAYING, isPlaying);
-            this.dataManager.set(URL, streamURL);
-            this.dataManager.set(OWNER, owner);
-            this.dataManager.set(VOLUME, volume);
-            this.dataManager.set(IMMERSIVE, immersive);
-        }
-         */
-        if (world.isRemote) {
-
-            if (this.ticksExisted % 10 == 0) {
-                this.immersive = this.dataManager.get(IMMERSIVE);
-            }
-
-            if (this.ticksExisted % 10 == 0 && !this.isPlaying && this.dataManager.get(IS_PLAYING)) {
+        if (world.isRemote && this.ticksExisted % 5 == 0) {
+            this.immersive = this.dataManager.get(IMMERSIVE);
+            if (!this.isPlaying && this.dataManager.get(IS_PLAYING)) {
                 this.streamURL = this.dataManager.get(URL);
                 this.startStream();
             }
-            //TODO：整理这部分代码
-            if ((Minecraft.getMinecraft().player != null) && (this.mp3Player != null) && (!isInvalid)) {
+            if ((Minecraft.getMinecraft().player != null) && (this.mp3Player != null)) {
                 volume = dataManager.get(VOLUME);
                 float distanceSq = (float) getDistanceSq(Minecraft.getMinecraft().player.posX,
                         Minecraft.getMinecraft().player.posY, Minecraft.getMinecraft().player.posZ);
@@ -153,10 +136,7 @@ public class EntityMusicPlayer extends EntityMinecart {
                     }
                     this.mp3Player.setVolume(v2);
                 }
-                if (distanceSq == 0) {
-                    this.invalidate();
-                }
-                if (!this.immersive && this.isPlaying && rand.nextInt(5) == 0 && (this.mp3Player != null && this.mp3Player.isPlaying())) {
+                if (!this.immersive) {
                     int random2 = rand.nextInt(24) + 1;
                     world.spawnParticle(EnumParticleTypes.NOTE, posX, posY + 1.2D, posZ, random2 / 24.0D, 0.0D, 0.0D);
                 }
@@ -181,13 +161,6 @@ public class EntityMusicPlayer extends EntityMinecart {
         this.dataManager.set(OWNER, owner);
         this.dataManager.set(VOLUME, volume);
         this.dataManager.set(IMMERSIVE, immersive);
-    }
-
-
-    @SideOnly(Side.CLIENT)
-    public void invalidate() {
-        isInvalid = true;
-        stopStream();
     }
 
     public void startStream() {
