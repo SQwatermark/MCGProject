@@ -20,6 +20,7 @@ public class MusicPlayer extends PlaybackListener implements Runnable {
 		try {
 			streamURL = mp3url;
 			request = false;
+			isPlaying = true;
 			new Thread(this).start();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -29,9 +30,9 @@ public class MusicPlayer extends PlaybackListener implements Runnable {
 	@Override
 	public void run() {
 		try {
-			isPlaying = true;
 			player = new AdvancedPlayer(new URL(streamURL).openStream());
 			player.setPlayBackListener(this);
+			// 播放时，线程会卡在这里，直到停止播放
 			player.play();
 			isPlaying = false;
 		} catch (Exception ignored) {}
@@ -43,6 +44,9 @@ public class MusicPlayer extends PlaybackListener implements Runnable {
 		}
 	}
 
+	/**
+	 * 这个方法用于请求停止这个播放器，请求后会由MusicThread来不断尝试关闭这个播放器直到成功将其关闭。
+	 */
 	public void requestStop(){
 		request = true;
 	}

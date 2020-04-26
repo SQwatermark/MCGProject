@@ -9,6 +9,12 @@ import net.minecraft.util.SoundCategory;
 public class MusicPlayerManager {
     private MusicThread thread;
     private float volume = 0.0f;
+
+    /**
+     * 获取一个新的音乐播放器，这个音乐播放器会自动被加入MusicThread
+     * @param url 播放曲目链接
+     * @return a new MusicPlayer
+     */
     public MusicPlayer getNewPlayer(String url) {
         thread = new MusicThread(this);
         MusicPlayer player = new MusicPlayer(url);
@@ -16,14 +22,24 @@ public class MusicPlayerManager {
         return player;
     }
 
+    /**
+     * 这个方法会将所有正在播放的播放器关闭
+     */
     public void clean(){
         thread.clean();
     }
 
+    /**
+     * 这个方法暂时没有实际效果。这个方法在设计上会将线程关闭，应当在进程结束时调用这个方法。
+     */
     public void disable(){
         thread.disable();
     }
 
+    /**
+     * 下两个方法用于调整播放时Music的音量。
+     * 不需要手动调用，会在在MusicThread中进行处理
+     */
     public void onMusicStopped(){
         Minecraft.getMinecraft().addScheduledTask(()->{
             Minecraft.getMinecraft().gameSettings.setSoundLevel(SoundCategory.MUSIC, volume);
