@@ -48,6 +48,7 @@ public class ClientProxy extends CommonProxy {
         ModRsGauges.client.postInit(event);
     }
 
+    @Override
     public float getJukeboxVolume() {
         return Minecraft.getMinecraft().gameSettings.getSoundLevel(SoundCategory.RECORDS) * Minecraft.getMinecraft().gameSettings.getSoundLevel(SoundCategory.MASTER);
     }

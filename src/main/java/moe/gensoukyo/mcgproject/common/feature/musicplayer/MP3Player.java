@@ -58,12 +58,4 @@ public class MP3Player extends PlaybackListener implements Runnable {
 		}
 	}
 
-	public float getVolume() {
-		if (player != null) {
-			return player.getVolume();
-		}
-		else {
-			return 0.0f;
-		}
-	}
 }

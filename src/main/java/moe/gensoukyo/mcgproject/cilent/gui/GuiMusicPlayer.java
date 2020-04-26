@@ -113,7 +113,7 @@ public class GuiMusicPlayer extends GuiScreen {
 
 		//fontRenderer.drawString("Date: " + Calendar.getInstance().get(Calendar.MONTH) + " " + Calendar.getInstance().get(Calendar.DATE), var5 - gui_width / 2, var6 - 30, 0xffffffff);
 		
-		if((Minecraft.getMinecraft().player != null) && ((musicPlayer).mp3Player != null) && (!(musicPlayer).isInvalid)) {
+		if((Minecraft.getMinecraft().player != null) && ((musicPlayer).mp3Player != null)) {
 			fontRenderer.drawString("音量: " + (int) Math.round(musicPlayer.volume * 100), width / 2 - 26, height / 2 + 18, 0xff0e0e0e);
 		}
 		else {
@@ -162,10 +162,6 @@ public class GuiMusicPlayer extends GuiScreen {
 	@Override
 	public void updateScreen() {
 		streamTextBox.updateCursorCounter();
-		if (musicPlayer.isInvalid) {
-			mc.displayGuiScreen(null);
-			mc.setIngameFocus();
-		}
 		super.updateScreen();
 	}
 

@@ -2,7 +2,6 @@ package moe.gensoukyo.mcgproject.core;
 
 import moe.gensoukyo.mcgproject.common.feature.NoRecipeBook;
 import moe.gensoukyo.mcgproject.common.feature.backpack.BackpackCore;
-import moe.gensoukyo.mcgproject.common.feature.musicplayer.MP3Player;
 import moe.gensoukyo.mcgproject.common.feature.rsgauges.ModRsGauges;
 import moe.gensoukyo.mcgproject.common.feature.sticker.TileSticker;
 import net.minecraftforge.common.MinecraftForge;
@@ -88,12 +87,6 @@ public class MCGProject {
         MinecraftForge.EVENT_BUS.register(new NoRecipeBook());
     }
 
-    @Mod.EventHandler
-    public void serverStop(FMLServerStoppedEvent event) {
-        for (MP3Player mp3Player : proxy.playerList) {
-            mp3Player.stop();
-        }
-    }
 
     //TODO: 音效方块
     //TODO: 图书馆
