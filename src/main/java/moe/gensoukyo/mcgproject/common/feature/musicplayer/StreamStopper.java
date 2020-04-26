@@ -20,9 +20,6 @@ public class StreamStopper {
     @SideOnly(Side.CLIENT)
     @SubscribeEvent
     public void onWorldUnload(WorldEvent.Unload event) {
-        for (MP3Player mp3Player : MCGProject.proxy.playerList) {
-            mp3Player.stop();
-        }
-        MCGProject.proxy.playerList.clear();
+        MCGProject.proxy.playerManager.clean();
     }
 }

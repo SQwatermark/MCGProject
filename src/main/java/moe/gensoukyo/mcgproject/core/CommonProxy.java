@@ -6,7 +6,6 @@ import moe.gensoukyo.mcgproject.common.feature.CustomNPCsHook;
 import moe.gensoukyo.mcgproject.common.feature.MoreBannerPatterns;
 import moe.gensoukyo.mcgproject.common.feature.NoChicken;
 import moe.gensoukyo.mcgproject.common.feature.futuremc.FMBlock;
-import moe.gensoukyo.mcgproject.common.feature.musicplayer.MP3Player;
 import moe.gensoukyo.mcgproject.common.feature.musicplayer.MusicPlayerManager;
 import moe.gensoukyo.mcgproject.common.feature.musicplayer.StreamStopper;
 import moe.gensoukyo.mcgproject.common.init.*;
@@ -20,14 +19,11 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.WeakHashMap;
 
 public class CommonProxy {
 
     public WeakHashMap<Entity, EntityKaginawa> kagimap = new WeakHashMap<>();
-    public List<MP3Player> playerList = new ArrayList<>();
     public MusicPlayerManager playerManager = new MusicPlayerManager();
 
     @EventHandler
