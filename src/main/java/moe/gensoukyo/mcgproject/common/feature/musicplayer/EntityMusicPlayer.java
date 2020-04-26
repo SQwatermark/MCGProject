@@ -128,10 +128,15 @@ public class EntityMusicPlayer extends EntityMinecart {
          */
         if (world.isRemote) {
 
+            if (this.ticksExisted % 10 == 0) {
+                this.immersive = this.dataManager.get(IMMERSIVE);
+            }
+
             if (this.ticksExisted % 10 == 0 && !this.isPlaying && this.dataManager.get(IS_PLAYING)) {
                 this.streamURL = this.dataManager.get(URL);
                 this.startStream();
             }
+            //TODO：整理这部分代码
             if ((Minecraft.getMinecraft().player != null) && (this.mp3Player != null) && (!isInvalid)) {
                 volume = dataManager.get(VOLUME);
                 float distanceSq = (float) getDistanceSq(Minecraft.getMinecraft().player.posX,
