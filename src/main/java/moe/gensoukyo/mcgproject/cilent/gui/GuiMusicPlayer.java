@@ -162,8 +162,6 @@ public class GuiMusicPlayer extends GuiScreen {
 	@Override
 	public void updateScreen() {
 		streamTextBox.updateCursorCounter();
-		mc.displayGuiScreen(null);
-		mc.setIngameFocus();
 		super.updateScreen();
 	}
 
