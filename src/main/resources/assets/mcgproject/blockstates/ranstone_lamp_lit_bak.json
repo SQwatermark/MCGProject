@@ -1,0 +1,80 @@
+{
+    "forge_marker": 1,
+    "defaults": {
+        "model": "mcgproject:ranstone_lamp_lit",
+        "textures": {
+            "base": "mcgproject:blocks/ranstone/ranstone_lamp_base_white",
+            "light": "mcgproject:blocks/ranstone/ranstone_lamp_light_white"
+        }
+    },
+    "variants": {
+        "normal": [{}],
+        "inventory": [{}],
+        "color": {
+            "white": {"textures": {
+                "base": "mcgproject:blocks/ranstone/ranstone_lamp_base_white",
+                "light": "mcgproject:blocks/ranstone/ranstone_lamp_light_white"
+            }},
+            "orange": {"textures": {
+                "base": "mcgproject:blocks/ranstone/ranstone_lamp_base_orange",
+                "light": "mcgproject:blocks/ranstone/ranstone_lamp_light_orange"
+            }},
+            "magenta": {"textures": {
+                "base": "mcgproject:blocks/ranstone/ranstone_lamp_base_magenta",
+                "light": "mcgproject:blocks/ranstone/ranstone_lamp_light_magenta"
+            }},
+            "light_blue": {"textures": {
+                "base": "mcgproject:blocks/ranstone/ranstone_lamp_base_light_blue",
+                "light": "mcgproject:blocks/ranstone/ranstone_lamp_light_light_blue"
+            }},
+            "yellow": {"textures": {
+                "base": "mcgproject:blocks/ranstone/ranstone_lamp_base_yellow",
+                "light": "mcgproject:blocks/ranstone/ranstone_lamp_light_yellow"
+            }},
+            "lime": {"textures": {
+                "base": "mcgproject:blocks/ranstone/ranstone_lamp_base_lime",
+                "light": "mcgproject:blocks/ranstone/ranstone_lamp_light_lime"
+            }},
+            "pink": {"textures": {
+                "base": "mcgproject:blocks/ranstone/ranstone_lamp_base_pink",
+                "light": "mcgproject:blocks/ranstone/ranstone_lamp_light_pink"
+            }},
+            "gray": {"textures": {
+                "base": "mcgproject:blocks/ranstone/ranstone_lamp_base_gray",
+                "light": "mcgproject:blocks/ranstone/ranstone_lamp_light_gray"
+            }},
+            "silver": {"textures": {
+                "base": "mcgproject:blocks/ranstone/ranstone_lamp_base_silver",
+                "light": "mcgproject:blocks/ranstone/ranstone_lamp_light_silver"
+            }},
+            "cyan": {"textures": {
+                "base": "mcgproject:blocks/ranstone/ranstone_lamp_base_cyan",
+                "light": "mcgproject:blocks/ranstone/ranstone_lamp_light_cyan"
+            }},
+            "purple": {"textures": {
+                "base": "mcgproject:blocks/ranstone/ranstone_lamp_base_purple",
+                "light": "mcgproject:blocks/ranstone/ranstone_lamp_light_purple"
+            }},
+            "blue": {"textures": {
+                "base": "mcgproject:blocks/ranstone/ranstone_lamp_base_blue",
+                "light": "mcgproject:blocks/ranstone/ranstone_lamp_light_blue"
+            }},
+            "brown": {"textures": {
+                "base": "mcgproject:blocks/ranstone/ranstone_lamp_base_brown",
+                "light": "mcgproject:blocks/ranstone/ranstone_lamp_light_brown"
+            }},
+            "green": {"textures": {
+                "base": "mcgproject:blocks/ranstone/ranstone_lamp_base_green",
+                "light": "mcgproject:blocks/ranstone/ranstone_lamp_light_green"
+            }},
+            "red": {"textures": {
+                "base": "mcgproject:blocks/ranstone/ranstone_lamp_base_red",
+                "light": "mcgproject:blocks/ranstone/ranstone_lamp_light_red"
+            }},
+            "black": {"textures": {
+                "base": "mcgproject:blocks/ranstone/ranstone_lamp_base_black",
+                "light": "mcgproject:blocks/ranstone/ranstone_lamp_light_black"
+            }}
+        }
+    }
+}

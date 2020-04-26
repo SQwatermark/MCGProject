@@ -1,5 +1,6 @@
 package moe.gensoukyo.mcgproject.common.network;
 
+import moe.gensoukyo.mcgproject.common.feature.rsgauges.ModRsGauges;
 import moe.gensoukyo.mcgproject.core.MCGProject;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
@@ -24,6 +25,7 @@ public class NetworkWrapper {
         INSTANCE.registerMessage(StickerRefreshHandler.class, StickerRefreshPacket.class, 4, Side.CLIENT);
         INSTANCE.registerMessage(MusicPlayerHandler.class, MusicPlayerPacket.class, 5, Side.SERVER);
         INSTANCE.registerMessage(MusicPlayerGuiHandler.class, MusicPlayerGuiPacket.class, 6, Side.CLIENT);
+        ModRsGauges.INSTANCE.initNetwork(INSTANCE, 7);
 
     }
 

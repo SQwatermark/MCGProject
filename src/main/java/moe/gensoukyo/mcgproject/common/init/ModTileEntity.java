@@ -1,5 +1,6 @@
 package moe.gensoukyo.mcgproject.common.init;
 
+import moe.gensoukyo.mcgproject.common.feature.ranstone.RanstoneLamp;
 import moe.gensoukyo.mcgproject.common.feature.ranstone.RanstonePiston;
 import moe.gensoukyo.mcgproject.common.feature.sticker.TileSticker;
 import moe.gensoukyo.mcgproject.core.MCGProject;
@@ -30,6 +31,7 @@ public class ModTileEntity {
 
         register(RanstonePiston.TilePiston.class, "tileRanstonePiston");
         register(TileSticker.class, "tileSticker");
+        register(RanstoneLamp.TileRanstoneLamp.class, "tileRanstoneLamp");
     }
 
 }
