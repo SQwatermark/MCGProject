@@ -75,6 +75,7 @@ public class ModelMapper {
 
         registerColoredModel(RanstoneLamp.ITEM);
         registerColoredModel(RanstoneLamp.ITEM_LIT);
+        registerColoredModel(RanstoneLamp.ITEM_ALWAYS);
         registerModel(RanstoneBlock.ITEM);
         registerModel(RanstoneComparator.ITEM);
         registerModel(RanstoneRepeater.ITEM);

@@ -13,7 +13,6 @@ import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Enchantments;
 import net.minecraft.init.Items;
-import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemCloth;
 import net.minecraft.item.ItemStack;
@@ -27,36 +26,94 @@ import net.minecraft.world.World;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.Objects;
+import java.util.Random;
 
 public class RanstoneLamp extends BlockColored implements ITileEntityProvider {
 
     public static RanstoneLamp BLOCK;
     public static RanstoneLamp BLOCK_LIT;
+    public static RanstoneLamp BLOCK_ALWAYS;
     public static Item ITEM;
     public static Item ITEM_LIT;
+    public static Item ITEM_ALWAYS;
 
     public static void initBlock() {
-        BLOCK = new RanstoneLamp(false);
-        BLOCK_LIT = new RanstoneLamp(true);
+        BLOCK = new RanstoneLamp(false, false);
+        BLOCK_LIT = new RanstoneLamp(true, false);
+        BLOCK_ALWAYS = new RanstoneLamp(true, true);
+
+        BLOCK_LIT.setCreativeTab(null);
     }
     public static void initItem() {
         ITEM = new ItemCloth(BLOCK).setRegistryName(MCGProject.ID, "ranstone_lamp");
         ITEM_LIT = new ItemCloth(BLOCK_LIT).setRegistryName(MCGProject.ID, "ranstone_lamp_lit");
+        ITEM_ALWAYS = new ItemCloth(BLOCK_ALWAYS).setRegistryName(MCGProject.ID, "ranstone_lamp_always");
     }
 
     public final boolean isLit;
+    public final boolean alwaysLit;
 
-    public RanstoneLamp(boolean lit) {
+    public RanstoneLamp(boolean lit, boolean alwaysLit) {
         super(Material.GLASS);
         this.hasTileEntity = true;
         this.isLit = lit;
-        setRegistryName(MCGProject.ID, "ranstone_lamp" + (lit ? "_lit" : ""));
+        this.alwaysLit = alwaysLit;
+        setRegistryName(MCGProject.ID, "ranstone_lamp" + (alwaysLit ? "_always" : (lit ? "_lit" : "")));
         setHardness(5.0F);
         setResistance(10.0F);
         setSoundType(SoundType.GLASS);
         setLightLevel(lit ? 1.0F : 0.0F);
-        setTranslationKey(MCGProject.ID + "." + "ranstoneLamp" + (lit ? "Lit" : ""));
+        setTranslationKey(MCGProject.ID + "." + "ranstoneLamp" + (alwaysLit ? "Always" : (lit ? "Lit" : "")));
         setCreativeTab(CreativeTabs.REDSTONE);
+    }
+
+    @Override
+    public void onBlockAdded(World world, BlockPos pos, IBlockState state) {
+        if (!world.isRemote && !this.alwaysLit) {
+            if (this.isLit && !world.isBlockPowered(pos)) {
+                world.setBlockState(pos, BLOCK.getDefaultState().withProperty(COLOR, state.getValue(COLOR)), 2);
+            } else if (!this.isLit && world.isBlockPowered(pos)) {
+                world.setBlockState(pos, BLOCK_LIT.getDefaultState().withProperty(COLOR, state.getValue(COLOR)), 2);
+            }
+        }
+    }
+
+    @Override
+    public void neighborChanged(IBlockState state, World world, BlockPos pos, Block target, BlockPos tarPos) {
+        if (!world.isRemote && !this.alwaysLit) {
+            if (this.isLit && !world.isBlockPowered(pos)) {
+                world.scheduleUpdate(pos, this, 4);
+            } else if (!this.isLit && world.isBlockPowered(pos)) {
+                world.setBlockState(pos, BLOCK_LIT.getDefaultState().withProperty(COLOR, state.getValue(COLOR)), 2);
+            }
+        }
+    }
+
+    @Override
+    public void updateTick(World world, BlockPos pos, IBlockState state, Random random) {
+        if (!world.isRemote && !this.alwaysLit) {
+            if (this.isLit && !world.isBlockPowered(pos)) {
+                world.setBlockState(pos, BLOCK.getDefaultState().withProperty(COLOR, state.getValue(COLOR)), 2);
+            }
+        }
+    }
+
+    @Override
+    @Nonnull
+    public Item getItemDropped(IBlockState state, Random random, int meta) {
+        return this.alwaysLit ? ITEM_ALWAYS : ITEM;
+    }
+
+    @Override
+    @Nonnull
+    public ItemStack getItem(World world, BlockPos pos, @Nonnull IBlockState state) {
+        return new ItemStack(this.alwaysLit ? ITEM_ALWAYS : ITEM, 1, state.getValue(COLOR).getMetadata());
+    }
+
+    @Override
+    @Nonnull
+    protected ItemStack getSilkTouchDrop(@Nonnull IBlockState state) {
+        return new ItemStack(this.alwaysLit ? ITEM_ALWAYS : ITEM, 1, state.getValue(COLOR).getMetadata());
     }
 
     public static class TileRanstoneLamp extends AbstractTileEntity {

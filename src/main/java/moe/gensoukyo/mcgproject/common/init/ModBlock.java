@@ -181,7 +181,7 @@ public class ModBlock {
         RanstonePiston.Extension.initBlock();
         RanstonePiston.Moving.initBlock();
         event.getRegistry().registerAll(
-                RanstoneLamp.BLOCK, RanstoneLamp.BLOCK_LIT,
+                RanstoneLamp.BLOCK, RanstoneLamp.BLOCK_LIT, RanstoneLamp.BLOCK_ALWAYS,
                 RanstoneBlock.BLOCK,
                 RanstoneComparator.BLOCK, RanstoneComparator.BLOCK_N,
                 RanstoneRepeater.BLOCK, RanstoneRepeater.BLOCK_N,
@@ -217,7 +217,7 @@ public class ModBlock {
         RanstoneWire.initItem();
         RanstonePiston.Base.initItem();
         event.getRegistry().registerAll(
-                RanstoneLamp.ITEM, RanstoneLamp.ITEM_LIT,
+                RanstoneLamp.ITEM, RanstoneLamp.ITEM_LIT, RanstoneLamp.ITEM_ALWAYS,
                 RanstoneBlock.ITEM, RanstoneComparator.ITEM,
                 RanstoneRepeater.ITEM, RanstoneTorch.ITEM,
                 RanstoneWire.ITEM, RanstonePiston.Base.ITEM);
