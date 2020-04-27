@@ -13,12 +13,15 @@ import java.net.URL;
 public class MusicPlayer extends PlaybackListener implements Runnable {
 	private String streamURL;
 	private AdvancedPlayer player;
+	private VolumeAudioDevice device;
 	private boolean isPlaying;
 	private boolean request;
+	private int start = 0;
 
-	public MusicPlayer(String mp3url) {
+	public MusicPlayer(String url, int start){
 		try {
-			streamURL = mp3url;
+			streamURL = url;
+			this.start = start;
 			request = false;
 			isPlaying = true;
 			new Thread(this).start();
@@ -30,10 +33,11 @@ public class MusicPlayer extends PlaybackListener implements Runnable {
 	@Override
 	public void run() {
 		try {
-			player = new AdvancedPlayer(new URL(streamURL).openStream());
+			device = new VolumeAudioDevice();
+			player = new AdvancedPlayer(new URL(streamURL).openStream(), device);
 			player.setPlayBackListener(this);
 			// 播放时，线程会卡在这里，直到停止播放
-			player.play();
+			player.play(start, Integer.MAX_VALUE);
 			isPlaying = false;
 		} catch (Exception ignored) {}
 	}
@@ -67,15 +71,15 @@ public class MusicPlayer extends PlaybackListener implements Runnable {
 
 	public void setVolume(float f)
 	{
-		if (player != null)
+		if (device != null)
 		{
-			player.setVolume(f * MCGProject.proxy.getJukeboxVolume());
+			device.setVolume(f * MCGProject.proxy.getJukeboxVolume());
 		}
 	}
 
 	public float getVolume() {
 		if (player != null) {
-			return player.getVolume();
+			return device.getVolume();
 		}
 		else {
 			return 0.0f;

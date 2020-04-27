@@ -7,8 +7,12 @@ import net.minecraft.util.SoundCategory;
  * @author MrMks
  */
 public class MusicPlayerManager {
-    private MusicThread thread;
+    private final MusicThread thread;
     private float volume = 0.0f;
+
+    public MusicPlayerManager(){
+        thread = new MusicThread(this);
+    }
 
     /**
      * 获取一个新的音乐播放器，这个音乐播放器会自动被加入MusicThread
@@ -16,8 +20,14 @@ public class MusicPlayerManager {
      * @return a new MusicPlayer
      */
     public MusicPlayer getNewPlayer(String url) {
-        thread = new MusicThread(this);
-        MusicPlayer player = new MusicPlayer(url);
+        return getNewPlayer(url, 0);
+    }
+
+    /**
+     * 为同步播放功能预留的方法
+     */
+    public MusicPlayer getNewPlayer(String url, int start) {
+        MusicPlayer player = new MusicPlayer(url, start);
         thread.add(player);
         return player;
     }

@@ -124,19 +124,23 @@ public class EntityMusicPlayer extends EntityMinecart {
                 volume = dataManager.get(VOLUME);
                 float distanceSq = (float) getDistanceSq(Minecraft.getMinecraft().player.posX,
                         Minecraft.getMinecraft().player.posY, Minecraft.getMinecraft().player.posZ);
-                float v2 = 10000.0F / distanceSq / 20.0F;
-                if (v2 > 1.0F) {
-                    this.mp3Player.setVolume(volume);
+                // 调整音量算法
+                //float v2 = 10000.0F / distanceSq / 20.0F;
+                if (volume == 0) {
+                    this.mp3Player.setVolume(0);
                 } else {
-                    float v1 = 1.0f - volume;
-                    if (v2 - v1 > 0) {
-                        v2 = v2 - v1;
-                    } else {
-                        v2 = 0.0f;
+                    float n = (1 + volume) * 20;
+                    float nn = n * n;
+                    float v;
+                    if (distanceSq <= nn) {
+                        v = distanceSq / 4 / nn;
                     }
-                    this.mp3Player.setVolume(v2);
+                    else {
+                        v = (float) (- distanceSq / 12 / nn + 2 * Math.sqrt(distanceSq) / 3 / n - 1 / 3.0);
+                    }
+                    this.mp3Player.setVolume(volume * (1 - v));
                 }
-                if (!this.immersive) {
+                if (!this.immersive && mp3Player.isPlaying()) {
                     int random2 = rand.nextInt(24) + 1;
                     world.spawnParticle(EnumParticleTypes.NOTE, posX, posY + 1.2D, posZ, random2 / 24.0D, 0.0D, 0.0D);
                 }
@@ -168,7 +172,7 @@ public class EntityMusicPlayer extends EntityMinecart {
             this.isPlaying = true;
             if (world.isRemote) {
                 if (this.mp3Player != null) this.mp3Player.requestStop();
-                this.mp3Player = MCGProject.proxy.playerManager.getNewPlayer(this.streamURL);
+                this.mp3Player = MCGProject.proxy.playerManager.getNewPlayer(this.streamURL, 100);
                 mp3Player.setVolume(0);
             }
         }
