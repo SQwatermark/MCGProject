@@ -680,135 +680,135 @@ public class ModContent
     // -- Glass
     // -----------------------------------------------------------------------------------------------------------------
 
-    // Thin star shaped glass switch
-    new BlockSwitch("bistableswitch_glass1",
-      ModAuxiliaries.getPixeledAABB(5.5,5.5,0,10.5,10.5,0.5), null,
-      BlockSwitch.SWITCH_CONFIG_BISTABLE|BlockSwitch.SWITCH_CONFIG_WALLMOUNT|
-      BlockSwitch.SWITCH_CONFIG_WEAKABLE|BlockSwitch.SWITCH_CONFIG_INVERTABLE|
-      BlockSwitch.SWITCH_CONFIG_LINK_TARGET_SUPPORT|BlockSwitch.SWITCH_CONFIG_LINK_SOURCE_SUPPORT|
-      BlockSwitch.SWITCH_CONFIG_TRANSLUCENT|BlockSwitch.SWITCH_CONFIG_FAINT_LIGHTSOURCE|
-      BlockSwitch.SWITCH_CONFIG_COLOR_TINT_SUPPORT,
-      null, null
-    ),
-    // Bistable glass touch switch
-    new BlockSwitch("bistableswitch_glass2",
-      ModAuxiliaries.getPixeledAABB(5.5,5.5,0,10.5,10.5,0.5), null,
-      BlockSwitch.SWITCH_CONFIG_BISTABLE|BlockSwitch.SWITCH_CONFIG_WALLMOUNT|
-      BlockSwitch.SWITCH_CONFIG_WEAKABLE|BlockSwitch.SWITCH_CONFIG_INVERTABLE|
-      BlockSwitch.SWITCH_CONFIG_LINK_TARGET_SUPPORT|BlockSwitch.SWITCH_CONFIG_LINK_SOURCE_SUPPORT|
-      BlockSwitch.SWITCH_CONFIG_TRANSLUCENT|BlockSwitch.SWITCH_CONFIG_FAINT_LIGHTSOURCE|
-      BlockSwitch.SWITCH_CONFIG_COLOR_TINT_SUPPORT,
-      null, null
-    ),
+//    // Thin star shaped glass switch
+//    new BlockSwitch("bistableswitch_glass1",
+//      ModAuxiliaries.getPixeledAABB(5.5,5.5,0,10.5,10.5,0.5), null,
+//      BlockSwitch.SWITCH_CONFIG_BISTABLE|BlockSwitch.SWITCH_CONFIG_WALLMOUNT|
+//      BlockSwitch.SWITCH_CONFIG_WEAKABLE|BlockSwitch.SWITCH_CONFIG_INVERTABLE|
+//      BlockSwitch.SWITCH_CONFIG_LINK_TARGET_SUPPORT|BlockSwitch.SWITCH_CONFIG_LINK_SOURCE_SUPPORT|
+//      BlockSwitch.SWITCH_CONFIG_TRANSLUCENT|BlockSwitch.SWITCH_CONFIG_FAINT_LIGHTSOURCE|
+//      BlockSwitch.SWITCH_CONFIG_COLOR_TINT_SUPPORT,
+//      null, null
+//    ),
+//    // Bistable glass touch switch
+//    new BlockSwitch("bistableswitch_glass2",
+//      ModAuxiliaries.getPixeledAABB(5.5,5.5,0,10.5,10.5,0.5), null,
+//      BlockSwitch.SWITCH_CONFIG_BISTABLE|BlockSwitch.SWITCH_CONFIG_WALLMOUNT|
+//      BlockSwitch.SWITCH_CONFIG_WEAKABLE|BlockSwitch.SWITCH_CONFIG_INVERTABLE|
+//      BlockSwitch.SWITCH_CONFIG_LINK_TARGET_SUPPORT|BlockSwitch.SWITCH_CONFIG_LINK_SOURCE_SUPPORT|
+//      BlockSwitch.SWITCH_CONFIG_TRANSLUCENT|BlockSwitch.SWITCH_CONFIG_FAINT_LIGHTSOURCE|
+//      BlockSwitch.SWITCH_CONFIG_COLOR_TINT_SUPPORT,
+//      null, null
+//    ),
+//
+//    // ------------------------------------------------------------------------------
+//
+//    // Thin star shaped glass button
+//    new BlockSwitch("pulseswitch_glass1",
+//      ModAuxiliaries.getPixeledAABB(5.5,5.5,0,10.5,10.5,0.5), null,
+//      BlockSwitch.SWITCH_CONFIG_PULSE|BlockSwitch.SWITCH_CONFIG_WALLMOUNT|
+//      BlockSwitch.SWITCH_CONFIG_WEAKABLE|BlockSwitch.SWITCH_CONFIG_INVERTABLE|
+//      BlockSwitch.SWITCH_CONFIG_PULSE_EXTENDABLE|BlockSwitch.SWITCH_CONFIG_PULSETIME_CONFIGURABLE|
+//      BlockSwitch.SWITCH_CONFIG_LCLICK_RESETTABLE|
+//      BlockSwitch.SWITCH_CONFIG_TRANSLUCENT|BlockSwitch.SWITCH_CONFIG_FAINT_LIGHTSOURCE|
+//      BlockSwitch.SWITCH_CONFIG_COLOR_TINT_SUPPORT|
+//      BlockSwitch.SWITCH_CONFIG_LINK_TARGET_SUPPORT|BlockSwitch.SWITCH_CONFIG_LINK_SOURCE_SUPPORT,
+//      null, null
+//    ),
+//    // Thin small star shaped glass button
+//    new BlockSwitch("pulseswitch_glass2",
+//      ModAuxiliaries.getPixeledAABB(5.5,5.5,0,10.5,10.5,0.5), null,
+//      BlockSwitch.SWITCH_CONFIG_PULSE|BlockSwitch.SWITCH_CONFIG_WALLMOUNT|
+//      BlockSwitch.SWITCH_CONFIG_WEAKABLE|BlockSwitch.SWITCH_CONFIG_INVERTABLE|
+//      BlockSwitch.SWITCH_CONFIG_PULSE_EXTENDABLE|BlockSwitch.SWITCH_CONFIG_PULSETIME_CONFIGURABLE|
+//      BlockSwitch.SWITCH_CONFIG_LCLICK_RESETTABLE|
+//      BlockSwitch.SWITCH_CONFIG_TRANSLUCENT|BlockSwitch.SWITCH_CONFIG_FAINT_LIGHTSOURCE|
+//      BlockSwitch.SWITCH_CONFIG_COLOR_TINT_SUPPORT|
+//      BlockSwitch.SWITCH_CONFIG_LINK_TARGET_SUPPORT|BlockSwitch.SWITCH_CONFIG_LINK_SOURCE_SUPPORT,
+//      null, null
+//    ),
+//    // Glass touch button
+//    new BlockSwitch("pulseswitch_glass3",
+//      ModAuxiliaries.getPixeledAABB(5.5,5.5,0,10.5,10.5,0.5), null,
+//      BlockSwitch.SWITCH_CONFIG_PULSE|BlockSwitch.SWITCH_CONFIG_WALLMOUNT|
+//      BlockSwitch.SWITCH_CONFIG_WEAKABLE|BlockSwitch.SWITCH_CONFIG_INVERTABLE|
+//      BlockSwitch.SWITCH_CONFIG_PULSE_EXTENDABLE|BlockSwitch.SWITCH_CONFIG_PULSETIME_CONFIGURABLE|
+//      BlockSwitch.SWITCH_CONFIG_LCLICK_RESETTABLE|
+//      BlockSwitch.SWITCH_CONFIG_TRANSLUCENT|BlockSwitch.SWITCH_CONFIG_FAINT_LIGHTSOURCE|
+//      BlockSwitch.SWITCH_CONFIG_COLOR_TINT_SUPPORT|
+//      BlockSwitch.SWITCH_CONFIG_LINK_TARGET_SUPPORT|BlockSwitch.SWITCH_CONFIG_LINK_SOURCE_SUPPORT,
+//      null, null
+//    ),
+//
+//    // ------------------------------------------------------------------------------
+//
+//    // Glass plate
+//    new BlockContactSwitch("contactmat_glass1",
+//      ModAuxiliaries.getPixeledAABB(0,0,0, 16,0.25,16), null,
+//      BlockSwitch.SWITCH_CONFIG_CONTACT|BlockSwitch.SWITCH_CONFIG_LATERAL|BlockSwitch.SWITCH_CONFIG_TOUCH_CONFIGURABLE|
+//      BlockSwitch.SWITCH_CONFIG_WEAKABLE|BlockSwitch.SWITCH_CONFIG_INVERTABLE|
+//      BlockSwitch.SWITCH_CONFIG_PULSETIME_CONFIGURABLE|BlockSwitch.SWITCH_CONFIG_TRANSLUCENT|
+//      BlockSwitch.SWITCH_CONFIG_COLOR_TINT_SUPPORT|BlockSwitch.SWITCH_CONFIG_LINK_SOURCE_SUPPORT,
+//      new ModResources.BlockSoundEvent(SoundEvents.BLOCK_LEVER_CLICK, 0.0f, 1.3f),
+//      new ModResources.BlockSoundEvent(SoundEvents.BLOCK_LEVER_CLICK, 0.0f, 1.2f)
+//    ),
+//    // Glass plate
+//    new BlockContactSwitch("contactmat_glass2",
+//      ModAuxiliaries.getPixeledAABB(0,0,0, 16,0.25,16), null,
+//      BlockSwitch.SWITCH_CONFIG_CONTACT|BlockSwitch.SWITCH_CONFIG_LATERAL|
+//      BlockSwitch.SWITCH_CONFIG_WEAKABLE|BlockSwitch.SWITCH_CONFIG_INVERTABLE|
+//      BlockSwitch.SWITCH_CONFIG_PULSETIME_CONFIGURABLE|BlockSwitch.SWITCH_CONFIG_TRANSLUCENT|
+//      BlockSwitch.SWITCH_CONFIG_COLOR_TINT_SUPPORT|BlockSwitch.SWITCH_CONFIG_LINK_SOURCE_SUPPORT,
+//      new ModResources.BlockSoundEvent(SoundEvents.BLOCK_LEVER_CLICK, 0.0f, 1.3f),
+//      new ModResources.BlockSoundEvent(SoundEvents.BLOCK_LEVER_CLICK, 0.0f, 1.2f)
+//    ),
 
     // ------------------------------------------------------------------------------
 
-    // Thin star shaped glass button
-    new BlockSwitch("pulseswitch_glass1",
-      ModAuxiliaries.getPixeledAABB(5.5,5.5,0,10.5,10.5,0.5), null,
-      BlockSwitch.SWITCH_CONFIG_PULSE|BlockSwitch.SWITCH_CONFIG_WALLMOUNT|
-      BlockSwitch.SWITCH_CONFIG_WEAKABLE|BlockSwitch.SWITCH_CONFIG_INVERTABLE|
-      BlockSwitch.SWITCH_CONFIG_PULSE_EXTENDABLE|BlockSwitch.SWITCH_CONFIG_PULSETIME_CONFIGURABLE|
-      BlockSwitch.SWITCH_CONFIG_LCLICK_RESETTABLE|
-      BlockSwitch.SWITCH_CONFIG_TRANSLUCENT|BlockSwitch.SWITCH_CONFIG_FAINT_LIGHTSOURCE|
-      BlockSwitch.SWITCH_CONFIG_COLOR_TINT_SUPPORT|
-      BlockSwitch.SWITCH_CONFIG_LINK_TARGET_SUPPORT|BlockSwitch.SWITCH_CONFIG_LINK_SOURCE_SUPPORT,
-      null, null
-    ),
-    // Thin small star shaped glass button
-    new BlockSwitch("pulseswitch_glass2",
-      ModAuxiliaries.getPixeledAABB(5.5,5.5,0,10.5,10.5,0.5), null,
-      BlockSwitch.SWITCH_CONFIG_PULSE|BlockSwitch.SWITCH_CONFIG_WALLMOUNT|
-      BlockSwitch.SWITCH_CONFIG_WEAKABLE|BlockSwitch.SWITCH_CONFIG_INVERTABLE|
-      BlockSwitch.SWITCH_CONFIG_PULSE_EXTENDABLE|BlockSwitch.SWITCH_CONFIG_PULSETIME_CONFIGURABLE|
-      BlockSwitch.SWITCH_CONFIG_LCLICK_RESETTABLE|
-      BlockSwitch.SWITCH_CONFIG_TRANSLUCENT|BlockSwitch.SWITCH_CONFIG_FAINT_LIGHTSOURCE|
-      BlockSwitch.SWITCH_CONFIG_COLOR_TINT_SUPPORT|
-      BlockSwitch.SWITCH_CONFIG_LINK_TARGET_SUPPORT|BlockSwitch.SWITCH_CONFIG_LINK_SOURCE_SUPPORT,
-      null, null
-    ),
-    // Glass touch button
-    new BlockSwitch("pulseswitch_glass3",
-      ModAuxiliaries.getPixeledAABB(5.5,5.5,0,10.5,10.5,0.5), null,
-      BlockSwitch.SWITCH_CONFIG_PULSE|BlockSwitch.SWITCH_CONFIG_WALLMOUNT|
-      BlockSwitch.SWITCH_CONFIG_WEAKABLE|BlockSwitch.SWITCH_CONFIG_INVERTABLE|
-      BlockSwitch.SWITCH_CONFIG_PULSE_EXTENDABLE|BlockSwitch.SWITCH_CONFIG_PULSETIME_CONFIGURABLE|
-      BlockSwitch.SWITCH_CONFIG_LCLICK_RESETTABLE|
-      BlockSwitch.SWITCH_CONFIG_TRANSLUCENT|BlockSwitch.SWITCH_CONFIG_FAINT_LIGHTSOURCE|
-      BlockSwitch.SWITCH_CONFIG_COLOR_TINT_SUPPORT|
-      BlockSwitch.SWITCH_CONFIG_LINK_TARGET_SUPPORT|BlockSwitch.SWITCH_CONFIG_LINK_SOURCE_SUPPORT,
-      null, null
-    ),
-
-    // ------------------------------------------------------------------------------
-
-    // Glass plate
-    new BlockContactSwitch("contactmat_glass1",
-      ModAuxiliaries.getPixeledAABB(0,0,0, 16,0.25,16), null,
-      BlockSwitch.SWITCH_CONFIG_CONTACT|BlockSwitch.SWITCH_CONFIG_LATERAL|BlockSwitch.SWITCH_CONFIG_TOUCH_CONFIGURABLE|
-      BlockSwitch.SWITCH_CONFIG_WEAKABLE|BlockSwitch.SWITCH_CONFIG_INVERTABLE|
-      BlockSwitch.SWITCH_CONFIG_PULSETIME_CONFIGURABLE|BlockSwitch.SWITCH_CONFIG_TRANSLUCENT|
-      BlockSwitch.SWITCH_CONFIG_COLOR_TINT_SUPPORT|BlockSwitch.SWITCH_CONFIG_LINK_SOURCE_SUPPORT,
-      new ModResources.BlockSoundEvent(SoundEvents.BLOCK_LEVER_CLICK, 0.0f, 1.3f),
-      new ModResources.BlockSoundEvent(SoundEvents.BLOCK_LEVER_CLICK, 0.0f, 1.2f)
-    ),
-    // Glass plate
-    new BlockContactSwitch("contactmat_glass2",
-      ModAuxiliaries.getPixeledAABB(0,0,0, 16,0.25,16), null,
-      BlockSwitch.SWITCH_CONFIG_CONTACT|BlockSwitch.SWITCH_CONFIG_LATERAL|
-      BlockSwitch.SWITCH_CONFIG_WEAKABLE|BlockSwitch.SWITCH_CONFIG_INVERTABLE|
-      BlockSwitch.SWITCH_CONFIG_PULSETIME_CONFIGURABLE|BlockSwitch.SWITCH_CONFIG_TRANSLUCENT|
-      BlockSwitch.SWITCH_CONFIG_COLOR_TINT_SUPPORT|BlockSwitch.SWITCH_CONFIG_LINK_SOURCE_SUPPORT,
-      new ModResources.BlockSoundEvent(SoundEvents.BLOCK_LEVER_CLICK, 0.0f, 1.3f),
-      new ModResources.BlockSoundEvent(SoundEvents.BLOCK_LEVER_CLICK, 0.0f, 1.2f)
-    ),
-
-    // ------------------------------------------------------------------------------
-
-    // Glass Day time switch
-    new BlockAutoSwitch("daytimeswitch_glass1",
-      ModAuxiliaries.getPixeledAABB(5.5,5.5,0,10.5,10.5,0.1),
-      BlockSwitch.SWITCH_CONFIG_TIMER_DAYTIME|
-      BlockSwitch.SWITCH_CONFIG_WALLMOUNT|
-      BlockSwitch.SWITCH_CONFIG_WEAKABLE|BlockSwitch.SWITCH_CONFIG_INVERTABLE|
-      BlockSwitch.SWITCH_CONFIG_TOUCH_CONFIGURABLE|BlockSwitch.SWITCH_CONFIG_TRANSLUCENT|
-      BlockSwitch.SWITCH_CONFIG_LINK_TARGET_SUPPORT|BlockSwitch.SWITCH_CONFIG_LINK_SOURCE_SUPPORT,
-      new ModResources.BlockSoundEvent(SoundEvents.BLOCK_LEVER_CLICK, 0.0f, 1.3f),
-      new ModResources.BlockSoundEvent(SoundEvents.BLOCK_LEVER_CLICK, 0.0f, 1.2f)
-    ),
-    // Glass interval signal timer
-    new BlockAutoSwitch("timerswitch_glass1",
-      ModAuxiliaries.getPixeledAABB(5.5,5.5,0,10.5,10.5,0.1),
-      BlockSwitch.SWITCH_CONFIG_TIMER_INTERVAL|
-      BlockSwitch.SWITCH_CONFIG_WALLMOUNT|
-      BlockSwitch.SWITCH_CONFIG_WEAKABLE|BlockSwitch.SWITCH_CONFIG_INVERTABLE|
-      BlockSwitch.SWITCH_CONFIG_TOUCH_CONFIGURABLE|BlockSwitch.SWITCH_CONFIG_TRANSLUCENT|
-      BlockSwitch.SWITCH_CONFIG_LINK_TARGET_SUPPORT,
-      new ModResources.BlockSoundEvent(SoundEvents.BLOCK_LEVER_CLICK, 0.0f, 1.3f),
-      new ModResources.BlockSoundEvent(SoundEvents.BLOCK_LEVER_CLICK, 0.0f, 1.2f)
-    ),
-    // Glass infrared motion sensor
-    new BlockAutoSwitch("detectorswitch_glass1",
-      ModAuxiliaries.getPixeledAABB(5.5,5.5,0,10.5,10.5,0.1),
-      BlockSwitch.SWITCH_CONFIG_SENSOR_VOLUME|BlockSwitch.SWITCH_CONFIG_PULSETIME_CONFIGURABLE|
-      BlockSwitch.SWITCH_CONFIG_WALLMOUNT|
-      BlockSwitch.SWITCH_CONFIG_WEAKABLE|BlockSwitch.SWITCH_CONFIG_INVERTABLE|
-      BlockSwitch.SWITCH_CONFIG_TOUCH_CONFIGURABLE|BlockSwitch.SWITCH_CONFIG_TRANSLUCENT|
-      BlockSwitch.SWITCH_CONFIG_LINK_TARGET_SUPPORT|BlockSwitch.SWITCH_CONFIG_LINK_SOURCE_SUPPORT,
-      new ModResources.BlockSoundEvent(SoundEvents.BLOCK_LEVER_CLICK, 0.0f, 1.3f),
-      new ModResources.BlockSoundEvent(SoundEvents.BLOCK_LEVER_CLICK, 0.0f, 1.2f)
-    ),
-    // Glass laser motion sensor
-    new BlockAutoSwitch("detectorswitch_glass2",
-      ModAuxiliaries.getPixeledAABB(5.5,5.5,0,10.5,10.5,0.1),
-      BlockSwitch.SWITCH_CONFIG_WALLMOUNT|BlockSwitch.SWITCH_CONFIG_PULSETIME_CONFIGURABLE|
-      BlockSwitch.SWITCH_CONFIG_SENSOR_LINEAR|
-      BlockSwitch.SWITCH_CONFIG_WEAKABLE|BlockSwitch.SWITCH_CONFIG_INVERTABLE|
-      BlockSwitch.SWITCH_CONFIG_TOUCH_CONFIGURABLE|BlockSwitch.SWITCH_CONFIG_TRANSLUCENT|
-      BlockSwitch.SWITCH_CONFIG_LINK_TARGET_SUPPORT|BlockSwitch.SWITCH_CONFIG_LINK_SOURCE_SUPPORT,
-      new ModResources.BlockSoundEvent(SoundEvents.BLOCK_LEVER_CLICK, 0.0f, 1.3f),
-      new ModResources.BlockSoundEvent(SoundEvents.BLOCK_LEVER_CLICK, 0.0f, 1.2f)
-    ),
+//    // Glass Day time switch
+//    new BlockAutoSwitch("daytimeswitch_glass1",
+//      ModAuxiliaries.getPixeledAABB(5.5,5.5,0,10.5,10.5,0.1),
+//      BlockSwitch.SWITCH_CONFIG_TIMER_DAYTIME|
+//      BlockSwitch.SWITCH_CONFIG_WALLMOUNT|
+//      BlockSwitch.SWITCH_CONFIG_WEAKABLE|BlockSwitch.SWITCH_CONFIG_INVERTABLE|
+//      BlockSwitch.SWITCH_CONFIG_TOUCH_CONFIGURABLE|BlockSwitch.SWITCH_CONFIG_TRANSLUCENT|
+//      BlockSwitch.SWITCH_CONFIG_LINK_TARGET_SUPPORT|BlockSwitch.SWITCH_CONFIG_LINK_SOURCE_SUPPORT,
+//      new ModResources.BlockSoundEvent(SoundEvents.BLOCK_LEVER_CLICK, 0.0f, 1.3f),
+//      new ModResources.BlockSoundEvent(SoundEvents.BLOCK_LEVER_CLICK, 0.0f, 1.2f)
+//    ),
+//    // Glass interval signal timer
+//    new BlockAutoSwitch("timerswitch_glass1",
+//      ModAuxiliaries.getPixeledAABB(5.5,5.5,0,10.5,10.5,0.1),
+//      BlockSwitch.SWITCH_CONFIG_TIMER_INTERVAL|
+//      BlockSwitch.SWITCH_CONFIG_WALLMOUNT|
+//      BlockSwitch.SWITCH_CONFIG_WEAKABLE|BlockSwitch.SWITCH_CONFIG_INVERTABLE|
+//      BlockSwitch.SWITCH_CONFIG_TOUCH_CONFIGURABLE|BlockSwitch.SWITCH_CONFIG_TRANSLUCENT|
+//      BlockSwitch.SWITCH_CONFIG_LINK_TARGET_SUPPORT,
+//      new ModResources.BlockSoundEvent(SoundEvents.BLOCK_LEVER_CLICK, 0.0f, 1.3f),
+//      new ModResources.BlockSoundEvent(SoundEvents.BLOCK_LEVER_CLICK, 0.0f, 1.2f)
+//    ),
+//    // Glass infrared motion sensor
+//    new BlockAutoSwitch("detectorswitch_glass1",
+//      ModAuxiliaries.getPixeledAABB(5.5,5.5,0,10.5,10.5,0.1),
+//      BlockSwitch.SWITCH_CONFIG_SENSOR_VOLUME|BlockSwitch.SWITCH_CONFIG_PULSETIME_CONFIGURABLE|
+//      BlockSwitch.SWITCH_CONFIG_WALLMOUNT|
+//      BlockSwitch.SWITCH_CONFIG_WEAKABLE|BlockSwitch.SWITCH_CONFIG_INVERTABLE|
+//      BlockSwitch.SWITCH_CONFIG_TOUCH_CONFIGURABLE|BlockSwitch.SWITCH_CONFIG_TRANSLUCENT|
+//      BlockSwitch.SWITCH_CONFIG_LINK_TARGET_SUPPORT|BlockSwitch.SWITCH_CONFIG_LINK_SOURCE_SUPPORT,
+//      new ModResources.BlockSoundEvent(SoundEvents.BLOCK_LEVER_CLICK, 0.0f, 1.3f),
+//      new ModResources.BlockSoundEvent(SoundEvents.BLOCK_LEVER_CLICK, 0.0f, 1.2f)
+//    ),
+//    // Glass laser motion sensor
+//    new BlockAutoSwitch("detectorswitch_glass2",
+//      ModAuxiliaries.getPixeledAABB(5.5,5.5,0,10.5,10.5,0.1),
+//      BlockSwitch.SWITCH_CONFIG_WALLMOUNT|BlockSwitch.SWITCH_CONFIG_PULSETIME_CONFIGURABLE|
+//      BlockSwitch.SWITCH_CONFIG_SENSOR_LINEAR|
+//      BlockSwitch.SWITCH_CONFIG_WEAKABLE|BlockSwitch.SWITCH_CONFIG_INVERTABLE|
+//      BlockSwitch.SWITCH_CONFIG_TOUCH_CONFIGURABLE|BlockSwitch.SWITCH_CONFIG_TRANSLUCENT|
+//      BlockSwitch.SWITCH_CONFIG_LINK_TARGET_SUPPORT|BlockSwitch.SWITCH_CONFIG_LINK_SOURCE_SUPPORT,
+//      new ModResources.BlockSoundEvent(SoundEvents.BLOCK_LEVER_CLICK, 0.0f, 1.3f),
+//      new ModResources.BlockSoundEvent(SoundEvents.BLOCK_LEVER_CLICK, 0.0f, 1.2f)
+//    ),
 //    // Comparator output level observing switch
 //    new BlockComparatorSwitch(
 //      "industrial_comparator_switch",

@@ -185,21 +185,23 @@ public class GuiMusicPlayer extends GuiScreen {
 		super.mouseClicked(par1, par2, par3);
 	}
 
+	protected String parseURL(String url) {
+		if (url.toLowerCase().contains(".m3u"))
+			return takeFirstEntryFromM3U(url);
+		if (url.toLowerCase().contains(".pls"))
+			return parsePls(url);
+		if (url.toLowerCase().contains("music.163.com"))
+			return parseNetease(url);
+		return url;
+	}
+
 	@Override
 	@SideOnly(Side.CLIENT)
 	protected void actionPerformed(GuiButton button) {
 		if (button.id == 0) {
 			if (streamTextBox.getText() != null && streamTextBox.getText().length() > 0) {
 				if (!musicPlayer.isPlaying) {
-					if (this.streamTextBox.getText().toLowerCase().contains(".m3u")) {
-						musicPlayer.streamURL = takeFirstEntryFromM3U(this.streamTextBox.getText());
-					}
-					else if (this.streamTextBox.getText().toLowerCase().contains(".pls")) {
-						musicPlayer.streamURL = parsePls(this.streamTextBox.getText());
-					}
-					else {
-						musicPlayer.streamURL = this.streamTextBox.getText();
-					}
+					musicPlayer.streamURL = parseURL(this.streamTextBox.getText());
 					musicPlayer.startStream();
 				}
 				else {
@@ -218,9 +220,6 @@ public class GuiMusicPlayer extends GuiScreen {
 			Clipboard clipboard = toolkit.getSystemClipboard();
 			try {
 				String result = (String) clipboard.getData(DataFlavor.stringFlavor);
-				if (MathMCG.isNumeric(result)) {
-					result = "http://music.163.com/song/media/outer/url?id="+ result + ".mp3";
-				}
 				streamTextBox.setText(result);
 			} catch (Exception ignored) {}
 		}
@@ -340,6 +339,32 @@ public class GuiMusicPlayer extends GuiScreen {
 			infoText = "Not a valid stream, only .m3u and .pls";
 		}
 		return out;
+	}
+
+	public static String getArg(String args, String name) {
+		if (args.contains(name)) {
+			int pos = args.indexOf(name);
+			String sub = args.substring(pos + name.length() + 1);
+			if (sub.contains("&")) {
+				return sub.split("&")[0];
+			}
+			return sub;
+		}
+		return args;
+	}
+
+	public String parseNetease(String input) {
+		final String NETEASE_URL = "http://music.163.com/song/media/outer/url?id=";
+		if (MathMCG.isNumeric(input))
+			return NETEASE_URL + input + ".mp3";
+		if (input.contains("music.163.com") && input.contains("?")) {
+			String[] args = input.split("\\?");
+			if (args.length > 1) {
+				String id = getArg(args[1], "id");
+				return NETEASE_URL + id + ".mp3";
+			}
+		}
+		return input;
 	}
 
 }
