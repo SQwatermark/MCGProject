@@ -8,7 +8,10 @@
     "inventory": [{}],
     "normal": [{}],
     "0": [{"textures": {"layer0": "mcgproject:items/prop/pic0"}}],
-    "1": [{"textures": {"layer0": "mcgproject:items/prop/pic1"}}],
+    "1": [{
+      "model": "mcgproject:handheld",
+      "textures": {"layer0": "mcgproject:items/prop/pic1"}
+    }],
     "2": [{"textures": {"layer0": "mcgproject:items/prop/pic2"}}],
     "3": [{"textures": {"layer0": "mcgproject:items/prop/pic3"}}],
     "4": [{"textures": {"layer0": "mcgproject:items/prop/pic4"}}],
