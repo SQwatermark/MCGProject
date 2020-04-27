@@ -5,6 +5,7 @@ import moe.gensoukyo.mcgproject.common.block.enums.EnumTileColor;
 import moe.gensoukyo.mcgproject.common.creativetab.MCGTabs;
 import moe.gensoukyo.mcgproject.common.feature.applecraft.BlockMCGApple;
 import moe.gensoukyo.mcgproject.common.feature.backpack.GensoChest;
+import moe.gensoukyo.mcgproject.common.feature.lightbulb.BlockLightBulb;
 import moe.gensoukyo.mcgproject.common.feature.ranstone.*;
 import moe.gensoukyo.mcgproject.common.feature.sticker.BlockSticker;
 import moe.gensoukyo.mcgproject.common.item.ItemBlockWithMeta;
@@ -167,10 +168,11 @@ public class ModBlock {
     @SubscribeEvent
     public void registerBlocks(RegistryEvent.Register<Block> event) {
         MCGProject.logger.info("MCGProject: registering blocks");
-        for (LinkedList<Block> i : arrayList) {
+        for (LinkedList<Block> i : BLOCKS) {
             event.getRegistry().registerAll(i.toArray(new Block[0]));
         }
 
+        RanstoneLamp.initBlock();
         RanstoneBlock.initBlock();
         RanstoneComparator.initBlock();
         RanstoneRepeater.initBlock();
@@ -180,6 +182,7 @@ public class ModBlock {
         RanstonePiston.Extension.initBlock();
         RanstonePiston.Moving.initBlock();
         event.getRegistry().registerAll(
+                RanstoneLamp.BLOCK, RanstoneLamp.BLOCK_LIT, RanstoneLamp.BLOCK_ALWAYS,
                 RanstoneBlock.BLOCK,
                 RanstoneComparator.BLOCK, RanstoneComparator.BLOCK_N,
                 RanstoneRepeater.BLOCK, RanstoneRepeater.BLOCK_N,
@@ -189,6 +192,8 @@ public class ModBlock {
 
         BlockSticker.initBlock();
         event.getRegistry().registerAll(BlockSticker.BLOCK, BlockSticker.BLOCK_LIT);
+        BlockLightBulb.initBlock();
+        event.getRegistry().register(BlockLightBulb.BLOCK);
     }
 
     /**
@@ -200,13 +205,15 @@ public class ModBlock {
         //遍历所有存储Block的链表，实例化ItemBlock并存入LinkedHashMap
         for (int maxMeta = 0; maxMeta < 16; maxMeta++) {
             if (maxMeta == 0) for (Block b : blocks1) {itemBlocks1.put(b, new ItemMCGBlock(b));}
-            else for (Block b : arrayList.get(maxMeta)) {arrayList2.get(maxMeta).put(b, new ItemBlockWithMeta(b));}
+            else for (Block b : BLOCKS.get(maxMeta)) {
+                ITEM_BLOCKS.get(maxMeta).put(b, new ItemBlockWithMeta(b));}
         }
         //注册ItemBlock
-        for (LinkedHashMap<Block, Item> i : arrayList2) {
+        for (LinkedHashMap<Block, Item> i : ITEM_BLOCKS) {
             event.getRegistry().registerAll(i.values().toArray(new Item[0]));
         }
 
+        RanstoneLamp.initItem();
         RanstoneBlock.initItem();
         RanstoneComparator.initItem();
         RanstoneRepeater.initItem();
@@ -214,12 +221,15 @@ public class ModBlock {
         RanstoneWire.initItem();
         RanstonePiston.Base.initItem();
         event.getRegistry().registerAll(
+                RanstoneLamp.ITEM, RanstoneLamp.ITEM_LIT, RanstoneLamp.ITEM_ALWAYS,
                 RanstoneBlock.ITEM, RanstoneComparator.ITEM,
                 RanstoneRepeater.ITEM, RanstoneTorch.ITEM,
                 RanstoneWire.ITEM, RanstonePiston.Base.ITEM);
 
         BlockSticker.initItem();
         event.getRegistry().registerAll(BlockSticker.ITEM, BlockSticker.ITEM_LIT);
+        BlockLightBulb.initItem();
+        event.getRegistry().register(BlockLightBulb.ITEM);
     }
 
     /**
@@ -231,7 +241,7 @@ public class ModBlock {
         MCGProject.logger.info("MCGProject: registering ItemBlock Models");
         //遍历所有LinkedHashMap, 注册ItemBlock对应模型
         for (int maxMeta = 0; maxMeta < 16; maxMeta++) {
-            for (Item i : arrayList2.get(maxMeta).values()) {
+            for (Item i : ITEM_BLOCKS.get(maxMeta).values()) {
                 setLocation(i, maxMeta);
             }
         }
@@ -284,42 +294,42 @@ public class ModBlock {
     private static LinkedHashMap<Block, Item> itemBlocks14 = new LinkedHashMap<>();
     private static LinkedHashMap<Block, Item> itemBlocks15 = new LinkedHashMap<>();
     private static LinkedHashMap<Block, Item> itemBlocks16 = new LinkedHashMap<>();
-    private static ArrayList<LinkedList<Block>> arrayList = new ArrayList<>();
-    private static ArrayList<LinkedHashMap<Block, Item>> arrayList2 = new ArrayList<>();
+    private static ArrayList<LinkedList<Block>> BLOCKS = new ArrayList<>();
+    private static ArrayList<LinkedHashMap<Block, Item>> ITEM_BLOCKS = new ArrayList<>();
 
     private void addArrayList() {
-        arrayList.add(blocks1);
-        arrayList.add(blocks2);
-        arrayList.add(blocks3);
-        arrayList.add(blocks4);
-        arrayList.add(blocks5);
-        arrayList.add(blocks6);
-        arrayList.add(blocks7);
-        arrayList.add(blocks8);
-        arrayList.add(blocks9);
-        arrayList.add(blocks10);
-        arrayList.add(blocks11);
-        arrayList.add(blocks12);
-        arrayList.add(blocks13);
-        arrayList.add(blocks14);
-        arrayList.add(blocks15);
-        arrayList.add(blocks16);
-        arrayList2.add(itemBlocks1);
-        arrayList2.add(itemBlocks2);
-        arrayList2.add(itemBlocks3);
-        arrayList2.add(itemBlocks4);
-        arrayList2.add(itemBlocks5);
-        arrayList2.add(itemBlocks6);
-        arrayList2.add(itemBlocks7);
-        arrayList2.add(itemBlocks8);
-        arrayList2.add(itemBlocks9);
-        arrayList2.add(itemBlocks10);
-        arrayList2.add(itemBlocks11);
-        arrayList2.add(itemBlocks12);
-        arrayList2.add(itemBlocks13);
-        arrayList2.add(itemBlocks14);
-        arrayList2.add(itemBlocks15);
-        arrayList2.add(itemBlocks16);
+        BLOCKS.add(blocks1);
+        BLOCKS.add(blocks2);
+        BLOCKS.add(blocks3);
+        BLOCKS.add(blocks4);
+        BLOCKS.add(blocks5);
+        BLOCKS.add(blocks6);
+        BLOCKS.add(blocks7);
+        BLOCKS.add(blocks8);
+        BLOCKS.add(blocks9);
+        BLOCKS.add(blocks10);
+        BLOCKS.add(blocks11);
+        BLOCKS.add(blocks12);
+        BLOCKS.add(blocks13);
+        BLOCKS.add(blocks14);
+        BLOCKS.add(blocks15);
+        BLOCKS.add(blocks16);
+        ITEM_BLOCKS.add(itemBlocks1);
+        ITEM_BLOCKS.add(itemBlocks2);
+        ITEM_BLOCKS.add(itemBlocks3);
+        ITEM_BLOCKS.add(itemBlocks4);
+        ITEM_BLOCKS.add(itemBlocks5);
+        ITEM_BLOCKS.add(itemBlocks6);
+        ITEM_BLOCKS.add(itemBlocks7);
+        ITEM_BLOCKS.add(itemBlocks8);
+        ITEM_BLOCKS.add(itemBlocks9);
+        ITEM_BLOCKS.add(itemBlocks10);
+        ITEM_BLOCKS.add(itemBlocks11);
+        ITEM_BLOCKS.add(itemBlocks12);
+        ITEM_BLOCKS.add(itemBlocks13);
+        ITEM_BLOCKS.add(itemBlocks14);
+        ITEM_BLOCKS.add(itemBlocks15);
+        ITEM_BLOCKS.add(itemBlocks16);
     }
 
 }

@@ -2,6 +2,7 @@ package moe.gensoukyo.mcgproject.core;
 
 import moe.gensoukyo.mcgproject.cilent.feature.ItitFeatures;
 import moe.gensoukyo.mcgproject.cilent.init.ModelMapper;
+import moe.gensoukyo.mcgproject.common.feature.rsgauges.ModRsGauges;
 import net.minecraft.client.Minecraft;
 import net.minecraft.util.SoundCategory;
 import net.minecraftforge.common.MinecraftForge;
@@ -30,18 +31,21 @@ public class ClientProxy extends CommonProxy {
         ItitFeatures.addServerInformation();
         super.preInit(event);
         MinecraftForge.EVENT_BUS.register(ModelMapper.instance());
+        ModRsGauges.client.preInit(event);
     }
 
     @Override
     @EventHandler
     public void init(FMLInitializationEvent event) {
         super.init(event);
+        ModRsGauges.client.init(event);
     }
 
     @Override
     @EventHandler
     public void postInit(FMLPostInitializationEvent event) {
         super.postInit(event);
+        ModRsGauges.client.postInit(event);
     }
 
     @Override

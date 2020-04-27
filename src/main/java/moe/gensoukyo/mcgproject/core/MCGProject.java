@@ -2,6 +2,7 @@ package moe.gensoukyo.mcgproject.core;
 
 import moe.gensoukyo.mcgproject.common.feature.NoRecipeBook;
 import moe.gensoukyo.mcgproject.common.feature.backpack.BackpackCore;
+import moe.gensoukyo.mcgproject.common.feature.rsgauges.ModRsGauges;
 import moe.gensoukyo.mcgproject.common.feature.sticker.TileSticker;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
@@ -44,18 +45,25 @@ public class MCGProject {
     public void preInit(FMLPreInitializationEvent event) {
         logger = event.getModLog();
         proxy.preInit(event);
+
+        ModRsGauges.attachLogger(logger);
+        ModRsGauges.INSTANCE.preInit(event);
     }
 
     @Mod.EventHandler
     public void init(FMLInitializationEvent event)
     {
         proxy.init(event);
+
+        ModRsGauges.INSTANCE.attachLogger(event);
     }
 
     @Mod.EventHandler
     public void postInit(FMLPostInitializationEvent event)
     {
         proxy.postInit(event);
+
+        ModRsGauges.INSTANCE.postInit(event);
     }
 
     @Mod.EventHandler
