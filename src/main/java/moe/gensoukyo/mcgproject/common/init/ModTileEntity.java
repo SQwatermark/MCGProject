@@ -1,5 +1,6 @@
 package moe.gensoukyo.mcgproject.common.init;
 
+import moe.gensoukyo.mcgproject.common.feature.lightbulb.TileLightBulb;
 import moe.gensoukyo.mcgproject.common.feature.ranstone.RanstoneLamp;
 import moe.gensoukyo.mcgproject.common.feature.ranstone.RanstonePiston;
 import moe.gensoukyo.mcgproject.common.feature.sticker.TileSticker;
@@ -32,6 +33,7 @@ public class ModTileEntity {
         register(RanstonePiston.TilePiston.class, "tileRanstonePiston");
         register(TileSticker.class, "tileSticker");
         register(RanstoneLamp.TileRanstoneLamp.class, "tileRanstoneLamp");
+        register(TileLightBulb.class, "tileLightBulb");
     }
 
 }

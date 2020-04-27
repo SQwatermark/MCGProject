@@ -595,6 +595,23 @@ tile.mcgproject.ranstoneLampAlways.magenta.name=长明品红色蓝石灯
 tile.mcgproject.ranstoneLampAlways.orange.name=长明橙色蓝石灯
 tile.mcgproject.ranstoneLampAlways.white.name=长明白色蓝石灯
 
+tile.mcgproject.lightBulb.black.name=黑色灯泡
+tile.mcgproject.lightBulb.red.name=红色灯泡
+tile.mcgproject.lightBulb.green.name=绿色灯泡
+tile.mcgproject.lightBulb.brown.name=棕色灯泡
+tile.mcgproject.lightBulb.blue.name=蓝色灯泡
+tile.mcgproject.lightBulb.purple.name=紫色灯泡
+tile.mcgproject.lightBulb.cyan.name=青色灯泡
+tile.mcgproject.lightBulb.silver.name=淡灰色灯泡
+tile.mcgproject.lightBulb.gray.name=灰色灯泡
+tile.mcgproject.lightBulb.pink.name=粉色灯泡
+tile.mcgproject.lightBulb.lime.name=黄绿色灯泡
+tile.mcgproject.lightBulb.yellow.name=黄色灯泡
+tile.mcgproject.lightBulb.lightBlue.name=天蓝色灯泡
+tile.mcgproject.lightBulb.magenta.name=品红色灯泡
+tile.mcgproject.lightBulb.orange.name=橙色灯泡
+tile.mcgproject.lightBulb.white.name=白色灯泡
+
 gui.mcgproject.bettersign.shift=移位
 gui.mcgproject.bettersign.clear=清空
 

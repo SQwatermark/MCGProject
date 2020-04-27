@@ -594,6 +594,23 @@ tile.mcgproject.ranstoneLampAlways.magenta.name=A-ON Magenta Ranstone Lamp
 tile.mcgproject.ranstoneLampAlways.orange.name=A-ON Orange Ranstone Lamp
 tile.mcgproject.ranstoneLampAlways.white.name=A-ON White Ranstone Lamp
 
+tile.mcgproject.lightBulb.black.name=Black Light Bulb
+tile.mcgproject.lightBulb.red.name=Red Light Bulb
+tile.mcgproject.lightBulb.green.name=Green Light Bulb
+tile.mcgproject.lightBulb.brown.name=Brown Light Bulb
+tile.mcgproject.lightBulb.blue.name=Blue Light Bulb
+tile.mcgproject.lightBulb.purple.name=Purple Light Bulb
+tile.mcgproject.lightBulb.cyan.name=Cyan Light Bulb
+tile.mcgproject.lightBulb.silver.name=Light Gray Light Bulb
+tile.mcgproject.lightBulb.gray.name=Gray Light Bulb
+tile.mcgproject.lightBulb.pink.name=Pink Light Bulb
+tile.mcgproject.lightBulb.lime.name=Lime Light Bulb
+tile.mcgproject.lightBulb.yellow.name=Yellow Light Bulb
+tile.mcgproject.lightBulb.lightBlue.name=Light Blue Light Bulb
+tile.mcgproject.lightBulb.magenta.name=Magenta Light Bulb
+tile.mcgproject.lightBulb.orange.name=Orange Light Bulb
+tile.mcgproject.lightBulb.white.name=White Light Bulb
+
 gui.mcgproject.bettersign.shift=Shift
 gui.mcgproject.bettersign.clear=Clear
 
