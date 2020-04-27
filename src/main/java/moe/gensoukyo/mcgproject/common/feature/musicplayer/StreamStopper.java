@@ -22,4 +22,5 @@ public class StreamStopper {
     public void onWorldUnload(WorldEvent.Unload event) {
         MCGProject.proxy.playerManager.clean();
     }
+
 }

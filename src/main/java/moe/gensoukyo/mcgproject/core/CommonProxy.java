@@ -4,7 +4,7 @@ import moe.gensoukyo.mcgproject.common.entity.EntityKaginawa;
 import moe.gensoukyo.mcgproject.common.feature.BetterSign;
 import moe.gensoukyo.mcgproject.common.feature.CustomNPCsHook;
 import moe.gensoukyo.mcgproject.common.feature.MoreBannerPatterns;
-import moe.gensoukyo.mcgproject.common.feature.NoChicken;
+import moe.gensoukyo.mcgproject.common.feature.WorldGuard;
 import moe.gensoukyo.mcgproject.common.feature.futuremc.FMBlock;
 import moe.gensoukyo.mcgproject.common.feature.musicplayer.MusicPlayerManager;
 import moe.gensoukyo.mcgproject.common.feature.musicplayer.StreamStopper;
@@ -36,7 +36,7 @@ public class CommonProxy {
         MinecraftForge.EVENT_BUS.register(ModTileEntity.instance());
         MinecraftForge.EVENT_BUS.register(BetterSign.instance());
         MinecraftForge.EVENT_BUS.register(EntityPool.instance());
-        MinecraftForge.EVENT_BUS.register(NoChicken.instance());
+        MinecraftForge.EVENT_BUS.register(WorldGuard.instance());
         MinecraftForge.EVENT_BUS.register(StreamStopper.instance());
         new NetworkWrapper(event);
         if (Loader.isModLoaded("customnpcs")) {
