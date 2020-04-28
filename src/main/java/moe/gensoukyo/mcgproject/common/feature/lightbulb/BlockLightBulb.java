@@ -1,6 +1,7 @@
 package moe.gensoukyo.mcgproject.common.feature.lightbulb;
 
 import moe.gensoukyo.mcgproject.common.creativetab.MCGTabs;
+import moe.gensoukyo.mcgproject.core.MCG;
 import moe.gensoukyo.mcgproject.core.MCGProject;
 import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
@@ -49,10 +50,12 @@ import java.util.Random;
 public class BlockLightBulb extends BlockColored implements ITileEntityProvider {
 
     public static BlockLightBulb BLOCK;
+    public static BlockLightBulb BLOCK_LIT;
     public static Item ITEM;
 
     public static void initBlock() {
-        BLOCK = new BlockLightBulb();
+        BLOCK = new BlockLightBulb(false);
+        BLOCK_LIT = new BlockLightBulb(true);
     }
     public static void initItem() {
         ITEM = new ItemCloth(BLOCK) {
@@ -163,31 +166,24 @@ public class BlockLightBulb extends BlockColored implements ITileEntityProvider 
         return Block.FULL_BLOCK_AABB;
     }
 
-    public BlockLightBulb() {
+    public BlockLightBulb(boolean lit) {
         super(Material.GLASS);
         this.hasTileEntity = true;
-        setRegistryName(MCGProject.ID, "light_bulb");
+        setRegistryName(MCGProject.ID, "light_bulb" + (lit ? "_lit" : ""));
         setHardness(5.0F);
         setResistance(10.0F);
         setSoundType(SoundType.GLASS);
         setLightOpacity(0);
-        setLightLevel(0);
-        setTranslationKey(MCGProject.ID + "." + "lightBulb");
-        setCreativeTab(MCGTabs.FANTASY);
+        setLightLevel(lit ? 1.0F : 0.0F);
+        setTranslationKey(MCGProject.ID + "." + "lightBulb" + (lit ? "Lit" : ""));
+        setCreativeTab(lit ? null : MCGTabs.FANTASY);
 
         setDefaultState(
                 this.blockState.getBaseState()
                         .withProperty(COLOR, EnumDyeColor.WHITE)
                         .withProperty(FACING, EnumFacing.UP)
-                        .withProperty(POWERED, false)
+                        .withProperty(POWERED, lit)
         );
-    }
-
-    @Override
-    @Nonnull
-    public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess world, BlockPos pos) {
-        state = state.getBlock().getActualState(state, world, pos);
-        return getBoxByXYZ(state, 0.25, 0.625, 0.25);
     }
 
     @Override
@@ -196,40 +192,49 @@ public class BlockLightBulb extends BlockColored implements ITileEntityProvider 
         return new BlockStateContainer(this, COLOR, FACING, POWERED);
     }
 
+    public void refreshTileData(IBlockState state, World world, BlockPos pos) {
+        TileEntity tileEntity = world.getTileEntity(pos);
+        if (tileEntity instanceof TileLightBulb) {
+            TileLightBulb bulb = (TileLightBulb) tileEntity;
+            bulb.facing = state.getValue(FACING);
+            bulb.powered = state.getValue(POWERED);
+            bulb.refresh();
+            bulb.markDirty();
+        }
+    }
+
     @Override
-    public int getLightValue(IBlockState state, IBlockAccess world, BlockPos pos) {
-        state = state.getBlock().getActualState(state, world, pos);
-        return state.getValue(POWERED) ? 15 : 0;
+    public void onBlockPlacedBy(World world, BlockPos pos, IBlockState state, EntityLivingBase player, ItemStack stack) {
+        this.refreshTileData(state, world, pos);
     }
 
     @Override
     @Nonnull
     public IBlockState getActualState(@Nonnull IBlockState state, IBlockAccess world, BlockPos pos) {
-        state = super.getActualState(state, world, pos);
-        for (EnumFacing facing : EnumFacing.VALUES) {
-            if (facing.getAxis() != EnumFacing.Axis.Y)
-                continue;
-            if (world.getBlockState(pos.offset(facing)).getBlock() == BLOCK)
-                continue;
-            if (world.isSideSolid(pos.offset(facing), facing.getOpposite(), false)) {
-                state = state.withProperty(FACING, facing);
-                break;
-            }
-        }
-        for (EnumFacing facing : EnumFacing.HORIZONTALS) {
-            if (world.getBlockState(pos.offset(facing)).getBlock() == BLOCK)
-                continue;
-            if (world.isSideSolid(pos.offset(facing), facing.getOpposite(), false)) {
-                state = state.withProperty(FACING, facing);
-                break;
-            }
+        TileEntity tileEntity = world.getTileEntity(pos);
+        if (tileEntity instanceof TileLightBulb) {
+            TileLightBulb bulb = (TileLightBulb) tileEntity;
+            state = state.withProperty(FACING, bulb.facing).withProperty(POWERED, bulb.powered);
         }
         return state;
     }
 
     @Override
+    @Nonnull
+    public IBlockState getExtendedState(@Nonnull IBlockState state, IBlockAccess world, BlockPos pos) {
+        return this.getActualState(state, world, pos);
+    }
+
+    @Override
+    @Nonnull
+    public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess world, BlockPos pos) {
+        state = this.getActualState(state, world, pos);
+        return getBoxByXYZ(state, 0.25, 0.625, 0.25);
+    }
+
+    @Override
     public boolean isSideSolid(IBlockState state, @Nonnull IBlockAccess world, @Nonnull BlockPos pos, EnumFacing facing) {
-        state = state.getBlock().getActualState(state, world, pos);
+        state = this.getActualState(state, world, pos);
         return state.getValue(FACING).getAxis() == facing.getAxis();
     }
 
@@ -253,7 +258,7 @@ public class BlockLightBulb extends BlockColored implements ITileEntityProvider 
     @Nonnull
     public IBlockState getStateForPlacement(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase player) {
         IBlockState state = super.getStateForPlacement(world, pos, facing, hitX, hitY, hitZ, meta, player);
-        return state.withProperty(FACING, facing);
+        return state.withProperty(FACING, facing.getOpposite());
     }
 
     @Override
@@ -266,24 +271,43 @@ public class BlockLightBulb extends BlockColored implements ITileEntityProvider 
     @Override
     public void updateTick(World world, BlockPos pos, IBlockState state, Random random) {
         if (!world.isRemote) {
-            state = state.getBlock().getActualState(state, world, pos);
+            state = this.getActualState(state, world, pos);
 
             boolean powered = world.isBlockPowered(pos);
             EnumFacing facing = state.getValue(FACING);
             powered |= world.isBlockPowered(pos.offset(facing));
 
             TileEntity tileEntity = world.getTileEntity(pos);
+            BlockPos source = null;
             if (tileEntity instanceof TileLightBulb) {
-                BlockPos source = ((TileLightBulb) tileEntity).getSource();
+                source = ((TileLightBulb) tileEntity).getSource();
                 if (source != null && !world.isAirBlock(source))
                     powered |= world.isBlockPowered(source);
             }
 
             boolean lit = state.getValue(POWERED);
             if (lit && !powered) {
-                world.setBlockState(pos, state.withProperty(POWERED, false), 2);
+                state = BLOCK.getDefaultState()
+                        .withProperty(COLOR, state.getValue(COLOR))
+                        .withProperty(FACING, state.getValue(FACING));
+                world.setBlockState(pos, state, 2);
+                if (source != null) {
+                    tileEntity = world.getTileEntity(pos);
+                    if (tileEntity instanceof TileLightBulb)
+                        ((TileLightBulb) tileEntity).setSource(source);
+                }
+                this.refreshTileData(state, world, pos);
             } else if (!lit && powered) {
-                world.setBlockState(pos, state.withProperty(POWERED, true), 2);
+                state = BLOCK_LIT.getDefaultState()
+                        .withProperty(COLOR, state.getValue(COLOR))
+                        .withProperty(FACING, state.getValue(FACING));
+                world.setBlockState(pos, state, 2);
+                if (source != null) {
+                    tileEntity = world.getTileEntity(pos);
+                    if (tileEntity instanceof TileLightBulb)
+                        ((TileLightBulb) tileEntity).setSource(source);
+                }
+                this.refreshTileData(state, world, pos);
             }
 
             world.scheduleUpdate(pos, this, 10);
