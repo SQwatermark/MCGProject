@@ -43,7 +43,7 @@ public class EntityMusicPlayer extends EntityMinecart {
     public String owner = "";
     public boolean immersive;
 
-    public MP3Player mp3Player;
+    public MusicPlayer mp3Player;
 
     public EntityMusicPlayer(World worldIn) {
         super(worldIn);
@@ -124,19 +124,23 @@ public class EntityMusicPlayer extends EntityMinecart {
                 volume = dataManager.get(VOLUME);
                 float distanceSq = (float) getDistanceSq(Minecraft.getMinecraft().player.posX,
                         Minecraft.getMinecraft().player.posY, Minecraft.getMinecraft().player.posZ);
-                float v2 = 10000.0F / distanceSq / 20.0F;
-                if (v2 > 1.0F) {
-                    this.mp3Player.setVolume(volume);
+                // 调整音量算法
+                //float v2 = 10000.0F / distanceSq / 20.0F;
+                if (volume == 0) {
+                    this.mp3Player.setVolume(0);
                 } else {
-                    float v1 = 1.0f - volume;
-                    if (v2 - v1 > 0) {
-                        v2 = v2 - v1;
-                    } else {
-                        v2 = 0.0f;
+                    float n = (1 + volume) * 20;
+                    float nn = n * n;
+                    float v;
+                    if (distanceSq <= nn) {
+                        v = distanceSq / 4 / nn;
                     }
-                    this.mp3Player.setVolume(v2);
+                    else {
+                        v = (float) (- distanceSq / 12 / nn + 2 * Math.sqrt(distanceSq) / 3 / n - 1 / 3.0);
+                    }
+                    this.mp3Player.setVolume(volume * (1 - v));
                 }
-                if (!this.immersive) {
+                if (!this.immersive && mp3Player.isPlaying()) {
                     int random2 = rand.nextInt(24) + 1;
                     world.spawnParticle(EnumParticleTypes.NOTE, posX, posY + 1.2D, posZ, random2 / 24.0D, 0.0D, 0.0D);
                 }
@@ -167,9 +171,9 @@ public class EntityMusicPlayer extends EntityMinecart {
         if (!this.isPlaying) {
             this.isPlaying = true;
             if (world.isRemote) {
-                this.mp3Player = new MP3Player(this.streamURL, this);
+                if (this.mp3Player != null) this.mp3Player.requestStop();
+                this.mp3Player = MCGProject.proxy.playerManager.getNewPlayer(this.streamURL, 100);
                 mp3Player.setVolume(0);
-                MCGProject.proxy.playerList.add(this.mp3Player);
             }
         }
     }
@@ -178,8 +182,7 @@ public class EntityMusicPlayer extends EntityMinecart {
         if (this.isPlaying) {
             this.isPlaying = false;
             if (world.isRemote && this.mp3Player != null) {
-                this.mp3Player.stop();
-                MCGProject.proxy.playerList.remove(this.mp3Player);
+                this.mp3Player.requestStop();
             }
         }
     }
@@ -232,6 +235,10 @@ public class EntityMusicPlayer extends EntityMinecart {
             return list.contains(player.getName());
         }
         return false;
+    }
+
+    public boolean isPlaying(){
+        return mp3Player != null && mp3Player.isPlaying() && isPlaying;
     }
 
     //TODO：bgm模式（到达位置播放）和dj模式(同步播放) DISCARD

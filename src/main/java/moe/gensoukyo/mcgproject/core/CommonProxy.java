@@ -4,9 +4,9 @@ import moe.gensoukyo.mcgproject.common.entity.EntityKaginawa;
 import moe.gensoukyo.mcgproject.common.feature.BetterSign;
 import moe.gensoukyo.mcgproject.common.feature.CustomNPCsHook;
 import moe.gensoukyo.mcgproject.common.feature.MoreBannerPatterns;
-import moe.gensoukyo.mcgproject.common.feature.NoChicken;
+import moe.gensoukyo.mcgproject.common.feature.WorldGuard;
 import moe.gensoukyo.mcgproject.common.feature.futuremc.FMBlock;
-import moe.gensoukyo.mcgproject.common.feature.musicplayer.MP3Player;
+import moe.gensoukyo.mcgproject.common.feature.musicplayer.MusicPlayerManager;
 import moe.gensoukyo.mcgproject.common.feature.musicplayer.StreamStopper;
 import moe.gensoukyo.mcgproject.common.init.*;
 import moe.gensoukyo.mcgproject.common.network.NetworkWrapper;
@@ -19,14 +19,12 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.WeakHashMap;
 
 public class CommonProxy {
 
     public WeakHashMap<Entity, EntityKaginawa> kagimap = new WeakHashMap<>();
-    public List<MP3Player> playerList = new ArrayList<>();
+    public MusicPlayerManager playerManager = new MusicPlayerManager();
 
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
@@ -38,7 +36,7 @@ public class CommonProxy {
         MinecraftForge.EVENT_BUS.register(ModTileEntity.instance());
         MinecraftForge.EVENT_BUS.register(BetterSign.instance());
         MinecraftForge.EVENT_BUS.register(EntityPool.instance());
-        MinecraftForge.EVENT_BUS.register(NoChicken.instance());
+        MinecraftForge.EVENT_BUS.register(WorldGuard.instance());
         MinecraftForge.EVENT_BUS.register(StreamStopper.instance());
         new NetworkWrapper(event);
         if (Loader.isModLoaded("customnpcs")) {

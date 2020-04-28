@@ -4,16 +4,17 @@ import net.minecraft.entity.projectile.EntityEgg;
 import net.minecraft.entity.projectile.EntityThrowable;
 import net.minecraft.util.DamageSource;
 import net.minecraftforge.event.entity.ProjectileImpactEvent;
+import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 /**
  * 阻止鸡蛋生成鸡
  */
-public class NoChicken {
+public class WorldGuard {
 
-    private static NoChicken instance;
-    public static NoChicken instance() {
-        if(instance == null) instance = new NoChicken();
+    private static WorldGuard instance;
+    public static WorldGuard instance() {
+        if(instance == null) instance = new WorldGuard();
         return instance;
     }
 
@@ -31,4 +32,10 @@ public class NoChicken {
             }
         }
     }
+
+    @SubscribeEvent
+    public void dontTrampleFarmland(BlockEvent.FarmlandTrampleEvent event) {
+        event.setCanceled(true);
+    }
+
 }
