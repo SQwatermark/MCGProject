@@ -37,6 +37,7 @@ public class TileRanstoneLampLightRenderer extends TileEntitySpecialRenderer<Ran
         if (!lamp.isLit())
             return;
 
+        GlStateManager.pushAttrib();
         GlStateManager.pushMatrix();
         GlStateManager.translate(x + 0.5, y + 0.5, z + 0.5);
         Minecraft.getMinecraft().getTextureManager().bindTexture(TEXTURES[lamp.getBlockMetadata()]);
@@ -48,6 +49,7 @@ public class TileRanstoneLampLightRenderer extends TileEntitySpecialRenderer<Ran
         GlStateManager.disableBlend();
 
         GlStateManager.popMatrix();
+        GlStateManager.popAttrib();
     }
 
 }

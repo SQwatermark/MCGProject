@@ -23,8 +23,8 @@ import javax.annotation.Nonnull;
  */
 public class TileStickerRenderer extends TileEntitySpecialRenderer<TileSticker> {
 
-    private static final String DEFAULT_RES = MCGProject.ID + ":" + "textures/sticker/";
-    private static final String DEFAULT_URL = "https://img.gensoukyo.moe:843/images/";
+    public static final String DEFAULT_RES = MCGProject.ID + ":" + "textures/sticker/";
+    public static final String DEFAULT_URL = "https://img.gensoukyo.moe:843/images/";
 
     private final ResourceLocation defTexture = new ResourceLocation(
             MCGProject.ID, "textures/blocks/fantasy/gap.png");
@@ -84,6 +84,9 @@ public class TileStickerRenderer extends TileEntitySpecialRenderer<TileSticker> 
                     GL11.glPushMatrix();
                     GL11.glScaled(sticker.scaleX, sticker.scaleY, sticker.scaleZ);
                     {
+                        GlStateManager.pushAttrib();
+                        GlStateManager.enableAlpha();
+                        GlStateManager.enableBlend();
                         switch (sticker.model) {
                             case TileSticker.MODEL_SINGLE:
                                 renderSingle(sticker, partialTicks);
@@ -99,6 +102,9 @@ public class TileStickerRenderer extends TileEntitySpecialRenderer<TileSticker> 
                                 GL11.glPopMatrix();
                                 break;
                         }
+                        GlStateManager.disableAlpha();
+                        GlStateManager.disableBlend();
+                        GlStateManager.popAttrib();
                     }
                     GL11.glPopMatrix();
                 }

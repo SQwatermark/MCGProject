@@ -78,7 +78,6 @@ public class ModelMapper {
         registerModel(ModItem.ITEM_MUSIC_PLAYER);
 
         registerColoredModel(RanstoneLamp.ITEM, "");
-        registerColoredModel(RanstoneLamp.ITEM_LIT, "");
         registerColoredModel(RanstoneLamp.ITEM_ALWAYS, "");
         registerColoredModel(BlockLightBulb.ITEM, ",facing=up,powered=false");
         registerModel(RanstoneBlock.ITEM);

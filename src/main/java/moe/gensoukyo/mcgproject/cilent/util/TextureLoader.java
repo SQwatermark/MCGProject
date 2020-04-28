@@ -7,6 +7,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 
+import java.awt.*;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
@@ -35,6 +36,22 @@ public class TextureLoader {
             if (connection.getResponseCode() == HttpURLConnection.HTTP_OK) {
                 return connection.getInputStream();
             }
+        } catch (IOException e) {
+            try {
+                IResourceManager manager = Minecraft.getMinecraft().getResourceManager();
+                return manager.getResource(DEFAULT).getInputStream();
+            } catch (IOException e1) {
+                MCGProject.logger.error(e1.getMessage());
+            }
+            MCGProject.logger.error(e.getMessage());
+        }
+        return null;
+    }
+
+    protected static InputStream getImageStream(ResourceLocation loc) {
+        try {
+            IResourceManager manager = Minecraft.getMinecraft().getResourceManager();
+            return manager.getResource(loc).getInputStream();
         } catch (IOException e) {
             try {
                 IResourceManager manager = Minecraft.getMinecraft().getResourceManager();
@@ -163,6 +180,28 @@ public class TextureLoader {
             }, 10, TimeUnit.MILLISECONDS);
         }
         return null;
+    }
+
+    public static Point getTextureSize(ResourceLocation loc) {
+        Texture texture = new Texture(getImageStream(loc));
+        texture.preLoadTexture();
+        Point size = new Point(0, 0);
+        if (texture.image != null) {
+            size.x = texture.image.getWidth();
+            size.y = texture.image.getHeight();
+        }
+        return size;
+    }
+
+    public static Point getTextureSize(String url) {
+        Texture texture = new Texture(getImageStream(url));
+        texture.preLoadTexture();
+        Point size = new Point(0, 0);
+        if (texture.image != null) {
+            size.x = texture.image.getWidth();
+            size.y = texture.image.getHeight();
+        }
+        return size;
     }
 
 }

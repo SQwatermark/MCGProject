@@ -34,7 +34,6 @@ public class RanstoneLamp extends BlockColored implements ITileEntityProvider {
     public static RanstoneLamp BLOCK_LIT;
     public static RanstoneLamp BLOCK_ALWAYS;
     public static Item ITEM;
-    public static Item ITEM_LIT;
     public static Item ITEM_ALWAYS;
 
     public static void initBlock() {
@@ -46,7 +45,6 @@ public class RanstoneLamp extends BlockColored implements ITileEntityProvider {
     }
     public static void initItem() {
         ITEM = new ItemCloth(BLOCK).setRegistryName(MCGProject.ID, "ranstone_lamp");
-        ITEM_LIT = new ItemCloth(BLOCK_LIT).setRegistryName(MCGProject.ID, "ranstone_lamp_lit");
         ITEM_ALWAYS = new ItemCloth(BLOCK_ALWAYS).setRegistryName(MCGProject.ID, "ranstone_lamp_always");
     }
 
