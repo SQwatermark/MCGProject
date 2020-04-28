@@ -1,6 +1,8 @@
 package moe.gensoukyo.mcgproject.common.feature.sticker;
 
 import moe.gensoukyo.mcgproject.cilent.gui.StickerEditor;
+import moe.gensoukyo.mcgproject.cilent.tileentity.TileStickerRenderer;
+import moe.gensoukyo.mcgproject.cilent.util.TextureLoader;
 import moe.gensoukyo.mcgproject.common.creativetab.MCGTabs;
 import moe.gensoukyo.mcgproject.common.network.NetworkWrapper;
 import moe.gensoukyo.mcgproject.common.network.StickerPacket;
@@ -11,6 +13,7 @@ import net.minecraft.block.material.MapColor;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.resources.IResourceManager;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -20,6 +23,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
@@ -29,7 +33,11 @@ import net.minecraft.world.World;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
+import java.awt.*;
 import java.util.List;
+
+import static moe.gensoukyo.mcgproject.cilent.tileentity.TileStickerRenderer.DEFAULT_RES;
+import static moe.gensoukyo.mcgproject.cilent.tileentity.TileStickerRenderer.DEFAULT_URL;
 
 /**
  * @author drzzm32
@@ -119,6 +127,34 @@ public class BlockSticker extends BlockContainer {
             if (heldItem(stack)) {
                 if (world.isRemote) {
                     new StickerEditor(sticker).setCallback(info -> {
+                        if (info.width == 0 || info.height == 0) {
+                            Point point;
+
+                            String url = info.url;
+                            if (url.startsWith(DEFAULT_URL))
+                                url = url.substring(DEFAULT_URL.length());
+
+                            if (url.startsWith("http"))
+                                point = TextureLoader.getTextureSize(url);
+                            else {
+                                IResourceManager manager = Minecraft.getMinecraft().getResourceManager();
+                                ResourceLocation loc = new ResourceLocation(DEFAULT_RES + url);
+                                try {
+                                    manager.getResource(loc);
+                                    point = TextureLoader.getTextureSize(loc);
+                                } catch (Exception e) {
+                                    point = TextureLoader.getTextureSize(DEFAULT_URL + url);
+                                }
+                            }
+
+                            info.width = point.x; info.height = point.y;
+                            info.frameWidth = info.width;
+                            info.frameHeight = info.height;
+                        }
+                        if (info.scaleZ != 1) {
+                            info.scaleX = info.scaleZ;
+                            info.scaleY = (double) info.height / (double) info.width * info.scaleZ;
+                        }
                         Minecraft.getMinecraft().addScheduledTask(() -> {
                             info.toSticker(sticker);
                             sticker.refresh();

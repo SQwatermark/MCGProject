@@ -37,6 +37,7 @@ public class TileLightBulbLightRenderer extends TileEntitySpecialRenderer<TileLi
         if (!bulb.isLit())
             return;
 
+        GlStateManager.pushAttrib();
         GlStateManager.pushMatrix();
         GlStateManager.translate(x + 0.5, y + 0.5, z + 0.5);
         Minecraft.getMinecraft().getTextureManager().bindTexture(TEXTURES[bulb.getBlockMetadata()]);
@@ -48,6 +49,7 @@ public class TileLightBulbLightRenderer extends TileEntitySpecialRenderer<TileLi
         GlStateManager.disableBlend();
 
         GlStateManager.popMatrix();
+        GlStateManager.popAttrib();
     }
 
 }

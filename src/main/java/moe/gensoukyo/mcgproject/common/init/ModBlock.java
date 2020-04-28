@@ -193,7 +193,7 @@ public class ModBlock {
         BlockSticker.initBlock();
         event.getRegistry().registerAll(BlockSticker.BLOCK, BlockSticker.BLOCK_LIT);
         BlockLightBulb.initBlock();
-        event.getRegistry().register(BlockLightBulb.BLOCK);
+        event.getRegistry().registerAll(BlockLightBulb.BLOCK, BlockLightBulb.BLOCK_LIT);
     }
 
     /**
@@ -221,7 +221,7 @@ public class ModBlock {
         RanstoneWire.initItem();
         RanstonePiston.Base.initItem();
         event.getRegistry().registerAll(
-                RanstoneLamp.ITEM, RanstoneLamp.ITEM_LIT, RanstoneLamp.ITEM_ALWAYS,
+                RanstoneLamp.ITEM, RanstoneLamp.ITEM_ALWAYS,
                 RanstoneBlock.ITEM, RanstoneComparator.ITEM,
                 RanstoneRepeater.ITEM, RanstoneTorch.ITEM,
                 RanstoneWire.ITEM, RanstonePiston.Base.ITEM);
