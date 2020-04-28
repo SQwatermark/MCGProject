@@ -54,7 +54,6 @@ public class BlockMCGApple extends Block implements IGrowable {
             worldIn.setBlockState(pos, state.withProperty(AGE, i == 2 ? 0 : i + 1), 2);
             ForgeHooks.onCropsGrowPost(worldIn, pos, state, worldIn.getBlockState(pos));
         }
-        //worldIn.scheduleUpdate(pos, this, 10);
     }
 
     @Override
