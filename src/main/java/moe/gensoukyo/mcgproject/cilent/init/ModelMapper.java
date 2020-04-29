@@ -74,7 +74,7 @@ public class ModelMapper {
         registerModel(ModItem.ITEM_MCG_FOOD, 94);
         registerModel(ModItem.ITEM_MCG_DRINK, 30);
         registerModel(ModItem.ITEM_MCG_PROP, 94);
-        registerModel(ModItem.ITEM_MCG_BANNER_PATTERN, 13);
+        registerModel(ModItem.ITEM_MCG_BANNER_PATTERN, 16);
         registerModel(ModItem.ITEM_MUSIC_PLAYER);
 
         registerColoredModel(RanstoneLamp.ITEM, "");

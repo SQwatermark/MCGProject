@@ -11,12 +11,7 @@
     "inventory": [{}],
     "normal": [{}],
     "age": {
-      "0": {
-        "textures": {
-          "stem": "mcgproject:blocks/blank",
-          "apple": "mcgproject:blocks/blank"
-        }
-      },
+      "0": {"textures": {"stem": "mcgproject:blocks/blank", "apple": "mcgproject:blocks/blank"}},
       "1": {"textures": {"apple": "minecraft:blocks/wool_colored_green"}},
       "2": {"textures": {"apple": "minecraft:blocks/redstone_block"}}
     }

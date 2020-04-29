@@ -28,8 +28,9 @@ public class ItemMCGBannerPattern extends Item {
 
     @Override
     public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> items) {
+        int maxMeta = 16;
         if (this.isInCreativeTab(tab)) {
-            for (int i = 0; i < 14; i++) {
+            for (int i = 0; i < maxMeta + 1; i++) {
                 items.add(new ItemStack(this, 1, i));
             }
         }

@@ -533,6 +533,25 @@ item.mcgproject.mcg_prop_80.name=撕下的书页
 item.mcgproject.mcg_prop_81.name=七曜粉末
 item.mcgproject.mcg_prop_82.name=试管
 
+item.mcgproject.mcg_banner_pattern_0.name=丸桔梗
+item.mcgproject.mcg_banner_pattern_1.name=
+item.mcgproject.mcg_banner_pattern_2.name=右三巴，宇都宮広綱
+item.mcgproject.mcg_banner_pattern_3.name=丸立泽泻
+item.mcgproject.mcg_banner_pattern_4.name=中论五三桐
+item.mcgproject.mcg_banner_pattern_5.name=丸九耀
+item.mcgproject.mcg_banner_pattern_6.name=伊藤藤，藤原氏
+item.mcgproject.mcg_banner_pattern_7.name=三盛梅
+item.mcgproject.mcg_banner_pattern_8.name=
+item.mcgproject.mcg_banner_pattern_9.name=
+item.mcgproject.mcg_banner_pattern_10.name=
+item.mcgproject.mcg_banner_pattern_11.name=
+item.mcgproject.mcg_banner_pattern_12.name=三叶龙胆
+item.mcgproject.mcg_banner_pattern_13.name=花菱，武田信玄
+item.mcgproject.mcg_banner_pattern_14.name=三之鳞，北条氏
+item.mcgproject.mcg_banner_pattern_15.name=
+item.mcgproject.mcg_banner_pattern_16.name=六连钱纹，真田幸村
+item.mcgproject.mcg_banner_pattern_17.name=
+
 tile.mcgproject.blockRanstone.name=Ranstone
 item.mcgproject.comparator.name=Ranstone Comparator
 item.mcgproject.diode.name=Ranstone Diode

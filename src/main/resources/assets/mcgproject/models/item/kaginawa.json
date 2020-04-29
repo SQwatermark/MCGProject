@@ -5,9 +5,7 @@
   },
   "overrides": [
     {
-      "predicate": {
-        "cast": 1
-      },
+      "predicate": {"cast": 1},
       "model": "item/fishing_rod_cast"
     }
   ]

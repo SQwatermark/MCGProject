@@ -20,6 +20,9 @@
     "10": [{"textures": {"layer0": "mcgproject:items/banner/10"}}],
     "11": [{"textures": {"layer0": "mcgproject:items/banner/11"}}],
     "12": [{"textures": {"layer0": "mcgproject:items/banner/12"}}],
-    "13": [{"textures": {"layer0": "mcgproject:items/banner/13"}}]
+    "13": [{"textures": {"layer0": "mcgproject:items/banner/13"}}],
+    "14": [{"textures": {"layer0": "mcgproject:items/banner/14"}}],
+    "15": [{"textures": {"layer0": "mcgproject:items/banner/15"}}],
+    "16": [{"textures": {"layer0": "mcgproject:items/banner/16"}}]
   }
 }
