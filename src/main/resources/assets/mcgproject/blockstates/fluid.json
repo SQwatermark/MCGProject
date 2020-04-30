@@ -1,0 +1,65 @@
+{
+  "forge_marker": 1,
+  "variants": {
+    "interstice": {
+      "model": "forge:fluid",
+      "custom": {
+        "fluid": "interstice"
+      }
+    },
+    "waterblack": {
+      "model": "forge:fluid",
+      "custom": {
+        "fluid": "waterblack"
+      }
+    },
+    "waterblue": {
+      "model": "forge:fluid",
+      "custom": {
+        "fluid": "waterblue"
+      }
+    },
+    "watercyan": {
+      "model": "forge:fluid",
+      "custom": {
+        "fluid": "watercyan"
+      }
+    },
+    "watergreen": {
+      "model": "forge:fluid",
+      "custom": {
+        "fluid": "watergreen"
+      }
+    },
+    "waterorange": {
+      "model": "forge:fluid",
+      "custom": {
+        "fluid": "waterorange"
+      }
+    },
+    "waterpurple": {
+      "model": "forge:fluid",
+      "custom": {
+        "fluid": "waterpurple"
+      }
+    },
+    "waterred": {
+      "model": "forge:fluid",
+      "custom": {
+        "fluid": "waterred"
+      }
+    },
+    "waterwhite": {
+      "model": "forge:fluid",
+      "custom": {
+        "fluid": "waterwhite"
+      }
+    },
+    "wateryellow": {
+      "model": "forge:fluid",
+      "custom": {
+        "fluid": "wateryellow"
+      }
+    }
+  }
+}
