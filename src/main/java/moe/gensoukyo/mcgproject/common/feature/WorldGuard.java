@@ -8,7 +8,7 @@ import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 /**
- * 阻止鸡蛋生成鸡
+ * 阻止鸡蛋生成鸡，阻止农田被踩坏
  */
 public class WorldGuard {
 

@@ -632,6 +632,7 @@ tile.mcgproject.lightBulb.white.name=White Light Bulb
 
 gui.mcgproject.bettersign.shift=Shift
 gui.mcgproject.bettersign.clear=Clear
+mcg.menu.website=官网
 
 tooltip.mcgproject.itemblockinfo=Right click to view the block information
 tooltip.mcgproject.itemgenbigoak=Right click to generate a big oak

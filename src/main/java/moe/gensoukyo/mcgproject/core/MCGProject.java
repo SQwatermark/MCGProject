@@ -93,5 +93,6 @@ public class MCGProject {
     //TODO：荆棘（玩家碰到会掉血）
     //TODO: 玩家在其中会下陷的泥巴（沼泽）
     //TODO: 水子的石头
+    //TODO: 恐龙和普通生物的模型
 
 }

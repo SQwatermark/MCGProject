@@ -633,6 +633,7 @@ tile.mcgproject.lightBulb.white.name=白色灯泡
 
 gui.mcgproject.bettersign.shift=移位
 gui.mcgproject.bettersign.clear=清空
+mcg.menu.website=官网
 
 tooltip.mcgproject.itemblockinfo=右键查看方块信息
 tooltip.mcgproject.itemgenbigoak=右击即可种下大橡树
