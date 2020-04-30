@@ -35,10 +35,13 @@ public class ItemLittleStone extends Item {
 
         worldIn.playSound(null, playerIn.posX, playerIn.posY, playerIn.posZ, SoundEvents.ENTITY_EGG_THROW, SoundCategory.PLAYERS, 0.5F, 0.4F / (itemRand.nextFloat() * 0.4F + 0.8F));
 
+        EntityLittleStone littleStone = new EntityLittleStone(worldIn, playerIn);
+        littleStone.shoot(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 0.0F, 1.5F, 1.0F);
+
         if (!worldIn.isRemote) {
-            EntityLittleStone littleStone = new EntityLittleStone(worldIn, playerIn);
-            littleStone.shoot(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 0.0F, 1.5F, 1.0F);
             worldIn.spawnEntity(littleStone);
+        } else {
+            worldIn.joinEntityInSurroundings(littleStone);
         }
 
         playerIn.addStat(Objects.requireNonNull(StatList.getObjectUseStats(this)));

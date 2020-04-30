@@ -61,7 +61,7 @@ public class ModelMapper {
     @SubscribeEvent
     public void registerModels(ModelRegistryEvent event) {
         MCGProject.logger.info("MCGProject: registering models");
-        for (Class entity : renderEntity.keySet()) {
+        for (Class<? extends Entity> entity : renderEntity.keySet()) {
             bind(entity, renderEntity.get(entity));
         }
 
