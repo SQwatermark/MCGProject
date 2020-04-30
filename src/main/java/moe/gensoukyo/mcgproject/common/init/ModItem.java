@@ -1,5 +1,6 @@
 package moe.gensoukyo.mcgproject.common.init;
 
+import moe.gensoukyo.mcgproject.common.feature.littlestone.ItemLittleStone;
 import moe.gensoukyo.mcgproject.common.feature.musicplayer.ItemMusicPlayer;
 import moe.gensoukyo.mcgproject.common.item.*;
 import moe.gensoukyo.mcgproject.core.MCGProject;
@@ -30,6 +31,7 @@ public class ModItem {
     public static ItemMCGProp ITEM_MCG_PROP;
     public static ItemMusicPlayer ITEM_MUSIC_PLAYER;
     public static ItemMCGBannerPattern ITEM_MCG_BANNER_PATTERN;
+    public static ItemLittleStone ITEM_LITTLE_STONE;
     /**
      * 注册所有物品
      * @param event Item注册事件
@@ -49,6 +51,7 @@ public class ModItem {
         ITEM_MUSIC_PLAYER = new ItemMusicPlayer();
         ITEM_MCG_PROP = new ItemMCGProp();
         ITEM_MCG_BANNER_PATTERN = new ItemMCGBannerPattern();
+        ITEM_LITTLE_STONE = new ItemLittleStone();
 
         event.getRegistry().register(ITEM_MCG_BOAT);
         event.getRegistry().register(ITEM_RAC_BOAT);
@@ -61,5 +64,6 @@ public class ModItem {
         event.getRegistry().register(ITEM_MUSIC_PLAYER);
         event.getRegistry().register(ITEM_MCG_PROP);
         event.getRegistry().register(ITEM_MCG_BANNER_PATTERN);
+        event.getRegistry().register(ITEM_LITTLE_STONE);
     }
 }

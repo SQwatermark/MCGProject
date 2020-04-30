@@ -25,6 +25,6 @@ public class OverlayWater extends Fluid
                 null,
                 color
         );
-        setUnlocalizedName("fluid." + MCGProject.ID + "." + name);
+        setUnlocalizedName(MCGProject.ID + "." + name);
     }
 }

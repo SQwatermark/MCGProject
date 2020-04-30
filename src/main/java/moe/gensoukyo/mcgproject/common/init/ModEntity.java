@@ -1,5 +1,6 @@
 package moe.gensoukyo.mcgproject.common.init;
 
+import moe.gensoukyo.mcgproject.common.entity.EntityItemMCG;
 import moe.gensoukyo.mcgproject.common.feature.applecraft.EntityApple;
 import moe.gensoukyo.mcgproject.common.entity.EntityKaginawa;
 import moe.gensoukyo.mcgproject.common.entity.MCGEntity;
@@ -69,6 +70,7 @@ public class ModEntity {
         entities.add(EntityPufferFish.class);
         entities.add(EntityMusicPlayer.class);
         entities.add(EntityApple.class);
+        entities.add(EntityItemMCG.class);
 
     }
 

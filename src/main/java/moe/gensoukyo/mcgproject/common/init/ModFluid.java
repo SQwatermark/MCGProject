@@ -1,6 +1,6 @@
 package moe.gensoukyo.mcgproject.common.init;
 
-import moe.gensoukyo.mcgproject.common.fluid.FluidMcg;
+import moe.gensoukyo.mcgproject.common.fluid.FluidMCG;
 import moe.gensoukyo.mcgproject.common.fluid.OverlayWater;
 import moe.gensoukyo.mcgproject.core.MCGProject;
 import net.minecraftforge.fluids.Fluid;
@@ -18,7 +18,7 @@ import java.util.List;
 @Mod.EventBusSubscriber(modid = MCGProject.ID)
 public class ModFluid
 {
-    public static final Fluid INTERSTICE = FluidMcg.singleTex("interstice");
+    public static final Fluid INTERSTICE = FluidMCG.singleTex("interstice");
     public static final Fluid WATER_BLACK = new OverlayWater("waterblack", Color.BLACK);
     public static final Fluid WATER_BLUE = new OverlayWater("waterblue", Color.BLUE.brighter());
     public static final Fluid WATER_CYAN = new OverlayWater("watercyan", Color.CYAN.brighter());

@@ -1,8 +1,6 @@
 package moe.gensoukyo.mcgproject.cilent.init;
 
-import moe.gensoukyo.mcgproject.cilent.entity.RenderApple;
-import moe.gensoukyo.mcgproject.cilent.entity.RenderKaginawa;
-import moe.gensoukyo.mcgproject.cilent.entity.RenderMusicPlayer;
+import moe.gensoukyo.mcgproject.cilent.entity.*;
 import moe.gensoukyo.mcgproject.cilent.entity.boat.RenderMCGBoat;
 import moe.gensoukyo.mcgproject.cilent.entity.boat.RenderRACBoat;
 import moe.gensoukyo.mcgproject.cilent.entity.butterfly.*;
@@ -11,14 +9,16 @@ import moe.gensoukyo.mcgproject.cilent.tileentity.TileLightBulbLightRenderer;
 import moe.gensoukyo.mcgproject.cilent.tileentity.TileRanstoneLampLightRenderer;
 import moe.gensoukyo.mcgproject.cilent.tileentity.TileRanstonePistonRenderer;
 import moe.gensoukyo.mcgproject.cilent.tileentity.TileStickerRenderer;
-import moe.gensoukyo.mcgproject.common.feature.applecraft.EntityApple;
+import moe.gensoukyo.mcgproject.common.entity.EntityItemMCG;
 import moe.gensoukyo.mcgproject.common.entity.EntityKaginawa;
 import moe.gensoukyo.mcgproject.common.entity.boat.EntityMCGBoat;
 import moe.gensoukyo.mcgproject.common.entity.boat.EntityRACBoat;
 import moe.gensoukyo.mcgproject.common.entity.butterfly.*;
 import moe.gensoukyo.mcgproject.common.entity.fish.*;
+import moe.gensoukyo.mcgproject.common.feature.applecraft.EntityApple;
 import moe.gensoukyo.mcgproject.common.feature.lightbulb.BlockLightBulb;
 import moe.gensoukyo.mcgproject.common.feature.lightbulb.TileLightBulb;
+import moe.gensoukyo.mcgproject.common.feature.littlestone.EntityLittleStone;
 import moe.gensoukyo.mcgproject.common.feature.musicplayer.EntityMusicPlayer;
 import moe.gensoukyo.mcgproject.common.feature.ranstone.*;
 import moe.gensoukyo.mcgproject.common.feature.sticker.BlockSticker;
@@ -76,6 +76,7 @@ public class ModelMapper {
         registerModel(ModItem.ITEM_MCG_PROP, 94);
         registerModel(ModItem.ITEM_MCG_BANNER_PATTERN, 16);
         registerModel(ModItem.ITEM_MUSIC_PLAYER);
+        registerModel(ModItem.ITEM_LITTLE_STONE);
 
         registerColoredModel(RanstoneLamp.ITEM, "");
         registerColoredModel(RanstoneLamp.ITEM_ALWAYS, "");
@@ -146,6 +147,8 @@ public class ModelMapper {
         renderEntity.put(EntityPufferFish.class, RenderPufferFish.FACTORY);
         renderEntity.put(EntityMusicPlayer.class, RenderMusicPlayer.FACTORY);
         renderEntity.put(EntityApple.class, RenderApple.FACTORY);
+        renderEntity.put(EntityItemMCG.class, RenderItemMCG.FACTORY);
+        renderEntity.put(EntityLittleStone.class, RenderLittleStone.FACTORY);
     }
 
 }
