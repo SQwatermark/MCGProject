@@ -19,14 +19,12 @@ import net.minecraft.item.Item;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.fluids.BlockFluidClassic;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.LinkedList;
-import java.util.Objects;
+import java.util.*;
 
 public class ModBlock {
 
@@ -218,6 +216,20 @@ public class ModBlock {
         event.getRegistry().registerAll(BlockSticker.ITEM, BlockSticker.ITEM_LIT);
     }
 
+    @SubscribeEvent
+    public void registerFluids(RegistryEvent.Register<Block> event)
+    {
+        ModFluid.registerFluids();
+        ModFluid.FLUIDS.forEach(fluid ->
+        {
+            BlockFluidClassic blockFluid = (BlockFluidClassic)
+                    new BlockFluidClassic(fluid, Material.WATER)
+                            .setRegistryName(MCGProject.ID, fluid.getName());
+            event.getRegistry().register(blockFluid);
+            CS4_FLUIDS.add(blockFluid);
+        });
+    }
+
     /**
      * 注册ItemBlock对应的模型
      */
@@ -280,6 +292,7 @@ public class ModBlock {
     private static LinkedHashMap<Block, Item> itemBlocks14 = new LinkedHashMap<>();
     private static LinkedHashMap<Block, Item> itemBlocks15 = new LinkedHashMap<>();
     private static LinkedHashMap<Block, Item> itemBlocks16 = new LinkedHashMap<>();
+    public static final List<BlockFluidClassic> CS4_FLUIDS = new LinkedList<>();
     private static ArrayList<LinkedList<Block>> arrayList = new ArrayList<>();
     private static ArrayList<LinkedHashMap<Block, Item>> arrayList2 = new ArrayList<>();
 
