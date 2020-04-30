@@ -27,12 +27,13 @@ public class ModItem {
     public static ItemBlockInfo ITEM_BLOCK_INFO;
     public static ItemMCGFood ITEM_MCG_FOOD;
     public static ItemMCGDrink ITEM_MCG_DRINK;
+    public static ItemMCGProp ITEM_MCG_PROP;
     public static ItemMusicPlayer ITEM_MUSIC_PLAYER;
+    public static ItemMCGBannerPattern ITEM_MCG_BANNER_PATTERN;
     /**
      * 注册所有物品
      * @param event Item注册事件
      */
-    @SuppressWarnings("unused")
     @SubscribeEvent
     public void register(RegistryEvent.Register<Item> event) {
         MCGProject.logger.info("MCGProject: registering items");
@@ -46,6 +47,8 @@ public class ModItem {
         ITEM_MCG_FOOD = new ItemMCGFood();
         ITEM_MCG_DRINK = new ItemMCGDrink();
         ITEM_MUSIC_PLAYER = new ItemMusicPlayer();
+        ITEM_MCG_PROP = new ItemMCGProp();
+        ITEM_MCG_BANNER_PATTERN = new ItemMCGBannerPattern();
 
         event.getRegistry().register(ITEM_MCG_BOAT);
         event.getRegistry().register(ITEM_RAC_BOAT);
@@ -56,5 +59,7 @@ public class ModItem {
         event.getRegistry().register(ITEM_MCG_FOOD);
         event.getRegistry().register(ITEM_MCG_DRINK);
         event.getRegistry().register(ITEM_MUSIC_PLAYER);
+        event.getRegistry().register(ITEM_MCG_PROP);
+        event.getRegistry().register(ITEM_MCG_BANNER_PATTERN);
     }
 }

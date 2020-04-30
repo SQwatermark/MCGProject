@@ -3,9 +3,11 @@
   "defaults": {"model": "cube_all"},
   "variants": {
     "inventory": [{}],
-    "meta=0": [{"textures": {"all": "mcgproject:blocks/classical/brick_chireiden_black"}}],
-    "meta=1": [{"textures": {"all": "mcgproject:blocks/classical/brick_chireiden_red"}}],
-    "meta=2": [{"textures": {"all": "mcgproject:blocks/classical/brick_chireiden_red_black"}}],
-    "meta=3": [{"textures": {"all": "mcgproject:blocks/classical/brick_chireiden_red_black"}, "y": 90}]
+    "meta": {
+      "0": {"textures": {"all": "mcgproject:blocks/classical/brick_chireiden_black"}},
+      "1": {"textures": {"all": "mcgproject:blocks/classical/brick_chireiden_red"}},
+      "2": {"textures": {"all": "mcgproject:blocks/classical/brick_chireiden_red_black"}},
+      "3": {"textures": {"all": "mcgproject:blocks/classical/brick_chireiden_red_black"}, "y": 90}
+    }
   }
 }

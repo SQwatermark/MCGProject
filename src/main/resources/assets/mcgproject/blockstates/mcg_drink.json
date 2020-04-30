@@ -1,0 +1,42 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "mcgproject:generated",
+    "textures": {"layer0": "mcgproject:items/drink/pic0"}
+  },
+  "variants": {
+    "inventory": [{}],
+    "normal": [{}],
+    "0": [{"textures": {"layer0": "mcgproject:items/drink/pic0"}}],
+    "1": [{"textures": {"layer0": "mcgproject:items/drink/pic1"}}],
+    "2": [{"textures": {"layer0": "mcgproject:items/drink/pic2"}}],
+    "3": [{"textures": {"layer0": "mcgproject:items/drink/pic3"}}],
+    "4": [{"textures": {"layer0": "mcgproject:items/drink/pic4"}}],
+    "5": [{"textures": {"layer0": "mcgproject:items/drink/pic5"}}],
+    "6": [{"textures": {"layer0": "mcgproject:items/drink/pic6"}}],
+    "7": [{"textures": {"layer0": "mcgproject:items/drink/pic7"}}],
+    "8": [{"textures": {"layer0": "mcgproject:items/drink/pic8"}}],
+    "9": [{"textures": {"layer0": "mcgproject:items/drink/pic9"}}],
+    "10": [{"textures": {"layer0": "mcgproject:items/drink/pic10"}}],
+    "11": [{"textures": {"layer0": "mcgproject:items/drink/pic11"}}],
+    "12": [{"textures": {"layer0": "mcgproject:items/drink/pic12"}}],
+    "13": [{"textures": {"layer0": "mcgproject:items/drink/pic13"}}],
+    "14": [{"textures": {"layer0": "mcgproject:items/drink/pic14"}}],
+    "15": [{"textures": {"layer0": "mcgproject:items/drink/pic15"}}],
+    "16": [{"textures": {"layer0": "mcgproject:items/drink/pic16"}}],
+    "17": [{"textures": {"layer0": "mcgproject:items/drink/pic17"}}],
+    "18": [{"textures": {"layer0": "mcgproject:items/drink/pic18"}}],
+    "19": [{"textures": {"layer0": "mcgproject:items/drink/pic19"}}],
+    "20": [{"textures": {"layer0": "mcgproject:items/drink/pic20"}}],
+    "21": [{"textures": {"layer0": "mcgproject:items/drink/pic21"}}],
+    "22": [{"textures": {"layer0": "mcgproject:items/drink/pic22"}}],
+    "23": [{"textures": {"layer0": "mcgproject:items/drink/pic23"}}],
+    "24": [{"textures": {"layer0": "mcgproject:items/drink/pic24"}}],
+    "25": [{"textures": {"layer0": "mcgproject:items/drink/pic25"}}],
+    "26": [{"textures": {"layer0": "mcgproject:items/drink/pic26"}}],
+    "27": [{"textures": {"layer0": "mcgproject:items/drink/pic27"}}],
+    "28": [{"textures": {"layer0": "mcgproject:items/drink/pic28"}}],
+    "29": [{"textures": {"layer0": "mcgproject:items/drink/pic29"}}],
+    "30": [{"textures": {"layer0": "mcgproject:items/drink/pic30"}}]
+  }
+}

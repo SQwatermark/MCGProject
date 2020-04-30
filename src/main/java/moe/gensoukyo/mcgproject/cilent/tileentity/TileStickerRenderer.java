@@ -23,8 +23,8 @@ import javax.annotation.Nonnull;
  */
 public class TileStickerRenderer extends TileEntitySpecialRenderer<TileSticker> {
 
-    private static final String DEFAULT_RES = MCGProject.ID + ":" + "textures/sticker/";
-    private static final String DEFAULT_URL = "http://update.gensoukyo.moe:9961/";
+    public static final String DEFAULT_RES = MCGProject.ID + ":" + "textures/sticker/";
+    public static final String DEFAULT_URL = "https://img.gensoukyo.moe:843/images/";
 
     private final ResourceLocation defTexture = new ResourceLocation(
             MCGProject.ID, "textures/blocks/fantasy/gap.png");
@@ -39,16 +39,22 @@ public class TileStickerRenderer extends TileEntitySpecialRenderer<TileSticker> 
         }
 
         if (sticker.texture == null) {
-            if (sticker.url.toLowerCase().equals("null"))
+            String url = sticker.url;
+            if (url.startsWith(DEFAULT_URL))
+                url = url.substring(DEFAULT_URL.length());
+
+            if (url.toLowerCase().equals("null"))
                 sticker.texture = defTexture;
+            else if (url.startsWith("http"))
+                sticker.texture = TextureLoader.getTexture(sticker, url);
             else {
                 IResourceManager manager = Minecraft.getMinecraft().getResourceManager();
-                ResourceLocation loc = new ResourceLocation(DEFAULT_RES + sticker.url);
+                ResourceLocation loc = new ResourceLocation(DEFAULT_RES + url);
                 try {
                     manager.getResource(loc);
                     sticker.texture = loc;
                 } catch (Exception e) {
-                    sticker.texture = TextureLoader.getTexture(sticker, DEFAULT_URL + sticker.url);
+                    sticker.texture = TextureLoader.getTexture(sticker, DEFAULT_URL + url);
                 }
             }
         }
@@ -78,6 +84,9 @@ public class TileStickerRenderer extends TileEntitySpecialRenderer<TileSticker> 
                     GL11.glPushMatrix();
                     GL11.glScaled(sticker.scaleX, sticker.scaleY, sticker.scaleZ);
                     {
+                        GlStateManager.pushAttrib();
+                        GlStateManager.enableAlpha();
+                        GlStateManager.enableBlend();
                         switch (sticker.model) {
                             case TileSticker.MODEL_SINGLE:
                                 renderSingle(sticker, partialTicks);
@@ -93,6 +102,9 @@ public class TileStickerRenderer extends TileEntitySpecialRenderer<TileSticker> 
                                 GL11.glPopMatrix();
                                 break;
                         }
+                        GlStateManager.disableAlpha();
+                        GlStateManager.disableBlend();
+                        GlStateManager.popAttrib();
                     }
                     GL11.glPopMatrix();
                 }

@@ -30,6 +30,12 @@ public class ItemMusicPlayer extends Item {
         this.setTranslationKey(MCGProject.ID + "." + "music_player");
     }
 
+    // 来点特效
+    @SideOnly(Side.CLIENT)
+    public boolean hasEffect(ItemStack stack) {
+        return true;
+    }
+
     @Override
     @SideOnly(Side.CLIENT)
     public void addInformation(ItemStack stack, @Nullable World world, List<String> list, ITooltipFlag flag) {
@@ -39,11 +45,9 @@ public class ItemMusicPlayer extends Item {
     @NotNull
     @Override
     public EnumActionResult onItemUse(EntityPlayer player, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
-
         IBlockState iblockstate = worldIn.getBlockState(pos);
-        if (!BlockRailBase.isRailBlock(iblockstate)) {
-            return EnumActionResult.FAIL;
-        }
+        if (!BlockRailBase.isRailBlock(iblockstate))
+            pos = pos.up();
 
         ItemStack stack = player.getHeldItem(hand);
         if(!worldIn.isRemote) {

@@ -23,8 +23,6 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nonnull;
@@ -39,14 +37,13 @@ public class EntityMusicPlayer extends EntityMinecart {
     public static final DataParameter<Float> VOLUME = EntityDataManager.createKey(EntityMusicPlayer.class, DataSerializers.FLOAT);
     public static final DataParameter<Boolean> IMMERSIVE = EntityDataManager.createKey(EntityMusicPlayer.class, DataSerializers.BOOLEAN);
 
-    public boolean isPlaying = false;
+    public boolean isPlaying;
     public String streamURL = "";
     public float volume = 1.0f;
     public String owner = "";
-    public boolean immersive = false;
-    
-    public boolean isInvalid = false;
-    public MP3Player mp3Player;
+    public boolean immersive;
+
+    public MusicPlayer mp3Player;
 
     public EntityMusicPlayer(World worldIn) {
         super(worldIn);
@@ -117,45 +114,33 @@ public class EntityMusicPlayer extends EntityMinecart {
     @Override
     public void onUpdate() {
         super.onUpdate();
-        /*
-        if (!world.isRemote && this.ticksExisted % 10 == 0) {
-            this.dataManager.set(IS_PLAYING, isPlaying);
-            this.dataManager.set(URL, streamURL);
-            this.dataManager.set(OWNER, owner);
-            this.dataManager.set(VOLUME, volume);
-            this.dataManager.set(IMMERSIVE, immersive);
-        }
-         */
-        if (world.isRemote) {
-
-            if (this.ticksExisted % 10 == 0 && !this.isPlaying && this.dataManager.get(IS_PLAYING)) {
+        if (world.isRemote && this.ticksExisted % 5 == 0) {
+            this.immersive = this.dataManager.get(IMMERSIVE);
+            if (!this.isPlaying && this.dataManager.get(IS_PLAYING)) {
                 this.streamURL = this.dataManager.get(URL);
                 this.startStream();
             }
-            if ((Minecraft.getMinecraft().player != null) && (this.mp3Player != null) && (!isInvalid)) {
+            if ((Minecraft.getMinecraft().player != null) && (this.mp3Player != null)) {
                 volume = dataManager.get(VOLUME);
                 float distanceSq = (float) getDistanceSq(Minecraft.getMinecraft().player.posX,
                         Minecraft.getMinecraft().player.posY, Minecraft.getMinecraft().player.posZ);
-                if (distanceSq >= (volume * 1000.0F)) {
-                    this.mp3Player.setVolume(0.0F);
+                // 调整音量算法
+                //float v2 = 10000.0F / distanceSq / 20.0F;
+                if (volume == 0) {
+                    this.mp3Player.setVolume(0);
                 } else {
-                    float v2 = 10000.0F / distanceSq / 100.0F;
-                    if (v2 > 1.0F) {
-                        this.mp3Player.setVolume(volume);
-                    } else {
-                        float v1 = 1.0f - volume;
-                        if (v2 - v1 > 0) {
-                            v2 = v2 - v1;
-                        } else {
-                            v2 = 0.0f;
-                        }
-                        this.mp3Player.setVolume(v2);
+                    float n = (1 + volume) * 20;
+                    float nn = n * n;
+                    float v;
+                    if (distanceSq <= nn) {
+                        v = distanceSq / 4 / nn;
                     }
+                    else {
+                        v = (float) (- distanceSq / 12 / nn + 2 * Math.sqrt(distanceSq) / 3 / n - 1 / 3.0);
+                    }
+                    this.mp3Player.setVolume(volume * (1 - v));
                 }
-                if (distanceSq == 0) {
-                    this.invalidate();
-                }
-                if (!this.immersive && this.isPlaying && rand.nextInt(5) == 0 && (this.mp3Player != null && this.mp3Player.isPlaying())) {
+                if (!this.immersive && mp3Player.isPlaying()) {
                     int random2 = rand.nextInt(24) + 1;
                     world.spawnParticle(EnumParticleTypes.NOTE, posX, posY + 1.2D, posZ, random2 / 24.0D, 0.0D, 0.0D);
                 }
@@ -182,20 +167,13 @@ public class EntityMusicPlayer extends EntityMinecart {
         this.dataManager.set(IMMERSIVE, immersive);
     }
 
-
-    @SideOnly(Side.CLIENT)
-    public void invalidate() {
-        isInvalid = true;
-        stopStream();
-    }
-
     public void startStream() {
         if (!this.isPlaying) {
             this.isPlaying = true;
             if (world.isRemote) {
-                this.mp3Player = new MP3Player(this.streamURL, this);
+                if (this.mp3Player != null) this.mp3Player.requestStop();
+                this.mp3Player = MCGProject.proxy.playerManager.getNewPlayer(this.streamURL, 100);
                 mp3Player.setVolume(0);
-                MCGProject.proxy.playerList.add(this.mp3Player);
             }
         }
     }
@@ -204,20 +182,22 @@ public class EntityMusicPlayer extends EntityMinecart {
         if (this.isPlaying) {
             this.isPlaying = false;
             if (world.isRemote && this.mp3Player != null) {
-                this.mp3Player.stop();
-                MCGProject.proxy.playerList.remove(this.mp3Player);
+                this.mp3Player.requestStop();
             }
         }
     }
 
     @Override
     public boolean processInitialInteract(@NotNull EntityPlayer entityPlayer, @NotNull EnumHand hand) {
-        this.owner = dataManager.get(OWNER);
-        if (!checkPermission(entityPlayer)) {
-            if (!world.isRemote) entityPlayer.sendMessage(new TextComponentString("已锁定"));
-            return true;
-        } else if (!world.isRemote) {
-            NetworkWrapper.INSTANCE.sendTo(new MusicPlayerGuiPacket(this), (EntityPlayerMP)entityPlayer);
+        if (world.isRemote) {
+            this.owner = dataManager.get(OWNER);
+        } else {
+            if (!checkPermission(entityPlayer)) {
+                entityPlayer.sendMessage(new TextComponentString("已锁定"));
+                return true;
+            } else {
+                NetworkWrapper.INSTANCE.sendTo(new MusicPlayerGuiPacket(this), (EntityPlayerMP)entityPlayer);
+            }
         }
         return true;
     }
@@ -257,8 +237,10 @@ public class EntityMusicPlayer extends EntityMinecart {
         return false;
     }
 
-    //TODO：更柔和的远近渐变
-    //TODO：bgm模式（到达位置播放）和dj模式(同步播放)
-    //TODO：播放音乐期间关闭游戏bgm
+    public boolean isPlaying(){
+        return mp3Player != null && mp3Player.isPlaying() && isPlaying;
+    }
+
+    //TODO：bgm模式（到达位置播放）和dj模式(同步播放) DISCARD
     
 }

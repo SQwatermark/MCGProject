@@ -7,7 +7,10 @@ import net.minecraft.client.renderer.culling.ICamera;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.renderer.entity.RenderMinecart;
 import net.minecraftforge.fml.client.registry.IRenderFactory;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
+@SideOnly(Side.CLIENT)
 public class RenderMusicPlayer extends RenderMinecart<EntityMusicPlayer> {
 
     public static final IRenderFactory<EntityMusicPlayer> FACTORY = RenderMusicPlayer::new;

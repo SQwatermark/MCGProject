@@ -3,17 +3,19 @@
   "defaults": {"model": "cube_all"},
   "variants": {
     "inventory": [{}],
-    "meta=0": [{"textures": {"all": "mcgproject:blocks/old/basalt"}}],
-    "meta=1": [{"textures": {"all": "mcgproject:blocks/old/basalt_brick"}}],
-    "meta=2": [{"textures": {"all": "mcgproject:blocks/old/basalt_circle"}}],
-    "meta=3": [{"textures": {"all": "mcgproject:blocks/old/basalt_cobble"}}],
-    "meta=4": [{"textures": {"all": "mcgproject:blocks/old/basalt_paver"}}],
-    "meta=5": [{"textures": {"all": "mcgproject:blocks/old/ballast_test"}}],
-    "meta=6": [{"textures": {"all": "mcgproject:blocks/old/copper"}}],
-    "meta=7": [{"textures": {"all": "mcgproject:blocks/old/green_sapphire"}}],
-    "meta=8": [{"textures": {"all": "mcgproject:blocks/old/ruby"}}],
-    "meta=9": [{"textures": {"all": "mcgproject:blocks/old/sapphire"}}],
-    "meta=10": [{"textures": {"all": "mcgproject:blocks/old/silver"}}],
-    "meta=11": [{"textures": {"all": "mcgproject:blocks/old/tin"}}]
+    "meta": {
+      "0": {"textures": {"all": "mcgproject:blocks/old/basalt"}},
+      "1": {"textures": {"all": "mcgproject:blocks/old/basalt_brick"}},
+      "2": {"textures": {"all": "mcgproject:blocks/old/basalt_circle"}},
+      "3": {"textures": {"all": "mcgproject:blocks/old/basalt_cobble"}},
+      "4": {"textures": {"all": "mcgproject:blocks/old/basalt_paver"}},
+      "5": {"textures": {"all": "mcgproject:blocks/old/ballast_test"}},
+      "6": {"textures": {"all": "mcgproject:blocks/old/copper"}},
+      "7": {"textures": {"all": "mcgproject:blocks/old/green_sapphire"}},
+      "8": {"textures": {"all": "mcgproject:blocks/old/ruby"}},
+      "9": {"textures": {"all": "mcgproject:blocks/old/sapphire"}},
+      "10": {"textures": {"all": "mcgproject:blocks/old/silver"}},
+      "11": {"textures": {"all": "mcgproject:blocks/old/tin"}}
+    }
   }
 }

@@ -20,9 +20,7 @@ public class StreamStopper {
     @SideOnly(Side.CLIENT)
     @SubscribeEvent
     public void onWorldUnload(WorldEvent.Unload event) {
-        for (MP3Player mp3Player : MCGProject.proxy.playerList) {
-            mp3Player.stop();
-            //MCGProject.proxy.playerList.remove(mp3Player);TODO: 为什么加了这一行就会崩溃呢？
-        }
+        MCGProject.proxy.playerManager.clean();
     }
+
 }

@@ -113,8 +113,8 @@ public class GuiMusicPlayer extends GuiScreen {
 
 		//fontRenderer.drawString("Date: " + Calendar.getInstance().get(Calendar.MONTH) + " " + Calendar.getInstance().get(Calendar.DATE), var5 - gui_width / 2, var6 - 30, 0xffffffff);
 		
-		if((Minecraft.getMinecraft().player != null) && ((musicPlayer).mp3Player != null) && (!(musicPlayer).isInvalid)) {
-			fontRenderer.drawString("音量: " + (int) Math.round(musicPlayer.volume * 100), width / 2 - 26, height / 2 + 18, 0xff0e0e0e);
+		if((Minecraft.getMinecraft().player != null) && ((musicPlayer).mp3Player != null)) {
+			fontRenderer.drawString("音量: " + Math.round(musicPlayer.volume * 100), width / 2 - 26, height / 2 + 18, 0xff0e0e0e);
 		}
 		else {
 			fontRenderer.drawString("音量: 0", width / 2 - 26, height / 2 + 18, 0xff0e0e0e);
@@ -162,10 +162,6 @@ public class GuiMusicPlayer extends GuiScreen {
 	@Override
 	public void updateScreen() {
 		streamTextBox.updateCursorCounter();
-		if (musicPlayer.isInvalid) {
-			mc.displayGuiScreen(null);
-			mc.setIngameFocus();
-		}
 		super.updateScreen();
 	}
 
@@ -189,21 +185,23 @@ public class GuiMusicPlayer extends GuiScreen {
 		super.mouseClicked(par1, par2, par3);
 	}
 
+	protected String parseURL(String url) {
+		if (url.toLowerCase().contains(".m3u"))
+			return takeFirstEntryFromM3U(url);
+		if (url.toLowerCase().contains(".pls"))
+			return parsePls(url);
+		if (url.toLowerCase().contains("music.163.com"))
+			return parseNetease(url);
+		return url;
+	}
+
 	@Override
 	@SideOnly(Side.CLIENT)
 	protected void actionPerformed(GuiButton button) {
 		if (button.id == 0) {
 			if (streamTextBox.getText() != null && streamTextBox.getText().length() > 0) {
 				if (!musicPlayer.isPlaying) {
-					if (this.streamTextBox.getText().toLowerCase().contains(".m3u")) {
-						musicPlayer.streamURL = takeFirstEntryFromM3U(this.streamTextBox.getText());
-					}
-					else if (this.streamTextBox.getText().toLowerCase().contains(".pls")) {
-						musicPlayer.streamURL = parsePls(this.streamTextBox.getText());
-					}
-					else {
-						musicPlayer.streamURL = this.streamTextBox.getText();
-					}
+					musicPlayer.streamURL = parseURL(this.streamTextBox.getText());
 					musicPlayer.startStream();
 				}
 				else {
@@ -216,39 +214,31 @@ public class GuiMusicPlayer extends GuiScreen {
 				NetworkWrapper.INSTANCE.sendToServer(new MusicPlayerPacket(musicPlayer));
 			}
 		}
-
-		if (button.id == 1) {
+		else if (button.id == 1) {
 			Toolkit toolkit = Toolkit.getDefaultToolkit();
 			Clipboard clipboard = toolkit.getSystemClipboard();
 			try {
 				String result = (String) clipboard.getData(DataFlavor.stringFlavor);
-				if (MathMCG.isNumeric(result)) {
-					result = "http://music.163.com/song/media/outer/url?id="+ result + ".mp3";
-				}
 				streamTextBox.setText(result);
 			} catch (Exception ignored) {}
 		}
-
-		if (button.id == 2) {
+		else if (button.id == 2) {
 			streamTextBox.setText("");
 			streamTextBox.setFocused(true);
 		}
-
-		if (button.id == 4) {
+		else if (button.id == 4) {
 			if(musicPlayer.volume<1.0f) {
 				musicPlayer.volume += 0.1f;
 			}
 			NetworkWrapper.INSTANCE.sendToServer(new MusicPlayerPacket(musicPlayer));
 		}
-
-		if (button.id == 5) {
+		else if (button.id == 5) {
 			if(musicPlayer.volume>0.0f) {
 				musicPlayer.volume -= 0.1f;
 			}
 			NetworkWrapper.INSTANCE.sendToServer(new MusicPlayerPacket(musicPlayer));
 		}
-
-		if (button.id == 3) {
+		else if (button.id == 3) {
 			if (musicPlayer.owner.isEmpty()) {
 				musicPlayer.owner = player.getName();
 				button.displayString = "已锁定";
@@ -258,14 +248,13 @@ public class GuiMusicPlayer extends GuiScreen {
 			}
 			NetworkWrapper.INSTANCE.sendToServer(new MusicPlayerPacket(musicPlayer));
 		}
-		if (button.id == 6) {
+		else if (button.id == 6) {
 			streamTextBox.setText("http://music.163.com/song/media/outer/url?id=" + randomMusics.get(new Random().nextInt(randomMusics.size())) + ".mp3");
 		}
-		if (button.id == 7) {
+		else if (button.id == 7) {
 			musicPlayer.immersive = !musicPlayer.immersive;
 			NetworkWrapper.INSTANCE.sendToServer(new MusicPlayerPacket(musicPlayer));
 		}
-
 	}
 
 	@SideOnly(Side.CLIENT)
@@ -344,6 +333,32 @@ public class GuiMusicPlayer extends GuiScreen {
 			infoText = "Not a valid stream, only .m3u and .pls";
 		}
 		return out;
+	}
+
+	public static String getArg(String args, String name) {
+		if (args.contains(name)) {
+			int pos = args.indexOf(name);
+			String sub = args.substring(pos + name.length() + 1);
+			if (sub.contains("&")) {
+				return sub.split("&")[0];
+			}
+			return sub;
+		}
+		return args;
+	}
+
+	public String parseNetease(String input) {
+		final String NETEASE_URL = "http://music.163.com/song/media/outer/url?id=";
+		if (MathMCG.isNumeric(input))
+			return NETEASE_URL + input + ".mp3";
+		if (input.contains("music.163.com") && input.contains("?")) {
+			String[] args = input.split("\\?");
+			if (args.length > 1) {
+				String id = getArg(args[1], "id");
+				return NETEASE_URL + id + ".mp3";
+			}
+		}
+		return input;
 	}
 
 }

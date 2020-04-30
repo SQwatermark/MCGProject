@@ -1,5 +1,5 @@
 /*
- * 11/19/04		1.0 moved to LGPL.
+ * 11/19/04		1.0 moved to LGPL. 
  *-----------------------------------------------------------------------
  *   This program is free software; you can redistribute it and/or modify
  *   it under the terms of the GNU Library General Public License as published
@@ -19,14 +19,16 @@
 
 package javazoom.jl.player.advanced;
 
-import javazoom.jl.decoder.*;
+import java.io.InputStream;
+
+import javazoom.jl.decoder.Bitstream;
+import javazoom.jl.decoder.BitstreamException;
+import javazoom.jl.decoder.Decoder;
+import javazoom.jl.decoder.Header;
+import javazoom.jl.decoder.JavaLayerException;
+import javazoom.jl.decoder.SampleBuffer;
 import javazoom.jl.player.AudioDevice;
 import javazoom.jl.player.FactoryRegistry;
-import moe.gensoukyo.mcgproject.common.feature.musicplayer.EntityMusicPlayer;
-import net.minecraft.client.Minecraft;
-import net.minecraft.util.SoundCategory;
-
-import java.io.InputStream;
 
 /**
  * a hybrid of javazoom.jl.player.Player tweeked to include <code>play(startFrame, endFrame)</code>
@@ -34,275 +36,207 @@ import java.io.InputStream;
  */
 public class AdvancedPlayer
 {
-    /** The MPEG audio bitstream.*/
-    private Bitstream bitstream;
-    /** The MPEG audio decoder. */
-    private Decoder decoder;
-    /** The AudioDevice the audio samples are written to. */
-    private AudioDevice audio;
-    /** Has the player been closed? */
-    private boolean closed = false;
-    /** Has the player played back all frames from the stream? */
-    private boolean complete = false;
-    private int lastPosition = 0;
-    /** Listener for the playback process */
-    private PlaybackListener listener;
-    private float volume = 0f;
-    private EntityMusicPlayer musicPlayer;
-    private float previousSoundLevel;
+	/** The MPEG audio bitstream.*/
+	private Bitstream bitstream;
+	/** The MPEG audio decoder. */
+	private Decoder decoder;
+	/** The AudioDevice the audio samples are written to. */
+	private AudioDevice audio;
+	/** Has the player been closed? */
+	private boolean closed = false;
+	/** Has the player played back all frames from the stream? */
+	private boolean complete = false;
+	private int lastPosition = 0;
+	/** Listener for the playback process */
+	private PlaybackListener listener;
 
-    /**
-     * Creates a new <code>Player</code> instance.
-     */
-    public AdvancedPlayer(InputStream stream) throws JavaLayerException
-    {
-        this(stream, null);
-    }
+	/**
+	 * Creates a new <code>Player</code> instance.
+	 */
+	public AdvancedPlayer(InputStream stream) throws JavaLayerException
+	{
+		this(stream, null);
+	}
 
-    public void setMusicPlayer(EntityMusicPlayer musicPlayer) {
-        this.musicPlayer = musicPlayer;
-    }
+	public AdvancedPlayer(InputStream stream, AudioDevice device) throws JavaLayerException
+	{
+		bitstream = new Bitstream(stream);
 
-    public AdvancedPlayer(InputStream stream, AudioDevice device) throws JavaLayerException
-    {
-        previousSoundLevel = Minecraft.getMinecraft().gameSettings.getSoundLevel(SoundCategory.MUSIC);
-        Minecraft.getMinecraft().gameSettings.setSoundLevel(SoundCategory.MUSIC, 0);
-        bitstream = new Bitstream(stream);
+		if (device!=null) audio = device;
+		else audio = FactoryRegistry.systemRegistry().createAudioDevice();
+		audio.open(decoder = new Decoder());
+	}
 
-        if (device != null)
-        {
-            audio = device;
-        }
-        else
-        {
-            audio = FactoryRegistry.systemRegistry().createAudioDevice();
-        }
+	public void play() throws JavaLayerException
+	{
+		play(Integer.MAX_VALUE);
+	}
 
-        audio.open(decoder = new Decoder());
-    }
+	/**
+	 * Plays a number of MPEG audio frames.
+	 *
+	 * @param frames	The number of frames to play.
+	 * @return	true if the last frame was played, or false if there are
+	 *			more frames.
+	 */
+	public boolean play(int frames) throws JavaLayerException
+	{
+		boolean ret = true;
 
-    public void play() throws JavaLayerException
-    {
-        play(Integer.MAX_VALUE);
-    }
+		// report to listener
+		if(listener != null) listener.playbackStarted(createEvent(PlaybackEvent.STARTED));
 
-    /**
-     * Plays a number of MPEG audio frames.
-     *
-     * @param frames	The number of frames to play.
-     * @return	true if the last frame was played, or false if there are
-     *			more frames.
-     */
-    public boolean play(int frames) throws JavaLayerException
-    {
-        boolean ret = true;
-        // report to listener
-        if (listener != null)
-        {
-            listener.playbackStarted(createEvent(PlaybackEvent.STARTED));
-        }
-
-        while (frames-- > 0 && ret)
-        {
-            if (this.musicPlayer == null || !this.musicPlayer.isPlaying || this.musicPlayer.isDead)
-                close();
-            ret = decodeFrame();
-        }
+		while (frames-- > 0 && ret)
+		{
+			ret = decodeFrame();
+		}
 
 //		if (!ret)
-        {
-            // last frame, ensure all data flushed to the audio device.
-            AudioDevice out = audio;
-
-            if (out != null)
-            {
+		{
+			// last frame, ensure all data flushed to the audio device.
+			AudioDevice out = audio;
+			if (out != null)
+			{
 //				System.out.println(audio.getPosition());
-                out.flush();
-
+				out.flush();
 //				System.out.println(audio.getPosition());
-                synchronized (this)
-                {
-                    complete = (!closed);
-                    close();
-                }
+				synchronized (this)
+				{
+					complete = (!closed);
+					close();
+				}
 
-                // report to listener
-                if (listener != null)
-                {
-                    listener.playbackFinished(createEvent(out, PlaybackEvent.STOPPED));
-                }
-            }
-        }
-        return ret;
-    }
+				// report to listener
+				if(listener != null) listener.playbackFinished(createEvent(out, PlaybackEvent.STOPPED));
+			}
+		}
+		return ret;
+	}
 
-    /**
-     * Cloases this player. Any audio currently playing is stopped
-     * immediately.
-     */
+	/**
+	 * Cloases this player. Any audio currently playing is stopped
+	 * immediately.
+	 */
+	public synchronized void close()
+	{
+		AudioDevice out = audio;
+		if (out != null)
+		{
+			closed = true;
+			audio = null;
+			// this may fail, so ensure object state is set up before
+			// calling this method.
+			out.close();
+			lastPosition = out.getPosition();
+			try
+			{
+				bitstream.close();
+			}
+			catch (BitstreamException ex)
+			{}
+		}
+	}
 
-    public synchronized void close()
-    {
-        Minecraft.getMinecraft().gameSettings.setSoundLevel(SoundCategory.MUSIC, previousSoundLevel);
-        AudioDevice out = audio;
-        if (out != null)
-        {
-            closed = true;
-            audio = null;
-            // this may fail, so ensure object state is set up before
-            // calling this method.
-            out.close();
-            lastPosition = out.getPosition();
+	/**
+	 * Decodes a single frame.
+	 *
+	 * @return true if there are no more frames to decode, false otherwise.
+	 */
+	protected boolean decodeFrame() throws JavaLayerException
+	{
+		try
+		{
+			AudioDevice out = audio;
+			if (out == null) return false;
 
-            try
-            {
-                bitstream.close();
-            }
-            catch (BitstreamException ex)
-            {}
-        }
-    }
+			Header h = bitstream.readFrame();
+			if (h == null) return false;
 
-    /**
-     * Decodes a single frame.
-     *
-     * @return true if there are no more frames to decode, false otherwise.
-     */
-    protected boolean decodeFrame() throws JavaLayerException
-    {
-        try
-        {
-            AudioDevice out = audio;
-            if (closed) {
-                return false;
-            }
+			// sample buffer set when decoder constructed
+			SampleBuffer output = (SampleBuffer) decoder.decodeFrame(h, bitstream);
 
-            if (out == null)
-            {
-                return false;
-            }
+			synchronized (this)
+			{
+				out = audio;
+				if(out != null)
+				{
+					out.write(output.getBuffer(), 0, output.getBufferLength());
+				}
+			}
 
-            Header h = bitstream.readFrame();
+			bitstream.closeFrame();
+		}
+		catch (RuntimeException ex)
+		{
+			throw new JavaLayerException("Exception decoding audio frame", ex);
+		}
+		return true;
+	}
 
-            if (h == null)
-            {
-                return false;
-            }
+	/**
+	 * skips over a single frame
+	 * @return false	if there are no more frames to decode, true otherwise.
+	 */
+	protected boolean skipFrame() throws JavaLayerException
+	{
+		Header h = bitstream.readFrame();
+		if (h == null) return false;
+		bitstream.closeFrame();
+		return true;
+	}
 
-            // sample buffer set when decoder constructed
-            SampleBuffer output = (SampleBuffer) decoder.decodeFrame(h, bitstream);
+	/**
+	 * Plays a range of MPEG audio frames
+	 * @param start	The first frame to play
+	 * @param end		The last frame to play
+	 * @return true if the last frame was played, or false if there are more frames.
+	 */
+	public boolean play(final int start, final int end) throws JavaLayerException
+	{
+		boolean ret = true;
+		int offset = start;
+		while (offset-- > 0 && ret) ret = skipFrame();
+		return play(end - start);
+	}
 
-            synchronized (this)
-            {
-                out = audio;
+	/**
+	 * Constructs a <code>PlaybackEvent</code>
+	 */
+	private PlaybackEvent createEvent(int id)
+	{
+		return createEvent(audio, id);
+	}
 
-                if (out != null)
-                {
-                    short[] samples = output.getBuffer();
+	/**
+	 * Constructs a <code>PlaybackEvent</code>
+	 */
+	private PlaybackEvent createEvent(AudioDevice dev, int id)
+	{
+		return new PlaybackEvent(this, id, dev.getPosition());
+	}
 
-                    for (int samp = 0; samp < samples.length; samp++)
-                    {
-                        samples[samp] = (short)(samples[samp] * volume);
-                    }
+	/**
+	 * sets the <code>PlaybackListener</code>
+	 */
+	public void setPlayBackListener(PlaybackListener listener)
+	{
+		this.listener = listener;
+	}
 
-                    out.write(samples, 0, output.getBufferLength());
-                }
-            }
+	/**
+	 * gets the <code>PlaybackListener</code>
+	 */
+	public PlaybackListener getPlayBackListener()
+	{
+		return listener;
+	}
 
-            bitstream.closeFrame();
-        }
-        catch (RuntimeException ex)
-        {
-            throw new JavaLayerException("Exception decoding audio frame", ex);
-        }
-
-        return true;
-    }
-
-    /**
-     * skips over a single frame
-     * @return false	if there are no more frames to decode, true otherwise.
-     */
-    protected boolean skipFrame() throws JavaLayerException
-    {
-        Header h = bitstream.readFrame();
-
-        if (h == null)
-        {
-            return false;
-        }
-
-        bitstream.closeFrame();
-        return true;
-    }
-
-    /**
-     * Plays a range of MPEG audio frames
-     * @param start	The first frame to play
-     * @param end		The last frame to play
-     * @return true if the last frame was played, or false if there are more frames.
-     */
-    public boolean play(final int start, final int end) throws JavaLayerException
-    {
-        boolean ret = true;
-        int offset = start;
-
-        while (offset-- > 0 && ret)
-        {
-            ret = skipFrame();
-        }
-
-        return play(end - start);
-    }
-
-    /**
-     * Constructs a <code>PlaybackEvent</code>
-     */
-    private PlaybackEvent createEvent(int id)
-    {
-        return createEvent(audio, id);
-    }
-
-    /**
-     * Constructs a <code>PlaybackEvent</code>
-     */
-    private PlaybackEvent createEvent(AudioDevice dev, int id)
-    {
-        return new PlaybackEvent(this, id, dev.getPosition());
-    }
-
-    /**
-     * sets the <code>PlaybackListener</code>
-     */
-    public void setPlayBackListener(PlaybackListener listener)
-    {
-        this.listener = listener;
-    }
-
-    /**
-     * gets the <code>PlaybackListener</code>
-     */
-    public PlaybackListener getPlayBackListener()
-    {
-        return listener;
-    }
-
-    /**
-     * closes the player and notifies <code>PlaybackListener</code>
-     */
-    public void stop()
-    {
-        listener.playbackFinished(createEvent(PlaybackEvent.STOPPED));
-        close();
-    }
-
-    public void setVolume(float f)
-    {
-        volume = f;
-    }
-
-    public float getVolume()
-    {
-        return volume;
-    }
+	/**
+	 * closes the player and notifies <code>PlaybackListener</code>
+	 */
+	public void stop()
+	{
+		listener.playbackFinished(createEvent(PlaybackEvent.STOPPED));
+		close();
+	}
 }

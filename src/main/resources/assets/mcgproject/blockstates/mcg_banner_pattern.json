@@ -1,0 +1,28 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "mcgproject:generated",
+    "textures": {"layer0": "mcgproject:items/banner/0"}
+  },
+  "variants": {
+    "inventory": [{}],
+    "normal": [{}],
+    "0": [{"textures": {"layer0": "mcgproject:items/banner/0"}}],
+    "1": [{"textures": {"layer0": "mcgproject:items/banner/1"}}],
+    "2": [{"textures": {"layer0": "mcgproject:items/banner/2"}}],
+    "3": [{"textures": {"layer0": "mcgproject:items/banner/3"}}],
+    "4": [{"textures": {"layer0": "mcgproject:items/banner/4"}}],
+    "5": [{"textures": {"layer0": "mcgproject:items/banner/5"}}],
+    "6": [{"textures": {"layer0": "mcgproject:items/banner/6"}}],
+    "7": [{"textures": {"layer0": "mcgproject:items/banner/7"}}],
+    "8": [{"textures": {"layer0": "mcgproject:items/banner/8"}}],
+    "9": [{"textures": {"layer0": "mcgproject:items/banner/9"}}],
+    "10": [{"textures": {"layer0": "mcgproject:items/banner/10"}}],
+    "11": [{"textures": {"layer0": "mcgproject:items/banner/11"}}],
+    "12": [{"textures": {"layer0": "mcgproject:items/banner/12"}}],
+    "13": [{"textures": {"layer0": "mcgproject:items/banner/13"}}],
+    "14": [{"textures": {"layer0": "mcgproject:items/banner/14"}}],
+    "15": [{"textures": {"layer0": "mcgproject:items/banner/15"}}],
+    "16": [{"textures": {"layer0": "mcgproject:items/banner/16"}}]
+  }
+}

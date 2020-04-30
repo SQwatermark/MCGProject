@@ -3,13 +3,15 @@
   "defaults": {"model": "cube_all"},
   "variants": {
     "inventory": [{}],
-    "meta=0": [{"textures": {"all": "mcgproject:blocks/fn/stone_gneiss"}}],
-    "meta=1": [{"textures": {"all": "mcgproject:blocks/fn/stone_granite"}}],
-    "meta=2": [{"textures": {"all": "mcgproject:blocks/fn/stone_hornfels"}}],
-    "meta=3": [{"textures": {"all": "mcgproject:blocks/fn/stone_marble"}}],
-    "meta=4": [{"textures": {"all": "mcgproject:blocks/fn/bricks_gneiss"}}],
-    "meta=5": [{"textures": {"all": "mcgproject:blocks/fn/bricks_granite"}}],
-    "meta=6": [{"textures": {"all": "mcgproject:blocks/fn/bricks_hornfels"}}],
-    "meta=7": [{"textures": {"all": "mcgproject:blocks/fn/bricks_marble"}}]
+    "meta": {
+      "0": {"textures": {"all": "mcgproject:blocks/fn/stone_gneiss"}},
+      "1": {"textures": {"all": "mcgproject:blocks/fn/stone_granite"}},
+      "2": {"textures": {"all": "mcgproject:blocks/fn/stone_hornfels"}},
+      "3": {"textures": {"all": "mcgproject:blocks/fn/stone_marble"}},
+      "4": {"textures": {"all": "mcgproject:blocks/fn/bricks_gneiss"}},
+      "5": {"textures": {"all": "mcgproject:blocks/fn/bricks_granite"}},
+      "6": {"textures": {"all": "mcgproject:blocks/fn/bricks_hornfels"}},
+      "7": {"textures": {"all": "mcgproject:blocks/fn/bricks_marble"}}
+    }
   }
 }

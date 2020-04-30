@@ -1,18 +1,24 @@
 package moe.gensoukyo.mcgproject.cilent.init;
 
+import moe.gensoukyo.mcgproject.cilent.entity.RenderApple;
 import moe.gensoukyo.mcgproject.cilent.entity.RenderKaginawa;
 import moe.gensoukyo.mcgproject.cilent.entity.RenderMusicPlayer;
 import moe.gensoukyo.mcgproject.cilent.entity.boat.RenderMCGBoat;
 import moe.gensoukyo.mcgproject.cilent.entity.boat.RenderRACBoat;
 import moe.gensoukyo.mcgproject.cilent.entity.butterfly.*;
 import moe.gensoukyo.mcgproject.cilent.entity.fish.*;
+import moe.gensoukyo.mcgproject.cilent.tileentity.TileLightBulbLightRenderer;
+import moe.gensoukyo.mcgproject.cilent.tileentity.TileRanstoneLampLightRenderer;
 import moe.gensoukyo.mcgproject.cilent.tileentity.TileRanstonePistonRenderer;
 import moe.gensoukyo.mcgproject.cilent.tileentity.TileStickerRenderer;
+import moe.gensoukyo.mcgproject.common.feature.applecraft.EntityApple;
 import moe.gensoukyo.mcgproject.common.entity.EntityKaginawa;
 import moe.gensoukyo.mcgproject.common.entity.boat.EntityMCGBoat;
 import moe.gensoukyo.mcgproject.common.entity.boat.EntityRACBoat;
 import moe.gensoukyo.mcgproject.common.entity.butterfly.*;
 import moe.gensoukyo.mcgproject.common.entity.fish.*;
+import moe.gensoukyo.mcgproject.common.feature.lightbulb.BlockLightBulb;
+import moe.gensoukyo.mcgproject.common.feature.lightbulb.TileLightBulb;
 import moe.gensoukyo.mcgproject.common.feature.musicplayer.EntityMusicPlayer;
 import moe.gensoukyo.mcgproject.common.feature.ranstone.*;
 import moe.gensoukyo.mcgproject.common.feature.sticker.BlockSticker;
@@ -21,6 +27,7 @@ import moe.gensoukyo.mcgproject.common.init.ModItem;
 import moe.gensoukyo.mcgproject.core.MCGProject;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.entity.Entity;
+import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.event.ColorHandlerEvent;
 import net.minecraftforge.client.event.ModelRegistryEvent;
@@ -64,10 +71,15 @@ public class ModelMapper {
         registerModel(ModItem.ITEM_GEN_BIG_OAK);
         registerModel(ModItem.ITEM_KAGINAWA);
         registerModel(ModItem.ITEM_BLOCK_INFO);
-        registerModel(ModItem.ITEM_MCG_FOOD);
-        registerModel(ModItem.ITEM_MCG_DRINK);
+        registerModel(ModItem.ITEM_MCG_FOOD, 94);
+        registerModel(ModItem.ITEM_MCG_DRINK, 30);
+        registerModel(ModItem.ITEM_MCG_PROP, 94);
+        registerModel(ModItem.ITEM_MCG_BANNER_PATTERN, 16);
         registerModel(ModItem.ITEM_MUSIC_PLAYER);
 
+        registerColoredModel(RanstoneLamp.ITEM, "");
+        registerColoredModel(RanstoneLamp.ITEM_ALWAYS, "");
+        registerColoredModel(BlockLightBulb.ITEM, ",facing=up,powered=false");
         registerModel(RanstoneBlock.ITEM);
         registerModel(RanstoneComparator.ITEM);
         registerModel(RanstoneRepeater.ITEM);
@@ -80,6 +92,8 @@ public class ModelMapper {
 
         ClientRegistry.bindTileEntitySpecialRenderer(RanstonePiston.TilePiston.class, new TileRanstonePistonRenderer());
         ClientRegistry.bindTileEntitySpecialRenderer(TileSticker.class, new TileStickerRenderer());
+        ClientRegistry.bindTileEntitySpecialRenderer(RanstoneLamp.TileRanstoneLamp.class, new TileRanstoneLampLightRenderer());
+        ClientRegistry.bindTileEntitySpecialRenderer(TileLightBulb.class, new TileLightBulbLightRenderer());
     }
 
     @SubscribeEvent
@@ -94,6 +108,23 @@ public class ModelMapper {
         ModelLoader.setCustomModelResourceLocation(item, 0, 
                 new ModelResourceLocation(Objects.requireNonNull(item.getRegistryName()), 
                         "inventory"));
+    }
+
+    private static void registerModel(Item item, int maxMeta) {
+        int t = maxMeta + 1;
+        for (int i = 0; i < t; i++) {
+            ModelLoader.setCustomModelResourceLocation(item, i,
+                    new ModelResourceLocation(Objects.requireNonNull(item.getRegistryName()),
+                            String.valueOf(i)));
+        }
+    }
+
+    private static void registerColoredModel(Item item, String extra) {
+        for (int i = 0; i < 16; i++) {
+            ModelLoader.setCustomModelResourceLocation(item, i,
+                    new ModelResourceLocation(Objects.requireNonNull(item.getRegistryName()),
+                            "color=" + EnumDyeColor.byMetadata(i).getName() + extra));
+        }
     }
 
     static {
@@ -114,6 +145,7 @@ public class ModelMapper {
         renderEntity.put(EntityTropicalFishB.class, RenderTropicalFishB.FACTORY);
         renderEntity.put(EntityPufferFish.class, RenderPufferFish.FACTORY);
         renderEntity.put(EntityMusicPlayer.class, RenderMusicPlayer.FACTORY);
+        renderEntity.put(EntityApple.class, RenderApple.FACTORY);
     }
 
 }
