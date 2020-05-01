@@ -25,7 +25,7 @@ public class VolumeAudioDevice implements AudioDevice {
 
     @Override
     public void write(short[] samples, int offs, int len) throws JavaLayerException {
-        float step = (targetVolume - volume) / samples.length;
+        float step = (targetVolume - volume) / Math.min(samples.length, 1);
         for (int samp = 0; samp < samples.length; samp++)
         {
             samples[samp] = (short)(samples[samp] * (step * samp + volume));
