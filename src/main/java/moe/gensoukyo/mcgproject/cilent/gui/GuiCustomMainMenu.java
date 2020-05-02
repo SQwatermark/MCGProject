@@ -160,6 +160,10 @@ public class GuiCustomMainMenu extends GuiScreen
         {
             this.splashText = "新年快乐！";
         }
+        else if (calendar.get(Calendar.MONTH) + 1 == 5 && calendar.get(Calendar.DATE) == 1)
+        {
+            this.splashText = "劳动节快乐！";
+        }
         else if (calendar.get(Calendar.MONTH) + 1 == 10 && calendar.get(Calendar.DATE) == 31)
         {
             this.splashText = "OOoooOOOoooo! Spooky!";
@@ -169,7 +173,7 @@ public class GuiCustomMainMenu extends GuiScreen
 
         this.buttonList.add(new GuiButton(1, this.width / 2 - 100, j, I18n.format("menu.singleplayer")));
         this.buttonList.add(new GuiButton(2, this.width / 2 - 100, j + 24, I18n.format("menu.multiplayer")));
-        this.buttonList.add(new GuiButton(14, this.width / 2 + 2, j + 24 * 2, 98, 20, I18n.format("mcg.menu.website")));
+        this.buttonList.add(new GuiButton(14, this.width / 2 + 2, j + 24 * 2, 98, 20, I18n.format("gui.mcgproject.menu.website")));
         this.buttonList.add(new GuiButton(6, this.width / 2 - 100, j + 24 * 2, 98, 20, I18n.format("fml.menu.mods")));
         this.buttonList.add(new GuiButton(0, this.width / 2 - 100, j + 72 + 12, 98, 20, I18n.format("menu.options")));
         this.buttonList.add(new GuiButton(4, this.width / 2 + 2, j + 72 + 12, 98, 20, I18n.format("menu.quit")));

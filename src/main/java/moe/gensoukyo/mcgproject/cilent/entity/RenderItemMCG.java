@@ -1,7 +1,6 @@
 package moe.gensoukyo.mcgproject.cilent.entity;
 
 import moe.gensoukyo.mcgproject.common.entity.EntityItemMCG;
-import moe.gensoukyo.mcgproject.common.util.MathMCG;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.RenderHelper;
@@ -107,7 +106,6 @@ public class RenderItemMCG extends Render<EntityItemMCG>
         GlStateManager.translate(0, - 0.1, 0);
         IBakedModel ibakedmodel = this.itemRenderer.getItemModelWithOverrides(itemstack, entity.world, null);
         int j = this.transformModelCount(entity, x, y, z, ibakedmodel);
-        GlStateManager.rotate(MathMCG.degToRad(entity.angle), 0, 1 ,0);
         boolean flag1 = ibakedmodel.isGui3d();
 
         if (!flag1)

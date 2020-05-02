@@ -1,7 +1,7 @@
 package moe.gensoukyo.mcgproject.cilent.entity;
 
 import moe.gensoukyo.mcgproject.cilent.model.ModelApple;
-import moe.gensoukyo.mcgproject.common.feature.applecraft.EntityApple;
+import moe.gensoukyo.mcgproject.common.feature.farm.apple.EntityApple;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.Render;

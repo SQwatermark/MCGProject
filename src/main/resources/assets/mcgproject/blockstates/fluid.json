@@ -7,58 +7,58 @@
         "fluid": "interstice"
       }
     },
-    "waterblack": {
+    "water_black": {
       "model": "forge:fluid",
       "custom": {
-        "fluid": "waterblack"
+        "fluid": "water_black"
       }
     },
-    "waterblue": {
+    "water_blue": {
       "model": "forge:fluid",
       "custom": {
-        "fluid": "waterblue"
+        "fluid": "water_blue"
       }
     },
-    "watercyan": {
+    "water_cyan": {
       "model": "forge:fluid",
       "custom": {
-        "fluid": "watercyan"
+        "fluid": "water_cyan"
       }
     },
-    "watergreen": {
+    "water_green": {
       "model": "forge:fluid",
       "custom": {
-        "fluid": "watergreen"
+        "fluid": "water_green"
       }
     },
-    "waterorange": {
+    "water_orange": {
       "model": "forge:fluid",
       "custom": {
-        "fluid": "waterorange"
+        "fluid": "water_orange"
       }
     },
-    "waterpurple": {
+    "water_purple": {
       "model": "forge:fluid",
       "custom": {
-        "fluid": "waterpurple"
+        "fluid": "water_purple"
       }
     },
-    "waterred": {
+    "water_red": {
       "model": "forge:fluid",
       "custom": {
-        "fluid": "waterred"
+        "fluid": "water_red"
       }
     },
-    "waterwhite": {
+    "water_white": {
       "model": "forge:fluid",
       "custom": {
-        "fluid": "waterwhite"
+        "fluid": "water_white"
       }
     },
-    "wateryellow": {
+    "water_yellow": {
       "model": "forge:fluid",
       "custom": {
-        "fluid": "wateryellow"
+        "fluid": "water_yellow"
       }
     }
   }

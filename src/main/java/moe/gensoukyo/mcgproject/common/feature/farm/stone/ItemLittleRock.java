@@ -1,4 +1,4 @@
-package moe.gensoukyo.mcgproject.common.feature.littlestone;
+package moe.gensoukyo.mcgproject.common.feature.farm.stone;
 
 import moe.gensoukyo.mcgproject.common.creativetab.MCGTabs;
 import moe.gensoukyo.mcgproject.core.MCGProject;
@@ -15,13 +15,13 @@ import net.minecraft.world.World;
 
 import java.util.Objects;
 
-public class ItemLittleStone extends Item {
+public class ItemLittleRock extends Item {
 
-    public ItemLittleStone() {
-        this.setMaxStackSize(16);
+    public ItemLittleRock() {
+        //this.setMaxStackSize(16);
         this.setCreativeTab(MCGTabs.PROP);
-        this.setRegistryName(MCGProject.ID, "little_stone");
-        this.setTranslationKey(MCGProject.ID + "." + "little_stone");
+        this.setRegistryName(MCGProject.ID, "little_rock");
+        this.setTranslationKey(MCGProject.ID + "." + "little_rock");
     }
 
     @Override
@@ -35,7 +35,7 @@ public class ItemLittleStone extends Item {
 
         worldIn.playSound(null, playerIn.posX, playerIn.posY, playerIn.posZ, SoundEvents.ENTITY_EGG_THROW, SoundCategory.PLAYERS, 0.5F, 0.4F / (itemRand.nextFloat() * 0.4F + 0.8F));
 
-        EntityLittleStone littleStone = new EntityLittleStone(worldIn, playerIn);
+        EntityLittleRock littleStone = new EntityLittleRock(worldIn, playerIn);
         littleStone.shoot(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 0.0F, 1.5F, 1.0F);
 
         if (!worldIn.isRemote) {

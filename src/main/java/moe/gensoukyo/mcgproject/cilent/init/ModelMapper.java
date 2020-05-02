@@ -10,15 +10,15 @@ import moe.gensoukyo.mcgproject.cilent.tileentity.TileRanstoneLampLightRenderer;
 import moe.gensoukyo.mcgproject.cilent.tileentity.TileRanstonePistonRenderer;
 import moe.gensoukyo.mcgproject.cilent.tileentity.TileStickerRenderer;
 import moe.gensoukyo.mcgproject.common.entity.EntityItemMCG;
-import moe.gensoukyo.mcgproject.common.entity.EntityKaginawa;
+import moe.gensoukyo.mcgproject.common.feature.kaginawa.EntityKaginawa;
 import moe.gensoukyo.mcgproject.common.entity.boat.EntityMCGBoat;
 import moe.gensoukyo.mcgproject.common.entity.boat.EntityRACBoat;
 import moe.gensoukyo.mcgproject.common.entity.butterfly.*;
 import moe.gensoukyo.mcgproject.common.entity.fish.*;
-import moe.gensoukyo.mcgproject.common.feature.applecraft.EntityApple;
+import moe.gensoukyo.mcgproject.common.feature.farm.apple.EntityApple;
 import moe.gensoukyo.mcgproject.common.feature.lightbulb.BlockLightBulb;
 import moe.gensoukyo.mcgproject.common.feature.lightbulb.TileLightBulb;
-import moe.gensoukyo.mcgproject.common.feature.littlestone.EntityLittleStone;
+import moe.gensoukyo.mcgproject.common.feature.farm.stone.EntityLittleRock;
 import moe.gensoukyo.mcgproject.common.feature.musicplayer.EntityMusicPlayer;
 import moe.gensoukyo.mcgproject.common.feature.ranstone.*;
 import moe.gensoukyo.mcgproject.common.feature.sticker.BlockSticker;
@@ -148,7 +148,7 @@ public class ModelMapper {
         renderEntity.put(EntityMusicPlayer.class, RenderMusicPlayer.FACTORY);
         renderEntity.put(EntityApple.class, RenderApple.FACTORY);
         renderEntity.put(EntityItemMCG.class, RenderItemMCG.FACTORY);
-        renderEntity.put(EntityLittleStone.class, RenderLittleStone.FACTORY);
+        renderEntity.put(EntityLittleRock.class, RenderLittleStone.FACTORY);
     }
 
 }

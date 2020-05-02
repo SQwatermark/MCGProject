@@ -19,15 +19,15 @@ import java.util.List;
 public class ModFluid
 {
     public static final Fluid INTERSTICE = FluidMCG.singleTex("interstice");
-    public static final Fluid WATER_BLACK = new OverlayWater("waterblack", Color.BLACK);
-    public static final Fluid WATER_BLUE = new OverlayWater("waterblue", Color.BLUE.brighter());
-    public static final Fluid WATER_CYAN = new OverlayWater("watercyan", Color.CYAN.brighter());
-    public static final Fluid WATER_GREEN = new OverlayWater("watergreen", Color.GREEN.brighter());
-    public static final Fluid WATER_ORANGE = new OverlayWater("waterorange" ,Color.ORANGE.brighter());
-    public static final Fluid WATER_PURPLE = new OverlayWater("waterpurple", new Color(255, 0, 255).brighter());
-    public static final Fluid WATER_RED = new OverlayWater("waterred", Color.RED.brighter());
-    public static final Fluid WATER_WHITE = new OverlayWater("waterwhite", Color.WHITE.brighter());
-    public static final Fluid WATER_YELLOW = new OverlayWater("wateryellow", Color.YELLOW.brighter());
+    public static final Fluid WATER_BLACK = new OverlayWater("water_black", Color.BLACK);
+    public static final Fluid WATER_BLUE = new OverlayWater("water_blue", Color.BLUE.brighter());
+    public static final Fluid WATER_CYAN = new OverlayWater("water_cyan", Color.CYAN.brighter());
+    public static final Fluid WATER_GREEN = new OverlayWater("water_green", Color.GREEN.brighter());
+    public static final Fluid WATER_ORANGE = new OverlayWater("water_orange" ,Color.ORANGE);
+    public static final Fluid WATER_PURPLE = new OverlayWater("water_purple", new Color(255, 0, 255).brighter());
+    public static final Fluid WATER_RED = new OverlayWater("water_red", Color.RED.brighter());
+    public static final Fluid WATER_WHITE = new OverlayWater("water_white", Color.WHITE.brighter());
+    public static final Fluid WATER_YELLOW = new OverlayWater("water_yellow", Color.YELLOW.brighter());
     public static final List<Fluid> FLUIDS = new LinkedList<>();
     static
     {

@@ -124,6 +124,7 @@ tile.mcgproject.leaves_mcg_7.name=预留
 tile.mcgproject.leaves_vine.name=藤蔓雕刻元件
 tile.mcgproject.leaves_special.name=地狱火树叶
 tile.mcgproject.block_apple.name=苹果生产点
+tile.mcgproject.rock_spawner.name=Rock Spawner
 
 # 农业与食物
 tile.mcgproject.mooncake_0.name=月饼
@@ -346,6 +347,7 @@ item.mcgproject.block_info_displayer.name=Block Info Dispayer
 item.mcgproject.mcg_food.name=dango
 item.mcgproject.mcg_drink.name=beer
 item.mcgproject.music_player.name=Jukebox Minecart
+item.mcgproject.little_rock.name=Little Rock
 
 item.mcgproject.mcg_food_0.name=一袋杏仁
 item.mcgproject.mcg_food_1.name=一袋核桃
@@ -421,8 +423,8 @@ item.mcgproject.mcg_food_70.name=§c黑无地锦鲤
 item.mcgproject.mcg_food_71.name=鲈鱼
 item.mcgproject.mcg_food_72.name=黄鲈鱼
 item.mcgproject.mcg_food_73.name=黑鲈鱼
-item.mcgproject.mcg_food_74.name=
-item.mcgproject.mcg_food_75.name=
+item.mcgproject.mcg_food_74.name=青苹果
+item.mcgproject.mcg_food_75.name=香蕉
 item.mcgproject.mcg_food_76.name=
 item.mcgproject.mcg_food_77.name=
 item.mcgproject.mcg_food_78.name=
@@ -630,9 +632,21 @@ tile.mcgproject.lightBulb.magenta.name=Magenta Light Bulb
 tile.mcgproject.lightBulb.orange.name=Orange Light Bulb
 tile.mcgproject.lightBulb.white.name=White Light Bulb
 
+fluid.mcgproject.interstice.name=水
+fluid.mcgproject.water_white.name=白色水
+fluid.mcgproject.water_black.name=黑色水
+fluid.mcgproject.water_blue.name=蓝色水
+fluid.mcgproject.water_cyan.name=青色水
+fluid.mcgproject.water_green.name=绿色水
+fluid.mcgproject.water_orange.name=橙色水
+fluid.mcgproject.water_purple.name=紫色水
+fluid.mcgproject.water_red.name=红色水
+fluid.mcgproject.water_yellow.name=黄色水
+item.forge.bucketFilled.name=%s Bucket
+
 gui.mcgproject.bettersign.shift=Shift
 gui.mcgproject.bettersign.clear=Clear
-mcg.menu.website=官网
+gui.mcgproject.menu.website=Official Website
 
 tooltip.mcgproject.itemblockinfo=Right click to view the block information
 tooltip.mcgproject.itemgenbigoak=Right click to generate a big oak

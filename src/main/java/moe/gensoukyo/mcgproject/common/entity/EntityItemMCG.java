@@ -26,45 +26,21 @@ import javax.annotation.Nullable;
 @MCGEntity("item_mcg")
 public class EntityItemMCG extends Entity {
     private static final DataParameter<ItemStack> ITEM = EntityDataManager.createKey(EntityItemMCG.class, DataSerializers.ITEM_STACK);
-    /**
-     * The age of this EntityItem (used to animate it up and down as well as expire it)
-     */
-    private int age;
-    private int pickupDelay;
-    public int angle;
-    /**
-     * The health of this EntityItem. (For example, damage for tools)
-     */
-    private int health;
-
-    /**
-     * The EntityItem's random initial float height.
-     */
-    public float hoverStart;
-
-    /**
-     * The maximum age of this EntityItem.  The item is expired once this is reached.
-     */
-    public int lifespan = 6000;
 
     public EntityItemMCG(World worldIn, double x, double y, double z) {
         super(worldIn);
-        this.health = 5;
-        this.hoverStart = (float) (Math.random() * Math.PI * 2.0D);
         this.setSize(0.25F, 0.25F);
         this.setPosition(x, y, z);
         this.rotationYaw = (float) (Math.random() * 360.0D);
         this.motionX = (float) (Math.random() * 0.20000000298023224D - 0.10000000149011612D);
         this.motionY = 0.20000000298023224D;
         this.motionZ = (float) (Math.random() * 0.20000000298023224D - 0.10000000149011612D);
-        this.angle = rand.nextInt(90);
     }
 
     public EntityItemMCG(World worldIn, double x, double y, double z, ItemStack stack) {
         this(worldIn, x, y, z);
         this.setItem(stack);
         stack.getItem();
-        this.lifespan = stack.getItem().getEntityLifespan(stack, worldIn);
     }
 
     /**
@@ -77,8 +53,6 @@ public class EntityItemMCG extends Entity {
 
     public EntityItemMCG(World worldIn) {
         super(worldIn);
-        this.health = 5;
-        this.hoverStart = (float) (Math.random() * Math.PI * 2.0D);
         this.setSize(0.25F, 0.25F);
         this.setItem(ItemStack.EMPTY);
     }
@@ -154,11 +128,6 @@ public class EntityItemMCG extends Entity {
                 this.motionY *= -0.5D;
             }
 
-            if (this.age != -32768)
-            {
-                ++this.age;
-            }
-
             this.handleWaterMovement();
 
             if (!this.world.isRemote)
@@ -207,11 +176,6 @@ public class EntityItemMCG extends Entity {
      * (abstract) Protected helper method to write subclass entity data to NBT.
      */
     public void writeEntityToNBT(NBTTagCompound compound) {
-        compound.setShort("Health", (short) this.health);
-        compound.setShort("Age", (short) this.age);
-        compound.setShort("PickupDelay", (short) this.pickupDelay);
-        compound.setInteger("Lifespan", lifespan);
-
         if (!this.getItem().isEmpty()) {
             compound.setTag("Item", this.getItem().writeToNBT(new NBTTagCompound()));
         }
@@ -221,20 +185,12 @@ public class EntityItemMCG extends Entity {
      * (abstract) Protected helper method to read subclass entity data from NBT.
      */
     public void readEntityFromNBT(NBTTagCompound compound) {
-        this.health = compound.getShort("Health");
-        this.age = compound.getShort("Age");
-
-        if (compound.hasKey("PickupDelay")) {
-            this.pickupDelay = compound.getShort("PickupDelay");
-        }
-
         NBTTagCompound nbttagcompound = compound.getCompoundTag("Item");
         this.setItem(new ItemStack(nbttagcompound));
 
         if (this.getItem().isEmpty()) {
             this.setDead();
         }
-        if (compound.hasKey("Lifespan")) lifespan = compound.getInteger("Lifespan");
     }
 
     public String getName() {
@@ -262,6 +218,7 @@ public class EntityItemMCG extends Entity {
 
     @Override
     public boolean attackEntityFrom(DamageSource source, float amount) {
+        if (!(source.getTrueSource() instanceof EntityPlayer)) return false;
         return dropItem();
     }
 

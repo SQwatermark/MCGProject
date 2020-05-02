@@ -19,12 +19,7 @@ public class OverlayWater extends Fluid
 
     public OverlayWater(String name, Color color)
     {
-        super(name,
-                BASE_STILL,
-                BASE_FLOW,
-                null,
-                color
-        );
-        setUnlocalizedName(MCGProject.ID + "." + name);
+        super(name, BASE_STILL, BASE_FLOW, null, color);
+        this.setUnlocalizedName(MCGProject.ID + "." + name + ".name");
     }
 }
