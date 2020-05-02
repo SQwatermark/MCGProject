@@ -3,9 +3,9 @@ package moe.gensoukyo.mcgproject.common.init;
 import moe.gensoukyo.mcgproject.common.block.*;
 import moe.gensoukyo.mcgproject.common.block.enums.EnumTileColor;
 import moe.gensoukyo.mcgproject.common.creativetab.MCGTabs;
-import moe.gensoukyo.mcgproject.common.feature.applecraft.BlockMCGApple;
+import moe.gensoukyo.mcgproject.common.feature.farm.apple.BlockMCGApple;
 import moe.gensoukyo.mcgproject.common.feature.backpack.GensoChest;
-import moe.gensoukyo.mcgproject.common.feature.littlestone.BlockStoneSpawner;
+import moe.gensoukyo.mcgproject.common.feature.farm.stone.BlockRockSpawner;
 import moe.gensoukyo.mcgproject.common.feature.lightbulb.BlockLightBulb;
 import moe.gensoukyo.mcgproject.common.feature.ranstone.*;
 import moe.gensoukyo.mcgproject.common.feature.sticker.BlockSticker;
@@ -156,7 +156,7 @@ public class ModBlock {
         blocks1.add(new BlockMCGStairs(TEST1.getDefaultState(), "test_stairs_1", MCGTabs.OLD, SoundType.STONE));
         blocks1.add(new BlockMCGStairs(TEST2.getDefaultState(), "test_stairs_2", MCGTabs.OLD, SoundType.STONE));
 
-        blocks1.add(new BlockStoneSpawner());
+        blocks1.add(new BlockRockSpawner());
 
         //将所有链表的引用合并到ArrayList
         addArrayList();

@@ -1,12 +1,10 @@
 package moe.gensoukyo.mcgproject.common.item;
 
 import moe.gensoukyo.mcgproject.common.creativetab.MCGTabs;
-import moe.gensoukyo.mcgproject.common.entity.EntityItemMCG;
 import moe.gensoukyo.mcgproject.core.MCGProject;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumActionResult;
@@ -42,9 +40,7 @@ public class ItemGenBigOak extends Item {
     @Override
     public EnumActionResult onItemUse(EntityPlayer player, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
         Random random = new Random();
-        //generateTree(worldIn, pos.add(0, 1, 0), random);
-        EntityItemMCG itemMCG = new EntityItemMCG(worldIn, pos.getX() + 0.5, pos.getY() + 1.2, pos.getZ() + 0.5, new ItemStack(Items.APPLE));
-        if (!worldIn.isRemote) worldIn.spawnEntity(itemMCG);
+        generateTree(worldIn, pos.add(0, 1, 0), random);
         return EnumActionResult.SUCCESS;
     }
 

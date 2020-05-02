@@ -12,39 +12,29 @@ import java.awt.*;
  * @author Chloe_koopa
  */
 @SuppressWarnings("unused")
-public class FluidMCG extends Fluid
-{
-    public FluidMCG(String name)
-    {
+public class FluidMCG extends Fluid {
+
+    public FluidMCG(String name) {
         this(name, Color.WHITE);
     }
-    public FluidMCG(String name, Color color)
-    {
+
+    public FluidMCG(String name, Color color) {
         this(name, false, color);
     }
 
-    public FluidMCG(String name, boolean hasOverlay, Color color)
-    {
-        this(name,
-                new ResourceLocation(MCGProject.ID, "fluid/" + name + "_still"),
+    public FluidMCG(String name, boolean hasOverlay, Color color) {
+        this(name, new ResourceLocation(MCGProject.ID, "fluid/" + name + "_still"),
                 new ResourceLocation(MCGProject.ID, "fluid/" + name + "_flow"),
-                hasOverlay ? new ResourceLocation(MCGProject.ID, "fluid/" + name + "_overlay") : null,
-                color
-        );
+                hasOverlay ? new ResourceLocation(MCGProject.ID, "fluid/" + name + "_overlay") : null, color);
     }
 
-    protected FluidMCG(String fluidName,
-                       ResourceLocation still,
-                       ResourceLocation flowing,
-                       @Nullable ResourceLocation overlay,
-                       Color color)
-    {
+    protected FluidMCG(String fluidName, ResourceLocation still,
+                       ResourceLocation flowing, @Nullable ResourceLocation overlay, Color color) {
         super(fluidName, still, flowing, overlay, color);
-        setUnlocalizedName(MCGProject.ID + "." + fluidName);
+        this.setUnlocalizedName(MCGProject.ID + "." + fluidName + ".name");
     }
 
-    public static FluidMCG singleTex(String name)
-    {
+    public static FluidMCG singleTex(String name) {
         return singleTex(name, Color.WHITE);
     }
 
@@ -52,15 +42,8 @@ public class FluidMCG extends Fluid
      * 生成只有一种材质的水
      * 材质放在fluid/[名称].png
      */
-    public static FluidMCG singleTex(String name, Color color)
-    {
-        final ResourceLocation theOneTex =
-                new ResourceLocation(MCGProject.ID, "fluid/" + name);
-        return new FluidMCG(name,
-                theOneTex,
-                theOneTex,
-                null,
-                color
-        );
+    public static FluidMCG singleTex(String name, Color color) {
+        final ResourceLocation theOneTex = new ResourceLocation(MCGProject.ID, "fluid/" + name);
+        return new FluidMCG(name, theOneTex, theOneTex, null, color);
     }
 }

@@ -1,4 +1,4 @@
-package moe.gensoukyo.mcgproject.common.feature.applecraft;
+package moe.gensoukyo.mcgproject.common.feature.farm.apple;
 
 import moe.gensoukyo.mcgproject.common.entity.MCGEntity;
 import moe.gensoukyo.mcgproject.common.init.ModItem;

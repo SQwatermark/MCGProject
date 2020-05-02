@@ -39,6 +39,7 @@ public class GuiMusicPlayer extends GuiScreen {
 	private int anim = 0;
 	private String infoText;
 	ArrayList<String> randomMusics = new ArrayList<>();
+	public final String NETEASE_URL = "http://music.163.com/song/media/outer/url?id=";
 	
 	public GuiMusicPlayer(EntityPlayer player, EntityMusicPlayer musicPlayer) {
 		this.musicPlayer = musicPlayer;
@@ -53,6 +54,7 @@ public class GuiMusicPlayer extends GuiScreen {
 		randomMusics.add("26134231");
 		randomMusics.add("407685151");
 		randomMusics.add("30251976");
+		randomMusics.add("1444956021");
 	}
 
 	@Override
@@ -192,6 +194,8 @@ public class GuiMusicPlayer extends GuiScreen {
 			return parsePls(url);
 		if (url.toLowerCase().contains("music.163.com"))
 			return parseNetease(url);
+		if (MathMCG.isNumeric(url))
+			return NETEASE_URL + url + ".mp3";
 		return url;
 	}
 
@@ -249,7 +253,7 @@ public class GuiMusicPlayer extends GuiScreen {
 			NetworkWrapper.INSTANCE.sendToServer(new MusicPlayerPacket(musicPlayer));
 		}
 		else if (button.id == 6) {
-			streamTextBox.setText("http://music.163.com/song/media/outer/url?id=" + randomMusics.get(new Random().nextInt(randomMusics.size())) + ".mp3");
+			streamTextBox.setText(NETEASE_URL + randomMusics.get(new Random().nextInt(randomMusics.size())) + ".mp3");
 		}
 		else if (button.id == 7) {
 			musicPlayer.immersive = !musicPlayer.immersive;
@@ -274,7 +278,7 @@ public class GuiMusicPlayer extends GuiScreen {
 		else
 			state = "未锁定";
 
-		int textWidth = fontRenderer.getStringWidth("When a jukebox is unlocked,")+2;
+		int textWidth = fontRenderer.getStringWidth("When a jukebox is unlocked,") + 2;
 
 		int i4 = 0xf0100010;
 		drawGradientRect(t + 15 - 3, g - 40 - 4, t + textWidth + 3, g + 8 + 4, i4, i4);
@@ -348,9 +352,6 @@ public class GuiMusicPlayer extends GuiScreen {
 	}
 
 	public String parseNetease(String input) {
-		final String NETEASE_URL = "http://music.163.com/song/media/outer/url?id=";
-		if (MathMCG.isNumeric(input))
-			return NETEASE_URL + input + ".mp3";
 		if (input.contains("music.163.com") && input.contains("?")) {
 			String[] args = input.split("\\?");
 			if (args.length > 1) {

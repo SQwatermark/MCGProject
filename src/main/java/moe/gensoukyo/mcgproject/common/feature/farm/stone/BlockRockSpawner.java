@@ -1,4 +1,4 @@
-package moe.gensoukyo.mcgproject.common.feature.littlestone;
+package moe.gensoukyo.mcgproject.common.feature.farm.stone;
 
 import moe.gensoukyo.mcgproject.common.creativetab.MCGTabs;
 import moe.gensoukyo.mcgproject.common.entity.EntityItemMCG;
@@ -17,14 +17,14 @@ import net.minecraftforge.common.ForgeHooks;
 import java.util.List;
 import java.util.Random;
 
-public class BlockStoneSpawner extends Block {
+public class BlockRockSpawner extends Block {
 
-    public BlockStoneSpawner() {
+    public BlockRockSpawner() {
         super(Material.ROCK);
         this.setTickRandomly(true);
-        this.setCreativeTab(MCGTabs.PROP);
-        this.setRegistryName("stone_spawner");
-        this.setTranslationKey(MCGProject.ID + "." + "stone_spawner");
+        this.setCreativeTab(MCGTabs.NATURE);
+        this.setRegistryName("rock_spawner");
+        this.setTranslationKey(MCGProject.ID + "." + "rock_spawner");
     }
 
     @Override
@@ -35,9 +35,15 @@ public class BlockStoneSpawner extends Block {
             for (Entity entity : entities) {
                 if (entity instanceof EntityItemMCG) i++;
             }
-            if (i > 5) return;
-            EntityItemMCG stone = new EntityItemMCG(worldIn, pos.getX() + rand.nextInt(30) - 15, pos.getY(), pos.getZ() + rand.nextInt(30) - 15, new ItemStack(Blocks.STONE));
-            worldIn.spawnEntity(stone);
+            if (i > 4) return;
+            int x = pos.getX() + rand.nextInt(30) - 15;
+            int z = pos.getZ() + rand.nextInt(30) - 15;
+            int y = worldIn.getHeight(x, z);
+            EntityItemMCG stone;
+            if (worldIn.getBlockState(new BlockPos(x, y - 1, z)).isOpaqueCube()) {
+                stone = new EntityItemMCG(worldIn, x, y, z, new ItemStack(Blocks.STONE));
+                worldIn.spawnEntity(stone);
+            }
             ForgeHooks.onCropsGrowPost(worldIn, pos, state, worldIn.getBlockState(pos));
         }
     }

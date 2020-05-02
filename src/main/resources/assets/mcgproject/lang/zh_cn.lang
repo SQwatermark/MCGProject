@@ -2,7 +2,7 @@ itemGroup.mcgproject.touhou=MCG: 东方
 itemGroup.mcgproject.normal=MCG: 原版拓展
 itemGroup.mcgproject.european=MCG: 西方
 itemGroup.mcgproject.fantasy=MCG: 幻想
-itemGroup.mcgproject.nature=MCG: 自然与民生
+itemGroup.mcgproject.nature=MCG: 自然与农业
 itemGroup.mcgproject.clothes=MCG: 服装（尚未完善 请勿使用）
 itemGroup.mcgproject.old=旧版移植
 itemGroup.mcgproject.prop=MCG: 道具
@@ -124,6 +124,7 @@ tile.mcgproject.leaves_mcg_7.name=预留
 tile.mcgproject.leaves_vine.name=藤蔓雕刻元件
 tile.mcgproject.leaves_special.name=地狱火树叶
 tile.mcgproject.block_apple.name=苹果生产点
+tile.mcgproject.rock_spawner.name=小石头生产点
 
 
 # 农业与食物
@@ -347,6 +348,7 @@ item.mcgproject.block_info_displayer.name=方块勘探仪
 item.mcgproject.mcg_food.name=团子
 item.mcgproject.mcg_drink.name=啤酒
 item.mcgproject.music_player.name=音乐矿车
+item.mcgproject.little_rock.name=小石块
 
 item.mcgproject.mcg_food_0.name=一袋杏仁
 item.mcgproject.mcg_food_1.name=一袋核桃
@@ -423,7 +425,7 @@ item.mcgproject.mcg_food_71.name=鲈鱼
 item.mcgproject.mcg_food_72.name=黄鲈鱼
 item.mcgproject.mcg_food_73.name=黑鲈鱼
 item.mcgproject.mcg_food_74.name=青苹果
-item.mcgproject.mcg_food_75.name=
+item.mcgproject.mcg_food_75.name=香蕉
 item.mcgproject.mcg_food_76.name=
 item.mcgproject.mcg_food_77.name=
 item.mcgproject.mcg_food_78.name=
@@ -631,9 +633,21 @@ tile.mcgproject.lightBulb.magenta.name=品红色灯泡
 tile.mcgproject.lightBulb.orange.name=橙色灯泡
 tile.mcgproject.lightBulb.white.name=白色灯泡
 
+fluid.mcgproject.interstice.name=水
+fluid.mcgproject.water_white.name=白色水
+fluid.mcgproject.water_black.name=黑色水
+fluid.mcgproject.water_blue.name=蓝色水
+fluid.mcgproject.water_cyan.name=青色水
+fluid.mcgproject.water_green.name=绿色水
+fluid.mcgproject.water_orange.name=橙色水
+fluid.mcgproject.water_purple.name=紫色水
+fluid.mcgproject.water_red.name=红色水
+fluid.mcgproject.water_yellow.name=黄色水
+item.forge.bucketFilled.name=%s桶
+
 gui.mcgproject.bettersign.shift=移位
 gui.mcgproject.bettersign.clear=清空
-mcg.menu.website=官网
+gui.mcgproject.menu.website=官网
 
 tooltip.mcgproject.itemblockinfo=右键查看方块信息
 tooltip.mcgproject.itemgenbigoak=右击即可种下大橡树

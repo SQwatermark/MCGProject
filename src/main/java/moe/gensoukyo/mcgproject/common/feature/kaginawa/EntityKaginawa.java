@@ -1,5 +1,6 @@
-package moe.gensoukyo.mcgproject.common.entity;
+package moe.gensoukyo.mcgproject.common.feature.kaginawa;
 
+import moe.gensoukyo.mcgproject.common.entity.MCGEntity;
 import moe.gensoukyo.mcgproject.core.MCGProject;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.projectile.EntityThrowable;

@@ -1,6 +1,6 @@
 package moe.gensoukyo.mcgproject.core;
 
-import moe.gensoukyo.mcgproject.common.entity.EntityKaginawa;
+import moe.gensoukyo.mcgproject.common.feature.kaginawa.EntityKaginawa;
 import moe.gensoukyo.mcgproject.common.feature.BetterSign;
 import moe.gensoukyo.mcgproject.common.feature.CustomNPCsHook;
 import moe.gensoukyo.mcgproject.common.feature.MoreBannerPatterns;
@@ -54,10 +54,6 @@ public class CommonProxy {
     @EventHandler
     public void postInit(FMLPostInitializationEvent event) {
 
-    }
-
-    public float getJukeboxVolume() {
-        return 0;
     }
 
 }

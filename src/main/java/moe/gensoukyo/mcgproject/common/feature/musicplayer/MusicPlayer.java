@@ -3,7 +3,8 @@ package moe.gensoukyo.mcgproject.common.feature.musicplayer;
 import javazoom.jl.player.advanced.AdvancedPlayer;
 import javazoom.jl.player.advanced.PlaybackEvent;
 import javazoom.jl.player.advanced.PlaybackListener;
-import moe.gensoukyo.mcgproject.core.MCGProject;
+import net.minecraft.client.Minecraft;
+import net.minecraft.util.SoundCategory;
 
 import java.net.URL;
 
@@ -73,7 +74,8 @@ public class MusicPlayer extends PlaybackListener implements Runnable {
 	{
 		if (device != null)
 		{
-			device.setVolume(f * MCGProject.proxy.getJukeboxVolume());
+			device.setVolume(f * Minecraft.getMinecraft().gameSettings.getSoundLevel(SoundCategory.RECORDS)
+					* Minecraft.getMinecraft().gameSettings.getSoundLevel(SoundCategory.MASTER));
 		}
 	}
 

@@ -1,7 +1,6 @@
-package moe.gensoukyo.mcgproject.common.item;
+package moe.gensoukyo.mcgproject.common.feature.kaginawa;
 
 import moe.gensoukyo.mcgproject.common.creativetab.MCGTabs;
-import moe.gensoukyo.mcgproject.common.entity.EntityKaginawa;
 import moe.gensoukyo.mcgproject.core.MCGProject;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;

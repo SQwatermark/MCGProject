@@ -1,7 +1,7 @@
 package moe.gensoukyo.mcgproject.cilent.entity;
 
-import moe.gensoukyo.mcgproject.common.entity.EntityKaginawa;
-import moe.gensoukyo.mcgproject.common.item.ItemKaginawa;
+import moe.gensoukyo.mcgproject.common.feature.kaginawa.EntityKaginawa;
+import moe.gensoukyo.mcgproject.common.feature.kaginawa.ItemKaginawa;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.GlStateManager;

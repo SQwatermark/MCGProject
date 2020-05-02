@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "mcgproject:items/mcg_boat"
+    "layer0": "mcgproject:items/little_rock"
   }
 }
