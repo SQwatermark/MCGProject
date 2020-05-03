@@ -43,7 +43,7 @@ public class EntityMusicPlayer extends EntityMinecart {
     public String owner = "";
     public boolean immersive;
 
-    public MusicPlayer mp3Player;
+    public String musicCode;
 
     public EntityMusicPlayer(World worldIn) {
         super(worldIn);
@@ -120,27 +120,15 @@ public class EntityMusicPlayer extends EntityMinecart {
                 this.streamURL = this.dataManager.get(URL);
                 this.startStream();
             }
-            if ((Minecraft.getMinecraft().player != null) && (this.mp3Player != null)) {
+            IMusicManager manager = MCGProject.proxy.getMusicManager();
+            if ((Minecraft.getMinecraft().player != null) && manager.isExist(musicCode)) {
                 volume = dataManager.get(VOLUME);
-                float distanceSq = (float) getDistanceSq(Minecraft.getMinecraft().player.posX,
-                        Minecraft.getMinecraft().player.posY, Minecraft.getMinecraft().player.posZ);
+                manager.changeMaxVolume(musicCode, volume);
+                manager.updatePosition(musicCode, this.posX, this.posY, this.posZ);
+                manager.updateVolume(musicCode);
                 // 调整音量算法
                 //float v2 = 10000.0F / distanceSq / 20.0F;
-                if (volume == 0) {
-                    this.mp3Player.setVolume(0);
-                } else {
-                    float n = (1 + volume) * 20;
-                    float nn = n * n;
-                    float v;
-                    if (distanceSq <= nn) {
-                        v = distanceSq / 4 / nn;
-                    }
-                    else {
-                        v = (float) (- distanceSq / 12 / nn + 2 * Math.sqrt(distanceSq) / 3 / n - 1 / 3.0);
-                    }
-                    this.mp3Player.setVolume(volume * (1 - v));
-                }
-                if (!this.immersive && mp3Player.isPlaying()) {
+                if (!this.immersive && manager.isPlaying(musicCode)) {
                     int random2 = rand.nextInt(24) + 1;
                     world.spawnParticle(EnumParticleTypes.NOTE, posX, posY + 1.2D, posZ, random2 / 24.0D, 0.0D, 0.0D);
                 }
@@ -170,20 +158,18 @@ public class EntityMusicPlayer extends EntityMinecart {
     public void startStream() {
         if (!this.isPlaying) {
             this.isPlaying = true;
-            if (world.isRemote) {
-                if (this.mp3Player != null) this.mp3Player.requestStop();
-                this.mp3Player = MCGProject.proxy.playerManager.getNewPlayer(this.streamURL, 100);
-                mp3Player.setVolume(0);
-            }
+            IMusicManager manager = MCGProject.proxy.getMusicManager();
+            manager.closeAll(getUniqueID());
+            musicCode = manager.playNew(getUniqueID(), this.streamURL, posX, posY, posZ);
+            manager.changeMaxVolume(musicCode, 0);
+            manager.updateVolume(musicCode);
         }
     }
 
     public void stopStream() {
         if (this.isPlaying) {
             this.isPlaying = false;
-            if (world.isRemote && this.mp3Player != null) {
-                this.mp3Player.requestStop();
-            }
+            MCGProject.proxy.getMusicManager().closeAll(getUniqueID());
         }
     }
 
@@ -238,7 +224,7 @@ public class EntityMusicPlayer extends EntityMinecart {
     }
 
     public boolean isPlaying(){
-        return mp3Player != null && mp3Player.isPlaying() && isPlaying;
+        return MCGProject.proxy.getMusicManager().isPlaying(musicCode) && isPlaying;
     }
 
     //TODO：bgm模式（到达位置播放）和dj模式(同步播放) DISCARD

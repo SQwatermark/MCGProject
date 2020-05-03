@@ -1,8 +1,9 @@
-package moe.gensoukyo.mcgproject.common.feature.musicplayer;
+package moe.gensoukyo.mcgproject.cilent.feature.musicPlayer;
 
 import javazoom.jl.player.advanced.AdvancedPlayer;
 import javazoom.jl.player.advanced.PlaybackEvent;
 import javazoom.jl.player.advanced.PlaybackListener;
+import moe.gensoukyo.mcgproject.common.feature.musicplayer.IMusic;
 import net.minecraft.client.Minecraft;
 import net.minecraft.util.SoundCategory;
 
@@ -11,7 +12,7 @@ import java.net.URL;
 /**
  * @author MrMks
  */
-public class MusicPlayer extends PlaybackListener implements Runnable {
+class MusicPlayer extends PlaybackListener implements Runnable {
 	private String streamURL;
 	private AdvancedPlayer player;
 	private VolumeAudioDevice device;
@@ -31,11 +32,25 @@ public class MusicPlayer extends PlaybackListener implements Runnable {
 		}
 	}
 
+	private String name;
+	private IMusic music;
+	public MusicPlayer(String name, IMusic music){
+		try {
+			this.name = name;
+			this.music = music;
+			request = false;
+			isPlaying = true;
+			new Thread(this).start();
+		} catch (Throwable tr) {
+			tr.printStackTrace();
+		}
+	}
+
 	@Override
 	public void run() {
 		try {
 			device = new VolumeAudioDevice();
-			player = new AdvancedPlayer(new URL(streamURL).openStream(), device);
+			player = new AdvancedPlayer(music.openStream(), device);
 			player.setPlayBackListener(this);
 			// 播放时，线程会卡在这里，直到停止播放
 			player.play(start, Integer.MAX_VALUE);
@@ -70,6 +85,10 @@ public class MusicPlayer extends PlaybackListener implements Runnable {
 		return isPlaying;
 	}
 
+	public void updateVolume(double x, double y, double z){
+		setVolume(music.getVolume(x, y, z));
+	}
+
 	public void setVolume(float f)
 	{
 		if (device != null)
@@ -86,5 +105,13 @@ public class MusicPlayer extends PlaybackListener implements Runnable {
 		else {
 			return 0.0f;
 		}
+	}
+
+	public String getName(){
+		return name;
+	}
+
+	public int getPosition(){
+		return device.getPosition();
 	}
 }

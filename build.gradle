@@ -89,3 +89,7 @@ processResources {
         options.encoding = 'UTF-8'
     }
 }
+
+runClient {
+    args "-username", "miuela"
+}

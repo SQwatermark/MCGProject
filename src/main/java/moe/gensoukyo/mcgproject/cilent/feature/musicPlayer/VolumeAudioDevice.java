@@ -1,11 +1,11 @@
-package moe.gensoukyo.mcgproject.common.feature.musicplayer;
+package moe.gensoukyo.mcgproject.cilent.feature.musicPlayer;
 
 import javazoom.jl.decoder.Decoder;
 import javazoom.jl.decoder.JavaLayerException;
 import javazoom.jl.player.AudioDevice;
 import javazoom.jl.player.FactoryRegistry;
 
-public class VolumeAudioDevice implements AudioDevice {
+class VolumeAudioDevice implements AudioDevice {
     private final AudioDevice device;
     private float volume = 0.0f;
     private float targetVolume = 0.0f;
@@ -25,7 +25,7 @@ public class VolumeAudioDevice implements AudioDevice {
 
     @Override
     public void write(short[] samples, int offs, int len) throws JavaLayerException {
-        float step = (targetVolume - volume) / Math.min(samples.length, 1);
+        float step = (targetVolume - volume) / Math.max(samples.length, 1);
         for (int samp = 0; samp < samples.length; samp++)
         {
             samples[samp] = (short)(samples[samp] * (step * samp + volume));

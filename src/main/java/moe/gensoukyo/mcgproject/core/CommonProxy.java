@@ -6,7 +6,8 @@ import moe.gensoukyo.mcgproject.common.feature.CustomNPCsHook;
 import moe.gensoukyo.mcgproject.common.feature.MoreBannerPatterns;
 import moe.gensoukyo.mcgproject.common.feature.WorldGuard;
 import moe.gensoukyo.mcgproject.common.feature.futuremc.FMBlock;
-import moe.gensoukyo.mcgproject.common.feature.musicplayer.MusicPlayerManager;
+import moe.gensoukyo.mcgproject.common.feature.musicplayer.IMusicManager;
+import moe.gensoukyo.mcgproject.common.feature.musicplayer.MusicManager;
 import moe.gensoukyo.mcgproject.common.feature.musicplayer.StreamStopper;
 import moe.gensoukyo.mcgproject.common.init.*;
 import moe.gensoukyo.mcgproject.common.network.NetworkWrapper;
@@ -24,7 +25,7 @@ import java.util.WeakHashMap;
 public class CommonProxy {
 
     public WeakHashMap<Entity, EntityKaginawa> kagimap = new WeakHashMap<>();
-    public MusicPlayerManager playerManager = new MusicPlayerManager();
+    protected IMusicManager musicManager;
 
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
@@ -54,6 +55,11 @@ public class CommonProxy {
     @EventHandler
     public void postInit(FMLPostInitializationEvent event) {
 
+    }
+
+    public IMusicManager getMusicManager(){
+        if (musicManager == null) musicManager = new MusicManager();
+        return musicManager;
     }
 
 }

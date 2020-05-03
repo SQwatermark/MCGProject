@@ -1,19 +1,19 @@
-package moe.gensoukyo.mcgproject.common.feature.musicplayer;
+package moe.gensoukyo.mcgproject.cilent.feature.musicPlayer;
 
 import java.util.HashSet;
 
 /**
  * @author MrMks
  */
-public class MusicThread extends Thread{
+class MusicThread extends Thread{
     private final HashSet<MusicPlayer> set = new HashSet<>();
     private final boolean running;
-    private final MusicPlayerManager manager;
+    private final IPlayerCallback callback;
     private boolean startNoticed = false;
     private boolean stopNoticed = true;
-    public MusicThread(MusicPlayerManager manager){
+    public MusicThread(IPlayerCallback callback){
         running = true;
-        this.manager = manager;
+        this.callback = callback;
         start();
     }
 
@@ -30,18 +30,23 @@ public class MusicThread extends Thread{
                 for (MusicPlayer player : set) {
                     if (player.isPlaying() && player.isRequestStop()) player.stop();
                 }
+                set.forEach(player->{
+                    if (player.isRequestStop() && !player.isPlaying()) {
+                        callback.onMusicStopped(player.getName());
+                    }
+                });
                 set.removeIf(player -> !player.isPlaying() && player.isRequestStop());
                 if (set.isEmpty()) {
                     if (!stopNoticed) {
                         stopNoticed = true;
                         startNoticed = false;
-                        manager.onMusicStopped();
+                        callback.onMusicStopped();
                     }
                 } else {
                     if (!startNoticed) {
                         stopNoticed = false;
                         startNoticed = true;
-                        manager.onMusicStarted();
+                        callback.onMusicStarted();
                     }
                 }
                 try {
