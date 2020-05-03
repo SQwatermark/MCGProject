@@ -5,6 +5,7 @@ import moe.gensoukyo.mcgproject.common.feature.musicplayer.MusicManager;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.util.SoundCategory;
+import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -46,10 +47,10 @@ public class ClientMusicManager extends MusicManager {
     });
 
     @Override
-    public String playNew(UUID uuid, String fullPath, double x, double y, double z, int start) {
+    public String playNew(UUID uuid, String fullPath, World world, double x, double y, double z, int start) {
         if (entityMap.containsKey(uuid)) playerMap.remove(entityMap.get(uuid)).requestStop();
 
-        String hashcode = super.playNew(uuid, fullPath, x, y, z, start);
+        String hashcode = super.playNew(uuid, fullPath, world, x, y, z, start);
         IMusic music = map.get(hashcode);
         MusicPlayer player = new MusicPlayer(hashcode, music);
         thread.add(player);
@@ -59,15 +60,13 @@ public class ClientMusicManager extends MusicManager {
 
     @Override
     public void updateVolume(String hash) {
+        IMusic music = map.get(hash);
         MusicPlayer player = playerMap.get(hash);
         EntityPlayerSP playerSP = Minecraft.getMinecraft().player;
-        if (player != null) player.updateVolume(playerSP.posX, playerSP.posY, playerSP.posZ);
-    }
-
-    @Override
-    public void updateVolume() {
-        EntityPlayerSP playerSP = Minecraft.getMinecraft().player;
-        playerMap.values().forEach(player->player.updateVolume(playerSP.posX, playerSP.posY, playerSP.posZ));
+        if (player != null) {
+            if (playerSP.world.equals(music.getWorld())) player.updateVolume(playerSP.world, playerSP.posX, playerSP.posY, playerSP.posZ);
+            else closePlaying(hash);
+        } else closePlaying(hash);
     }
 
     @Override

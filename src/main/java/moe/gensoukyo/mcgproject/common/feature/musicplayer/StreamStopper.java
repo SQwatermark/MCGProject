@@ -3,7 +3,6 @@ package moe.gensoukyo.mcgproject.common.feature.musicplayer;
 import moe.gensoukyo.mcgproject.core.MCGProject;
 import net.minecraftforge.event.world.WorldEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.fml.common.gameevent.TickEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -21,6 +20,8 @@ public class StreamStopper {
     @SideOnly(Side.CLIENT)
     @SubscribeEvent
     public void onWorldUnload(WorldEvent.Unload event) {
-        if (!event.getWorld().isRemote) MCGProject.proxy.getMusicManager().closeAll();
+        if (event.getWorld().isRemote) {
+            MCGProject.proxy.getMusicManager().closeAll();
+        }
     }
 }

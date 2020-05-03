@@ -124,7 +124,7 @@ public class EntityMusicPlayer extends EntityMinecart {
             if ((Minecraft.getMinecraft().player != null) && manager.isExist(musicCode)) {
                 volume = dataManager.get(VOLUME);
                 manager.changeMaxVolume(musicCode, volume);
-                manager.updatePosition(musicCode, this.posX, this.posY, this.posZ);
+                manager.updatePosition(musicCode, world, this.posX, this.posY, this.posZ);
                 manager.updateVolume(musicCode);
                 // 调整音量算法
                 //float v2 = 10000.0F / distanceSq / 20.0F;
@@ -160,7 +160,7 @@ public class EntityMusicPlayer extends EntityMinecart {
             this.isPlaying = true;
             IMusicManager manager = MCGProject.proxy.getMusicManager();
             manager.closeAll(getUniqueID());
-            musicCode = manager.playNew(getUniqueID(), this.streamURL, posX, posY, posZ);
+            musicCode = manager.playNew(getUniqueID(), this.streamURL, world, posX, posY, posZ);
             manager.changeMaxVolume(musicCode, 0);
             manager.updateVolume(musicCode);
         }

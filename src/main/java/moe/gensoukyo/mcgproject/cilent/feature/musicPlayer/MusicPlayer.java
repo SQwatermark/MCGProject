@@ -6,8 +6,7 @@ import javazoom.jl.player.advanced.PlaybackListener;
 import moe.gensoukyo.mcgproject.common.feature.musicplayer.IMusic;
 import net.minecraft.client.Minecraft;
 import net.minecraft.util.SoundCategory;
-
-import java.net.URL;
+import net.minecraft.world.World;
 
 /**
  * @author MrMks
@@ -85,8 +84,8 @@ class MusicPlayer extends PlaybackListener implements Runnable {
 		return isPlaying;
 	}
 
-	public void updateVolume(double x, double y, double z){
-		setVolume(music.getVolume(x, y, z));
+	public void updateVolume(World world, double x, double y, double z){
+		setVolume(music.getVolume(world, x, y, z));
 	}
 
 	public void setVolume(float f)
