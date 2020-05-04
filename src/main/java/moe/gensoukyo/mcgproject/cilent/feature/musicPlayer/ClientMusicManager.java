@@ -59,6 +59,11 @@ public class ClientMusicManager extends MusicManager {
     }
 
     @Override
+    public boolean isPlaying(String hash) {
+        return super.isPlaying(hash) && playerMap.containsKey(hash) && playerMap.get(hash).isPlaying();
+    }
+
+    @Override
     public void updateVolume(String hash) {
         IMusic music = map.get(hash);
         MusicPlayer player = playerMap.get(hash);

@@ -7,8 +7,8 @@ import java.util.HashMap;
 import java.util.UUID;
 
 public class MusicManager implements IMusicManager {
-    protected HashMap<String, IMusic> map = new HashMap<>();
-    protected HashMap<UUID, String> entityMap = new HashMap<>();
+    protected final HashMap<String, IMusic> map = new HashMap<>();
+    protected final HashMap<UUID, String> entityMap = new HashMap<>();
 
     @Override
     public String playNew(UUID uuid, String fullPath, World world, double x, double y, double z) {

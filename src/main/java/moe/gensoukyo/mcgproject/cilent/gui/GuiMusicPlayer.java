@@ -106,7 +106,7 @@ public class GuiMusicPlayer extends GuiScreen {
 		drawTexturedModalRect(var5 + 6, var6 + 6, 20, 0, 7, 10);
 		drawTexturedModalRect(var5 + 13, var6 + 6, anim / 100, 12, (28 * (gui_width / 28)) / 2, 10);
 		drawTexturedModalRect(var5 + 13 + (28 * (gui_width / 28)) / 2, var6 + 6, anim / 100, 12, (28 * (gui_width / 28)) / 2, 10);
-		if (musicPlayer.isPlaying) {
+		if (musicPlayer.isPlaying()) {
 			anim += 10;
 			if (anim == 2800) {
 				anim = 0;
@@ -115,7 +115,7 @@ public class GuiMusicPlayer extends GuiScreen {
 
 		//fontRenderer.drawString("Date: " + Calendar.getInstance().get(Calendar.MONTH) + " " + Calendar.getInstance().get(Calendar.DATE), var5 - gui_width / 2, var6 - 30, 0xffffffff);
 		
-		if((Minecraft.getMinecraft().player != null) && ((musicPlayer).musicCode != null)) {
+		if((Minecraft.getMinecraft().player != null) && musicPlayer.isPlaying()) {
 			fontRenderer.drawString("音量: " + Math.round(musicPlayer.volume * 100), width / 2 - 26, height / 2 + 18, 0xff0e0e0e);
 		}
 		else {
@@ -200,11 +200,10 @@ public class GuiMusicPlayer extends GuiScreen {
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
 	protected void actionPerformed(GuiButton button) {
 		if (button.id == 0) {
 			if (streamTextBox.getText() != null && streamTextBox.getText().length() > 0) {
-				if (!musicPlayer.isPlaying) {
+				if (!musicPlayer.isPlaying()) {
 					musicPlayer.streamURL = parseURL(this.streamTextBox.getText());
 					musicPlayer.startStream();
 				}
@@ -213,7 +212,7 @@ public class GuiMusicPlayer extends GuiScreen {
 				}
 				NetworkWrapper.INSTANCE.sendToServer(new MusicPlayerPacket(musicPlayer));
 			}
-			else if (musicPlayer.isPlaying){
+			else if (musicPlayer.isPlaying()){
 				musicPlayer.stopStream();
 				NetworkWrapper.INSTANCE.sendToServer(new MusicPlayerPacket(musicPlayer));
 			}
@@ -263,7 +262,7 @@ public class GuiMusicPlayer extends GuiScreen {
 
 	@SideOnly(Side.CLIENT)
 	public boolean getState() {
-		return musicPlayer.isPlaying;
+		return musicPlayer.isPlaying();
 	}
 
 	@Override

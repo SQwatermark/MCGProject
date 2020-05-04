@@ -6,7 +6,6 @@ import moe.gensoukyo.mcgproject.common.network.MusicPlayerGuiPacket;
 import moe.gensoukyo.mcgproject.common.network.NetworkWrapper;
 import moe.gensoukyo.mcgproject.core.MCGProject;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityMinecart;
 import net.minecraft.entity.player.EntityPlayer;
@@ -116,22 +115,23 @@ public class EntityMusicPlayer extends EntityMinecart {
         super.onUpdate();
         if (world.isRemote && this.ticksExisted % 5 == 0) {
             this.immersive = this.dataManager.get(IMMERSIVE);
-            if (!this.isPlaying && this.dataManager.get(IS_PLAYING)) {
+            boolean d_isPlaying = dataManager.get(IS_PLAYING);
+            if (isPlaying && !d_isPlaying) {
+                this.stopStream();
+            } else if (!isPlaying && d_isPlaying) {
                 this.streamURL = this.dataManager.get(URL);
                 this.startStream();
             }
             IMusicManager manager = MCGProject.proxy.getMusicManager();
-            if ((Minecraft.getMinecraft().player != null) && manager.isExist(musicCode)) {
+            if (manager.isPlaying(musicCode)) {
                 volume = dataManager.get(VOLUME);
                 manager.changeMaxVolume(musicCode, volume);
                 manager.updatePosition(musicCode, world, this.posX, this.posY, this.posZ);
                 manager.updateVolume(musicCode);
-                // 调整音量算法
-                //float v2 = 10000.0F / distanceSq / 20.0F;
-                if (!this.immersive && manager.isPlaying(musicCode)) {
-                    int random2 = rand.nextInt(24) + 1;
-                    world.spawnParticle(EnumParticleTypes.NOTE, posX, posY + 1.2D, posZ, random2 / 24.0D, 0.0D, 0.0D);
-                }
+            }
+            if (!this.immersive && isPlaying) {
+                int random2 = rand.nextInt(24) + 1;
+                world.spawnParticle(EnumParticleTypes.NOTE, posX, posY + 1.2D, posZ, random2 / 24.0D, 0.0D, 0.0D);
             }
         }
     }
@@ -199,7 +199,7 @@ public class EntityMusicPlayer extends EntityMinecart {
     }
 
     @Override
-    protected void readEntityFromNBT(NBTTagCompound nbttagcompound) {
+    protected void readEntityFromNBT(@NotNull NBTTagCompound nbttagcompound) {
         super.readEntityFromNBT(nbttagcompound);
         this.streamURL = nbttagcompound.getString("StreamUrl");
         this.isPlaying = nbttagcompound.getBoolean("isPlaying");
@@ -223,8 +223,13 @@ public class EntityMusicPlayer extends EntityMinecart {
         return false;
     }
 
+    /**
+     * 注意，isPlaying() 指示 这个实体在逻辑服务端是否正在播放音频，而并非本地是否正在播放音频
+     * 故此当本地音频完全播放并结束后，该值仍为true
+     * @return true if the entity is playing audio on logic server
+     */
     public boolean isPlaying(){
-        return MCGProject.proxy.getMusicManager().isPlaying(musicCode) && isPlaying;
+        return isPlaying && dataManager.get(IS_PLAYING);
     }
 
     //TODO：bgm模式（到达位置播放）和dj模式(同步播放) DISCARD

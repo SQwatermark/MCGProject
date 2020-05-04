@@ -3,6 +3,7 @@ package moe.gensoukyo.mcgproject.core;
 import moe.gensoukyo.mcgproject.cilent.feature.CustomMainMenu;
 import moe.gensoukyo.mcgproject.cilent.feature.ItitFeatures;
 import moe.gensoukyo.mcgproject.cilent.feature.musicPlayer.ClientMusicManager;
+import moe.gensoukyo.mcgproject.cilent.feature.musicPlayer.StreamStopper;
 import moe.gensoukyo.mcgproject.cilent.init.ModelMapper;
 import moe.gensoukyo.mcgproject.common.feature.musicplayer.IMusicManager;
 import moe.gensoukyo.mcgproject.common.feature.rsgauges.ModRsGauges;
@@ -33,6 +34,7 @@ public class ClientProxy extends CommonProxy {
         super.preInit(event);
         MinecraftForge.EVENT_BUS.register(ModelMapper.instance());
         MinecraftForge.EVENT_BUS.register(CustomMainMenu.instance());
+        MinecraftForge.EVENT_BUS.register(StreamStopper.instance());
         ModRsGauges.client.preInit(event);
     }
 
