@@ -129,7 +129,7 @@ public class EntityMusicPlayer extends EntityMinecart {
                 if (volume == 0) {
                     this.mp3Player.setVolume(0);
                 } else {
-                    float n = volume * 160;
+                    float n = volume * 40;
                     float nn = n * n;
                     float v;
                     if (distanceSq <= nn) {
