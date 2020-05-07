@@ -4,7 +4,7 @@
   "variants": {
     "inventory": [{}],
     "meta": {
-      "0": {"textures": {"all": "mcgproject:blocks/touhou/namako"}},
+      "0": {"textures": {"all": "mcgproject:blocks/touhou/namako2"}},
       "1": {"textures": {"all": "mcgproject:blocks/touhou/namako"}}
     }
   }

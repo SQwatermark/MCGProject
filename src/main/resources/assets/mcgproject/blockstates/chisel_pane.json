@@ -1,0 +1,35 @@
+{
+  "forge_marker": 1,
+  "defaults": {"model": "pane_post"},
+  "variants": {
+    "inventory": [{}],
+    "north": {
+      "true": {"submodel": "pane_side"},
+      "false": {"submodel": "pane_noside"}
+    },
+    "east": {
+      "true": {"submodel": "pane_side", "y": 90},
+      "false": {"submodel": "pane_noside_alt"}
+    },
+    "south": {
+      "true": {"submodel": "pane_side_alt"},
+      "false": {"submodel": "pane_noside_alt", "y": 90}
+    },
+    "west": {
+      "true": {"submodel": "pane_side_alt", "y": 90},
+      "false": {"submodel": "pane_noside", "y": 270}
+    },
+    "meta": {
+      "0": {"textures": {"pane": "mcgproject:blocks/chisel/blue-quad-side", "edge": "mcgproject:blocks/chisel/blue-quad-fancy-top"}},
+      "1": {"textures": {"pane": "mcgproject:blocks/chisel/cyan-quad-fancy-side", "edge": "mcgproject:blocks/chisel/cyan-quad-fancy-top"}},
+      "2": {"textures": {"pane": "mcgproject:blocks/chisel/lightblue-bubble-side", "edge": "mcgproject:blocks/chisel/lightblue-bubble-top"}},
+      "3": {"textures": {"pane": "mcgproject:blocks/chisel/yellow-quad-fancy-side", "edge": "mcgproject:blocks/chisel/yellow-panel-top"}},
+      "4": {"textures": {"pane": "mcgproject:blocks/chisel/lightgray-quad-fancy-side", "edge": "mcgproject:blocks/chisel/lightgray-quad-fancy-top"}},
+      "5": {"textures": {"pane": "mcgproject:blocks/chisel/red-quad-fancy-side", "edge": "mcgproject:blocks/chisel/red-quad-fancy-top"}},
+      "6": {"textures": {"pane": "mcgproject:blocks/chisel/white-panel-fancy", "edge": "mcgproject:blocks/chisel/white-panel-fancy-top"}},
+      "7": {"textures": {"pane": "mcgproject:blocks/chisel/white-quad-fancy-side", "edge": "mcgproject:blocks/chisel/white-panel-fancy-top"}},
+      "8": {"textures": {"pane": "mcgproject:blocks/chisel/floral", "edge": "mcgproject:blocks/chisel/floral"}},
+      "9": {"textures": {"pane": "mcgproject:blocks/chisel/yellow-panel-side", "edge": "mcgproject:blocks/chisel/yellow-panel-top"}}
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "forge_marker": 1,
+  "defaults": {"model": "cube_all"},
+  "variants": {
+    "inventory": [{}],
+    "meta": {
+      "0": {
+        "model": "cube_column",
+        "textures": {
+          "end": "mcgproject:blocks/chisel/panel-nails",
+          "side": "mcgproject:blocks/chisel/double-side"
+        }
+      },
+      "1": {"textures": {"all": "mcgproject:blocks/chisel/crate-fancy"}},
+      "2": {"textures": {"all": "mcgproject:blocks/chisel/panel-nails"}},
+      "3": {"textures": {"all": "mcgproject:blocks/chisel/0/panel-nails"}},
+      "4": {"textures": {"all": "mcgproject:blocks/chisel/0/large"}},
+      "5": {
+        "model": "cube_column",
+        "textures": {
+          "end": "mcgproject:blocks/chisel/0/panel-nails",
+          "side": "mcgproject:blocks/chisel/0/large"
+        }
+      }
+    }
+  }
+}

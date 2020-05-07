@@ -230,7 +230,8 @@ public class EntityItemMCG extends Entity {
     public boolean dropItem() {
         if (!world.isRemote) {
             ItemStack itemStack = this.getItem();
-            if (Block.getBlockFromItem(this.getItem().getItem()) == Blocks.STONE) itemStack = new ItemStack(ModItem.ITEM_LITTLE_STONE);
+            Block block = Block.getBlockFromItem(this.getItem().getItem());
+            if (block == Blocks.STONE || block == Blocks.GRAVEL) itemStack = new ItemStack(ModItem.ITEM_LITTLE_STONE);
             this.entityDropItem(itemStack, 0);
             this.setDead();
         }

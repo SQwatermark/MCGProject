@@ -47,6 +47,7 @@ public class ModBlock {
     public static Block TEST1 = new BlockRotate4(Material.ROCK, "test_block_1", MCGTabs.OLD, SoundType.STONE);
     public static Block TEST2 = new BlockRotate4(Material.ROCK, "test_block_2", MCGTabs.OLD, SoundType.STONE);
     public static Block BLOCK_APPLE = new BlockMCGApple();
+    public static Block BLOCK_CHISEL_STONE = new BlockInteger16(Material.ROCK, "chisel_stone", MCGTabs.OLD, SoundType.STONE);
     /**
      * 实例化方块，并将实例化的方块分配到相应链表
      */
@@ -155,6 +156,15 @@ public class ModBlock {
         blocks1.add(new BlockMCGSlab(TEST2, 0, "test_slab_2", MCGTabs.OLD));
         blocks1.add(new BlockMCGStairs(TEST1.getDefaultState(), "test_stairs_1", MCGTabs.OLD, SoundType.STONE));
         blocks1.add(new BlockMCGStairs(TEST2.getDefaultState(), "test_stairs_2", MCGTabs.OLD, SoundType.STONE));
+        blocks16.add(BLOCK_CHISEL_STONE);
+        blocks10.add(new BlockChiselPane("chisel_pane"));
+        blocks4.add(new BlockTranslucentChiselGlass(Material.GLASS, "old_glass_2", MCGTabs.OLD, SoundType.GLASS));
+        blocks6.add(new BlockInteger6(Material.WOOD, "chisel_wood", MCGTabs.OLD, SoundType.WOOD));
+        blocks1.add(new BlockMCG(Material.GLASS, "chisel_glowstone", MCGTabs.OLD, SoundType.GLASS).setLightLevel(1F));
+        blocks1.add(new BlockMCGSlab(BLOCK_CHISEL_STONE, 0, "chisel_slab_1", MCGTabs.OLD));
+        blocks1.add(new BlockMCGSlab(BLOCK_CHISEL_STONE, 0, "chisel_slab_2", MCGTabs.OLD));
+        blocks4.add(new BlockMCGLeaves4("fn_leaves3").setCreativeTab(MCGTabs.OLD));
+        blocks2.add(new BlockInteger2(Material.ROCK, "chisel_futura", MCGTabs.OLD, SoundType.STONE).setLightLevel(1F));
 
         blocks1.add(new BlockRockSpawner());
 

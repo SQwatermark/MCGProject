@@ -1,0 +1,16 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "half_slab",
+    "textures": {
+      "bottom": "mcgproject:blocks/chisel/carved-top",
+      "top": "mcgproject:blocks/chisel/carved-top",
+      "side": "mcgproject:blocks/chisel/carved-side"
+    }
+  },
+  "variants": {
+    "inventory": [{}],
+    "half=bottom": { "model": "half_slab" },
+    "half=top": { "model": "upper_slab" }
+  }
+}

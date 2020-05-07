@@ -1,0 +1,13 @@
+{
+  "forge_marker": 1,
+  "defaults": {"model": "cube_all"},
+  "variants": {
+    "inventory": [{}],
+    "meta": {
+      "0": {"textures": {"all": "mcgproject:blocks/chisel/lightgray-bubble"}},
+      "1": {"textures": {"all": "mcgproject:blocks/chisel/white-panel-fancy"}},
+      "2": {"textures": {"all": "mcgproject:blocks/chisel/yellow-panel-fancy"}},
+      "3": {"textures": {"all": "mcgproject:blocks/fn/light_crystal_block"}}
+    }
+  }
+}

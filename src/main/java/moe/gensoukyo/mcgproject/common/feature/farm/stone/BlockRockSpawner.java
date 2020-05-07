@@ -41,7 +41,7 @@ public class BlockRockSpawner extends Block {
             int y = worldIn.getHeight(x, z);
             EntityItemMCG stone;
             if (worldIn.getBlockState(new BlockPos(x, y - 1, z)).isOpaqueCube()) {
-                stone = new EntityItemMCG(worldIn, x, y, z, new ItemStack(Blocks.STONE));
+                stone = new EntityItemMCG(worldIn, x, y, z, new ItemStack(Blocks.GRAVEL));
                 worldIn.spawnEntity(stone);
             }
             ForgeHooks.onCropsGrowPost(worldIn, pos, state, worldIn.getBlockState(pos));

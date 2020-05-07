@@ -50,11 +50,9 @@ public class ItemMCGFood extends ItemFood {
     @Override
     public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> items) {
         if (this.isInCreativeTab(tab)) {
-            for (int i = 0; i < 76; i++) {
+            for (int i = 0; i < 81; i++) {
                 items.add(new ItemStack(this, 1, i));
             }
         }
     }
-
-
 }

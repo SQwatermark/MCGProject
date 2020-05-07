@@ -15,40 +15,20 @@
       }
     ],
     "north": {
-      "true": {
-        "submodel": "pane_side"
-      },
-      "false": {
-        "submodel": "pane_noside"
-      }
+      "true": {"submodel": "pane_side"},
+      "false": {"submodel": "pane_noside"}
     },
     "east": {
-      "true": {
-        "submodel": "pane_side",
-        "y": 90
-      },
-      "false": {
-        "submodel": "pane_noside_alt"
-      }
+      "true": {"submodel": "pane_side", "y": 90},
+      "false": {"submodel": "pane_noside_alt"}
     },
     "south": {
-      "true": {
-        "submodel": "pane_side_alt"
-      },
-      "false": {
-        "submodel": "pane_noside_alt",
-        "y": 90
-      }
+      "true": {"submodel": "pane_side_alt"},
+      "false": {"submodel": "pane_noside_alt", "y": 90}
     },
     "west": {
-      "true": {
-        "submodel": "pane_side_alt",
-        "y": 90
-      },
-      "false": {
-        "submodel": "pane_noside",
-        "y": 270
-      }
+      "true": {"submodel": "pane_side_alt", "y": 90},
+      "false": {"submodel": "pane_noside", "y": 270}
     }
   }
 }

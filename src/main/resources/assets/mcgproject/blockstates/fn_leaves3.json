@@ -1,0 +1,11 @@
+{
+  "forge_marker": 1,
+  "defaults": {"model": "cube_all"},
+  "variants": {
+    "inventory": [{}],
+    "meta=0": [{"textures": {"all": "mcgproject:blocks/fn/leave_33"}}],
+    "meta=1": [{"textures": {"all": "mcgproject:blocks/fn/leave_34"}}],
+    "meta=2": [{"textures": {"all": "mcgproject:blocks/fn/leave_35"}}],
+    "meta=3": [{"textures": {"all": "mcgproject:blocks/chisel/roses"}}]
+  }
+}

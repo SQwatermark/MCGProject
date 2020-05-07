@@ -1,0 +1,61 @@
+{
+  "forge_marker": 1,
+  "defaults": {"model": "cube_all"},
+  "variants": {
+    "inventory": [{}],
+    "meta": {
+      "0": {"textures": {"all": "mcgproject:blocks/chisel/a1-stoneornamental-marbleornate"}},
+      "1": {"textures": {"all": "mcgproject:blocks/chisel/block"}},
+      "2": {"textures": {"all": "mcgproject:blocks/chisel/marble-arranged-bricks"}},
+      "3": {"textures": {"all": "mcgproject:blocks/chisel/panel"}},
+      "4": {"textures": {"all": "mcgproject:blocks/chisel/tilemosaic"}},
+      "5": {
+        "model": "cube_column",
+        "textures": {
+          "end": "mcgproject:blocks/chisel/decor-top",
+          "side": "mcgproject:blocks/chisel/decor-block-side"
+        }
+      },
+      "6": {
+        "model": "cube_column",
+        "textures": {
+          "end": "mcgproject:blocks/chisel/decor-top",
+          "side": "mcgproject:blocks/chisel/gold-decor-1-side"
+        }
+      },
+      "7": {
+        "model": "cube_column",
+        "textures": {
+          "end": "mcgproject:blocks/chisel/decor-top",
+          "side": "mcgproject:blocks/chisel/gold-decor-3-side"
+        }
+      },
+      "8": {"textures": {"all": "mcgproject:blocks/chisel/diorite_polished"}},
+      "9": {"textures": {"all": "mcgproject:blocks/chisel/vent-top"}},
+      "10": {
+        "model": "cube_column",
+        "textures": {
+          "end": "mcgproject:blocks/chisel/pillar-decorated-top",
+          "side": "mcgproject:blocks/chisel/pillar-decorated-side"
+        }
+      },
+      "11": {
+        "model": "cube_column",
+        "textures": {
+          "end": "mcgproject:blocks/chisel/plate-top",
+          "side": "mcgproject:blocks/chisel/plate-side"
+        }
+      },
+      "12": {"textures": {"all": "mcgproject:blocks/chisel/widedecor-top"}},
+      "13": {
+        "model": "cube_column",
+        "textures": {
+          "end": "mcgproject:blocks/chisel/a1-stoneornamental-marblebrick-top",
+          "side": "mcgproject:blocks/chisel/a1-stoneornamental-marblebrick-side"
+        }
+      },
+      "14": {"textures": {"all": "mcgproject:blocks/chisel/marble-fancy-bricks"}},
+      "15": {"textures": {"all": "mcgproject:blocks/chisel/brick-wear-top"}}
+    }
+  }
+}

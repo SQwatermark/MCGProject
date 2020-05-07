@@ -1,0 +1,16 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "half_slab",
+    "textures": {
+      "bottom": "mcgproject:blocks/chisel/a1-stoneornamental-marbleornate",
+      "top": "mcgproject:blocks/chisel/a1-stoneornamental-marbleornate",
+      "side": "mcgproject:blocks/chisel/a1-stoneornamental-marbleornate-side"
+    }
+  },
+  "variants": {
+    "inventory": [{}],
+    "half=bottom": { "model": "half_slab" },
+    "half=top": { "model": "upper_slab" }
+  }
+}
