@@ -42,11 +42,14 @@ public class TileRanstoneLampLightRenderer extends TileEntitySpecialRenderer<Ran
         GlStateManager.translate(x + 0.5, y + 0.5, z + 0.5);
         Minecraft.getMinecraft().getTextureManager().bindTexture(TEXTURES[lamp.getBlockMetadata()]);
 
+        GlStateManager.pushMatrix();
+        GlStateManager.scale(lamp.randomScale, lamp.randomScale, lamp.randomScale);
         GlStateManager.enableAlpha();
         GlStateManager.enableBlend();
         MODEL.renderAll();
         GlStateManager.disableAlpha();
         GlStateManager.disableBlend();
+        GlStateManager.popMatrix();
 
         GlStateManager.popMatrix();
         GlStateManager.popAttrib();

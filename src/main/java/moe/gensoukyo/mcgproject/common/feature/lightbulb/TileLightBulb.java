@@ -74,4 +74,9 @@ public class TileLightBulb extends AbstractTileEntity {
         return powered;
     }
 
+    @Override
+    public double getMaxRenderDistanceSquared() {
+        return 1024.0D;
+    }
+
 }
