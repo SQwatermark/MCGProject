@@ -263,10 +263,13 @@ public class BlockAutoSwitch extends BlockSwitch
               (world.rayTraceBlocks(new Vec3d(e.posX-0.2,e.posY+e.getEyeHeight(),e.posZ-0.2), switch_position, true, false, false) == null) ||
               (world.rayTraceBlocks(new Vec3d(e.posX+0.2,e.posY+e.getEyeHeight(),e.posZ+0.2), switch_position, true, false, false) == null)
           ) {
-            if(++num_seen >= sensor_entity_count_threshold_) {
-              active = true;
-              break;
-            }
+            double v = e.motionX * e.motionX + e.motionY * e.motionY + e.motionZ * e.motionZ;
+            if (((block.config & SWITCH_CONFIG_SENSOR_VOLUME) != 0 && v > 0.001) ||
+                    (block.config & SWITCH_CONFIG_SENSOR_LINEAR) != 0) // TODO: 添加这个判断使得 *红外传感器* 可以检测运动
+              if(++num_seen >= sensor_entity_count_threshold_) {
+                active = true;
+                break;
+              }
           }
         }
       }

@@ -116,6 +116,8 @@ public class RanstoneLamp extends BlockColored implements ITileEntityProvider {
 
     public static class TileRanstoneLamp extends AbstractTileEntity {
 
+        public final double randomScale = Math.random() * 0.01 + 0.995;
+
         @Override
         public void fromNBT(NBTTagCompound tag) { }
 
@@ -128,6 +130,11 @@ public class RanstoneLamp extends BlockColored implements ITileEntityProvider {
             if (block instanceof RanstoneLamp)
                 return ((RanstoneLamp) block).isLit;
             return false;
+        }
+
+        @Override
+        public double getMaxRenderDistanceSquared() {
+            return 256.0D;
         }
 
     }
