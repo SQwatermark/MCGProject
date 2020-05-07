@@ -3,7 +3,10 @@ package moe.gensoukyo.mcgproject.core;
 import moe.gensoukyo.mcgproject.cilent.feature.CustomMainMenu;
 import moe.gensoukyo.mcgproject.cilent.feature.ItitFeatures;
 import moe.gensoukyo.mcgproject.cilent.init.ModelMapper;
+import moe.gensoukyo.mcgproject.common.feature.chatfilter.ChatFilterHandler;
+import moe.gensoukyo.mcgproject.common.feature.chatfilter.CmdFilteredChat;
 import moe.gensoukyo.mcgproject.common.feature.rsgauges.ModRsGauges;
+import net.minecraftforge.client.ClientCommandHandler;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -32,6 +35,8 @@ public class ClientProxy extends CommonProxy {
         MinecraftForge.EVENT_BUS.register(ModelMapper.instance());
         MinecraftForge.EVENT_BUS.register(CustomMainMenu.instance());
         ModRsGauges.client.preInit(event);
+        ClientCommandHandler.instance.registerCommand(new CmdFilteredChat());
+        MinecraftForge.EVENT_BUS.register(ChatFilterHandler.instance());
     }
 
     @Override
