@@ -1,6 +1,5 @@
-package moe.gensoukyo.mcgproject.common.feature.chatfilter;
+package moe.gensoukyo.mcgproject.common.feature.hackychat;
 
-import moe.gensoukyo.mcgproject.core.MCG;
 import moe.gensoukyo.mcgproject.core.MCGProject;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ChatLine;
@@ -28,7 +27,7 @@ public class GuiFilteredChat extends GuiNewChat {
 
     public final Minecraft mc;
 
-    public boolean canFilter = true;
+    public boolean canFilter = false;
 
     public static List<Pattern> patterns = new ArrayList<>();
 

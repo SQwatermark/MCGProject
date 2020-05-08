@@ -4,6 +4,7 @@ import moe.gensoukyo.mcgproject.common.feature.NoRecipeBook;
 import moe.gensoukyo.mcgproject.common.feature.backpack.BackpackCore;
 import moe.gensoukyo.mcgproject.common.feature.rsgauges.ModRsGauges;
 import moe.gensoukyo.mcgproject.common.feature.sticker.TileSticker;
+import net.minecraft.server.MinecraftServer;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fml.common.Mod;
@@ -32,6 +33,9 @@ public class MCGProject {
 
     public static Logger logger;
     public static File modConfigDi;
+
+    //服务端事件用
+    private MinecraftServer server;
 
     @SuppressWarnings("unused")
     public static final String[] CODERS = {"SQwatermark", "drzzm32", "Chloe_koopa"};
@@ -75,6 +79,7 @@ public class MCGProject {
 
     @Mod.EventHandler
     public void serverLoad(FMLServerStartingEvent event) {
+        server = event.getServer();
         event.registerServerCommand(new BackpackCore.BackpackCommand());
         event.registerServerCommand(new BackpackCore.BackpackManageCommand());
         event.registerServerCommand(new TileSticker.RefreshCommand());
@@ -94,6 +99,14 @@ public class MCGProject {
         MinecraftForge.EVENT_BUS.register(new NoRecipeBook());
     }
 
+    @Mod.EventHandler
+    public void serverStop(FMLServerStoppingEvent event) {
+        if (server.isDedicatedServer()) { //独立服务端关闭处理
+            MCGProject.logger.info("Closing something...");
+
+        }
+
+    }
 
     //TODO: 音效方块
     //TODO: 图书馆

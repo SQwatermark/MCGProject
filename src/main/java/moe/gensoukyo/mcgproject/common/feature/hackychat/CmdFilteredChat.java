@@ -1,4 +1,4 @@
-package moe.gensoukyo.mcgproject.common.feature.chatfilter;
+package moe.gensoukyo.mcgproject.common.feature.hackychat;
 
 import net.minecraft.command.ICommand;
 import net.minecraft.command.ICommandSender;
