@@ -15,6 +15,7 @@ import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.regex.MatchResult;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -191,34 +192,35 @@ public class ClientCmdHacker {
             
             int finalCount = count;
             TimerTask task = new TimerTask() {
+                final AtomicInteger inC = new AtomicInteger(0);
+                final AtomicInteger toC = new AtomicInteger(0);
                 final int total = finalCount;
-                int counter = 0, inCounter = 0;
                 final String[] cmds = body.split(";(\\s)*");
                 @Override
                 public void run() {
                     if (cmds.length == 0)
                         cancel();
+                    if (!ClientCmdHacker.isRunning())
+                        cancel();
 
-                    if (!cmds[inCounter].isEmpty()) {
+                    if (!cmds[inC.get()].isEmpty()) {
                         Minecraft mc = Minecraft.getMinecraft();
                         mc.addScheduledTask(() -> {
-                            final int c = counter, i = inCounter;
+                            final int c = toC.get(), i = inC.get();
                             mc.player.sendMessage(
                                     new TextComponentString(TextFormatting.DARK_GRAY +
-                                            String.format("Run %d: %s", c, cmds[i]))
+                                            String.format("Run %d:%d: %s", c, i, cmds[i]))
                             );
                             ModCmdHandler.INSTANCE.execute(cmds[i]);
                         });
                     }
 
-                    inCounter += 1;
-                    if (inCounter >= cmds.length) {
-                        inCounter = 0;
+                    inC.incrementAndGet();
+                    if (inC.get() >= cmds.length) {
+                        inC.set(0);
 
-                        counter += 1;
-                        if (counter >= total)
-                            cancel();
-                        if (!ClientCmdHacker.isRunning())
+                        toC.incrementAndGet();
+                        if (toC.get() >= total)
                             cancel();
                     }
                 }
