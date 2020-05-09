@@ -28,7 +28,7 @@ public class MCGProject {
 
     public static final String ID = "mcgproject";
     public static final String NAME = "MCGProject";
-    public static final String VERSION = "1.1.5";
+    public static final String VERSION = "1.1.6";
 
     public static Logger logger;
     public static File modConfigDi;
@@ -58,18 +58,14 @@ public class MCGProject {
     }
 
     @Mod.EventHandler
-    public void init(FMLInitializationEvent event)
-    {
+    public void init(FMLInitializationEvent event) {
         proxy.init(event);
-
         ModRsGauges.INSTANCE.attachLogger(event);
     }
 
     @Mod.EventHandler
-    public void postInit(FMLPostInitializationEvent event)
-    {
+    public void postInit(FMLPostInitializationEvent event) {
         proxy.postInit(event);
-
         ModRsGauges.INSTANCE.postInit(event);
     }
 
@@ -101,5 +97,6 @@ public class MCGProject {
     //TODO: 玩家在其中会下陷的泥巴（沼泽）
     //TODO: 水子的石头
     //TODO: 恐龙和普通生物的模型
+    //TODO: 狐火
 
 }

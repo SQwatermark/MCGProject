@@ -77,6 +77,7 @@ public class ModelMapper {
         registerModel(ModItem.ITEM_MCG_BANNER_PATTERN, 16);
         registerModel(ModItem.ITEM_MUSIC_PLAYER);
         registerModel(ModItem.ITEM_LITTLE_STONE);
+        registerModel(ModItem.ITEM_ROU_KAN_KEN);
 
         registerColoredModel(RanstoneLamp.ITEM, "");
         registerColoredModel(RanstoneLamp.ITEM_ALWAYS, "");

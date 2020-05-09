@@ -64,7 +64,6 @@ public class BetterSign {
 	public void onOpenGUI(GuiOpenEvent event) {
 		if(event.getGui() instanceof GuiEditSign) {
 			if(cancel) {
-				event.setCanceled(true);
 				return;
 			}
 			TileEntitySign sign = ObfuscationReflectionHelper.getPrivateValue(GuiEditSign.class, (GuiEditSign) event.getGui(), "field_146848_f");

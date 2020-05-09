@@ -84,7 +84,7 @@ public class ModBlock {
         blocks5.add(FLOWER);
         blocks2.add(new BlockMCGMushroom("mushroom"));
         blocks1.add(new BlockTranslucent(Material.CLOTH, "cloud", MCGTabs.NATURE, SoundType.CLOTH));
-        blocks1.add(new BlockMCGLeaves("leaves_sakura_glowing").setLightLevel(0.3F));
+        blocks16.add(new BlockMCGLeaves16("leaves_sakura_glowing").setLightLevel(0.3F));
         blocks8.add(new BlockMCGLeaves8("leaves_mcg"));
         blocks3.add(new BlockBambooOld("bamboo_old"));
         blocks2.add(new BlockInteger2(Material.CAKE, "mooncake", MCGTabs.NATURE, SoundType.SNOW));

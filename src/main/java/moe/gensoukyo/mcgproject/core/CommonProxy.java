@@ -31,7 +31,6 @@ public class CommonProxy {
         MinecraftForge.EVENT_BUS.register(ModItem.instance());
         MinecraftForge.EVENT_BUS.register(ModBlock.instance());
         MinecraftForge.EVENT_BUS.register(FMBlock.instance());
-        MinecraftForge.EVENT_BUS.register(ModArmor.instance());
         MinecraftForge.EVENT_BUS.register(ModEntity.instance());
         MinecraftForge.EVENT_BUS.register(ModTileEntity.instance());
         MinecraftForge.EVENT_BUS.register(BetterSign.instance());

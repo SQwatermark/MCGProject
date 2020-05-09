@@ -1,11 +1,25 @@
 {
   "forge_marker": 1,
-  "defaults": {
-    "model": "cube_all",
-    "textures": {"all": "mcgproject:blocks/nature/leaves_sakura"}
-  },
+  "defaults": {"model": "cube_all"},
   "variants": {
     "inventory": [{}],
-    "normal": [{}]
+    "meta": {
+      "0": {"textures": {"all": "mcgproject:blocks/nature/sakura_1"}},
+      "1": {"textures": {"all": "mcgproject:blocks/nature/sakura_2"}},
+      "2": {"textures": {"all": "mcgproject:blocks/nature/sakura_3"}},
+      "3": {"textures": {"all": "mcgproject:blocks/nature/sakura_4"}},
+      "4": {"textures": {"all": "mcgproject:blocks/nature/sakura_5"}},
+      "5": {"textures": {"all": "mcgproject:blocks/nature/sakura_6"}},
+      "6": {"textures": {"all": "mcgproject:blocks/nature/sakura_7"}},
+      "7": {"textures": {"all": "mcgproject:blocks/nature/sakura_8"}},
+      "8": {"textures": {"all": "mcgproject:blocks/nature/sakura_9"}},
+      "9": {"textures": {"all": "mcgproject:blocks/nature/sakura_10"}},
+      "10": {"textures": {"all": "mcgproject:blocks/nature/sakura_11"}},
+      "11": {"textures": {"all": "mcgproject:blocks/nature/sakura_12"}},
+      "12": {"textures": {"all": "mcgproject:blocks/nature/sakura_13"}},
+      "13": {"textures": {"all": "mcgproject:blocks/nature/sakura_14"}},
+      "14": {"textures": {"all": "mcgproject:blocks/nature/sakura_15"}},
+      "15": {"textures": {"all": "mcgproject:blocks/nature/sakura_16"}}
+    }
   }
 }

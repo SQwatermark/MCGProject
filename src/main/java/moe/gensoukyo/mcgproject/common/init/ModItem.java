@@ -33,6 +33,8 @@ public class ModItem {
     public static ItemMusicPlayer ITEM_MUSIC_PLAYER;
     public static ItemMCGBannerPattern ITEM_MCG_BANNER_PATTERN;
     public static ItemLittleRock ITEM_LITTLE_STONE;
+    public static ItemRouKanKen ITEM_ROU_KAN_KEN;
+
     /**
      * 注册所有物品
      * @param event Item注册事件
@@ -53,6 +55,7 @@ public class ModItem {
         ITEM_MCG_PROP = new ItemMCGProp();
         ITEM_MCG_BANNER_PATTERN = new ItemMCGBannerPattern();
         ITEM_LITTLE_STONE = new ItemLittleRock();
+        ITEM_ROU_KAN_KEN = new ItemRouKanKen();
 
         event.getRegistry().register(ITEM_MCG_BOAT);
         event.getRegistry().register(ITEM_RAC_BOAT);
@@ -66,5 +69,6 @@ public class ModItem {
         event.getRegistry().register(ITEM_MCG_PROP);
         event.getRegistry().register(ITEM_MCG_BANNER_PATTERN);
         event.getRegistry().register(ITEM_LITTLE_STONE);
+        event.getRegistry().register(ITEM_ROU_KAN_KEN);
     }
 }
