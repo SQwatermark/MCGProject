@@ -202,21 +202,30 @@ public class GuiMusicPlayer extends GuiScreen {
 	@Override
 	@SideOnly(Side.CLIENT)
 	protected void actionPerformed(GuiButton button) {
+		boolean isPlaying = musicPlayer.isPlaying;
+		String streamURL = musicPlayer.streamURL;
+		float volume = musicPlayer.volume;
+		String owner = musicPlayer.owner;
+		boolean imm = musicPlayer.immersive;
+
+		boolean update = false;
+
 		if (button.id == 0) {
 			if (streamTextBox.getText() != null && streamTextBox.getText().length() > 0) {
 				if (!musicPlayer.isPlaying) {
-					musicPlayer.streamURL = parseURL(this.streamTextBox.getText());
-					musicPlayer.startStream();
+					streamURL = parseURL(this.streamTextBox.getText());
+					isPlaying = true;
 				}
 				else {
-					musicPlayer.stopStream();
+					isPlaying = false;
 				}
 				NetworkWrapper.INSTANCE.sendToServer(new MusicPlayerPacket(musicPlayer));
 			}
 			else if (musicPlayer.isPlaying){
-				musicPlayer.stopStream();
+				isPlaying = false;
 				NetworkWrapper.INSTANCE.sendToServer(new MusicPlayerPacket(musicPlayer));
 			}
+			update = true;
 		}
 		else if (button.id == 1) {
 			Toolkit toolkit = Toolkit.getDefaultToolkit();
@@ -232,33 +241,43 @@ public class GuiMusicPlayer extends GuiScreen {
 		}
 		else if (button.id == 4) {
 			if(musicPlayer.volume<1.0f) {
-				musicPlayer.volume += 0.1f;
+				volume += 0.1f;
 			}
-			NetworkWrapper.INSTANCE.sendToServer(new MusicPlayerPacket(musicPlayer));
+			update = true;
 		}
 		else if (button.id == 5) {
 			if(musicPlayer.volume>0.0f) {
-				musicPlayer.volume -= 0.1f;
+				volume -= 0.1f;
 			}
-			NetworkWrapper.INSTANCE.sendToServer(new MusicPlayerPacket(musicPlayer));
+			update = true;
 		}
 		else if (button.id == 3) {
 			if (musicPlayer.owner.isEmpty()) {
-				musicPlayer.owner = player.getName();
+				owner = player.getName();
 				button.displayString = "已锁定";
 			} else {
-				musicPlayer.owner = "";
+				owner = "";
 				button.displayString = "未锁定";
 			}
-			NetworkWrapper.INSTANCE.sendToServer(new MusicPlayerPacket(musicPlayer));
+			update = true;
 		}
 		else if (button.id == 6) {
 			streamTextBox.setText(NETEASE_URL + randomMusics.get(new Random().nextInt(randomMusics.size())) + ".mp3");
 		}
 		else if (button.id == 7) {
-			musicPlayer.immersive = !musicPlayer.immersive;
-			NetworkWrapper.INSTANCE.sendToServer(new MusicPlayerPacket(musicPlayer));
+			imm = !musicPlayer.immersive;
+			update = true;
 		}
+
+		if (update)
+			NetworkWrapper.INSTANCE.sendToServer(new MusicPlayerPacket(
+					musicPlayer.getEntityId(),
+					isPlaying,
+					streamURL,
+					volume,
+					owner,
+					imm
+			));
 	}
 
 	@SideOnly(Side.CLIENT)
@@ -356,7 +375,7 @@ public class GuiMusicPlayer extends GuiScreen {
 			String[] args = input.split("\\?");
 			if (args.length > 1) {
 				String id = getArg(args[1], "id");
-				return NETEASE_URL + id + ".mp3";
+				return NETEASE_URL + id + (id.endsWith(".mp3") ? "" : ".mp3");
 			}
 		}
 		return input;
