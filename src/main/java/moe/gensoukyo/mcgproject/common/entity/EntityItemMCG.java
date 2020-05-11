@@ -26,6 +26,7 @@ import javax.annotation.Nullable;
 @MCGEntity("item_mcg")
 public class EntityItemMCG extends Entity {
     private static final DataParameter<ItemStack> ITEM = EntityDataManager.createKey(EntityItemMCG.class, DataSerializers.ITEM_STACK);
+    private int age = 6000;
 
     public EntityItemMCG(World worldIn, double x, double y, double z) {
         super(worldIn);
@@ -61,11 +62,16 @@ public class EntityItemMCG extends Entity {
         this.getDataManager().register(ITEM, ItemStack.EMPTY);
     }
 
+    public void setAge(int age) {
+        this.age = age;
+    }
+
     /**
      * Called to update the entity's position/logic.
      */
     public void onUpdate()
     {
+        if (this.ticksExisted > age) this.setDead();
         if (this.getItem().isEmpty())
         {
             this.setDead();
