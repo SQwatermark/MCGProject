@@ -681,9 +681,11 @@ public class BlockSwitch extends RsBlock implements ModContent.Colors.ColorTintS
       }
     }
 
+    public static volatile boolean LOCK = false;
+
     @Override
     protected void setWorldCreate(World world)
-    { reset(world); }
+    { if (!LOCK) reset(world); }
 
     public int svd()
     { return svd_; }
@@ -755,7 +757,9 @@ public class BlockSwitch extends RsBlock implements ModContent.Colors.ColorTintS
       try {
         // If the world is not yet available or the block not loaded let it run with the head into the wall and say 0.
         final int current_scd = scd_;
+        LOCK = true;
         scd_ = (int)((((BlockSwitch)(world.getBlockState(getPos()).getBlock())).config) & SWITCH_DATA_ENTITY_DEFAULTS_MASK);
+        LOCK = false;
         if(current_scd != scd_) markDirty();
       } catch(Exception e) {
         scd_ = 15; // set the on-power to default 15, but no other settings.
