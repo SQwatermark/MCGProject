@@ -108,8 +108,8 @@ public class MCGProject {
     //TODO: 图书馆
     //TODO：荆棘（玩家碰到会掉血）
     //TODO: 玩家在其中会下陷的泥巴（沼泽）
-    //TODO: 水子的石头
-    //TODO: 恐龙和普通生物的模型
+    //TODO: 恐龙的模型
     //TODO: 狐火
+    //TODO：试图渡过三途川的玩家会下沉
 
 }
