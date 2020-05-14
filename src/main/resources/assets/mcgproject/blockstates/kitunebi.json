@@ -1,0 +1,12 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "cross",
+    "textures": {
+      "cross": "mcgproject:blocks/fantasy/kitunebi"
+    }
+  },
+  "variants": {
+    "normal": [{}]
+  }
+}
