@@ -1,9 +1,0 @@
-{
-    "ctm": {
-        "ctm_version": 1,
-        "type": "pillar",
-        "textures": [
-            "mcgproject:blocks/touhou/namako-ctmv"
-        ]
-    }
-}

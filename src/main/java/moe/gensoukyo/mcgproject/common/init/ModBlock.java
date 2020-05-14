@@ -40,7 +40,7 @@ public class ModBlock {
     public static Block TILE = new BlockTile();
     public static Block NAMAKO = new BlockInteger2(Material.CLAY, "namako", MCGTabs.TOUHOU, SoundType.STONE);
     public static Block FLOWER = new BlockMCGFlower("flower");
-    public static Block GAP = new BlockMCG(Material.WOOD, "gap", MCGTabs.FANTASY);
+    public static Block GAP = new BlockInteger2(Material.ROCK, "gap", MCGTabs.FANTASY, SoundType.STONE).setLightLevel(0.7F);
     public static Block BLOCK_CHIREIDEN = new BlockInteger8(Material.GLASS, "glass_chireiden", MCGTabs.EUROPEAN, SoundType.GLASS).setLightLevel(0.67F);
     public static Block MARBLE = new BlockInteger2(Material.ROCK, "marble", MCGTabs.EUROPEAN, SoundType.STONE);
     public static Block WOOL_GLOWING = new BlockInteger16(Material.CLOTH, "wool_glowing", MCGTabs.NORMAL, SoundType.CLOTH).setLightLevel(1.0F);
@@ -95,7 +95,7 @@ public class ModBlock {
         blocks1.add(BLOCK_APPLE);
 
         //幻想
-        blocks1.add(GAP);
+        blocks2.add(GAP);
         blocks1.add(new GensoChest());
         blocks1.add(new BlockRealm());
 

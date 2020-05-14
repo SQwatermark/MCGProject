@@ -95,7 +95,8 @@ tile.mcgproject.karesansui_1.name=枯山水（2x）
 tile.mcgproject.karesansui_2.name=枯山水（3x）
 
 # 幻想
-tile.mcgproject.gap.name=Gap
+tile.mcgproject.gap_0.name=Gap
+tile.mcgproject.gap_1.name=Gap
 tile.mcgproject.GensoChest.name=Genso Chest
 tile.mcgproject.realm.name=Realm
 
