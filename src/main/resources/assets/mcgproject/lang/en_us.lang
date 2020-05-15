@@ -99,6 +99,7 @@ tile.mcgproject.gap_0.name=Gap
 tile.mcgproject.gap_1.name=Gap
 tile.mcgproject.GensoChest.name=Genso Chest
 tile.mcgproject.realm.name=Realm
+tile.mcgproject.kitunebi.name=Kitunebi
 
 # 自然
 tile.mcgproject.log_sakura.name=Sakura Log

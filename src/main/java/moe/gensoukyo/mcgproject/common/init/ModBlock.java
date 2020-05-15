@@ -98,6 +98,7 @@ public class ModBlock {
         blocks2.add(GAP);
         blocks1.add(new GensoChest());
         blocks1.add(new BlockRealm());
+        blocks1.add(new BlockKitunebi());
 
         //西方
         blocks8.add(BLOCK_CHIREIDEN);

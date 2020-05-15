@@ -5,10 +5,8 @@ import moe.gensoukyo.mcgproject.cilent.entity.boat.RenderMCGBoat;
 import moe.gensoukyo.mcgproject.cilent.entity.boat.RenderRACBoat;
 import moe.gensoukyo.mcgproject.cilent.entity.butterfly.*;
 import moe.gensoukyo.mcgproject.cilent.entity.fish.*;
-import moe.gensoukyo.mcgproject.cilent.tileentity.TileLightBulbLightRenderer;
-import moe.gensoukyo.mcgproject.cilent.tileentity.TileRanstoneLampLightRenderer;
-import moe.gensoukyo.mcgproject.cilent.tileentity.TileRanstonePistonRenderer;
-import moe.gensoukyo.mcgproject.cilent.tileentity.TileStickerRenderer;
+import moe.gensoukyo.mcgproject.cilent.tileentity.*;
+import moe.gensoukyo.mcgproject.common.block.BlockKitunebi;
 import moe.gensoukyo.mcgproject.common.entity.EntityItemMCG;
 import moe.gensoukyo.mcgproject.common.feature.kaginawa.EntityKaginawa;
 import moe.gensoukyo.mcgproject.common.entity.boat.EntityMCGBoat;
@@ -96,6 +94,7 @@ public class ModelMapper {
         ClientRegistry.bindTileEntitySpecialRenderer(TileSticker.class, new TileStickerRenderer());
         ClientRegistry.bindTileEntitySpecialRenderer(RanstoneLamp.TileRanstoneLamp.class, new TileRanstoneLampLightRenderer());
         ClientRegistry.bindTileEntitySpecialRenderer(TileLightBulb.class, new TileLightBulbLightRenderer());
+        ClientRegistry.bindTileEntitySpecialRenderer(BlockKitunebi.TileKitunebi.class, new TileKitunebiRenderer());
     }
 
     @SubscribeEvent
