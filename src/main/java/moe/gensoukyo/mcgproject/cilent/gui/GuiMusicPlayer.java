@@ -47,20 +47,19 @@ public class GuiMusicPlayer extends GuiScreen {
 		gui_width = 352;
 		gui_height = 120;
 		infoText = "将外链粘贴在下方（可使用网易云的音乐id，支持.m3u和.pls流媒体）";
-		randomMusics.add("26124646");
-		randomMusics.add("774882");
-		randomMusics.add("450222722");
-		randomMusics.add("33211208");
-		randomMusics.add("26134231");
-		randomMusics.add("407685151");
-		randomMusics.add("30251976");
-		randomMusics.add("1444956021");
+		randomMusics.add("26124646"); //幸せになる番
+		randomMusics.add("26134231"); //冬の花火  麻枝准
+		randomMusics.add("30251976"); //反逆の鐘 -Last Rebellion-  stack
+		randomMusics.add("1444956021"); //Antinomy of Common Flowers  NJune
+		randomMusics.add("1374245779"); //憧憬と屍の道
+		randomMusics.add("460528"); //白金ディスコ
+		randomMusics.add("26117114"); //26117114
 	}
 
 	@Override
 	public void initGui() {
 		buttonList.clear();
-		buttonList.add(new GuiButton(0, this.width / 2 - 45, this.height / 2 + 30, 90, 20, "播放/暂停"));
+		buttonList.add(new GuiButton(0, this.width / 2 - 45, this.height / 2 + 30, 90, 20, "播放/停止"));
 		buttonList.add(new GuiButton(1, this.width / 2 - 45 - 120, this.height / 2 + 30, 90, 20, "粘贴"));
 		buttonList.add(new GuiButton(2, this.width / 2 - 45 + 120, this.height / 2 + 30, 90, 20, "清空"));
 		buttonList.add(new GuiButton(4, this.width / 2 - 70, this.height / 2 + 30, 20, 20, "+"));

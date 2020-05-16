@@ -31,7 +31,7 @@ public class BlockRockSpawner extends Block {
     public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {
         if (ForgeHooks.onCropsGrowPre(worldIn, pos, state, rand.nextInt(5) == 0)) {
             List<Entity> entities = worldIn.getEntitiesWithinAABB(EntityItemMCG.class, new AxisAlignedBB(pos.up(15).east(15).north(15), pos.down(15).west(15).south(15)));
-            if(entities.size() > 4) return;
+            if(entities.size() > 3) return;
             int x = pos.getX() + rand.nextInt(20) - 10;
             int z = pos.getZ() + rand.nextInt(20) - 10;
             int y = worldIn.getHeight(x, z);

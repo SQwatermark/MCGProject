@@ -636,7 +636,7 @@ tile.mcgproject.lightBulb.magenta.name=Magenta Light Bulb
 tile.mcgproject.lightBulb.orange.name=Orange Light Bulb
 tile.mcgproject.lightBulb.white.name=White Light Bulb
 
-fluid.mcgproject.interstice.name=水
+fluid.mcgproject.interstice.name=Water
 fluid.mcgproject.water_white.name=白色水
 fluid.mcgproject.water_black.name=黑色水
 fluid.mcgproject.water_blue.name=蓝色水
@@ -656,6 +656,8 @@ tooltip.mcgproject.itemblockinfo=Right click to view the block information
 tooltip.mcgproject.itemgenbigoak=Right click to generate a big oak
 tooltip.mcgproject.itemmetachanger=Try to cycle the blockstates
 tooltip.mcgproject.itemkaginawa=Be careful of fall
+tooltip.mcgproject.itemroukanken=Move Faster
+tooltip.mcgproject.itemmcgbannerpattern=用于合成旗帜图案
 tooltip.minecraftfuture.campfire=用打火石开关
 tooltip.minecraftfuture.composter=用灰化土堆肥
 tooltip.minecraftfuture.bamboo=用骨粉切换形态（暂时只能这么做）
