@@ -1,7 +1,6 @@
 package moe.gensoukyo.mcgproject.common.network;
 
 import moe.gensoukyo.mcgproject.common.feature.backpack.BackpackCore;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.PacketBuffer;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.relauncher.Side;
@@ -20,6 +19,7 @@ public class BackpackPacket implements IMessage {
     private String playerId;
     private String packType;
     private BackpackCore.Backpack backpack;
+    private int packSize;
 
     public BackpackPacket() { }
 
@@ -28,6 +28,7 @@ public class BackpackPacket implements IMessage {
         this.playerId = player;
         this.packType = packType;
         this.backpack = backpack;
+        this.packSize = backpack.getSizeInventory();
     }
 
     @Override
@@ -38,12 +39,8 @@ public class BackpackPacket implements IMessage {
         this.playerId = buffer.readString(len);
         len = buffer.readInt();
         this.packType = buffer.readString(len);
-        try {
-            NBTTagCompound tag = buffer.readCompoundTag();
-            backpack = BackpackCore.Backpack.fromCompoundTag(playerId, packType, tag);
-        } catch (Exception ignored) {
-            backpack = new BackpackCore.Backpack(playerId, packType);
-        }
+        this.packSize = buffer.readInt();
+        this.backpack = new BackpackCore.Backpack(playerId, packType, packSize);
     }
 
     @Override
@@ -54,7 +51,7 @@ public class BackpackPacket implements IMessage {
         buffer.writeString(this.playerId);
         buffer.writeInt(this.packType.length());
         buffer.writeString(this.packType);
-        buffer.writeCompoundTag(backpack.toCompoundTag());
+        buffer.writeInt(this.packSize);
     }
 
     @SideOnly(Side.CLIENT)

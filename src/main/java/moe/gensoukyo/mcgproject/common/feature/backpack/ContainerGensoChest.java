@@ -15,11 +15,11 @@ import javax.annotation.Nonnull;
  */
 public class ContainerGensoChest extends Container {
 
-    private final IInventory lowerChestInventory;
+    private final IInventory gensoPack;
     private final int numRows;
 
     public ContainerGensoChest(IInventory playerPack, IInventory backpack, EntityPlayer player) {
-        this.lowerChestInventory = backpack;
+        this.gensoPack = backpack;
         this.numRows = backpack.getSizeInventory() / BackpackCore.COLUMN;
         backpack.openInventory(player);
         int offset = (this.numRows - 4) * 18;
@@ -48,7 +48,7 @@ public class ContainerGensoChest extends Container {
 
     @Override
     public boolean canInteractWith(@Nonnull EntityPlayer player) {
-        return this.lowerChestInventory.isUsableByPlayer(player);
+        return this.gensoPack.isUsableByPlayer(player);
     }
 
     @Override
@@ -80,7 +80,7 @@ public class ContainerGensoChest extends Container {
     @Override
     public void onContainerClosed(EntityPlayer player) {
         super.onContainerClosed(player);
-        this.lowerChestInventory.closeInventory(player);
+        this.gensoPack.closeInventory(player);
     }
 
 }
