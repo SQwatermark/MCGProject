@@ -9,12 +9,16 @@ import net.minecraft.command.ICommandSender;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.init.Items;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.ItemStackHelper;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagList;
+import net.minecraft.nbt.NBTTagString;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.management.UserListOps;
+import net.minecraft.util.EnumHand;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.ITextComponent;
@@ -235,6 +239,29 @@ public class BackpackCore {
             data.markDirty();
         }
 
+        public static LinkedHashMap<String, Integer> query(World world, String type, String item) {
+            LinkedHashMap<String, Integer> result = new LinkedHashMap<>();
+            SaveData data = getData(world);
+            for (Map.Entry<String, LinkedHashMap<String, NonNullList<ItemStack>>> i : data.backpacks.entrySet()) {
+                String user = i.getKey();
+                for (Map.Entry<String, NonNullList<ItemStack>> j : i.getValue().entrySet()) {
+                    if (j.getKey().equals(type)) {
+                        NonNullList<ItemStack> pack = j.getValue();
+                        int count = 0;
+                        for (ItemStack stack : pack) {
+                            if (stack.isEmpty())
+                                continue;
+                            String name = stack.getDisplayName();
+                            if (name.toLowerCase().contains(item.toLowerCase()))
+                                count += stack.getCount();
+                        }
+                        result.put(user, count);
+                    }
+                }
+            }
+            return result;
+        }
+
     }
 
     public static class Backpack implements IInventory {
@@ -420,8 +447,10 @@ public class BackpackCore {
         @Nonnull
         public String getUsage(@Nonnull ICommandSender sender) {
             return " mcgPack <new/del/del!/show/expand> <player name> [backpack type] [size]" + "\n" +
+                    "or:   mcgPack query <item name> [backpack type]" + "\n" +
                     "type: default, creative" + "\n" +
                     "size: used by new (pack size) & expand (expand size)" + "\n" +
+                    "note: query will give you a book if your main hand is free !" + "\n" +
                     "note: \"/mcgPack del!\" will delete all packs !!!";
         }
 
@@ -460,7 +489,7 @@ public class BackpackCore {
             }
 
             int size;
-            String op = args[0], id = args[1], type = BackpackRepo.TYPE_DEFAULT, sizeStr = "0";
+            String op = args[0], id = args[1], type = BackpackRepo.TYPE_DEFAULT;
             if (args.length > 2) type = args[2];
             Entity entitySender = (Entity) sender;
             World world = server.getWorld(entitySender.dimension);
@@ -498,6 +527,45 @@ public class BackpackCore {
                     entitySender.sendMessage(new TextComponentString(
                             TextFormatting.GRAY + "Backpack expand " + size + " unit(s): " + (result ? "SUCCESS" : "FAIL")));
                     break;
+                case "query":
+                    LinkedHashMap<String, Integer> results = BackpackRepo.query(world, type, id);
+                    if (sender instanceof EntityPlayer && ((EntityPlayer) sender).getHeldItem(EnumHand.MAIN_HAND).isEmpty()) {
+                        EntityPlayer player = (EntityPlayer) sender;
+                        ItemStack stack = new ItemStack(Items.WRITABLE_BOOK);
+                        NBTTagCompound tag = new NBTTagCompound();
+                        NBTTagList list = new NBTTagList();
+                        String page = "";
+                        ArrayList<String> buff = new ArrayList<>();
+                        for (Map.Entry<String, Integer> i : results.entrySet())
+                            buff.add(i.getKey() + ": " + i.getValue().toString());
+                        for (int i = 0; i < buff.size(); i++) {
+                            page = page.concat(buff.get(i));
+                            if (i % 12 != 0 || i == 0)
+                                page += "\n";
+                            if (i % 12 == 0 && i != 0) {
+                                list.appendTag(new NBTTagString(page));
+                                page = "";
+                            }
+                        }
+                        if (buff.size() % 13 != 0)
+                            list.appendTag(new NBTTagString(page));
+                        tag.setTag("pages", list);
+                        stack.setTagCompound(tag);
+                        stack.setStackDisplayName("Query of " + id);
+                        player.setHeldItem(EnumHand.MAIN_HAND, stack);
+                        player.sendMessage(new TextComponentString(
+                                TextFormatting.GRAY + "Backpacks' query result is in your hand!"));
+                        return;
+                    }
+                    sender.sendMessage(new TextComponentString(
+                            TextFormatting.GREEN + "Query result of " + id));
+                    sender.sendMessage(new TextComponentString(
+                            TextFormatting.DARK_GREEN + "---- Begin Query Result ----"));
+                    for (Map.Entry<String, Integer> i : results.entrySet())
+                        sender.sendMessage(new TextComponentString(
+                                TextFormatting.GRAY + (i.getKey() + ": " + i.getValue().toString())));
+                    sender.sendMessage(new TextComponentString(
+                            TextFormatting.DARK_GREEN + "----- End Query Result -----"));
                 default:
                     break;
             }
