@@ -23,16 +23,18 @@ import org.lwjgl.input.Mouse;
 @SideOnly(Side.CLIENT)
 public class GuiGensoChest extends GuiContainer {
     private static final ResourceLocation CHEST_GUI_TEXTURE = new ResourceLocation(MCGProject.ID, "textures/gui/backpack.png");
-    private final IInventory upperChestInventory;
-    private final IInventory lowerChestInventory;
+    private final IInventory playerPack;
+    private final IInventory gensoPack;
+    private final int packRows;
     private int counter = 0;
 
     public GuiGensoChest(IInventory playerPack, IInventory backpack) {
         super(new ContainerGensoChest(playerPack, backpack, Minecraft.getMinecraft().player));
-        this.upperChestInventory = playerPack;
-        this.lowerChestInventory = backpack;
+        this.playerPack = playerPack;
+        this.gensoPack = backpack;
         this.allowUserInput = false;
-        this.ySize = 114 + backpack.getSizeInventory() / BackpackCore.COLUMN * 18;
+        this.packRows = backpack.getSizeInventory() / BackpackCore.COLUMN;
+        this.ySize = 114 + packRows * 18;
         this.xSize = 500;
     }
 
@@ -50,8 +52,8 @@ public class GuiGensoChest extends GuiContainer {
     }
 
     protected void drawGuiContainerForegroundLayer(int x, int y) {
-        this.fontRenderer.drawString(this.lowerChestInventory.getDisplayName().getUnformattedText(), 8, 6, 4210752);
-        this.fontRenderer.drawString(this.upperChestInventory.getDisplayName().getUnformattedText(), 170, this.ySize - 96 + 2, 4210752);
+        this.fontRenderer.drawString(this.gensoPack.getDisplayName().getUnformattedText(), 8, 6, 4210752);
+        this.fontRenderer.drawString(this.playerPack.getDisplayName().getUnformattedText(), 170, this.ySize - 96 + 2, 4210752);
     }
 
     private void draw(int x, int y, float u, float v, int w, int h, float tw, float th) {
@@ -72,7 +74,8 @@ public class GuiGensoChest extends GuiContainer {
         this.mc.getTextureManager().bindTexture(CHEST_GUI_TEXTURE);
         x = (this.width - this.xSize) / 2;
         y = (this.height - this.ySize) / 2;
-        draw(x, y, 0, 0, xSize, ySize, 512, 512);
+        draw(x, y, 0, 0, xSize, packRows * 18 + 17, 512, 512);
+        draw(x, y + packRows * 18 + 17, 0, 126, xSize, 96, 512, 512);
     }
 
 }

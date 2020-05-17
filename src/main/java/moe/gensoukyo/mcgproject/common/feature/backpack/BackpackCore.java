@@ -6,14 +6,19 @@ import moe.gensoukyo.mcgproject.common.network.NetworkWrapper;
 import moe.gensoukyo.mcgproject.core.MCGProject;
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.ICommandSender;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.init.Items;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.ItemStackHelper;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagList;
+import net.minecraft.nbt.NBTTagString;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.management.UserListOps;
+import net.minecraft.util.EnumHand;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.ITextComponent;
@@ -73,8 +78,8 @@ public class BackpackCore {
         public static final String TYPE_DEFAULT = "default";
         public static final String TYPE_CREATIVE = "creative";
 
-        static NonNullList<ItemStack> def() {
-            return NonNullList.withSize(SIZE, ItemStack.EMPTY);
+        static NonNullList<ItemStack> def(int size) {
+            return NonNullList.withSize(Math.min(size, SIZE), ItemStack.EMPTY);
         }
 
         private static final String NBT_TAG = "mcg.backpack";
@@ -99,7 +104,10 @@ public class BackpackCore {
                     for (Map.Entry<String, NonNullList<ItemStack>> j : i.getValue().entrySet()) {
                         NBTTagCompound pack = new NBTTagCompound();
                         ItemStackHelper.saveAllItems(pack, j.getValue());
-                        tag.setTag(j.getKey(), pack);
+                        NBTTagCompound packTag = new NBTTagCompound();
+                        packTag.setInteger("size", j.getValue().size());
+                        packTag.setTag("pack", pack);
+                        tag.setTag(j.getKey(), packTag);
                     }
                     tagCompound.setTag(i.getKey(), tag);
                 }
@@ -120,8 +128,10 @@ public class BackpackCore {
                 for (String id : tagCompound.getKeySet()) {
                     NBTTagCompound tag = tagCompound.getCompoundTag(id);
                     for (String type : tag.getKeySet()) {
-                        NBTTagCompound pack = tag.getCompoundTag(type);
-                        NonNullList<ItemStack> list = def();
+                        NBTTagCompound packTag = tag.getCompoundTag(type);
+                        int size = packTag.getInteger("size");
+                        NBTTagCompound pack = packTag.getCompoundTag("pack");
+                        NonNullList<ItemStack> list = def(size);
                         ItemStackHelper.loadAllItems(pack, list);
                         if (!backpacks.containsKey(id))
                             backpacks.put(id, new LinkedHashMap<>());
@@ -162,7 +172,7 @@ public class BackpackCore {
                 for (Map.Entry<String, NonNullList<ItemStack>> j : i.getValue().entrySet()) {
                     builder.append(j.getKey());
                     builder.append("-");
-                    builder.append(j.getValue().hashCode());
+                    builder.append(j.getValue().size());
                     builder.append("; ");
                 }
                 builder.append("\n");
@@ -202,6 +212,24 @@ public class BackpackCore {
             }
         }
 
+        public static boolean expand(World world, String id, String type, int size) {
+            NonNullList<ItemStack> pack = get(world, id, type);
+            if (pack.size() > 0 && pack.size() < SIZE) {
+                ArrayList<ItemStack> list = new ArrayList<>(pack);
+                for (int i = 0; i < size; i++) {
+                    if (pack.size() >= SIZE)
+                        break;
+                    list.add(ItemStack.EMPTY);
+                }
+                NonNullList<ItemStack> newList = NonNullList.withSize(list.size(), ItemStack.EMPTY);
+                for (int i = 0; i < list.size(); i++)
+                    newList.set(i, list.get(i));
+                put(world, id, type, newList);
+                return true;
+            }
+            return false;
+        }
+
         public static boolean has(World world, String id, String type) {
             return !get(world, id, type).isEmpty();
         }
@@ -211,12 +239,35 @@ public class BackpackCore {
             data.markDirty();
         }
 
+        public static LinkedHashMap<String, Integer> query(World world, String type, String item) {
+            LinkedHashMap<String, Integer> result = new LinkedHashMap<>();
+            SaveData data = getData(world);
+            for (Map.Entry<String, LinkedHashMap<String, NonNullList<ItemStack>>> i : data.backpacks.entrySet()) {
+                String user = i.getKey();
+                for (Map.Entry<String, NonNullList<ItemStack>> j : i.getValue().entrySet()) {
+                    if (j.getKey().equals(type)) {
+                        NonNullList<ItemStack> pack = j.getValue();
+                        int count = 0;
+                        for (ItemStack stack : pack) {
+                            if (stack.isEmpty())
+                                continue;
+                            String name = stack.getDisplayName();
+                            if (name.toLowerCase().contains(item.toLowerCase()))
+                                count += stack.getCount();
+                        }
+                        result.put(user, count);
+                    }
+                }
+            }
+            return result;
+        }
+
     }
 
     public static class Backpack implements IInventory {
 
-        public static Backpack fromCompoundTag(String id, String type, NBTTagCompound tag) {
-            Backpack backpack = new Backpack(id, type);
+        public static Backpack fromCompoundTag(String id, String type, int size, NBTTagCompound tag) {
+            Backpack backpack = new Backpack(id, type, size);
             ItemStackHelper.loadAllItems(tag, backpack.backpack);
             return backpack;
         }
@@ -231,10 +282,10 @@ public class BackpackCore {
         public final String type;
         public NonNullList<ItemStack> backpack;
 
-        public Backpack(String id, String type) {
+        public Backpack(String id, String type, int size) {
             this.id = id;
             this.type = type;
-            backpack = BackpackRepo.def();
+            backpack = BackpackRepo.def(size);
         }
 
         public Backpack(World world, String id, String type) {
@@ -244,7 +295,7 @@ public class BackpackCore {
         }
         
         @Override
-        public int getSizeInventory() { return SIZE; }
+        public int getSizeInventory() { return backpack.size(); }
         @Override
         public boolean isEmpty() {
             Iterator<ItemStack> it = backpack.iterator();
@@ -291,7 +342,10 @@ public class BackpackCore {
         @Override
         public void openInventory(@Nonnull EntityPlayer player) { }
         @Override
-        public void closeInventory(@Nonnull EntityPlayer player) { }
+        public void closeInventory(@Nonnull EntityPlayer player) {
+            if (player instanceof EntityPlayerMP)
+                BackpackRepo.save(player.world);
+        }
         @Override
         public boolean isItemValidForSlot(int i, @Nonnull ItemStack itemStack) { return true; }
         @Override
@@ -392,8 +446,11 @@ public class BackpackCore {
         @Override
         @Nonnull
         public String getUsage(@Nonnull ICommandSender sender) {
-            return " mcgPack <new/del/del!/show> <player name> [backpack type]" + "\n" +
+            return " mcgPack <new/del/del!/show/expand> <player name> [backpack type] [size]" + "\n" +
+                    "or:   mcgPack query <item name> [backpack type]" + "\n" +
                     "type: default, creative" + "\n" +
+                    "size: used by new (pack size) & expand (expand size)" + "\n" +
+                    "note: query will give you a book if your main hand is free !" + "\n" +
                     "note: \"/mcgPack del!\" will delete all packs !!!";
         }
 
@@ -401,6 +458,14 @@ public class BackpackCore {
         @Nonnull
         public List<String> getAliases() {
             return aliases;
+        }
+
+        public int parse(String input, int def) {
+            try {
+                return Integer.parseInt(input);
+            } catch (Exception ignored) {
+                return def;
+            }
         }
 
         @Override
@@ -418,36 +483,89 @@ public class BackpackCore {
                 return;
             }
 
-            if (!(sender instanceof EntityPlayer)) {
-                sender.sendMessage(new TextComponentString(TextFormatting.RED + "[ERROR] This command can only be executed by player!"));
+            if (!(sender instanceof Entity)) {
+                sender.sendMessage(new TextComponentString(TextFormatting.RED + "[ERROR] This command can only be executed by Entity!"));
                 return;
             }
 
+            int size;
             String op = args[0], id = args[1], type = BackpackRepo.TYPE_DEFAULT;
             if (args.length > 2) type = args[2];
-            EntityPlayer player = (EntityPlayer) sender;
-            World world = server.getWorld(player.dimension);
+            Entity entitySender = (Entity) sender;
+            World world = server.getWorld(entitySender.dimension);
             switch (op.toLowerCase()) {
                 case "new":
                     if (BackpackRepo.has(world, id, type)) {
-                        player.sendMessage(new TextComponentString(TextFormatting.DARK_RED + "Backpack exist"));
+                        entitySender.sendMessage(new TextComponentString(TextFormatting.DARK_RED + "Backpack exist"));
                         break;
                     }
-                    BackpackRepo.put(world, id, type, BackpackRepo.def());
-                    player.sendMessage(new TextComponentString(TextFormatting.GRAY + "Backpack created"));
+                    size = SIZE;
+                    if (args.length > 3) size = parse(args[3], SIZE);
+                    BackpackRepo.put(world, id, type, BackpackRepo.def(size));
+                    entitySender.sendMessage(new TextComponentString(TextFormatting.GRAY + "Backpack created, " + size + " unit(s)"));
                     break;
                 case "del":
                     BackpackRepo.del(world, id, type);
-                    player.sendMessage(new TextComponentString(TextFormatting.GRAY + "Backpack deleted"));
+                    entitySender.sendMessage(new TextComponentString(TextFormatting.GRAY + "Backpack deleted"));
                     break;
                 case "del!":
                     BackpackRepo.del(world, id);
-                    player.sendMessage(new TextComponentString(TextFormatting.DARK_RED + "All backpacks deleted"));
+                    entitySender.sendMessage(new TextComponentString(TextFormatting.DARK_RED + "All backpacks deleted"));
                     break;
                 case "show":
-                    if (!openBackpack(world, player, id, type))
-                        player.sendMessage(new TextComponentString(TextFormatting.DARK_RED + "No backpack found"));
+                    if (!(sender instanceof EntityPlayer)) {
+                        sender.sendMessage(new TextComponentString(TextFormatting.RED + "[ERROR] This command can only be executed by Player!"));
+                        return;
+                    }
+                    if (!openBackpack(world, (EntityPlayer) entitySender, id, type))
+                        entitySender.sendMessage(new TextComponentString(TextFormatting.DARK_RED + "No backpack found"));
                         break;
+                case "expand":
+                    size = COLUMN;
+                    if (args.length > 3) size = parse(args[3], COLUMN);
+                    boolean result = BackpackRepo.expand(world, id, type, size);
+                    entitySender.sendMessage(new TextComponentString(
+                            TextFormatting.GRAY + "Backpack expand " + size + " unit(s): " + (result ? "SUCCESS" : "FAIL")));
+                    break;
+                case "query":
+                    LinkedHashMap<String, Integer> results = BackpackRepo.query(world, type, id);
+                    if (sender instanceof EntityPlayer && ((EntityPlayer) sender).getHeldItem(EnumHand.MAIN_HAND).isEmpty()) {
+                        EntityPlayer player = (EntityPlayer) sender;
+                        ItemStack stack = new ItemStack(Items.WRITABLE_BOOK);
+                        NBTTagCompound tag = new NBTTagCompound();
+                        NBTTagList list = new NBTTagList();
+                        String page = "";
+                        ArrayList<String> buff = new ArrayList<>();
+                        for (Map.Entry<String, Integer> i : results.entrySet())
+                            buff.add(i.getKey() + ": " + i.getValue().toString());
+                        for (int i = 0; i < buff.size(); i++) {
+                            page = page.concat(buff.get(i));
+                            if (i % 12 != 0 || i == 0)
+                                page += "\n";
+                            if (i % 12 == 0 && i != 0) {
+                                list.appendTag(new NBTTagString(page));
+                                page = "";
+                            }
+                        }
+                        if (buff.size() % 13 != 0)
+                            list.appendTag(new NBTTagString(page));
+                        tag.setTag("pages", list);
+                        stack.setTagCompound(tag);
+                        stack.setStackDisplayName("Query of " + id);
+                        player.setHeldItem(EnumHand.MAIN_HAND, stack);
+                        player.sendMessage(new TextComponentString(
+                                TextFormatting.GRAY + "Backpacks' query result is in your hand!"));
+                        return;
+                    }
+                    sender.sendMessage(new TextComponentString(
+                            TextFormatting.GREEN + "Query result of " + id));
+                    sender.sendMessage(new TextComponentString(
+                            TextFormatting.DARK_GREEN + "---- Begin Query Result ----"));
+                    for (Map.Entry<String, Integer> i : results.entrySet())
+                        sender.sendMessage(new TextComponentString(
+                                TextFormatting.GRAY + (i.getKey() + ": " + i.getValue().toString())));
+                    sender.sendMessage(new TextComponentString(
+                            TextFormatting.DARK_GREEN + "----- End Query Result -----"));
                 default:
                     break;
             }
@@ -467,7 +585,12 @@ public class BackpackCore {
                 }
             }
 
-            return false;
+            return super.checkPermission(server, sender);
+        }
+
+        @Override
+        public int getRequiredPermissionLevel() {
+            return 3;
         }
 
         @Override
