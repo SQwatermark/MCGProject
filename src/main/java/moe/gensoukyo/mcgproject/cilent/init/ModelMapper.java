@@ -8,6 +8,7 @@ import moe.gensoukyo.mcgproject.cilent.entity.fish.*;
 import moe.gensoukyo.mcgproject.cilent.tileentity.*;
 import moe.gensoukyo.mcgproject.common.block.BlockKitunebi;
 import moe.gensoukyo.mcgproject.common.entity.EntityItemMCG;
+import moe.gensoukyo.mcgproject.common.feature.backpack.GensoChest;
 import moe.gensoukyo.mcgproject.common.feature.kaginawa.EntityKaginawa;
 import moe.gensoukyo.mcgproject.common.entity.boat.EntityMCGBoat;
 import moe.gensoukyo.mcgproject.common.entity.boat.EntityRACBoat;
@@ -95,6 +96,7 @@ public class ModelMapper {
         ClientRegistry.bindTileEntitySpecialRenderer(RanstoneLamp.TileRanstoneLamp.class, new TileRanstoneLampLightRenderer());
         ClientRegistry.bindTileEntitySpecialRenderer(TileLightBulb.class, new TileLightBulbLightRenderer());
         ClientRegistry.bindTileEntitySpecialRenderer(BlockKitunebi.TileKitunebi.class, new TileKitunebiRenderer());
+        ClientRegistry.bindTileEntitySpecialRenderer(GensoChest.TileGensoChest.class, new TileGensoChestRenderer());
     }
 
     @SubscribeEvent

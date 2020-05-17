@@ -567,6 +567,7 @@ public class BackpackCore {
                     sender.sendMessage(new TextComponentString(
                             TextFormatting.DARK_GREEN + "----- End Query Result -----"));
                 default:
+                    sender.sendMessage(new TextComponentString(TextFormatting.DARK_RED + "Param error!"));
                     break;
             }
 
