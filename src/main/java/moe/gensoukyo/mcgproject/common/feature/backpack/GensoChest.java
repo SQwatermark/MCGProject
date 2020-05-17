@@ -4,7 +4,6 @@ import com.google.common.collect.Lists;
 import moe.gensoukyo.mcgproject.common.creativetab.MCGTabs;
 import moe.gensoukyo.mcgproject.common.tileentity.AbstractTileEntity;
 import moe.gensoukyo.mcgproject.core.MCGProject;
-import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -13,7 +12,6 @@ import net.minecraft.command.ICommandSender;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.server.MinecraftServer;
@@ -24,9 +22,7 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentString;
-import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
-import net.minecraft.util.text.translation.I18n;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
@@ -65,9 +61,7 @@ public class GensoChest extends BlockContainer {
             if (packType.isEmpty() || packType.equals("null"))
                 return null;
             return new TextComponentString(
-                    TextFormatting.LIGHT_PURPLE +
-                            I18n.translateToLocal("tile." + MCGProject.ID + "." + "GensoChest" + ".name")
-                            + " [" + packType + "]");
+                    TextFormatting.LIGHT_PURPLE + "[" + packType + "]");
         }
 
     }
