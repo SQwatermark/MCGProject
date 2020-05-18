@@ -3,7 +3,7 @@ package moe.gensoukyo.mcgproject.cilent.gui;
 import moe.gensoukyo.mcgproject.common.feature.musicplayer.EntityMusicPlayer;
 import moe.gensoukyo.mcgproject.common.network.MusicPlayerPacket;
 import moe.gensoukyo.mcgproject.common.network.NetworkWrapper;
-import moe.gensoukyo.mcgproject.common.util.MathMCG;
+import moe.gensoukyo.mcgproject.common.util.math.MathMCG;
 import moe.gensoukyo.mcgproject.core.Information;
 import moe.gensoukyo.mcgproject.core.MCGProject;
 import net.minecraft.client.Minecraft;

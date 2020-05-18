@@ -365,11 +365,9 @@ public class BackpackCore {
         @Nonnull
         public ITextComponent getDisplayName() {
             return new TextComponentString(
-                    TextFormatting.DARK_PURPLE + "GensoBackpack" +
+                    TextFormatting.DARK_PURPLE + type.toUpperCase() +
                             TextFormatting.RESET + " - " +
-                            TextFormatting.BOLD + id +
-                            TextFormatting.RESET + " - " +
-                            TextFormatting.DARK_AQUA + type.toUpperCase()
+                            TextFormatting.BOLD + id
             );
         }
         

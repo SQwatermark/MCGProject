@@ -11,15 +11,12 @@ import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import org.lwjgl.opengl.Display;
 
-import java.nio.file.Paths;
-
 public class ClientProxy extends CommonProxy {
 
     @Override
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
-        //获取mcgproject配置文件目录
-        MCGProject.modConfigDi = Paths.get(event.getModConfigurationDirectory().getAbsolutePath(), "mcgproject").toFile();
+        super.preInit(event);
         //如果是32位java，抛出错误信息
         ItitFeatures.yellAtJava32x();
         //设置窗口标题（预加载阶段）
@@ -28,7 +25,6 @@ public class ClientProxy extends CommonProxy {
         ItitFeatures.loadIcons();
         //写入服务器信息
         ItitFeatures.addServerInformation();
-        super.preInit(event);
         MinecraftForge.EVENT_BUS.register(ModelMapper.instance());
         MinecraftForge.EVENT_BUS.register(CustomMainMenu.instance());
         ModRsGauges.client.preInit(event);

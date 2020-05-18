@@ -1,4 +1,4 @@
-package moe.gensoukyo.mcgproject.common.feature;
+package moe.gensoukyo.mcgproject.common.feature.customnpcs;
 
 import moe.gensoukyo.mcgproject.common.util.EntityPool;
 import moe.gensoukyo.mcgproject.core.MCGProject;
@@ -6,7 +6,6 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityList;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.math.BlockPos;
-import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 import noppes.npcs.api.IWorld;

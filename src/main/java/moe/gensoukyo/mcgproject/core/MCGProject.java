@@ -35,7 +35,7 @@ public class MCGProject {
     public static File modConfigDi;
 
     //服务端事件用
-    private MinecraftServer server;
+    public MinecraftServer server;
 
     @SuppressWarnings("unused")
     public static final String[] CODERS = {"SQwatermark", "drzzm32", "Chloe_koopa"};
@@ -49,7 +49,7 @@ public class MCGProject {
     }
 
     @SidedProxy(clientSide = "moe.gensoukyo.mcgproject.core.ClientProxy",
-            serverSide = "moe.gensoukyo.mcgproject.core.CommonProxy")
+            serverSide = "moe.gensoukyo.mcgproject.core.ServerProxy")
     public static CommonProxy proxy;
 
     @Mod.EventHandler
