@@ -3,6 +3,7 @@ package moe.gensoukyo.mcgproject.common.init;
 import moe.gensoukyo.mcgproject.common.block.*;
 import moe.gensoukyo.mcgproject.common.block.enums.EnumTileColor;
 import moe.gensoukyo.mcgproject.common.creativetab.MCGTabs;
+import moe.gensoukyo.mcgproject.common.feature.customnpcs.BlockNPCSpawnerConsole;
 import moe.gensoukyo.mcgproject.common.feature.farm.apple.BlockMCGApple;
 import moe.gensoukyo.mcgproject.common.feature.backpack.GensoChest;
 import moe.gensoukyo.mcgproject.common.feature.farm.stone.BlockRockSpawner;
@@ -99,6 +100,7 @@ public class ModBlock {
         blocks1.add(new GensoChest());
         blocks1.add(new BlockRealm());
         blocks1.add(new BlockKitunebi());
+        blocks1.add(new BlockNPCSpawnerConsole());
 
         //西方
         blocks8.add(BLOCK_CHIREIDEN);
