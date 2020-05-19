@@ -78,6 +78,7 @@ public class NPCSpawner {
                 //如果选中的地点周围怪太多，则不能生成
                 if (worldServer.getEntitiesWithinAABB(EntityCustomNpc.class,
                         new AxisAlignedBB(x - 50, y - 50, z - 50, x + 50, y + 50, z + 50)).size() > mobSpawnRegion.density) continue;
+                //要在刷怪区内
                 if (mobSpawnRegion.region.isVecInRegion(vec2d)) {
                     //如果在黑名单内，则不刷怪
                     for (BlackListRegion blackListRegion : mobSpawnRegion.blackList) {
@@ -94,7 +95,6 @@ public class NPCSpawner {
                             MCGProject.logger.info("MCGProject：NPC[" + mob.name + "]生成失败，可能是配置文件中提供的信息有误");
                         }
                     }
-
                 }
             }
         }
