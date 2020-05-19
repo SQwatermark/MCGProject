@@ -47,9 +47,10 @@ public class NPCSpawner {
 
     public void tryToSpawnAMob(WorldServer worldServer) {
 
-        //随便找一个倒霉鬼
+        //随便找几个倒霉鬼
         List<EntityPlayer> list = worldServer.playerEntities;
         if (list.size() == 0) return;
+        label:
         for (int i = 0; i < list.size() / 4 + 1; i++) {
             EntityPlayer player = list.get(random.nextInt(list.size()));
 
@@ -74,20 +75,17 @@ public class NPCSpawner {
                 if (!worldServer.getWorldInfo().getWorldName().toLowerCase().equals(mobSpawnRegion.world.toLowerCase())) continue;
                 //判断位置
                 Vec2d vec2d = new Vec2d(place.x, place.z);
+                //如果选中的地点周围怪太多，则不能生成
+                if (worldServer.getEntitiesWithinAABB(EntityCustomNpc.class,
+                        new AxisAlignedBB(x - 50, y - 50, z - 50, x + 50, y + 50, z + 50)).size() > mobSpawnRegion.density) continue;
                 if (mobSpawnRegion.region.isVecInRegion(vec2d)) {
                     //如果在黑名单内，则不刷怪
                     for (BlackListRegion blackListRegion : mobSpawnRegion.blackList) {
-                        if (blackListRegion.region.isVecInRegion(vec2d)) return;
+                        if (blackListRegion.region.isVecInRegion(vec2d)) continue label;
                     }
                     //如果在刷怪区且不在黑名单内，随便挑一个怪物生成
                     NPCMob mob = chooseAMobToSpawn(mobSpawnRegion);
-
                     if (mob != null) {
-                        //如果选中的地点周围怪太多，则不能生成
-                        MCGProject.logger.info("hjuvy"+worldServer.getEntitiesWithinAABB(EntityCustomNpc.class,
-                                new AxisAlignedBB(x - 50, y - 50, z - 50, x + 50, y + 50, z + 50)).size());
-                        if (worldServer.getEntitiesWithinAABB(EntityCustomNpc.class,
-                                new AxisAlignedBB(x - 50, y - 50, z - 50, x + 50, y + 50, z + 50)).size() > mobSpawnRegion.density) return;
                         try {
                             NpcAPI.Instance().getClones().spawn(place.x, place.y, place.z,
                                     mob.tab, mob.name, NpcAPI.Instance().getIWorld(((EntityPlayerMP)player).getServerWorld()));
