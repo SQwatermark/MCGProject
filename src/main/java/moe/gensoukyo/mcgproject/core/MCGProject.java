@@ -101,9 +101,7 @@ public class MCGProject {
     public void serverStop(FMLServerStoppingEvent event) {
         if (server.isDedicatedServer()) { //独立服务端关闭处理
             MCGProject.logger.info("Closing something...");
-
         }
-
     }
 
     //TODO: 音效方块
