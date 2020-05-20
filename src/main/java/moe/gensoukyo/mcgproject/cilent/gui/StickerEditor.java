@@ -103,6 +103,7 @@ public class StickerEditor extends JFrame {
                 JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
 
         this.setLocationRelativeTo(null);
+        this.setAlwaysOnTop(true);
         this.setResizable(false);
         this.setVisible(true);
 
