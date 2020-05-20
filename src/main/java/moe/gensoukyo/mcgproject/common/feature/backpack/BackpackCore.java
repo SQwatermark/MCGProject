@@ -454,8 +454,8 @@ public class BackpackCore {
         @Override
         @Nonnull
         public String getUsage(@Nonnull ICommandSender sender) {
-            return " mcgPack <new/del/del!/show/expand> <player name> [backpack type] [size]" + "\n" +
-                    "or:   mcgPack query <item name> [backpack type]" + "\n" +
+            return  TextFormatting.AQUA + "mcgPack <new/del/del!/show/expand> <player name> [backpack type] [size]" + "\n" +
+                    TextFormatting.AQUA + "mcgPack query <item name> [backpack type]" + "\n" +
                     "type: default, creative" + "\n" +
                     "size: used by new (pack size) & expand (expand size)" + "\n" +
                     "note: query will give you a book if your main hand is free !" + "\n" +
@@ -479,7 +479,7 @@ public class BackpackCore {
         @Override
         public void execute(@Nonnull MinecraftServer server, @Nonnull ICommandSender sender, @Nonnull String[] args) {
             if (args.length < 2) {
-                sender.sendMessage(new TextComponentString(TextFormatting.AQUA + getUsage(sender)));
+                sender.sendMessage(new TextComponentString(getUsage(sender)));
                 if (sender instanceof EntityPlayer) {
                     int dim = ((EntityPlayer) sender).dimension;
                     if (args.length == 1) {
@@ -491,48 +491,42 @@ public class BackpackCore {
                 return;
             }
 
-            if (!(sender instanceof Entity)) {
-                sender.sendMessage(new TextComponentString(TextFormatting.RED + "[ERROR] This command can only be executed by Entity!"));
-                return;
-            }
-
             int size;
             String op = args[0], id = args[1], type = BackpackRepo.TYPE_DEFAULT;
             if (args.length > 2) type = args[2];
-            Entity entitySender = (Entity) sender;
-            World world = server.getWorld(entitySender.dimension);
+            World world = sender.getEntityWorld();
             switch (op.toLowerCase()) {
                 case "new":
                     if (BackpackRepo.has(world, id, type)) {
-                        entitySender.sendMessage(new TextComponentString(TextFormatting.DARK_RED + "Backpack exist"));
+                        sender.sendMessage(new TextComponentString(TextFormatting.DARK_RED + "Backpack exist"));
                         break;
                     }
                     size = SIZE;
                     if (args.length > 3) size = parse(args[3], SIZE);
                     BackpackRepo.put(world, id, type, BackpackRepo.def(size));
-                    entitySender.sendMessage(new TextComponentString(TextFormatting.GRAY + "Backpack created, " + size + " unit(s)"));
+                    sender.sendMessage(new TextComponentString(TextFormatting.GRAY + "Backpack created, " + size + " unit(s)"));
                     break;
                 case "del":
                     BackpackRepo.del(world, id, type);
-                    entitySender.sendMessage(new TextComponentString(TextFormatting.GRAY + "Backpack deleted"));
+                    sender.sendMessage(new TextComponentString(TextFormatting.GRAY + "Backpack deleted"));
                     break;
                 case "del!":
                     BackpackRepo.del(world, id);
-                    entitySender.sendMessage(new TextComponentString(TextFormatting.DARK_RED + "All backpacks deleted"));
+                    sender.sendMessage(new TextComponentString(TextFormatting.DARK_RED + "All backpacks deleted"));
                     break;
                 case "show":
                     if (!(sender instanceof EntityPlayer)) {
                         sender.sendMessage(new TextComponentString(TextFormatting.RED + "[ERROR] This command can only be executed by Player!"));
                         return;
                     }
-                    if (!openBackpack(world, (EntityPlayer) entitySender, id, type))
-                        entitySender.sendMessage(new TextComponentString(TextFormatting.DARK_RED + "No backpack found"));
+                    if (!openBackpack(world, (EntityPlayer) sender, id, type))
+                        sender.sendMessage(new TextComponentString(TextFormatting.DARK_RED + "No backpack found"));
                         break;
                 case "expand":
                     size = COLUMN;
                     if (args.length > 3) size = parse(args[3], COLUMN);
                     boolean result = BackpackRepo.expand(world, id, type, size);
-                    entitySender.sendMessage(new TextComponentString(
+                    sender.sendMessage(new TextComponentString(
                             TextFormatting.GRAY + "Backpack expand " + size + " unit(s): " + (result ? "SUCCESS" : "FAIL")));
                     break;
                 case "query":
