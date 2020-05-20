@@ -4,6 +4,7 @@ import moe.gensoukyo.mcgproject.common.feature.NoRecipeBook;
 import moe.gensoukyo.mcgproject.common.feature.backpack.BackpackCore;
 import moe.gensoukyo.mcgproject.common.feature.rsgauges.ModRsGauges;
 import moe.gensoukyo.mcgproject.common.feature.sticker.TileSticker;
+import moe.gensoukyo.mcgproject.server.feature.customnpcs.CommandKillNPCs;
 import moe.gensoukyo.mcgproject.server.feature.customnpcs.NPCSpawnerConfig;
 import net.minecraft.server.MinecraftServer;
 import net.minecraftforge.common.MinecraftForge;
@@ -30,7 +31,7 @@ public class MCGProject {
 
     public static final String ID = "mcgproject";
     public static final String NAME = "MCGProject";
-    public static final String VERSION = "1.1.8";
+    public static final String VERSION = "1.1.9";
 
     public static Logger logger;
     public static File modConfigDi;
@@ -81,6 +82,7 @@ public class MCGProject {
         event.registerServerCommand(new BackpackCore.BackpackManageCommand());
         event.registerServerCommand(new TileSticker.RefreshCommand());
         event.registerServerCommand(new NPCSpawnerConfig.CommandRefresh());
+        event.registerServerCommand(new CommandKillNPCs());
     }
 
     @Mod.EventHandler
