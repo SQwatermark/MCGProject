@@ -181,6 +181,10 @@ public class BackpackCore {
             return builder.toString();
         }
 
+        public static boolean has(World world, String id, String type) {
+            return !get(world, id, type).isEmpty();
+        }
+
         public static NonNullList<ItemStack> get(World world, String id, String type) {
             SaveData data = getData(world);
             if (!data.backpacks.containsKey(id))
@@ -196,6 +200,16 @@ public class BackpackCore {
                 data.backpacks.put(id, new LinkedHashMap<>());
             data.backpacks.get(id).put(type, value);
             data.markDirty();
+        }
+
+        public static boolean put(World world, String id, String type, int size) {
+            if (!has(world, id, type)) {
+                if (size < 0) size = COLUMN;
+                if (size > SIZE) size = SIZE;
+                put(world, id, type, def(size));
+                return true;
+            }
+            return false;
         }
 
         public static void del(World world, String id) {
@@ -228,10 +242,6 @@ public class BackpackCore {
                 return true;
             }
             return false;
-        }
-
-        public static boolean has(World world, String id, String type) {
-            return !get(world, id, type).isEmpty();
         }
 
         public static void save(World world) {
@@ -589,7 +599,7 @@ public class BackpackCore {
 
         @Override
         public int getRequiredPermissionLevel() {
-            return 3;
+            return 2;
         }
 
         @Override
