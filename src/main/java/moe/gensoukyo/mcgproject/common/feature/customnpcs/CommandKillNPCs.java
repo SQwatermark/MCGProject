@@ -1,4 +1,4 @@
-package moe.gensoukyo.mcgproject.server.feature.customnpcs;
+package moe.gensoukyo.mcgproject.common.feature.customnpcs;
 
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.ICommandSender;

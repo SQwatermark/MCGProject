@@ -1,12 +1,8 @@
-package moe.gensoukyo.mcgproject.server.feature.customnpcs;
-
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
+package moe.gensoukyo.mcgproject.common.feature.customnpcs;
 
 /**
  * NPC怪物信息
  */
-@SideOnly(Side.SERVER)
 public class NPCMob {
 
     public int tab;

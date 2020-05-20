@@ -1,4 +1,4 @@
-package moe.gensoukyo.mcgproject.server.feature.customnpcs;
+package moe.gensoukyo.mcgproject.common.feature.customnpcs;
 
 import moe.gensoukyo.mcgproject.common.util.EntityPool;
 import moe.gensoukyo.mcgproject.core.MCGProject;
@@ -8,8 +8,6 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import noppes.npcs.api.IWorld;
 import noppes.npcs.api.entity.IEntity;
 import noppes.npcs.controllers.ServerCloneController;
@@ -27,7 +25,6 @@ import java.util.concurrent.locks.ReentrantLock;
  * @author drzzm32
  * @date 2020/4/10
  */
-@SideOnly(Side.SERVER)
 public class CustomNPCsHook {
 
     private static CustomNPCsHook instance;

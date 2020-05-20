@@ -1,4 +1,4 @@
-package moe.gensoukyo.mcgproject.server.feature.customnpcs;
+package moe.gensoukyo.mcgproject.common.feature.customnpcs;
 
 import moe.gensoukyo.mcgproject.common.util.math.MathMCG;
 import moe.gensoukyo.mcgproject.common.util.math.Vec2d;
@@ -12,8 +12,6 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.WorldServer;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import noppes.npcs.api.NpcAPI;
 import noppes.npcs.entity.EntityCustomNpc;
 
@@ -22,7 +20,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-@SideOnly(Side.SERVER)
 public class NPCSpawner {
 
     private static NPCSpawner instance;
@@ -41,8 +38,8 @@ public class NPCSpawner {
 
     @SubscribeEvent
     public void tick(TickEvent.WorldTickEvent event) {
-        if (!MCGProject.INSTANCE.server.isDedicatedServer()) return;
-        if (random.nextInt(config.interval) == 0) tryToSpawnAMob((WorldServer) event.world);
+        if (random.nextInt(config.interval) == 0)
+            tryToSpawnAMob((WorldServer) event.world);
     }
 
     public void tryToSpawnAMob(WorldServer worldServer) {
@@ -70,7 +67,7 @@ public class NPCSpawner {
             Vec3d place = new Vec3d(x, y, z);
 
             //选中的地点在不在某个刷怪区里
-            for (MobSpawnRegion mobSpawnRegion : config.mobSpawnRegions) {
+            for (NPCRegion.MobSpawnRegion mobSpawnRegion : config.mobSpawnRegions) {
                 //判断世界
                 if (!worldServer.getWorldInfo().getWorldName().toLowerCase().equals(mobSpawnRegion.world.toLowerCase())) continue;
                 //判断位置
@@ -81,7 +78,7 @@ public class NPCSpawner {
                 //要在刷怪区内
                 if (mobSpawnRegion.region.isVecInRegion(vec2d)) {
                     //如果在黑名单内，则不刷怪
-                    for (BlackListRegion blackListRegion : mobSpawnRegion.blackList) {
+                    for (NPCRegion.BlackListRegion blackListRegion : mobSpawnRegion.blackList) {
                         if (blackListRegion.region.isVecInRegion(vec2d)) continue label;
                     }
                     //如果在刷怪区且不在黑名单内，随便挑一个怪物生成
@@ -106,7 +103,7 @@ public class NPCSpawner {
      * @return 选出的NPC
      */
     @Nullable
-    public NPCMob chooseAMobToSpawn(MobSpawnRegion mobSpawnRegion) {
+    public NPCMob chooseAMobToSpawn(NPCRegion.MobSpawnRegion mobSpawnRegion) {
         ArrayList<Integer> weights = new ArrayList<>();
         for (NPCMob mob : mobSpawnRegion.mobs) {
             weights.add((int)mob.weight * 100);

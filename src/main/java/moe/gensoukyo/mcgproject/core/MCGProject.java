@@ -1,21 +1,16 @@
 package moe.gensoukyo.mcgproject.core;
 
-import moe.gensoukyo.mcgproject.common.feature.NoRecipeBook;
 import moe.gensoukyo.mcgproject.common.feature.backpack.BackpackCore;
 import moe.gensoukyo.mcgproject.common.feature.rsgauges.ModRsGauges;
 import moe.gensoukyo.mcgproject.common.feature.sticker.TileSticker;
-import moe.gensoukyo.mcgproject.server.feature.customnpcs.CommandKillNPCs;
-import moe.gensoukyo.mcgproject.server.feature.customnpcs.NPCSpawnerConfig;
+import moe.gensoukyo.mcgproject.common.feature.customnpcs.CommandKillNPCs;
+import moe.gensoukyo.mcgproject.common.feature.customnpcs.NPCSpawnerConfig;
 import net.minecraft.server.MinecraftServer;
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.*;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import org.apache.logging.log4j.Logger;
-import org.lwjgl.opengl.Display;
 
 import java.io.File;
 
@@ -51,7 +46,7 @@ public class MCGProject {
     }
 
     @SidedProxy(clientSide = "moe.gensoukyo.mcgproject.core.ClientProxy",
-            serverSide = "moe.gensoukyo.mcgproject.core.ServerProxy")
+            serverSide = "moe.gensoukyo.mcgproject.core.CommonProxy")
     public static CommonProxy proxy;
 
     @Mod.EventHandler
@@ -81,22 +76,8 @@ public class MCGProject {
         event.registerServerCommand(new BackpackCore.BackpackCommand());
         event.registerServerCommand(new BackpackCore.BackpackManageCommand());
         event.registerServerCommand(new TileSticker.RefreshCommand());
-        event.registerServerCommand(new NPCSpawnerConfig.CommandRefresh());
+        event.registerServerCommand(new NPCSpawnerConfig.CommandRefreshNPCSpawner());
         event.registerServerCommand(new CommandKillNPCs());
-    }
-
-    @Mod.EventHandler
-    @SideOnly(Side.CLIENT)
-    public void loadComplete(FMLLoadCompleteEvent event) {
-        //设置窗口标题（加载完成时）
-        Display.setTitle("Minecraft幻想乡1.12.2");
-    }
-
-    @Mod.EventHandler
-    @SideOnly(Side.CLIENT)
-    public void constructMod(FMLConstructionEvent event) {
-        //隐藏玩家物品栏界面的合成书
-        MinecraftForge.EVENT_BUS.register(new NoRecipeBook());
     }
 
     @Mod.EventHandler

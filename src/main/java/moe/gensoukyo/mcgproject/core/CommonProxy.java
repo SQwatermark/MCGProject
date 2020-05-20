@@ -13,8 +13,11 @@ import moe.gensoukyo.mcgproject.common.init.ModItem;
 import moe.gensoukyo.mcgproject.common.init.ModTileEntity;
 import moe.gensoukyo.mcgproject.common.network.NetworkWrapper;
 import moe.gensoukyo.mcgproject.common.util.EntityPool;
+import moe.gensoukyo.mcgproject.common.feature.customnpcs.CustomNPCsHook;
+import moe.gensoukyo.mcgproject.common.feature.customnpcs.NPCSpawner;
 import net.minecraft.entity.Entity;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
@@ -41,6 +44,12 @@ public class CommonProxy {
         MinecraftForge.EVENT_BUS.register(WorldGuard.instance());
         MinecraftForge.EVENT_BUS.register(StreamStopper.instance());
         new NetworkWrapper(event);
+        if (Loader.isModLoaded("customnpcs")) {
+            MCGProject.logger.info("Register CustomNPCs Hook");
+            MinecraftForge.EVENT_BUS.register(CustomNPCsHook.instance());
+            MCGProject.logger.info("Register NPCSpawner");
+            MinecraftForge.EVENT_BUS.register(NPCSpawner.instance());
+        }
     }
 
     @EventHandler

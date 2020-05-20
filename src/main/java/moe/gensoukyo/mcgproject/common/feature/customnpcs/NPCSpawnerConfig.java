@@ -1,4 +1,4 @@
-package moe.gensoukyo.mcgproject.server.feature.customnpcs;
+package moe.gensoukyo.mcgproject.common.feature.customnpcs;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
@@ -9,8 +9,6 @@ import net.minecraft.command.CommandBase;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.text.TextComponentString;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import org.apache.commons.io.FileUtils;
 
 import javax.annotation.Nullable;
@@ -18,7 +16,6 @@ import java.io.File;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 
-@SideOnly(Side.SERVER)
 public class NPCSpawnerConfig {
 
     private static NPCSpawnerConfig instance;
@@ -34,9 +31,9 @@ public class NPCSpawnerConfig {
     //刷怪触发间隔,以tick计算
     public int interval;
     //刷怪区的集合
-    ArrayList<MobSpawnRegion> mobSpawnRegions;
+    ArrayList<NPCRegion.MobSpawnRegion> mobSpawnRegions;
     //安全区的集合
-    ArrayList<BlackListRegion> blackListRegions;
+    ArrayList<NPCRegion.BlackListRegion> blackListRegions;
 
     //配置文件
     public File file;
@@ -44,7 +41,7 @@ public class NPCSpawnerConfig {
     private NPCSpawnerConfig() {
         minSpawnDistance = 12;
         maxSpawnDistance = 36;
-        interval = 60;
+        interval = 300;
         mobSpawnRegions = new ArrayList<>();
         blackListRegions = new ArrayList<>();
         this.refresh();
@@ -67,7 +64,7 @@ public class NPCSpawnerConfig {
                     JsonArray array = npcSpawnerConfigJson.get("mobSpawnRegions").getAsJsonArray();
                     for (int i = 0; i < array.size(); i++) {
                         JsonObject mobSpawnRegionJson = array.get(i).getAsJsonObject();
-                        MobSpawnRegion mobSpawnRegion = parseMobSpawnRegion(mobSpawnRegionJson);
+                        NPCRegion.MobSpawnRegion mobSpawnRegion = parseMobSpawnRegion(mobSpawnRegionJson);
                         if (mobSpawnRegion != null)
                             mobSpawnRegions.add(mobSpawnRegion);
                     }
@@ -75,7 +72,7 @@ public class NPCSpawnerConfig {
                         JsonArray array2 = npcSpawnerConfigJson.get("blackListRegions").getAsJsonArray();
                         for (int i = 0; i < array2.size(); i++) {
                             JsonObject blackListRegionJson = array2.get(i).getAsJsonObject();
-                            BlackListRegion blackListRegion = parseBlackListRegion(blackListRegionJson);
+                            NPCRegion.BlackListRegion blackListRegion = parseBlackListRegion(blackListRegionJson);
                             if (blackListRegion != null)
                                 blackListRegions.add(blackListRegion);
                         }
@@ -96,9 +93,9 @@ public class NPCSpawnerConfig {
                 MCGProject.logger.info("已生成mcgproject目录 ");
             }
         }
-        for (MobSpawnRegion mobSpawnRegion : this.mobSpawnRegions) {
+        for (NPCRegion.MobSpawnRegion mobSpawnRegion : this.mobSpawnRegions) {
             mobSpawnRegion.blackList.clear();
-            for (BlackListRegion blackListRegion : this.blackListRegions) {
+            for (NPCRegion.BlackListRegion blackListRegion : this.blackListRegions) {
                 if (mobSpawnRegion.world.toLowerCase().equals(blackListRegion.world.toLowerCase())) {
                     if (mobSpawnRegion.region.isCoincideWith(blackListRegion.region)) {
                         mobSpawnRegion.blackList.add(blackListRegion);
@@ -108,7 +105,7 @@ public class NPCSpawnerConfig {
         }
     }
 
-    public MobSpawnRegion parseMobSpawnRegion(JsonObject mobSpawnRegionJson) {
+    public NPCRegion.MobSpawnRegion parseMobSpawnRegion(JsonObject mobSpawnRegionJson) {
         try {
             String name = mobSpawnRegionJson.get("name").getAsString();
             String world = mobSpawnRegionJson.get("world").getAsString();
@@ -116,7 +113,7 @@ public class NPCSpawnerConfig {
             JsonArray pos2 = mobSpawnRegionJson.get("pos2").getAsJsonArray();
             int destiny = mobSpawnRegionJson.get("destiny").getAsInt();
             JsonArray mobs = mobSpawnRegionJson.get("mobs").getAsJsonArray();
-            return new MobSpawnRegion(name, new Region2d(pos1.get(0).getAsDouble(),
+            return new NPCRegion.MobSpawnRegion(name, new Region2d(pos1.get(0).getAsDouble(),
                     pos1.get(1).getAsDouble(), pos2.get(0).getAsDouble(), pos2.get(1).getAsDouble()), destiny, parseNPCMobs(mobs), world);
         } catch (Exception e) {
             MCGProject.logger.error("MCGProject：刷怪配置解析错误！刷怪区信息不符合规范！已跳过该刷怪区！");
@@ -149,13 +146,13 @@ public class NPCSpawnerConfig {
         }
     }
 
-    public BlackListRegion parseBlackListRegion(JsonObject blackListRegionJson) {
+    public NPCRegion.BlackListRegion parseBlackListRegion(JsonObject blackListRegionJson) {
         try {
             String name = blackListRegionJson.get("name").getAsString();
             JsonArray pos1 = blackListRegionJson.get("pos1").getAsJsonArray();
             JsonArray pos2 = blackListRegionJson.get("pos2").getAsJsonArray();
             String world = blackListRegionJson.get("world").getAsString();
-            return new BlackListRegion(name, new Region2d(pos1.get(0).getAsDouble(),
+            return new NPCRegion.BlackListRegion(name, new Region2d(pos1.get(0).getAsDouble(),
                     pos1.get(1).getAsDouble(), pos2.get(0).getAsDouble(), pos2.get(1).getAsDouble()), true, world);
         } catch (Exception e) {
             MCGProject.logger.error("MCGProject：刷怪配置解析错误！安全区信息不符合规范！已跳过该安全区！");
@@ -164,7 +161,7 @@ public class NPCSpawnerConfig {
         }
     }
 
-    public static class CommandRefresh extends CommandBase {
+    public static class CommandRefreshNPCSpawner extends CommandBase {
 
         @Override
         public String getName() {
@@ -179,9 +176,9 @@ public class NPCSpawnerConfig {
         @Override
         public void execute(MinecraftServer server, ICommandSender sender, String[] args) {
             NPCSpawnerConfig.instance().refresh();
-            sender.sendCommandFeedback();
             sender.sendMessage(new TextComponentString("已刷新，请通过控制台查看具体信息！"));
         }
+
     }
 
 }
