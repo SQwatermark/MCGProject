@@ -1,4 +1,4 @@
-package moe.gensoukyo.mcgproject.common.feature.futuremc;
+package moe.gensoukyo.mcgproject.common.block.futuremc;
 
 import moe.gensoukyo.mcgproject.common.creativetab.MCGTabs;
 import moe.gensoukyo.mcgproject.common.init.ModItem;

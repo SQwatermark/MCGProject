@@ -38,6 +38,7 @@ public class ModItem {
     public static ItemMCGBannerPattern ITEM_MCG_BANNER_PATTERN;
     public static ItemLittleRock ITEM_LITTLE_STONE;
     public static ItemRouKanKen ITEM_ROU_KAN_KEN;
+    public static ItemMCGHoe ITEM_MCG_HOE;
 
     public static ItemGRM3A ITEM_GRM_3A;
     public static ItemGRM3AF ITEM_GRM_3AF;
@@ -65,6 +66,7 @@ public class ModItem {
         ITEM_MCG_BANNER_PATTERN = new ItemMCGBannerPattern();
         ITEM_LITTLE_STONE = new ItemLittleRock();
         ITEM_ROU_KAN_KEN = new ItemRouKanKen();
+        ITEM_MCG_HOE = new ItemMCGHoe();
 
         ITEM_GRM_3A = new ItemGRM3A();
         ITEM_GRM_3AF = new ItemGRM3AF();
@@ -86,5 +88,7 @@ public class ModItem {
         event.getRegistry().register(ITEM_ROU_KAN_KEN);
 
         event.getRegistry().registerAll(ITEM_GRM_3A, ITEM_GRM_3AF, ITEM_GRM_3B, ITEM_GRM_3BF);
+
+        event.getRegistry().register(ITEM_MCG_HOE);
     }
 }

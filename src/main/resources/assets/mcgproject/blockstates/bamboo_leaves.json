@@ -1,0 +1,19 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "mcgproject:bamboo_leaves"
+  },
+  "variants": {
+    "inventory": [{
+      "model": "mcgproject:generated",
+      "textures": {"layer0": "mcgproject:items/nature/bamboo_3"}
+    }],
+    "normal": [{}],
+    "facing": {
+      "east": {"y": 90},
+      "west": {"y": 270},
+      "south": {"y": 180},
+      "north": {}
+    }
+  }
+}

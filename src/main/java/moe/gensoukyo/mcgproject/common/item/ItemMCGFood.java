@@ -46,6 +46,11 @@ public class ItemMCGFood extends ItemFood {
         return "item." + MCGProject.ID + "." + "mcg_food" +"_" + stack.getMetadata();
     }
 
+    @Override
+    public int getHealAmount(ItemStack stack) {
+        if (stack.getMetadata() == 75) return 1;
+        return super.getHealAmount(stack);
+    }
 
     @Override
     public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> items) {

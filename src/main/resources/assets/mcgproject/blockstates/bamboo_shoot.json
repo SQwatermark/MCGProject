@@ -1,0 +1,14 @@
+{
+  "forge_marker": 1,
+  "defaults": {"model": "cross"},
+  "variants": {
+    "inventory": [
+      {"textures": {"cross": "mcgproject:blocks/nature/bamboo_shoot_2"}}
+    ],
+    "age": {
+      "0": {"textures": {"cross": "mcgproject:blocks/blank"}},
+      "1": {"textures": {"cross": "mcgproject:blocks/nature/bamboo_shoot_1"}},
+      "2": {"textures": {"cross": "mcgproject:blocks/nature/bamboo_shoot_2"}}
+    }
+  }
+}

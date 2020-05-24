@@ -26,7 +26,6 @@ public class NetworkWrapper {
         INSTANCE.registerMessage(MusicPlayerHandler.class, MusicPlayerPacket.class, 5, Side.SERVER);
         INSTANCE.registerMessage(MusicPlayerGuiHandler.class, MusicPlayerGuiPacket.class, 6, Side.CLIENT);
         ModRsGauges.INSTANCE.initNetwork(INSTANCE, 7);
-
     }
 
 }

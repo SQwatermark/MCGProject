@@ -23,6 +23,9 @@ import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
 
+/**
+ * 掉落物实体
+ */
 @MCGEntity("item_mcg")
 public class EntityItemMCG extends Entity {
     private static final DataParameter<ItemStack> ITEM = EntityDataManager.createKey(EntityItemMCG.class, DataSerializers.ITEM_STACK);
