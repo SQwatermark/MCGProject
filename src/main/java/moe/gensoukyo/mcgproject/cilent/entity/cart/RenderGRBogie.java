@@ -44,7 +44,7 @@ public class RenderGRBogie extends AbsCartRenderer {
         GlStateManager.pushMatrix();
         GlStateManager.scale(0.0625D, 0.0625D, 0.0625D);
         GlStateManager.pushMatrix();
-        GlStateManager.translate(10.0F, -3.0F, 0.0F);
+        GlStateManager.translate(10.0F, -2.1F, 0.0F);
         GlStateManager.pushMatrix();
         GlStateManager.rotate(angle, 0.0F, 0.0F, 1.0F);
         this.modelWheel.renderAll();
@@ -54,7 +54,7 @@ public class RenderGRBogie extends AbsCartRenderer {
         GlStateManager.pushMatrix();
         GlStateManager.scale(0.0625D, 0.0625D, 0.0625D);
         GlStateManager.pushMatrix();
-        GlStateManager.translate(-10.0F, -3.0F, 0.0F);
+        GlStateManager.translate(-10.0F, -2.1F, 0.0F);
         GlStateManager.pushMatrix();
         GlStateManager.rotate(angle, 0.0F, 0.0F, 1.0F);
         this.modelWheel.renderAll();

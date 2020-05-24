@@ -18,11 +18,6 @@ import java.util.UUID;
 @MCGEntity("gr_bogie")
 public class GRBogie extends AbsBogie {
 
-    public static void linkBogie(GRBogie a, GRBogie b) {
-        a.setTargetBogie(b);
-        b.setTargetBogie(a);
-    }
-
     private static final DataParameter<Integer> TARGET_BOGIE = EntityDataManager.createKey(GRBogie.class, DataSerializers.VARINT);
     public UUID targetUUID = UUID.randomUUID();
 
@@ -47,6 +42,9 @@ public class GRBogie extends AbsBogie {
 
     public void setIsCenter(boolean val) { dataManager.set(IS_CENTER, val); }
     public boolean isCenter() { return dataManager.get(IS_CENTER); }
+
+    @Override
+    public double getRadius() { return 0.2734375; }
 
     @Override
     public float getMaxCartSpeedOnRail() {

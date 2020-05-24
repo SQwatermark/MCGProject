@@ -8,7 +8,6 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
-import org.thewdj.linkage.core.LinkageManager;
 
 public class ItemGRM3B extends AbsItemMetro {
 
@@ -37,8 +36,7 @@ public class ItemGRM3B extends AbsItemMetro {
         pos = pos.offset(facing, length / 2 + (int) (v * 2));
         GRBogie bogieC = new GRBogie(world, x + (double)pos.getX(), y, z + (double)pos.getZ(), length / 2.0F, coupler / 2.0F);
 
-        GRBogie.linkBogie(bogieA, bogieB); GRBogie.linkBogie(bogieB, bogieC);
-        LinkageManager.INSTANCE.createLink(bogieA, bogieB); LinkageManager.INSTANCE.createLink(bogieB, bogieC);
+        Bogie.link(bogieA, bogieB); Bogie.link(bogieB, bogieC);
         carA.setBogieA(bogieA).setBogieB(bogieB); carB.setBogieB(bogieB).setBogieA(bogieC);
 
         world.spawnEntity(bogieA); world.spawnEntity(bogieB); world.spawnEntity(bogieC);

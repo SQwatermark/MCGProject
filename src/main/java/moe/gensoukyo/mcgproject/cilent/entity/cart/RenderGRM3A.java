@@ -8,6 +8,7 @@ import moe.gensoukyo.mcgproject.core.MCGProject;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.RenderManager;
+import net.minecraft.item.EnumDyeColor;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.client.registry.IRenderFactory;
 
@@ -16,9 +17,9 @@ public class RenderGRM3A extends AbsTrainRenderer {
     public static IRenderFactory<AbsTrainBase> FACTORY = RenderGRM3A::new;
     private final String _name = "grm_3a";
     private final WavefrontObject modelBase = new WavefrontObject(new ResourceLocation(MCGProject.ID, "models/entity/cart/" + _name + "_base.obj"));
-    //private final WavefrontObject modelPrint = new WavefrontObject(new ResourceLocation(MCGProject.ID, "models/entity/cart/" + _name + "_print.obj"));
+    private final WavefrontObject modelPrint = new WavefrontObject(new ResourceLocation(MCGProject.ID, "models/entity/cart/" + _name + "_print.obj"));
     private final ResourceLocation textureBase = new ResourceLocation(MCGProject.ID, "textures/entity/cart/" + _name + "_base.png");
-    //private final ResourceLocation texturePrint = new ResourceLocation(MCGProject.ID, "textures/entity/cart/" + _name + "_print.png");
+    private final ResourceLocation texturePrint = new ResourceLocation(MCGProject.ID, "textures/entity/cart/" + _name + "_print.png");
 
     private final int doorCnt = 6;
     private final String[] doors, doorsL1,doorsL2, doorsR1, doorsR2;
@@ -77,14 +78,17 @@ public class RenderGRM3A extends AbsTrainRenderer {
             GlStateManager.translate(-prog, 0.0D, 0.0D);
             modelBase.renderOnly(doorsR2);
             GlStateManager.popMatrix();
-        }
 
-//        GlStateManager.enableAlpha();
-//        GlStateManager.enableBlend();
-//        Minecraft.getMinecraft().getTextureManager().bindTexture(texturePrint);
-//        modelPrint.renderAll();
-//        GlStateManager.disableAlpha();
-//        GlStateManager.disableBlend();
+            GlStateManager.enableAlpha();
+            GlStateManager.enableBlend();
+            float[] color = EnumDyeColor.byDyeDamage(metro.getColorDamage()).getColorComponentValues();
+            GlStateManager.color(color[0], color[1], color[2]);
+            Minecraft.getMinecraft().getTextureManager().bindTexture(texturePrint);
+            modelPrint.renderAll();
+            GlStateManager.color(1, 1, 1);
+            GlStateManager.disableAlpha();
+            GlStateManager.disableBlend();
+        }
 
         GlStateManager.popMatrix();
     }

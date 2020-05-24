@@ -6,9 +6,19 @@ import club.nsdn.nyasamarailway.api.cart.CartUtil;
 
 import moe.gensoukyo.mcgproject.common.entity.MCGEntity;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
+import net.minecraft.item.EnumDyeColor;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.network.datasync.DataParameter;
+import net.minecraft.network.datasync.DataSerializers;
+import net.minecraft.network.datasync.EntityDataManager;
+import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.Vec3d;
+import net.minecraft.util.text.TextComponentString;
 import net.minecraft.world.World;
 
 import javax.annotation.Nonnull;
@@ -21,6 +31,10 @@ public class GRM3A extends AbsMetro {
     public static final float DOOR_DIST = 5.0F;
 
     public final LinkedList<CartPart> parts = new LinkedList<>();
+
+    private static final DataParameter<Byte> COLOR_DAMAGE = EntityDataManager.createKey(GRM3A.class, DataSerializers.BYTE);
+    private static final DataParameter<Boolean> DOOR_LEFT = EntityDataManager.createKey(GRM3A.class, DataSerializers.BOOLEAN);
+    private static final DataParameter<Boolean> DOOR_RIGHT = EntityDataManager.createKey(GRM3A.class, DataSerializers.BOOLEAN);
 
     @Override
     public boolean hasMultiPart() { return true; }
@@ -47,13 +61,47 @@ public class GRM3A extends AbsMetro {
     }
 
     @Override
-    public void initEntity() { }
+    public void initEntity() {
+        dataManager.register(COLOR_DAMAGE, (byte) 0xF);
+        dataManager.register(DOOR_LEFT, false);
+        dataManager.register(DOOR_RIGHT, false);
+    }
 
     @Override
-    public void fromNBT(@Nonnull NBTTagCompound nbtTagCompound) { }
+    public void fromNBT(@Nonnull NBTTagCompound nbtTagCompound) {
+        dataManager.set(COLOR_DAMAGE, nbtTagCompound.getByte("colorDamage"));
+    }
 
     @Override
-    public void toNBT(@Nonnull NBTTagCompound nbtTagCompound) { }
+    public void toNBT(@Nonnull NBTTagCompound nbtTagCompound) {
+        nbtTagCompound.setByte("colorDamage", dataManager.get(COLOR_DAMAGE));
+    }
+
+    public boolean getDoorStateLeft() { return dataManager.get(DOOR_LEFT); }
+    public boolean getDoorStateRight() { return dataManager.get(DOOR_RIGHT); }
+    public void setDoorStateLeft(boolean value) { dataManager.set(DOOR_LEFT, value); }
+    public void setDoorStateRight(boolean value) { dataManager.set(DOOR_RIGHT, value); }
+
+    @Override
+    public boolean processInitialInteract(@Nonnull EntityPlayer player, @Nonnull EnumHand hand) {
+        if (player.isSneaking()) {
+            ItemStack stack = player.getHeldItem(hand);
+            Item item = stack.getItem();
+            if (item.equals(Items.DYE)) {
+                if (!world.isRemote) {
+                    byte damage = (byte) (stack.getItemDamage() & 0xF);
+                    dataManager.set(COLOR_DAMAGE, damage);
+                    player.sendMessage(new TextComponentString(
+                            "COLOR: " + damage + ", " + EnumDyeColor.byDyeDamage(damage).getName()));
+                }
+                return true;
+            }
+        }
+
+        return super.processInitialInteract(player, hand);
+    }
+
+    public byte getColorDamage() { return dataManager.get(COLOR_DAMAGE); }
 
     @Override
     public double passengerYOffset() { return 0.35; }

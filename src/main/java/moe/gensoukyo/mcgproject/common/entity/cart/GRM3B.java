@@ -1,5 +1,6 @@
 package moe.gensoukyo.mcgproject.common.entity.cart;
 
+import club.nsdn.nyasamarailway.api.cart.CartPart;
 import moe.gensoukyo.mcgproject.common.entity.MCGEntity;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.MoverType;
@@ -22,7 +23,7 @@ public class GRM3B extends GRM3A {
             Entity bogieA = this.getBogieA();
             Entity bogieB = this.getBogieB();
             Vec3d vec = bogieA.getPositionVector().subtract(bogieB.getPositionVector());
-            vec = vec.normalize().scale(1.0D);
+            vec = vec.normalize().scale(2.0D);
             double x = (bogieA.posX + bogieB.posX + vec.x) / 2.0D;
             double y = (bogieA.posY + bogieB.posY + vec.y) / 2.0D + this.getTrainYOffset();
             double z = (bogieA.posZ + bogieB.posZ + vec.z) / 2.0D;
@@ -37,6 +38,13 @@ public class GRM3B extends GRM3A {
             this.move(MoverType.SELF, this.motionX, this.motionY, this.motionZ);
         }
 
+        for (CartPart p : parts) {
+            if (!world.loadedEntityList.contains(p))
+                world.spawnEntity(p);
+        }
+
+        for (CartPart p : parts)
+            p.onUpdate();
     }
 
 }

@@ -3,6 +3,8 @@ package moe.gensoukyo.mcgproject.common.item.cart;
 import club.nsdn.nyasamarailway.ext.AbsMetro;
 
 import moe.gensoukyo.mcgproject.common.creativetab.MCGTabs;
+import moe.gensoukyo.mcgproject.common.entity.cart.GRBogie;
+import moe.gensoukyo.mcgproject.common.entity.cart.GRMotor;
 import moe.gensoukyo.mcgproject.core.MCGProject;
 import net.minecraft.block.BlockRailBase;
 import net.minecraft.block.state.IBlockState;
@@ -17,11 +19,40 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
+import org.thewdj.linkage.core.LinkageManager;
 
 /**
  * Created by drzzm32 on 2019.2.27
  */
 public abstract class AbsItemMetro extends Item {
+
+    public static class Bogie {
+
+        public static void link(GRBogie a, GRBogie b) {
+            a.setTargetBogie(b);
+            b.setTargetBogie(a);
+            LinkageManager.INSTANCE.createLink(a, b);
+        }
+
+        public static void link(GRBogie a, GRMotor b) {
+            a.setTargetBogie(b);
+            b.setTargetBogie(a);
+            LinkageManager.INSTANCE.createLink(a, b);
+        }
+
+        public static void link(GRMotor a, GRBogie b) {
+            a.setTargetBogie(b);
+            b.setTargetBogie(a);
+            LinkageManager.INSTANCE.createLink(a, b);
+        }
+
+        public static void link(GRMotor a, GRMotor b) {
+            a.setTargetBogie(b);
+            b.setTargetBogie(a);
+            LinkageManager.INSTANCE.createLink(a, b);
+        }
+
+    }
 
     public final Class<? extends AbsMetro> trainClass;
 
