@@ -130,6 +130,10 @@ tile.mcgproject.leaves_sakura_glowing_15.name=发光樱花树叶
 tile.mcgproject.bamboo_old_0.name=竹笋
 tile.mcgproject.bamboo_old_1.name=竹子
 tile.mcgproject.bamboo_old_2.name=竹叶
+tile.mcgproject.bamboo_0.name=竹子
+tile.mcgproject.bamboo_1.name=竹子（小叶）
+tile.mcgproject.bamboo_2.name=竹子（大叶）
+tile.mcgproject.bamboo_leaves.name=竹叶
 tile.mcgproject.leaves_mcg_0.name=银杏树叶
 tile.mcgproject.leaves_mcg_1.name=红枫树叶
 tile.mcgproject.leaves_mcg_2.name=黄枫树叶
@@ -142,6 +146,7 @@ tile.mcgproject.leaves_vine.name=藤蔓雕刻元件
 tile.mcgproject.leaves_special.name=地狱火树叶
 tile.mcgproject.block_apple.name=苹果生产点
 tile.mcgproject.rock_spawner.name=小石头生产点
+tile.mcgproject.bamboo_shoot.name=竹笋生产点
 
 
 # 农业与食物
@@ -353,6 +358,7 @@ item.mcgproject.mcg_drink.name=啤酒
 item.mcgproject.music_player.name=音乐矿车
 item.mcgproject.little_rock.name=小石块
 item.mcgproject.roukanken.name=楼观剑
+item.mcgproject.mcg_hoe.name=木锄
 
 item.mcgproject.mcg_food_0.name=一袋杏仁
 item.mcgproject.mcg_food_1.name=一袋核桃
@@ -539,6 +545,14 @@ item.mcgproject.mcg_prop_79.name=泛黄的纸张
 item.mcgproject.mcg_prop_80.name=调查凭证
 item.mcgproject.mcg_prop_81.name=七曜粉末
 item.mcgproject.mcg_prop_82.name=试管
+item.mcgproject.mcg_prop_83.name=竹子
+item.mcgproject.mcg_prop_84.name=嫩竹
+item.mcgproject.mcg_prop_85.name=竹笋
+item.mcgproject.mcg_prop_86.name=嫩笋
+item.mcgproject.mcg_prop_87.name=木材
+item.mcgproject.mcg_prop_88.name=软木材
+item.mcgproject.mcg_prop_89.name=硬木材
+item.mcgproject.mcg_prop_90.name=叶子
 
 item.mcgproject.mcg_banner_pattern_0.name=丸桔梗
 item.mcgproject.mcg_banner_pattern_1.name=家纹图案

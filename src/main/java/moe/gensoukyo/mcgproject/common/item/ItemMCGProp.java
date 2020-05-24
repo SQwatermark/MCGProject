@@ -33,7 +33,7 @@ public class ItemMCGProp extends Item {
                 items.add(new ItemStack(this, 1, i));
             }
         } else if (this.isInCreativeTab(tab)) {
-            for (int i = 20; i < 83; i++) {
+            for (int i = 20; i < 90; i++) {
                 items.add(new ItemStack(this, 1, i));
             }
         }

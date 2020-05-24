@@ -1,4 +1,4 @@
-package moe.gensoukyo.mcgproject.common.feature;
+package moe.gensoukyo.mcgproject.cilent.feature;
 
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiButtonImage;

@@ -4,6 +4,7 @@ import moe.gensoukyo.mcgproject.common.block.*;
 import moe.gensoukyo.mcgproject.common.block.enums.EnumTileColor;
 import moe.gensoukyo.mcgproject.common.creativetab.MCGTabs;
 import moe.gensoukyo.mcgproject.common.feature.customnpcs.BlockNPCSpawnerConsole;
+import moe.gensoukyo.mcgproject.common.feature.farm.BlockBambooShoot;
 import moe.gensoukyo.mcgproject.common.feature.farm.apple.BlockMCGApple;
 import moe.gensoukyo.mcgproject.common.feature.backpack.GensoChest;
 import moe.gensoukyo.mcgproject.common.feature.farm.stone.BlockRockSpawner;
@@ -94,6 +95,9 @@ public class ModBlock {
         blocks1.add(new BlockMCG(Material.LEAVES, "leaves_vine", MCGTabs.NATURE, SoundType.PLANT));
         blocks1.add(new BlockSpecialLeaves("leaves_special"));
         blocks1.add(BLOCK_APPLE);
+        blocks3.add(new BlockBamboo());
+        blocks1.add(new BlockBambooLeaves());
+        blocks1.add(new BlockBambooShoot());
 
         //幻想
         blocks2.add(GAP);
@@ -277,7 +281,13 @@ public class ModBlock {
 
     //模型注册的执行
     private void setLocation(Item i, int maxMeta) {
-        if(maxMeta == 0) {
+        if(Block.getBlockFromItem(i) instanceof BlockBamboo) {
+            for (int r = 0; r < maxMeta+1; r++) {
+                ModelLoader.setCustomModelResourceLocation(i, r,
+                        new ModelResourceLocation(Objects.requireNonNull(i.getRegistryName()), String.valueOf(r)));
+            }
+        }
+        else if(maxMeta == 0) {
             ModelLoader.setCustomModelResourceLocation(i, 0,
                     new ModelResourceLocation(Objects.requireNonNull(i.getRegistryName()), "inventory")
             );

@@ -1,0 +1,61 @@
+{
+	"credit": "Made with Blockbench",
+	"textures": {
+		"3": "mcgproject:blocks/nature/bamboo_1x",
+		"5": "mcgproject:blocks/nature/bamboo_x",
+		"particle": "mcgproject:blocks/nature/bamboo_x"
+	},
+	"elements": [
+		{
+			"name": "中",
+			"from": [-16, -12, -16],
+			"to": [-16, 19, 16],
+			"shade": false,
+			"rotation": {"angle": -45, "axis": "z", "origin": [-16, -13, 0]},
+			"faces": {
+				"north": {"uv": [0, 0, 8, 7.875], "texture": "#5", "tintindex": 0},
+				"east": {"uv": [0, 0, 8, 7.875], "texture": "#5", "tintindex": 0},
+				"south": {"uv": [0, 0, 8, 7.875], "texture": "#5", "tintindex": 0},
+				"west": {"uv": [0, 0, 8, 7.875], "texture": "#5", "tintindex": 0},
+				"up": {"uv": [0, 0, 8, 7.875], "texture": "#5", "tintindex": 0},
+				"down": {"uv": [0, 0, 8, 7.875], "texture": "#5", "tintindex": 0}
+			}
+		},
+		{
+			"name": "大01",
+			"from": [-16, 0, -16],
+			"to": [32, 0, 32],
+			"rotation": {"angle": 22.5, "axis": "x", "origin": [8, 0, 32]},
+			"faces": {
+				"north": {"uv": [2.375, 2, 13.875, 14], "texture": "#3"},
+				"east": {"uv": [2.375, 2, 13.875, 14], "texture": "#3"},
+				"south": {"uv": [2.375, 2, 13.875, 14], "texture": "#3"},
+				"west": {"uv": [2.375, 2, 13.875, 14], "texture": "#3"},
+				"up": {"uv": [2.375, 2, 13.875, 14], "texture": "#3"},
+				"down": {"uv": [2.375, 2, 13.875, 14], "rotation": 180, "texture": "#3"}
+			}
+		},
+		{
+			"name": "小",
+			"from": [28, -13, -16],
+			"to": [28, 11, 10],
+			"shade": false,
+			"rotation": {"angle": 45, "axis": "z", "origin": [28, -13, -5]},
+			"faces": {
+				"north": {"uv": [9.125, 0, 14.875, 6], "texture": "#5", "tintindex": 0},
+				"east": {"uv": [9.125, 0, 14.875, 6], "texture": "#5", "tintindex": 0},
+				"south": {"uv": [9.125, 0, 14.875, 6], "texture": "#5", "tintindex": 0},
+				"west": {"uv": [9.125, 0, 14.875, 6], "texture": "#5", "tintindex": 0},
+				"up": {"uv": [9.125, 0, 14.875, 6], "texture": "#5", "tintindex": 0},
+				"down": {"uv": [9.125, 0, 14.875, 6], "texture": "#5", "tintindex": 0}
+			}
+		}
+	],
+	"groups": [
+		{
+			"name": "01",
+			"origin": [8, 0, 8],
+			"children": [0, 1, 2]
+		}
+	]
+}

@@ -1,8 +1,8 @@
 package moe.gensoukyo.mcgproject.common.item;
 
-import moe.gensoukyo.mcgproject.common.feature.futuremc.BlockBamboo;
-import moe.gensoukyo.mcgproject.common.feature.futuremc.BlockCampfire;
-import moe.gensoukyo.mcgproject.common.feature.futuremc.BlockComposter;
+import moe.gensoukyo.mcgproject.common.block.futuremc.BlockBamboo;
+import moe.gensoukyo.mcgproject.common.block.futuremc.BlockCampfire;
+import moe.gensoukyo.mcgproject.common.block.futuremc.BlockComposter;
 import net.minecraft.block.Block;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;

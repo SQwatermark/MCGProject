@@ -1,0 +1,25 @@
+{
+  "forge_marker": 1,
+  "defaults": {"model": "mcgproject:bamboo"},
+  "variants": {
+    "inventory": [{}],
+    "0": [{
+      "model": "mcgproject:generated",
+      "textures": {"layer0": "mcgproject:items/nature/bamboo_0"}
+    }],
+    "1": [{
+      "model": "mcgproject:generated",
+      "textures": {"layer0": "mcgproject:items/nature/bamboo_1"}
+    }],
+    "2": [{
+      "model": "mcgproject:generated",
+      "textures": {"layer0": "mcgproject:items/nature/bamboo_2"}
+    }],
+    "leaves=0,top=true": [{"model": "mcgproject:bamboo"}],
+    "leaves=0,top=false": [{"model": "mcgproject:bamboo"}],
+    "leaves=1,top=true": [{"model": "mcgproject:bamboo_small_leaves_top"}],
+    "leaves=1,top=false": [{"model": "mcgproject:bamboo_small_leaves"}],
+    "leaves=2,top=true": [{"model": "mcgproject:bamboo_big_leaves_top"}],
+    "leaves=2,top=false": [{"model": "mcgproject:bamboo_big_leaves"}]
+  }
+}

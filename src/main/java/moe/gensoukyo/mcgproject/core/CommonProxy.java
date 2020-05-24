@@ -3,7 +3,7 @@ package moe.gensoukyo.mcgproject.core;
 import moe.gensoukyo.mcgproject.common.feature.BetterSign;
 import moe.gensoukyo.mcgproject.common.feature.MoreBannerPatterns;
 import moe.gensoukyo.mcgproject.common.feature.WorldGuard;
-import moe.gensoukyo.mcgproject.common.feature.futuremc.FMBlock;
+import moe.gensoukyo.mcgproject.common.init.FMBlock;
 import moe.gensoukyo.mcgproject.common.feature.kaginawa.EntityKaginawa;
 import moe.gensoukyo.mcgproject.common.feature.musicplayer.MusicPlayerManager;
 import moe.gensoukyo.mcgproject.common.feature.musicplayer.StreamStopper;
