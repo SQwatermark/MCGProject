@@ -4,6 +4,8 @@ import moe.gensoukyo.mcgproject.common.feature.kaginawa.ItemKaginawa;
 import moe.gensoukyo.mcgproject.common.feature.farm.stone.ItemLittleRock;
 import moe.gensoukyo.mcgproject.common.feature.musicplayer.ItemMusicPlayer;
 import moe.gensoukyo.mcgproject.common.item.*;
+import moe.gensoukyo.mcgproject.common.item.cart.ItemGRM3A;
+import moe.gensoukyo.mcgproject.common.item.cart.ItemGRM3B;
 import moe.gensoukyo.mcgproject.core.MCGProject;
 import net.minecraft.item.Item;
 import net.minecraftforge.event.RegistryEvent;
@@ -35,6 +37,9 @@ public class ModItem {
     public static ItemLittleRock ITEM_LITTLE_STONE;
     public static ItemRouKanKen ITEM_ROU_KAN_KEN;
 
+    public static ItemGRM3A ITEM_GRM_3A;
+    public static ItemGRM3B ITEM_GRM_3B;
+
     /**
      * 注册所有物品
      * @param event Item注册事件
@@ -57,6 +62,9 @@ public class ModItem {
         ITEM_LITTLE_STONE = new ItemLittleRock();
         ITEM_ROU_KAN_KEN = new ItemRouKanKen();
 
+        ITEM_GRM_3A = new ItemGRM3A();
+        ITEM_GRM_3B = new ItemGRM3B();
+
         event.getRegistry().register(ITEM_MCG_BOAT);
         event.getRegistry().register(ITEM_RAC_BOAT);
         event.getRegistry().register(ITEM_META_CHANGER);
@@ -70,5 +78,8 @@ public class ModItem {
         event.getRegistry().register(ITEM_MCG_BANNER_PATTERN);
         event.getRegistry().register(ITEM_LITTLE_STONE);
         event.getRegistry().register(ITEM_ROU_KAN_KEN);
+
+        event.getRegistry().register(ITEM_GRM_3A);
+        event.getRegistry().register(ITEM_GRM_3B);
     }
 }
