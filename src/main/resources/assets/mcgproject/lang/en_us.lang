@@ -348,6 +348,10 @@ tile.mcgproject.test_slab_2.name=材质测试2
 
 item.mcgproject.mcg_boat.name=MCG Boat
 item.mcgproject.rac_boat.name=RAC Boat
+item.mcgproject.grm_3a.name=GR Metro 3A
+item.mcgproject.grm_3af.name=GR Metro 3AF
+item.mcgproject.grm_3b.name=GR Metro 3B
+item.mcgproject.grm_3bf.name=GR Metro 3BF
 item.mcgproject.meta_changer.name=Debug Tool
 item.mcgproject.generator_big_oak.name=Big Oak Generator
 item.mcgproject.kaginawa.name=Grabbing Hook

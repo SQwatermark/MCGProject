@@ -349,6 +349,10 @@ tile.mcgproject.test_slab_2.name=材质测试2
 
 item.mcgproject.mcg_boat.name=河童陆行艇
 item.mcgproject.rac_boat.name=N-42陆行艇
+item.mcgproject.grm_3a.name=三甲型列车(拖车)
+item.mcgproject.grm_3af.name=三甲型列车(动车)
+item.mcgproject.grm_3b.name=三乙型列车(拖车)
+item.mcgproject.grm_3bf.name=三乙型列车(动车)
 item.mcgproject.meta_changer.name=河童的调试棒
 item.mcgproject.generator_big_oak.name=魔豆
 item.mcgproject.kaginawa.name=钩绳

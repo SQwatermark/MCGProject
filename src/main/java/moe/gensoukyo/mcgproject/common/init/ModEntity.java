@@ -1,6 +1,10 @@
 package moe.gensoukyo.mcgproject.common.init;
 
 import moe.gensoukyo.mcgproject.common.entity.EntityItemMCG;
+import moe.gensoukyo.mcgproject.common.entity.cart.GRBogie;
+import moe.gensoukyo.mcgproject.common.entity.cart.GRM3A;
+import moe.gensoukyo.mcgproject.common.entity.cart.GRM3B;
+import moe.gensoukyo.mcgproject.common.entity.cart.GRMotor;
 import moe.gensoukyo.mcgproject.common.feature.farm.apple.EntityApple;
 import moe.gensoukyo.mcgproject.common.feature.kaginawa.EntityKaginawa;
 import moe.gensoukyo.mcgproject.common.entity.MCGEntity;
@@ -72,6 +76,10 @@ public class ModEntity {
         entities.add(EntityApple.class);
         entities.add(EntityItemMCG.class);
 
+        entities.add(GRBogie.class);
+        entities.add(GRMotor.class);
+        entities.add(GRM3A.class);
+        entities.add(GRM3B.class);
     }
 
 }

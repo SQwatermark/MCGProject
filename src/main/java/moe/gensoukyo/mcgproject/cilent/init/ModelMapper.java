@@ -4,10 +4,18 @@ import moe.gensoukyo.mcgproject.cilent.entity.*;
 import moe.gensoukyo.mcgproject.cilent.entity.boat.RenderMCGBoat;
 import moe.gensoukyo.mcgproject.cilent.entity.boat.RenderRACBoat;
 import moe.gensoukyo.mcgproject.cilent.entity.butterfly.*;
+import moe.gensoukyo.mcgproject.cilent.entity.cart.RenderGRBogie;
+import moe.gensoukyo.mcgproject.cilent.entity.cart.RenderGRM3A;
+import moe.gensoukyo.mcgproject.cilent.entity.cart.RenderGRM3B;
+import moe.gensoukyo.mcgproject.cilent.entity.cart.RenderGRMotor;
 import moe.gensoukyo.mcgproject.cilent.entity.fish.*;
 import moe.gensoukyo.mcgproject.cilent.tileentity.*;
 import moe.gensoukyo.mcgproject.common.block.BlockKitunebi;
 import moe.gensoukyo.mcgproject.common.entity.EntityItemMCG;
+import moe.gensoukyo.mcgproject.common.entity.cart.GRBogie;
+import moe.gensoukyo.mcgproject.common.entity.cart.GRM3A;
+import moe.gensoukyo.mcgproject.common.entity.cart.GRM3B;
+import moe.gensoukyo.mcgproject.common.entity.cart.GRMotor;
 import moe.gensoukyo.mcgproject.common.feature.backpack.GensoChest;
 import moe.gensoukyo.mcgproject.common.feature.kaginawa.EntityKaginawa;
 import moe.gensoukyo.mcgproject.common.entity.boat.EntityMCGBoat;
@@ -92,6 +100,11 @@ public class ModelMapper {
         registerModel(BlockSticker.ITEM);
         registerModel(BlockSticker.ITEM_LIT);
 
+        registerModel(ModItem.ITEM_GRM_3A);
+        registerModel(ModItem.ITEM_GRM_3AF);
+        registerModel(ModItem.ITEM_GRM_3B);
+        registerModel(ModItem.ITEM_GRM_3BF);
+
         ClientRegistry.bindTileEntitySpecialRenderer(RanstonePiston.TilePiston.class, new TileRanstonePistonRenderer());
         ClientRegistry.bindTileEntitySpecialRenderer(TileSticker.class, new TileStickerRenderer());
         ClientRegistry.bindTileEntitySpecialRenderer(RanstoneLamp.TileRanstoneLamp.class, new TileRanstoneLampLightRenderer());
@@ -152,6 +165,11 @@ public class ModelMapper {
         renderEntity.put(EntityApple.class, RenderApple.FACTORY);
         renderEntity.put(EntityItemMCG.class, RenderItemMCG.FACTORY);
         renderEntity.put(EntityLittleRock.class, RenderLittleStone.FACTORY);
+
+        renderEntity.put(GRBogie.class, RenderGRBogie.FACTORY);
+        renderEntity.put(GRMotor.class, RenderGRMotor.FACTORY);
+        renderEntity.put(GRM3A.class, RenderGRM3A.FACTORY);
+        renderEntity.put(GRM3B.class, RenderGRM3B.FACTORY);
     }
 
 }
