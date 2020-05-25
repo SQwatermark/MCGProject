@@ -17,6 +17,7 @@ import moe.gensoukyo.mcgproject.common.entity.cart.GRM3A;
 import moe.gensoukyo.mcgproject.common.entity.cart.GRM3B;
 import moe.gensoukyo.mcgproject.common.entity.cart.GRMotor;
 import moe.gensoukyo.mcgproject.common.feature.backpack.GensoChest;
+import moe.gensoukyo.mcgproject.common.feature.elevator.BlockElevator;
 import moe.gensoukyo.mcgproject.common.feature.kaginawa.EntityKaginawa;
 import moe.gensoukyo.mcgproject.common.entity.boat.EntityMCGBoat;
 import moe.gensoukyo.mcgproject.common.entity.boat.EntityRACBoat;
@@ -99,6 +100,7 @@ public class ModelMapper {
 
         registerModel(BlockSticker.ITEM);
         registerModel(BlockSticker.ITEM_LIT);
+        registerModel(BlockElevator.ITEM);
 
         registerModel(ModItem.ITEM_GRM_3A);
         registerModel(ModItem.ITEM_GRM_3AF);

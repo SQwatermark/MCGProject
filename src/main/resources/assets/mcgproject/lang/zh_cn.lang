@@ -100,6 +100,7 @@ tile.mcgproject.gap_1.name=隙间（大）
 tile.mcgproject.GensoChest.name=幻想箱
 tile.mcgproject.realm.name=结界
 tile.mcgproject.kitunebi.name=狐火
+tile.mcgproject.elevator.name=VT-1垂直机动装置
 
 # 自然
 tile.mcgproject.log_sakura.name=樱木
@@ -680,3 +681,4 @@ tooltip.mcgproject.itemmcgbannerpattern=用于合成旗帜图案
 tooltip.minecraftfuture.campfire=用打火石开关
 tooltip.minecraftfuture.composter=用灰化土堆肥
 tooltip.minecraftfuture.bamboo=用骨粉切换形态（暂时只能这么做）
+tooltip.mcgproject.elevator=河童基地里的装置，原理不明

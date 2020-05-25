@@ -100,6 +100,7 @@ tile.mcgproject.gap_1.name=Gap
 tile.mcgproject.GensoChest.name=Genso Chest
 tile.mcgproject.realm.name=Realm
 tile.mcgproject.kitunebi.name=Kitunebi
+tile.mcgproject.elevator.name=Elevator
 
 # 自然
 tile.mcgproject.log_sakura.name=Sakura Log
@@ -679,3 +680,4 @@ tooltip.mcgproject.itemmcgbannerpattern=用于合成旗帜图案
 tooltip.minecraftfuture.campfire=用打火石开关
 tooltip.minecraftfuture.composter=用灰化土堆肥
 tooltip.minecraftfuture.bamboo=用骨粉切换形态（暂时只能这么做）
+tooltip.mcgproject.elevator=Elevator? Teleporter!
