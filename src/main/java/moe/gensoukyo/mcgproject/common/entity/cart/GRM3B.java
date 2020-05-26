@@ -4,6 +4,7 @@ import club.nsdn.nyasamarailway.api.cart.CartPart;
 import moe.gensoukyo.mcgproject.common.entity.MCGEntity;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.MoverType;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 
@@ -18,6 +19,27 @@ public class GRM3B extends GRM3A {
         super(world, x, y, z);
     }
 
+    @Override
+    public int getMaxPassengerSize() { return 9; }
+
+    @Override
+    public double getSeatDist() { return 1.5; }
+
+    @Override
+    public double getSeatOffset() { return 0.5; }
+
+    public void applyYawToEntity(Entity entity) {
+        float yaw = this.rotationYaw - 90;
+        yaw = (yaw + 180) % 360;
+        entity.setRenderYawOffset(yaw);
+        float f = MathHelper.wrapDegrees(entity.rotationYaw - yaw);
+        float f1 = MathHelper.clamp(f, -105.0F, 105.0F);
+        entity.prevRotationYaw += f1 - f;
+        entity.rotationYaw += f1 - f;
+        entity.setRotationYawHead(entity.rotationYaw);
+    }
+
+    @Override
     public void update() {
         if (this.getBogieA() != null && this.getBogieB() != null) {
             Entity bogieA = this.getBogieA();

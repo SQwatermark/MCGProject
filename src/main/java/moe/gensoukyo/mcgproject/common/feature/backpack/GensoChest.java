@@ -2,6 +2,7 @@ package moe.gensoukyo.mcgproject.common.feature.backpack;
 
 import com.google.common.collect.Lists;
 import moe.gensoukyo.mcgproject.common.creativetab.MCGTabs;
+import moe.gensoukyo.mcgproject.common.init.ModSound;
 import moe.gensoukyo.mcgproject.common.tileentity.AbstractTileEntity;
 import moe.gensoukyo.mcgproject.core.MCGProject;
 import net.minecraft.block.BlockContainer;
@@ -167,7 +168,7 @@ public class GensoChest extends BlockContainer {
             result = BackpackCore.openBackpack(world, player, player.getName(), type);
 
         if (result)
-            world.playSound(null, pos, SoundEvents.ENTITY_ENDERMEN_TELEPORT, SoundCategory.BLOCKS, 0.5F, world.rand.nextFloat() * 0.1F + 0.9F);
+            ModSound.instance().playSound(player, ModSound.instance().GENSOCHEST_OPEN, SoundCategory.AMBIENT);
 
         return true;
     }

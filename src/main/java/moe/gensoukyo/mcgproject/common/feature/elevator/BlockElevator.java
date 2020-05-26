@@ -1,6 +1,7 @@
 package moe.gensoukyo.mcgproject.common.feature.elevator;
 
 import moe.gensoukyo.mcgproject.common.creativetab.MCGTabs;
+import moe.gensoukyo.mcgproject.common.init.ModSound;
 import moe.gensoukyo.mcgproject.core.MCGProject;
 import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
@@ -13,7 +14,6 @@ import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.SoundEvents;
 import net.minecraft.item.*;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
@@ -40,6 +40,7 @@ import java.util.Random;
 public class BlockElevator extends BlockContainer {
 
     public static final int SCAN_LIMIT = 256;
+    public static final int SCAN_AREA = 3;
 
     public static BlockElevator BLOCK;
     public static Item ITEM;
@@ -66,7 +67,7 @@ public class BlockElevator extends BlockContainer {
                     stack.setTagInfo("bind", tag);
                     boolean isUp = tag.getBoolean("isUp");
                     String name = stack.getDisplayName();
-                    stack.setStackDisplayName(name.split("\\|")[0] + "|" + (isUp ? "UP" : "DOWN"));
+                    stack.setStackDisplayName(name.split("-")[0] + "-" + (isUp ? "UP" : "DOWN"));
                 }
 
                 return new ActionResult<>(EnumActionResult.SUCCESS, stack);
@@ -251,7 +252,7 @@ public class BlockElevator extends BlockContainer {
                 state = world.getBlockState(pos);
                 boolean old = state.getValue(IS_DIR);
                 world.setBlockState(pos, state.withProperty(IS_DIR, !old), 2);
-                world.playSound(player, pos, SoundEvents.ENTITY_EXPERIENCE_ORB_PICKUP, SoundCategory.PLAYERS, 0.5F, world.rand.nextFloat() * 0.1F + 0.9F);
+                ModSound.instance().playSound(player, ModSound.instance().ELEVATOR_FLIP, SoundCategory.AMBIENT);
             }
 
             return true;
@@ -286,7 +287,7 @@ public class BlockElevator extends BlockContainer {
                         BlockPos target = findElevator(world, pos, targetFacing);
                         if (target != null) {
                             Vec3d offset = new Vec3d(target.subtract(pos));
-                            List<Entity> entityList = world.getEntitiesWithinAABB(Entity.class, new AxisAlignedBB(pos.up()).expand(0, 1, 0));
+                            List<Entity> entityList = world.getEntitiesWithinAABB(Entity.class, new AxisAlignedBB(pos.up()).expand(0, SCAN_AREA - 1, 0));
                             for (Entity e : entityList) {
                                 Vec3d vec = e.getPositionVector().add(offset);
                                 if (isDir)
@@ -294,14 +295,19 @@ public class BlockElevator extends BlockContainer {
                                 e.setPositionAndUpdate(vec.x, vec.y, vec.z);
                                 e.motionY = 0;
                             }
-                            world.playSound(null, pos, SoundEvents.ENTITY_SHULKER_TELEPORT, SoundCategory.BLOCKS, 0.5F, world.rand.nextFloat() * 0.1F + 0.9F);
-                            world.playSound(null, target, SoundEvents.ENTITY_SHULKER_TELEPORT, SoundCategory.BLOCKS, 0.5F, world.rand.nextFloat() * 0.1F + 0.9F);
+                            if (targetFacing == EnumFacing.UP) {
+                                ModSound.instance().playSound(world, pos, ModSound.instance().ELEVATOR_UP, SoundCategory.BLOCKS);
+                                ModSound.instance().playSound(world, target, ModSound.instance().ELEVATOR_UP, SoundCategory.BLOCKS);
+                            } else {
+                                ModSound.instance().playSound(world, pos, ModSound.instance().ELEVATOR_DOWN, SoundCategory.BLOCKS);
+                                ModSound.instance().playSound(world, target, ModSound.instance().ELEVATOR_DOWN, SoundCategory.BLOCKS);
+                            }
                             world.scheduleUpdate(pos, this, 20);
                             return;
                         }
                     }
                 } else {
-                    List<EntityLivingBase> entityList = world.getEntitiesWithinAABB(EntityLivingBase.class, new AxisAlignedBB(pos.up()).expand(0, 1, 0));
+                    List<EntityLivingBase> entityList = world.getEntitiesWithinAABB(EntityLivingBase.class, new AxisAlignedBB(pos.up()).expand(0, SCAN_AREA - 1, 0));
                     for (EntityLivingBase e : entityList) {
                         targetFacing = getTargetFromEntityLivingBase(e);
                         if (targetFacing != null) {
@@ -313,8 +319,13 @@ public class BlockElevator extends BlockContainer {
                                     e.setLocationAndAngles(vec.x, vec.y, vec.z, angle, 0);
                                 e.setPositionAndUpdate(vec.x, vec.y, vec.z);
                                 e.motionY = 0;
-                                world.playSound(null, pos, SoundEvents.ENTITY_SHULKER_TELEPORT, SoundCategory.BLOCKS, 0.5F, world.rand.nextFloat() * 0.1F + 0.9F);
-                                world.playSound(null, target, SoundEvents.ENTITY_SHULKER_TELEPORT, SoundCategory.BLOCKS, 0.5F, world.rand.nextFloat() * 0.1F + 0.9F);
+                                if (targetFacing == EnumFacing.UP) {
+                                    ModSound.instance().playSound(world, pos, ModSound.instance().ELEVATOR_UP, SoundCategory.BLOCKS);
+                                    ModSound.instance().playSound(world, target, ModSound.instance().ELEVATOR_UP, SoundCategory.BLOCKS);
+                                } else {
+                                    ModSound.instance().playSound(world, pos, ModSound.instance().ELEVATOR_DOWN, SoundCategory.BLOCKS);
+                                    ModSound.instance().playSound(world, target, ModSound.instance().ELEVATOR_DOWN, SoundCategory.BLOCKS);
+                                }
                             }
                         }
                     }
@@ -326,7 +337,7 @@ public class BlockElevator extends BlockContainer {
     }
 
     public EnumFacing getTargetFromEntityLivingBase(EntityLivingBase e) {
-        boolean isJumping = e.motionY > 0.2 && (e.motionX * e.motionX + e.motionZ * e.motionZ) < 0.001;
+        boolean isJumping = e.motionY > 0.3 && (e.motionX * e.motionX + e.motionZ * e.motionZ) < 0.001;
         if (isJumping) return EnumFacing.UP;
         if (e.isSneaking()) return EnumFacing.DOWN;
         return null;
