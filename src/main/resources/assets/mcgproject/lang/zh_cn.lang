@@ -100,6 +100,7 @@ tile.mcgproject.gap_1.name=隙间（大）
 tile.mcgproject.GensoChest.name=幻想箱
 tile.mcgproject.realm.name=结界
 tile.mcgproject.kitunebi.name=狐火
+tile.mcgproject.elevator.name=VT-1垂直机动装置
 
 # 自然
 tile.mcgproject.log_sakura.name=樱木
@@ -353,6 +354,12 @@ item.mcgproject.grm_3a.name=三甲型列车(拖车)
 item.mcgproject.grm_3af.name=三甲型列车(动车)
 item.mcgproject.grm_3b.name=三乙型列车(拖车)
 item.mcgproject.grm_3bf.name=三乙型列车(动车)
+item.mcgproject.grw_4.name=四型缆车(自动版)
+item.mcgproject.grw_4m.name=四型缆车(机车版)
+item.mcgproject.grc_2.name=二型客车(自动版)
+item.mcgproject.grc_2m.name=二型客车(机车版)
+item.mcgproject.grh_2.name=二型高速客车(自动版)
+item.mcgproject.grh_2m.name=二型高速客车(机车版)
 item.mcgproject.meta_changer.name=河童的调试棒
 item.mcgproject.generator_big_oak.name=魔豆
 item.mcgproject.kaginawa.name=钩绳
@@ -680,3 +687,9 @@ tooltip.mcgproject.itemmcgbannerpattern=用于合成旗帜图案
 tooltip.minecraftfuture.campfire=用打火石开关
 tooltip.minecraftfuture.composter=用灰化土堆肥
 tooltip.minecraftfuture.bamboo=用骨粉切换形态（暂时只能这么做）
+tooltip.mcgproject.elevator=河童基地里的装置，原理不明
+
+subtitles.elevator.up=机动装置上行
+subtitles.elevator.down=机动装置下行
+subtitles.elevator.flip=机动装置切换
+subtitles.gensochest.open=幻想箱打开

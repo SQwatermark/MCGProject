@@ -4,19 +4,14 @@ import moe.gensoukyo.mcgproject.cilent.entity.*;
 import moe.gensoukyo.mcgproject.cilent.entity.boat.RenderMCGBoat;
 import moe.gensoukyo.mcgproject.cilent.entity.boat.RenderRACBoat;
 import moe.gensoukyo.mcgproject.cilent.entity.butterfly.*;
-import moe.gensoukyo.mcgproject.cilent.entity.cart.RenderGRBogie;
-import moe.gensoukyo.mcgproject.cilent.entity.cart.RenderGRM3A;
-import moe.gensoukyo.mcgproject.cilent.entity.cart.RenderGRM3B;
-import moe.gensoukyo.mcgproject.cilent.entity.cart.RenderGRMotor;
+import moe.gensoukyo.mcgproject.cilent.entity.cart.*;
 import moe.gensoukyo.mcgproject.cilent.entity.fish.*;
 import moe.gensoukyo.mcgproject.cilent.tileentity.*;
 import moe.gensoukyo.mcgproject.common.block.BlockKitunebi;
 import moe.gensoukyo.mcgproject.common.entity.EntityItemMCG;
-import moe.gensoukyo.mcgproject.common.entity.cart.GRBogie;
-import moe.gensoukyo.mcgproject.common.entity.cart.GRM3A;
-import moe.gensoukyo.mcgproject.common.entity.cart.GRM3B;
-import moe.gensoukyo.mcgproject.common.entity.cart.GRMotor;
+import moe.gensoukyo.mcgproject.common.entity.cart.*;
 import moe.gensoukyo.mcgproject.common.feature.backpack.GensoChest;
+import moe.gensoukyo.mcgproject.common.feature.elevator.BlockElevator;
 import moe.gensoukyo.mcgproject.common.feature.kaginawa.EntityKaginawa;
 import moe.gensoukyo.mcgproject.common.entity.boat.EntityMCGBoat;
 import moe.gensoukyo.mcgproject.common.entity.boat.EntityRACBoat;
@@ -99,11 +94,18 @@ public class ModelMapper {
 
         registerModel(BlockSticker.ITEM);
         registerModel(BlockSticker.ITEM_LIT);
+        registerModel(BlockElevator.ITEM);
 
         registerModel(ModItem.ITEM_GRM_3A);
         registerModel(ModItem.ITEM_GRM_3AF);
         registerModel(ModItem.ITEM_GRM_3B);
         registerModel(ModItem.ITEM_GRM_3BF);
+        registerModel(ModItem.ITEM_GRW_4);
+        registerModel(ModItem.ITEM_GRW_4M);
+        registerModel(ModItem.ITEM_GRC_2);
+        registerModel(ModItem.ITEM_GRC_2M);
+        registerModel(ModItem.ITEM_GRH_2);
+        registerModel(ModItem.ITEM_GRH_2M);
 
         ClientRegistry.bindTileEntitySpecialRenderer(RanstonePiston.TilePiston.class, new TileRanstonePistonRenderer());
         ClientRegistry.bindTileEntitySpecialRenderer(TileSticker.class, new TileStickerRenderer());
@@ -170,6 +172,14 @@ public class ModelMapper {
         renderEntity.put(GRMotor.class, RenderGRMotor.FACTORY);
         renderEntity.put(GRM3A.class, RenderGRM3A.FACTORY);
         renderEntity.put(GRM3B.class, RenderGRM3B.FACTORY);
+        renderEntity.put(GRW4.class, RenderGRW4.FACTORY);
+        renderEntity.put(GRW4.Basket.class, RenderGRW4.BASKET);
+        renderEntity.put(GRW4M.class, RenderGRW4M.FACTORY);
+        renderEntity.put(GRW4M.Basket.class, RenderGRW4M.BASKET);
+        renderEntity.put(GRC2.class, RenderGRC2.FACTORY);
+        renderEntity.put(GRC2M.class, RenderGRC2M.FACTORY);
+        renderEntity.put(GRH2.class, RenderGRH2.FACTORY);
+        renderEntity.put(GRH2M.class, RenderGRH2M.FACTORY);
     }
 
 }
