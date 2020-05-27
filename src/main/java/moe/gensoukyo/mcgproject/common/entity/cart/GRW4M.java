@@ -2,6 +2,7 @@ package moe.gensoukyo.mcgproject.common.entity.cart;
 
 import club.nsdn.nyasamarailway.api.cart.CartUtil;
 import club.nsdn.nyasamarailway.ext.AbsWireLoco;
+import moe.gensoukyo.mcgproject.common.entity.MCGEntity;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
@@ -12,6 +13,7 @@ import net.minecraft.world.World;
 
 import javax.annotation.Nonnull;
 
+@MCGEntity("grw_4m")
 public class GRW4M extends AbsWireLoco {
 
     public static void spawn(World world, double x, double y, double z, EnumFacing facing) {
@@ -104,6 +106,13 @@ public class GRW4M extends AbsWireLoco {
         private void removeLight(BlockPos pos) {
             this.world.checkLightFor(EnumSkyBlock.BLOCK, pos);
         }
+
+        @Override
+        public void onKilled() {
+            if (getRidingEntity() instanceof GRW4M)
+                getRidingEntity().setDead();
+        }
+
     }
 
     public GRW4M(World world) {
@@ -116,5 +125,13 @@ public class GRW4M extends AbsWireLoco {
 
     @Override
     public double getDropDist() { return -4; }
+
+    @Override
+    public void onKilled() {
+        for (Entity e : getPassengers()) {
+            if (e instanceof Basket)
+                e.setDead();
+        }
+    }
 
 }

@@ -1,9 +1,9 @@
 package moe.gensoukyo.mcgproject.common.entity.cart;
 
 import club.nsdn.nyasamarailway.api.cart.CartUtil;
-import club.nsdn.nyasamarailway.entity.cart.NSPCT8W;
 import club.nsdn.nyasamarailway.ext.AbsWireCart;
-import club.nsdn.nyasamarailway.ext.MultiCartSpawn;
+import club.nsdn.nyasamarailway.ext.SpawnFunction;
+import moe.gensoukyo.mcgproject.common.entity.MCGEntity;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
@@ -15,9 +15,10 @@ import net.minecraft.world.World;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
+@MCGEntity("grw_4")
 public class GRW4 extends AbsWireCart {
 
-    @MultiCartSpawn
+    @SpawnFunction
     public static void spawn(World world, double x, double y, double z, @Nullable EnumFacing facing) {
         GRW4 head = new GRW4(world, x, y, z);
         world.spawnEntity(head);
@@ -108,6 +109,13 @@ public class GRW4 extends AbsWireCart {
         private void removeLight(BlockPos pos) {
             this.world.checkLightFor(EnumSkyBlock.BLOCK, pos);
         }
+
+        @Override
+        public void onKilled() {
+            if (getRidingEntity() instanceof GRW4)
+                getRidingEntity().setDead();
+        }
+
     }
 
     public GRW4(World world) {
@@ -120,5 +128,13 @@ public class GRW4 extends AbsWireCart {
 
     @Override
     public double getDropDist() { return -4; }
+
+    @Override
+    public void onKilled() {
+        for (Entity e : getPassengers()) {
+            if (e instanceof Basket)
+                e.setDead();
+        }
+    }
 
 }

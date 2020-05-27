@@ -1,11 +1,13 @@
 package moe.gensoukyo.mcgproject.common.entity.cart;
 
+import club.nsdn.nyasamarailway.api.cart.CartPart;
 import club.nsdn.nyasamarailway.api.cart.CartUtil;
 import club.nsdn.nyasamarailway.api.cart.IHighSpeedCart;
 import club.nsdn.nyasamarailway.ext.AbsCart;
-import club.nsdn.nyasamarailway.ext.MultiCartSpawn;
+import club.nsdn.nyasamarailway.ext.SpawnFunction;
 import club.nsdn.nyasamarailway.network.TrainPacket;
 import club.nsdn.nyasamarailway.util.TrainController;
+import moe.gensoukyo.mcgproject.common.entity.MCGEntity;
 import net.minecraft.block.BlockRailBase;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
@@ -22,10 +24,13 @@ import net.minecraft.world.World;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
+import java.util.LinkedList;
+import java.util.List;
 
+@MCGEntity("grh_2")
 public class GRH2 extends AbsCart implements IHighSpeedCart {
 
-    @MultiCartSpawn
+    @SpawnFunction
     public static void spawn(World world, double x, double y, double z, @Nullable EnumFacing facing) {
         GRH2 cart = new GRH2(world, x, y, z);
         world.spawnEntity(cart);
@@ -34,14 +39,25 @@ public class GRH2 extends AbsCart implements IHighSpeedCart {
     private static final DataParameter<Boolean> HIGH = EntityDataManager.createKey(GRH2.class, DataSerializers.BOOLEAN);
 
     public GRH2(World world) {
-        super(world);
-        setSize(1.75F, 2.0F);
+        this(world, 0, 0, 0);
     }
 
     public GRH2(World world, double x, double y, double z) {
         super(world, x, y, z);
-        setSize(1.75F, 2.0F);
+        setSize(1.25F, 1.0F);
+
+        parts.add(new CartPart<>(this, "front", 1.25F, 1.5F, new Vec3d(1.5, 1, 0)));
+        parts.add(new CartPart<>(this, "center", 1.75F, 1.5F, new Vec3d(0, 1, 0)));
+        parts.add(new CartPart<>(this, "back", 1.25F, 1.5F, new Vec3d(-1.5, 1, 0)));
     }
+
+    public final LinkedList<CartPart> parts = new LinkedList<>();
+
+    @Override
+    public boolean hasMultiPart() { return true; }
+
+    @Override
+    public List<CartPart> getMultiPart() { return parts; }
 
     @Override
     public void initEntity() {
@@ -97,21 +113,6 @@ public class GRH2 extends AbsCart implements IHighSpeedCart {
         double x = this.posX, z = this.posZ;
         double y = this.posY + this.getMountedYOffset() + passenger.getYOffset();
 
-        BlockPos pos = this.getPosition();
-        IBlockState state = world.getBlockState(pos);
-        double dx = this.posX - this.prevPosX;
-        double dz = this.posZ - this.prevPosZ;
-        if (dx * dx + dz * dz < 0.001D) {
-            if (state.getBlock() instanceof BlockRailBase) {
-                BlockRailBase railBase = (BlockRailBase) state.getBlock();
-                BlockRailBase.EnumRailDirection direction = railBase.getRailDirection(world, pos, state, this);
-                switch (direction) {
-                    case EAST_WEST: this.rotationYaw = 0.0F; break;
-                    case NORTH_SOUTH: this.rotationYaw = 90.0F; break;
-                }
-            }
-        }
-
         if (this.isPassenger(passenger)) {
             double index = this.getPassengers().indexOf(passenger);
             double dist = 0.75;
@@ -138,21 +139,41 @@ public class GRH2 extends AbsCart implements IHighSpeedCart {
         return dataManager.get(HIGH);
     }
 
-    @Override
-    public boolean hasSpecialUpdate() {
-        return world.isRemote;
-    }
-
     public static final float ANGLE_MAX = 18;
     public float angle = 0;
 
     @Override
-    public void specialUpdate() {
+    public void update() {
+        super.update();
+
+        BlockPos pos = this.getPosition();
+        IBlockState state = world.getBlockState(pos);
+        double dx = this.posX - this.prevPosX;
+        double dz = this.posZ - this.prevPosZ;
+        if (dx * dx + dz * dz < 0.001D) {
+            if (state.getBlock() instanceof BlockRailBase) {
+                BlockRailBase railBase = (BlockRailBase) state.getBlock();
+                BlockRailBase.EnumRailDirection direction = railBase.getRailDirection(world, pos, state, this);
+                switch (direction) {
+                    case EAST_WEST: this.rotationYaw = 0.0F; break;
+                    case NORTH_SOUTH: this.rotationYaw = 90.0F; break;
+                }
+            }
+        }
+
         if (getHighSpeedMode())
             angle += (ANGLE_MAX / 60);
         else angle -= (ANGLE_MAX / 40);
         if (angle > ANGLE_MAX) angle = ANGLE_MAX;
         if (angle < 0) angle = 0;
+
+        for (CartPart p : parts) {
+            if (!world.loadedEntityList.contains(p))
+                world.spawnEntity(p);
+        }
+
+        for (CartPart p : parts)
+            p.onUpdate();
     }
 
 }

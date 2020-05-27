@@ -53,8 +53,8 @@ public class GRM3A extends AbsMetro {
         super(world, x, y, z);
         this.setSize(1.5F, 1.75F);
 
-        parts.add(new CartPart(this, "front", new Vec3d(DOOR_DIST, 0, 0)));
-        parts.add(new CartPart(this, "back", new Vec3d(-DOOR_DIST, 0, 0)));
+        parts.add(new CartPart<>(this, "front", new Vec3d(DOOR_DIST, 0, 0)));
+        parts.add(new CartPart<>(this, "back", new Vec3d(-DOOR_DIST, 0, 0)));
     }
 
     @Nonnull
@@ -157,7 +157,6 @@ public class GRM3A extends AbsMetro {
     public double getSeatDist() { return 1.75; }
 
     public double getSeatOffset() { return 0.5; }
-
 
     @Override
     public void update() {

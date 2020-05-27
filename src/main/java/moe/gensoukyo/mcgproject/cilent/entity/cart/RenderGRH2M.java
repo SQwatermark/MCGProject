@@ -39,12 +39,12 @@ public class RenderGRH2M extends AbsCartRenderer {
         if (cart instanceof GRH2M) {
             float angle = ((GRH2M) cart).angle;
             GlStateManager.pushMatrix();
-            GlStateManager.rotate(angle, 0, 1, 0);
+            GlStateManager.rotate(angle, 0, 0, 1);
             modelBase.renderOnly("front");
             GlStateManager.popMatrix();
 
             GlStateManager.pushMatrix();
-            GlStateManager.rotate(angle, 0, -1, 0);
+            GlStateManager.rotate(angle, 0, 0, -1);
             modelBase.renderOnly("back");
             GlStateManager.popMatrix();
 
