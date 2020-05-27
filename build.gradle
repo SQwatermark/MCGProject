@@ -44,7 +44,7 @@ dependencies {
     deobfCompile('noppes.npcs:CustomNPCs_1.12.2-(01Oct19)')
     deobfCompile('vazkii:Patchouli-1.0-20')
     deobfCompile('team:CTM-MC1.12.2-0.3.3.22')
-    deobfCompile('club.nsdn:NSCP-v2-200524-dev')
+    deobfCompile('club.nsdn:NSCP-v2-dev')
 
     // you may put jars on which you depend on in ./libs
     // or you may define them like so..

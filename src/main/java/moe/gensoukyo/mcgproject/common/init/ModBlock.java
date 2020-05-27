@@ -4,6 +4,7 @@ import moe.gensoukyo.mcgproject.common.block.*;
 import moe.gensoukyo.mcgproject.common.block.enums.EnumTileColor;
 import moe.gensoukyo.mcgproject.common.creativetab.MCGTabs;
 import moe.gensoukyo.mcgproject.common.feature.customnpcs.BlockNPCSpawnerConsole;
+import moe.gensoukyo.mcgproject.common.feature.elevator.BlockElevator;
 import moe.gensoukyo.mcgproject.common.feature.farm.BlockBambooShoot;
 import moe.gensoukyo.mcgproject.common.feature.farm.apple.BlockMCGApple;
 import moe.gensoukyo.mcgproject.common.feature.backpack.GensoChest;
@@ -212,6 +213,8 @@ public class ModBlock {
         event.getRegistry().registerAll(BlockSticker.BLOCK, BlockSticker.BLOCK_LIT);
         BlockLightBulb.initBlock();
         event.getRegistry().registerAll(BlockLightBulb.BLOCK, BlockLightBulb.BLOCK_LIT);
+        BlockElevator.initBlock();
+        event.getRegistry().register(BlockElevator.BLOCK);
     }
 
     /**
@@ -248,6 +251,8 @@ public class ModBlock {
         event.getRegistry().registerAll(BlockSticker.ITEM, BlockSticker.ITEM_LIT);
         BlockLightBulb.initItem();
         event.getRegistry().register(BlockLightBulb.ITEM);
+        BlockElevator.initItem();
+        event.getRegistry().register(BlockElevator.ITEM);
     }
 
     @SubscribeEvent

@@ -15,6 +15,7 @@ import moe.gensoukyo.mcgproject.common.network.NetworkWrapper;
 import moe.gensoukyo.mcgproject.common.util.EntityPool;
 import moe.gensoukyo.mcgproject.common.feature.customnpcs.CustomNPCsHook;
 import moe.gensoukyo.mcgproject.common.feature.customnpcs.NPCSpawner;
+import moe.gensoukyo.mcgproject.common.init.ModSound;
 import net.minecraft.entity.Entity;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Loader;
@@ -43,6 +44,7 @@ public class CommonProxy {
         MinecraftForge.EVENT_BUS.register(EntityPool.instance());
         MinecraftForge.EVENT_BUS.register(WorldGuard.instance());
         MinecraftForge.EVENT_BUS.register(StreamStopper.instance());
+        MinecraftForge.EVENT_BUS.register(ModSound.instance());
         new NetworkWrapper(event);
         if (Loader.isModLoaded("customnpcs")) {
             MCGProject.logger.info("Register CustomNPCs Hook");

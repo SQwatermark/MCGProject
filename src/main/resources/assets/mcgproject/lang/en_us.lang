@@ -100,6 +100,7 @@ tile.mcgproject.gap_1.name=Gap
 tile.mcgproject.GensoChest.name=Genso Chest
 tile.mcgproject.realm.name=Realm
 tile.mcgproject.kitunebi.name=Kitunebi
+tile.mcgproject.elevator.name=Elevator
 
 # 自然
 tile.mcgproject.log_sakura.name=Sakura Log
@@ -352,6 +353,12 @@ item.mcgproject.grm_3a.name=GR Metro 3A
 item.mcgproject.grm_3af.name=GR Metro 3AF
 item.mcgproject.grm_3b.name=GR Metro 3B
 item.mcgproject.grm_3bf.name=GR Metro 3BF
+item.mcgproject.grw_4.name=GR Wire Cart 4
+item.mcgproject.grw_4m.name=GR Wire Cart 4M
+item.mcgproject.grc_2.name=GR Cart 2
+item.mcgproject.grc_2m.name=GR Cart 2M
+item.mcgproject.grh_2.name=GRH Cart 2
+item.mcgproject.grh_2m.name=GRH Cart 2M
 item.mcgproject.meta_changer.name=Debug Tool
 item.mcgproject.generator_big_oak.name=Big Oak Generator
 item.mcgproject.kaginawa.name=Grabbing Hook
@@ -679,3 +686,9 @@ tooltip.mcgproject.itemmcgbannerpattern=用于合成旗帜图案
 tooltip.minecraftfuture.campfire=用打火石开关
 tooltip.minecraftfuture.composter=用灰化土堆肥
 tooltip.minecraftfuture.bamboo=用骨粉切换形态（暂时只能这么做）
+tooltip.mcgproject.elevator=Elevator? Teleporter!
+
+subtitles.elevator.up=Elevator Up
+subtitles.elevator.down=Elevator Down
+subtitles.elevator.flip=Elevator Flip
+subtitles.gensochest.open=GensoChest Open

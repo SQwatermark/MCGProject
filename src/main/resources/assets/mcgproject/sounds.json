@@ -1,0 +1,34 @@
+{
+  "effect.elevator.up": {
+    "subtitle": "subtitles.elevator.up",
+    "category": "block",
+    "sounds": [{
+      "name": "mcgproject:effect/elevator.up",
+      "stream": false
+    }]
+  },
+  "effect.elevator.down": {
+    "subtitle": "subtitles.elevator.down",
+    "category": "block",
+    "sounds": [{
+      "name": "mcgproject:effect/elevator.down",
+      "stream": false
+    }]
+  },
+  "effect.elevator.flip": {
+    "subtitle": "subtitles.elevator.flip",
+    "category": "ambient",
+    "sounds": [{
+      "name": "mcgproject:effect/elevator.flip",
+      "stream": false
+    }]
+  },
+  "effect.gensochest.open": {
+    "subtitle": "subtitles.gensochest.open",
+    "category": "ambient",
+    "sounds": [{
+      "name": "mcgproject:effect/gensochest.open",
+      "stream": false
+    }]
+  }
+}
