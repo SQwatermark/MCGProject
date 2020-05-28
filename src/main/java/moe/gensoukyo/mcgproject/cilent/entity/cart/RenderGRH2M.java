@@ -48,14 +48,12 @@ public class RenderGRH2M extends AbsCartRenderer {
             modelBase.renderOnly("back");
             GlStateManager.popMatrix();
 
-            GlStateManager.enableAlpha();
-            GlStateManager.enableBlend();
+            GlStateManager.Profile.TRANSPARENT_MODEL.apply();
             modelBase.renderOnly("mask");
+            GlStateManager.Profile.TRANSPARENT_MODEL.clean();
 
             Minecraft.getMinecraft().getTextureManager().bindTexture(texturePrint);
             modelPrint.renderAll();
-            GlStateManager.disableAlpha();
-            GlStateManager.disableBlend();
         }
 
         GlStateManager.popMatrix();

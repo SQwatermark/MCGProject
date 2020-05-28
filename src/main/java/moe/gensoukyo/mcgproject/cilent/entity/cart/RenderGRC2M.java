@@ -31,11 +31,7 @@ public class RenderGRC2M extends AbsCartRenderer {
     @Override
     public void render(EntityMinecart minecart, double x, double y, double z, float yaw) {
         RendererHelper.renderWithResource(modelBase, textureBase);
-        GlStateManager.enableAlpha();
-        GlStateManager.enableBlend();
         RendererHelper.renderWithResource(modelPrint, texturePrint);
-        GlStateManager.disableAlpha();
-        GlStateManager.disableBlend();
     }
 
 }
