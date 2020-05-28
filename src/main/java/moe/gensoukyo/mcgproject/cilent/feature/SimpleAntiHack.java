@@ -11,7 +11,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class SimpleAntiHack {
 
     private static SimpleAntiHack instance;
-    public static SimpleAntiHack instance(){
+    public static SimpleAntiHack instance() {
         if(instance == null) instance = new SimpleAntiHack();
         return instance;
     }
@@ -27,15 +27,13 @@ public class SimpleAntiHack {
             if (Class.forName("net.impactclient.0") != null) {
                 return "impactclient";
             }
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (Exception ignored) {
         }
         try {
             if (Class.forName("net.wolframclient.Wolfram") != null) {
                 return "Wolfram";
             }
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (Exception ignored) {
         }
         return null;
     }
