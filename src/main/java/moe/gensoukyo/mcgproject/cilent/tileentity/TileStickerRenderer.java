@@ -61,9 +61,13 @@ public class TileStickerRenderer extends TileEntitySpecialRenderer<TileSticker> 
 
         TextureManager manager = Minecraft.getMinecraft().getTextureManager();
         Object texture = sticker.texture;
-        if (texture instanceof ResourceLocation)
-            manager.bindTexture((ResourceLocation) texture);
-        else if (texture instanceof Texture)
+        if (texture instanceof ResourceLocation) {
+            try {
+                manager.bindTexture((ResourceLocation) texture);
+            } catch (Exception e) {
+                manager.bindTexture(defTexture);
+            }
+        } else if (texture instanceof Texture)
             GlStateManager.bindTexture(((Texture) texture).getGlTextureId());
         else
             manager.bindTexture(defTexture);

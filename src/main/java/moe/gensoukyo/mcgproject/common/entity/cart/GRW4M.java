@@ -26,6 +26,7 @@ public class GRW4M extends AbsWireLoco {
         world.spawnEntity(basket);
     }
 
+    @MCGEntity("grw_4m_basket")
     public static class Basket extends AbsBasket {
 
         public Basket(World world) {

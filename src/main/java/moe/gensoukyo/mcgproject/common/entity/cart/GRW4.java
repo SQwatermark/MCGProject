@@ -29,6 +29,7 @@ public class GRW4 extends AbsWireCart {
         world.spawnEntity(basket);
     }
 
+    @MCGEntity("grw_4_basket")
     public static class Basket extends AbsWireCart.AbsBasket {
 
         public Basket(World world) {
