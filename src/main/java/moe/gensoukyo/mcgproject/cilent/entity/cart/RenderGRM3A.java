@@ -87,12 +87,8 @@ public class RenderGRM3A extends AbsTrainRenderer {
             GlStateManager.color(color[0], color[1], color[2]);
             modelBase.renderOnly("seat");
 
-            GlStateManager.enableAlpha();
-            GlStateManager.enableBlend();
             Minecraft.getMinecraft().getTextureManager().bindTexture(texturePrint);
             modelPrint.renderAll();
-            GlStateManager.disableAlpha();
-            GlStateManager.disableBlend();
             GlStateManager.color(1, 1, 1);
         }
 

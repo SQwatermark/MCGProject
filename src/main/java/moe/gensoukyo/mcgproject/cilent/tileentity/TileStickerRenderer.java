@@ -61,9 +61,13 @@ public class TileStickerRenderer extends TileEntitySpecialRenderer<TileSticker> 
 
         TextureManager manager = Minecraft.getMinecraft().getTextureManager();
         Object texture = sticker.texture;
-        if (texture instanceof ResourceLocation)
-            manager.bindTexture((ResourceLocation) texture);
-        else if (texture instanceof Texture)
+        if (texture instanceof ResourceLocation) {
+            try {
+                manager.bindTexture((ResourceLocation) texture);
+            } catch (Exception e) {
+                manager.bindTexture(defTexture);
+            }
+        } else if (texture instanceof Texture)
             GlStateManager.bindTexture(((Texture) texture).getGlTextureId());
         else
             manager.bindTexture(defTexture);
@@ -84,9 +88,6 @@ public class TileStickerRenderer extends TileEntitySpecialRenderer<TileSticker> 
                     GL11.glPushMatrix();
                     GL11.glScaled(sticker.scaleX, sticker.scaleY, sticker.scaleZ);
                     {
-                        GlStateManager.pushAttrib();
-                        GlStateManager.enableAlpha();
-                        GlStateManager.enableBlend();
                         switch (sticker.model) {
                             case TileSticker.MODEL_SINGLE:
                                 renderSingle(sticker, partialTicks);
@@ -102,9 +103,6 @@ public class TileStickerRenderer extends TileEntitySpecialRenderer<TileSticker> 
                                 GL11.glPopMatrix();
                                 break;
                         }
-                        GlStateManager.disableAlpha();
-                        GlStateManager.disableBlend();
-                        GlStateManager.popAttrib();
                     }
                     GL11.glPopMatrix();
                 }
@@ -157,6 +155,7 @@ public class TileStickerRenderer extends TileEntitySpecialRenderer<TileSticker> 
         builder.pos(-0.5, -0.5, 0).tex(x + u, y + v)
                 .color(a, r, g, b).normal(0, 0, 1).endVertex();
 
+        GlStateManager.enableRescaleNormal();
         tessellator.draw();
     }
 
@@ -202,6 +201,7 @@ public class TileStickerRenderer extends TileEntitySpecialRenderer<TileSticker> 
         builder.pos(0.5, -0.5, -offset).tex(x + u, y + v)
                 .color(a, r, g, b).normal(0, 0, -1).endVertex();
 
+        GlStateManager.enableRescaleNormal();
         tessellator.draw();
     }
 
