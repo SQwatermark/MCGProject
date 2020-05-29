@@ -1,6 +1,7 @@
 package moe.gensoukyo.mcgproject.common.entity.cart;
 
 import club.nsdn.nyasamarailway.api.cart.CartUtil;
+import club.nsdn.nyasamarailway.block.BlockPlatform;
 import club.nsdn.nyasamarailway.ext.AbsWireCart;
 import club.nsdn.nyasamarailway.ext.SpawnFunction;
 import moe.gensoukyo.mcgproject.common.entity.MCGEntity;
@@ -28,6 +29,7 @@ public class GRW4 extends AbsWireCart {
         world.spawnEntity(basket);
     }
 
+    @MCGEntity("grw_4_basket")
     public static class Basket extends AbsWireCart.AbsBasket {
 
         public Basket(World world) {
@@ -114,6 +116,35 @@ public class GRW4 extends AbsWireCart {
         public void onKilled() {
             if (getRidingEntity() instanceof GRW4)
                 getRidingEntity().setDead();
+        }
+
+        @Override
+        public BlockPos passengerRemove(@Nonnull Entity passenger) {
+            BlockPos pos = this.getPosition();
+
+            if (world.getBlockState(pos.north(2)).getBlock() instanceof BlockPlatform)
+                pos = pos.north(3).up();
+            else if (world.getBlockState(pos.south(2)).getBlock() instanceof BlockPlatform)
+                pos = pos.south(3).up();
+            else if (world.getBlockState(pos.west(2)).getBlock() instanceof BlockPlatform)
+                pos = pos.west(3).up();
+            else if (world.getBlockState(pos.east(2)).getBlock() instanceof BlockPlatform)
+                pos = pos.east(3).up();
+            else {
+                pos = pos.down();
+                if (world.getBlockState(pos.north(2)).getBlock() instanceof BlockPlatform)
+                    pos = pos.north(3).up();
+                else if (world.getBlockState(pos.south(2)).getBlock() instanceof BlockPlatform)
+                    pos = pos.south(3).up();
+                else if (world.getBlockState(pos.west(2)).getBlock() instanceof BlockPlatform)
+                    pos = pos.west(3).up();
+                else if (world.getBlockState(pos.east(2)).getBlock() instanceof BlockPlatform)
+                    pos = pos.east(3).up();
+                else
+                    pos = null;
+            }
+
+            return pos;
         }
 
     }
