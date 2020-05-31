@@ -1,18 +1,29 @@
 package moe.gensoukyo.mcgproject.common.entity.cart;
 
+import club.nsdn.nyasamarailway.api.cart.*;
+import club.nsdn.nyasamarailway.ext.AbsBogie;
 import club.nsdn.nyasamarailway.ext.AbsMotor;
+import club.nsdn.nyasamarailway.network.TrainPacket;
+import club.nsdn.nyasamarailway.util.TrainController;
 
 import moe.gensoukyo.mcgproject.common.entity.MCGEntity;
+import net.minecraft.block.BlockRailBase;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityMinecart;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.Tuple;
+import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
 
 import javax.annotation.Nonnull;
+import java.lang.reflect.Field;
+import java.util.List;
 import java.util.UUID;
 
 @MCGEntity("gr_motor")
@@ -116,6 +127,150 @@ public class GRMotor extends AbsMotor {
         } else {
             return entity;
         }
+    }
+
+    public static boolean hasCart(World world, EntityMinecart me, BlockPos pos) {
+        float bBoxSize = 0.125F;
+        List<EntityMinecart> bBox = world.getEntitiesWithinAABB(
+                EntityMinecart.class,
+                new AxisAlignedBB(pos).shrink(bBoxSize)
+        );
+        if (!bBox.isEmpty()) {
+            for (EntityMinecart i : bBox) {
+                if (i instanceof AbsBogie)
+                    continue;   // Non-Motor Bogie
+
+                if (i instanceof AbsMotoCart) {
+                    AbsMotoCart cart = (AbsMotoCart) i;
+                    if (cart.equals(me))
+                        return false;
+                    return !cart.getPassengers().isEmpty();
+                }
+                return !i.equals(me);
+            }
+        }
+        return false;
+    }
+
+    public static double getNearestCartDist(World world, EntityMinecart cart, int maxDist) {
+        BlockPos pos = cart.getPosition();
+        if (!BlockRailBase.isRailBlock(world, pos))
+            return Double.NaN;
+
+        EnumFacing facing = EnumFacing.DOWN;
+        if (cart instanceof AbsCartBase) {
+            facing = ((AbsCartBase) cart).facing;
+        } else {
+            if (cart.motionX > 0)
+                facing = EnumFacing.EAST;
+            else if (cart.motionX < 0)
+                facing = EnumFacing.WEST;
+            else if (cart.motionZ > 0)
+                facing = EnumFacing.SOUTH;
+            else if (cart.motionZ < 0)
+                facing = EnumFacing.NORTH;
+            else if (cart.motionX  == 0 && cart.motionZ == 0)
+                facing = cart.getHorizontalFacing();
+        }
+
+        Tuple<BlockPos, EnumFacing> now = new Tuple<>(pos, facing);
+        if (IMobileBlocking.findNextRail(world, cart, now) == null)
+            return Double.NaN;
+
+        for (int i = 0; i < maxDist; i++) {
+            now = IMobileBlocking.findNextRail(world, cart, now);
+            if (now == null)
+                return i;
+            if (hasCart(world, cart, now.getFirst()))
+                return i;
+        }
+
+        return Double.NaN;
+    }
+
+    public void setBlocking(float val) {
+        try {
+            Field field = AbsCartBase.class.getDeclaredField("BLOCKING");
+            field.setAccessible(true);
+            DataParameter<Float> BLOCKING = (DataParameter<Float>) field.get(null);
+            if (BLOCKING != null)
+                this.dataManager.set(BLOCKING, val);
+        } catch (Exception ignored) { }
+    }
+
+    @Override
+    public void scanBlocking() {
+        double dist = getNearestCartDist(this.world, this, 192);
+        if (Double.isNaN(dist) || dist > 192)
+            dist = 999;
+
+        setBlocking((float) dist);
+    }
+
+    public static boolean preMobileBlocking(World world, EntityMinecart cart) {
+        double dist = getNearestCartDist(world, cart, 160);
+        if (Double.isNaN(dist)) return false;
+        return dist < 160;
+    }
+
+    public static boolean mobileBlocking(World world, EntityMinecart cart) {
+        double dist = getNearestCartDist(world, cart, 128);
+        if (Double.isNaN(dist)) return false;
+        return dist < 128;
+    }
+
+    private int tmpEngineBrake = -1;
+
+    @Override
+    protected void doEngine() {
+        if (getBlockingState()) {
+            if (preMobileBlocking(world, this)) {
+                TrainPacket packet = new TrainPacket(0, 1, getEngineDir());
+                packet.Velocity = this.Velocity;
+                if (mobileBlocking(world, this)) {
+                    TrainController.doMotion(packet, this); // stop!
+                } else {
+                    double vel = getSpeed();
+                    if (vel < 0.1) {
+                        packet.P = 1; packet.R = 10;
+                        doMotion(packet, this); // slow move
+                    } else if (vel < 0.2) {
+                        doMotion(packet, this); // control speed
+                    } else {
+                        TrainController.doMotion(packet, this); // EB!
+                    }
+                }
+                setEnginePrevVel(this.Velocity);
+                setEngineVel(packet.Velocity);
+
+                return;
+            }
+        }
+
+        tmpPacket = new TrainPacket(getEnginePower(), getEngineBrake(), getEngineDir());
+        tmpPacket.Velocity = this.Velocity;
+        if (this.maxVelocity > 0) {
+            if (this.Velocity > this.maxVelocity && tmpEngineBrake == -1) {
+                tmpEngineBrake = getEngineBrake();
+                setEngineBrake(1);
+            } else if (this.Velocity > this.maxVelocity && tmpEngineBrake != -1) {
+                setEngineBrake(1);
+            } else if (this.Velocity <= this.maxVelocity && tmpEngineBrake != -1) {
+                setEngineBrake(tmpEngineBrake);
+                tmpEngineBrake = -1;
+            }
+        }
+        doMotion(tmpPacket, this);
+        setEnginePrevVel(this.Velocity);
+        setEngineVel(tmpPacket.Velocity);
+    }
+
+    @Override
+    public void update() {
+        super.update();
+
+        if (!world.isRemote)
+            scanBlocking();
     }
 
 }
