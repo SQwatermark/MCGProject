@@ -1,7 +1,6 @@
 package moe.gensoukyo.mcgproject.common.feature.sticker;
 
 import moe.gensoukyo.mcgproject.cilent.gui.StickerEditor;
-import moe.gensoukyo.mcgproject.cilent.tileentity.TileStickerRenderer;
 import moe.gensoukyo.mcgproject.cilent.util.TextureLoader;
 import moe.gensoukyo.mcgproject.common.creativetab.MCGTabs;
 import moe.gensoukyo.mcgproject.common.network.NetworkWrapper;
@@ -105,6 +104,18 @@ public class BlockSticker extends BlockContainer {
     @Nonnull
     public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess world, BlockPos pos) {
         return FULL_BLOCK_AABB;
+    }
+
+    public static boolean heldThis(ItemStack stack) {
+        if (stack.getItem() instanceof ItemBlock) {
+            return ((ItemBlock) stack.getItem()).getBlock() instanceof BlockSticker;
+        }
+        return false;
+    }
+
+    @Override
+    public boolean canCollideCheck(IBlockState state, boolean v) {
+        return heldThis(Minecraft.getMinecraft().player.getHeldItemMainhand());
     }
 
     @Override
