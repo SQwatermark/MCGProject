@@ -39,7 +39,13 @@ public class MCGProject {
     //服务端事件用
     public static MinecraftServer SERVER = null;
 
-    public static boolean isServer() { return SERVER != null; }
+    public static boolean isServer() {
+        try {
+            Class.forName("net.minecraft.client.Minecraft");
+            return false;
+        } catch (Exception ignored) { }
+        return SERVER != null;
+    }
 
     @SuppressWarnings("unused")
     public static final String[] CODERS = {"SQwatermark", "drzzm32", "Chloe_koopa"};
