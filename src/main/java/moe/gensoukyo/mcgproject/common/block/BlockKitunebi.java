@@ -1,19 +1,25 @@
 package moe.gensoukyo.mcgproject.common.block;
 
 import moe.gensoukyo.mcgproject.common.creativetab.MCGTabs;
+import moe.gensoukyo.mcgproject.common.init.ModSound;
 import moe.gensoukyo.mcgproject.core.MCGProject;
 import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.properties.PropertyInteger;
 import net.minecraft.block.state.BlockFaceShape;
+import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumHand;
+import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
@@ -44,6 +50,8 @@ public class BlockKitunebi extends Block implements ITileEntityProvider {
 
     }
 
+    public static final PropertyInteger LIGHT = PropertyInteger.create("light", 0, 15);
+
     public BlockKitunebi() {
         super(Material.BARRIER);
         setLightLevel(1.0F);
@@ -55,6 +63,7 @@ public class BlockKitunebi extends Block implements ITileEntityProvider {
         setCreativeTab(MCGTabs.FANTASY);
         this.translucent = true;
         this.hasTileEntity = true;
+        setDefaultState(this.blockState.getBaseState().withProperty(LIGHT, 15));
     }
 
     public static boolean heldThis(ItemStack stack) {
@@ -78,7 +87,11 @@ public class BlockKitunebi extends Block implements ITileEntityProvider {
 
     @Override
     public boolean canCollideCheck(IBlockState state, boolean v) {
-        return heldThis(Minecraft.getMinecraft().player.getHeldItemMainhand());
+        if (MCGProject.isServer())
+            return false;
+        else {
+            return heldThis(Minecraft.getMinecraft().player.getHeldItemMainhand());
+        }
     }
 
     @Override
@@ -93,8 +106,31 @@ public class BlockKitunebi extends Block implements ITileEntityProvider {
 
     @Override
     @SideOnly(Side.CLIENT)
-    public float getAmbientOcclusionLightValue(IBlockState p_getAmbientOcclusionLightValue_1_) {
+    public float getAmbientOcclusionLightValue(IBlockState state) {
         return 1.0F;
+    }
+
+    @Override
+    public int getLightValue(IBlockState state, IBlockAccess world, BlockPos pos) {
+        state = world.getBlockState(pos);
+        return state.getValue(LIGHT);
+    }
+
+    @Override
+    @Nonnull
+    public IBlockState getStateFromMeta(int meta) {
+        return getDefaultState().withProperty(LIGHT, 0xF - meta);
+    }
+
+    @Override
+    public int getMetaFromState(IBlockState state) {
+        return 0xF - (state.getValue(LIGHT) & 0xF);
+    }
+
+    @Override
+    @Nonnull
+    protected BlockStateContainer createBlockState() {
+        return new BlockStateContainer(this, LIGHT);
     }
 
     @Override
@@ -103,6 +139,7 @@ public class BlockKitunebi extends Block implements ITileEntityProvider {
     }
 
     @Override
+    @Nonnull
     public BlockFaceShape getBlockFaceShape(IBlockAccess world, IBlockState state, BlockPos pos, EnumFacing facing) {
         return BlockFaceShape.UNDEFINED;
     }
@@ -120,6 +157,24 @@ public class BlockKitunebi extends Block implements ITileEntityProvider {
 
     @Override
     public void dropBlockAsItemWithChance(World world, @Nonnull BlockPos pos, @Nonnull IBlockState state, float f, int i) {
+    }
+
+    @Override
+    public boolean onBlockActivated(@Nonnull World world, @Nonnull BlockPos pos, @Nonnull IBlockState state,
+                                    @Nonnull EntityPlayer player, @Nonnull EnumHand hand, @Nonnull EnumFacing facing, float x, float y, float z) {
+
+        if (heldThis(player.getHeldItem(hand))) {
+            if (!world.isRemote) {
+                state = world.getBlockState(pos);
+                int light = state.getValue(LIGHT);
+                light += 1; light &= 0xF;
+                world.setBlockState(pos, state.withProperty(LIGHT, light), 2);
+            }
+
+            return true;
+        }
+
+        return false;
     }
 
 }

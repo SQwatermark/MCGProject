@@ -73,6 +73,11 @@ public class GRMotor extends AbsMotor {
     }
 
     @Override
+    public boolean canBeAdjusted(EntityMinecart cart) {
+        return false;
+    }
+
+    @Override
     public void initEntity() {
         dataManager.register(TARGET_BOGIE, -1);
         dataManager.register(IS_CENTER, false);

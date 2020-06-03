@@ -51,6 +51,8 @@ public class ModBlock {
     public static Block TEST2 = new BlockRotate4(Material.ROCK, "test_block_2", MCGTabs.OLD, SoundType.STONE);
     public static Block BLOCK_APPLE = new BlockMCGApple();
     public static Block BLOCK_CHISEL_STONE = new BlockInteger16(Material.ROCK, "chisel_stone", MCGTabs.OLD, SoundType.STONE);
+    public static Block KITUNEBI = new BlockKitunebi();
+
     /**
      * 实例化方块，并将实例化的方块分配到相应链表
      */
@@ -104,7 +106,7 @@ public class ModBlock {
         blocks2.add(GAP);
         blocks1.add(new GensoChest());
         blocks1.add(new BlockRealm());
-        blocks1.add(new BlockKitunebi());
+        blocks1.add(KITUNEBI);
         blocks1.add(new BlockNPCSpawnerConsole());
 
         //西方
