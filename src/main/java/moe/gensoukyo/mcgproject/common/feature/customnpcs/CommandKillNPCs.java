@@ -11,6 +11,7 @@ import noppes.npcs.entity.EntityCustomNpc;
 import java.util.List;
 
 public class CommandKillNPCs extends CommandBase {
+
     @Override
     public String getName() {
         return "killNpc";
