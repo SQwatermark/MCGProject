@@ -87,7 +87,11 @@ public class BlockKitunebi extends Block implements ITileEntityProvider {
 
     @Override
     public boolean canCollideCheck(IBlockState state, boolean v) {
-        return heldThis(Minecraft.getMinecraft().player.getHeldItemMainhand());
+        if (MCGProject.isServer())
+            return false;
+        else {
+            return heldThis(Minecraft.getMinecraft().player.getHeldItemMainhand());
+        }
     }
 
     @Override

@@ -115,7 +115,11 @@ public class BlockSticker extends BlockContainer {
 
     @Override
     public boolean canCollideCheck(IBlockState state, boolean v) {
-        return heldThis(Minecraft.getMinecraft().player.getHeldItemMainhand());
+        if (MCGProject.isServer())
+            return false;
+        else {
+            return heldThis(Minecraft.getMinecraft().player.getHeldItemMainhand());
+        }
     }
 
     @Override

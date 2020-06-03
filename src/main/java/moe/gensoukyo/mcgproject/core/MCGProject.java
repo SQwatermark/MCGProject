@@ -37,7 +37,9 @@ public class MCGProject {
     public static File modConfigDi;
 
     //服务端事件用
-    public MinecraftServer server;
+    public static MinecraftServer SERVER = null;
+
+    public static boolean isServer() { return SERVER != null; }
 
     @SuppressWarnings("unused")
     public static final String[] CODERS = {"SQwatermark", "drzzm32", "Chloe_koopa"};
@@ -91,7 +93,7 @@ public class MCGProject {
 
     @Mod.EventHandler
     public void serverLoad(FMLServerStartingEvent event) {
-        server = event.getServer();
+        SERVER = event.getServer();
         event.registerServerCommand(new BackpackCore.BackpackCommand());
         event.registerServerCommand(new BackpackCore.BackpackManageCommand());
         event.registerServerCommand(new TileSticker.RefreshCommand());
@@ -101,8 +103,10 @@ public class MCGProject {
 
     @Mod.EventHandler
     public void serverStop(FMLServerStoppingEvent event) {
-        if (server.isDedicatedServer()) { //独立服务端关闭处理
+        if (SERVER.isDedicatedServer()) { //独立服务端关闭处理
             MCGProject.logger.info("Closing something...");
+
+            SERVER = null;
         }
     }
 
@@ -111,7 +115,6 @@ public class MCGProject {
     //TODO：荆棘（玩家碰到会掉血）
     //TODO: 玩家在其中会下陷的泥巴（沼泽）
     //TODO: 恐龙的模型
-    //TODO: 狐火
     //TODO：试图渡过三途川的玩家会下沉
     //TODO: 旅行者地图的指令，服务端执行，给客户端添加导航点（客户端应该有防止被添加导航点的选项）
 
