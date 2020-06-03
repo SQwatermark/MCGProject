@@ -25,9 +25,12 @@ import moe.gensoukyo.mcgproject.common.feature.musicplayer.EntityMusicPlayer;
 import moe.gensoukyo.mcgproject.common.feature.ranstone.*;
 import moe.gensoukyo.mcgproject.common.feature.sticker.BlockSticker;
 import moe.gensoukyo.mcgproject.common.feature.sticker.TileSticker;
+import moe.gensoukyo.mcgproject.common.init.ModBlock;
 import moe.gensoukyo.mcgproject.common.init.ModItem;
 import moe.gensoukyo.mcgproject.core.MCGProject;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.client.renderer.block.statemap.IStateMapper;
+import net.minecraft.client.renderer.block.statemap.StateMap;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.Item;
@@ -106,6 +109,8 @@ public class ModelMapper {
         registerModel(ModItem.ITEM_GRC_2M);
         registerModel(ModItem.ITEM_GRH_2);
         registerModel(ModItem.ITEM_GRH_2M);
+
+        ModelLoader.setCustomStateMapper(ModBlock.KITUNEBI, new StateMap.Builder().ignore(BlockKitunebi.LIGHT).build());
 
         ClientRegistry.bindTileEntitySpecialRenderer(RanstonePiston.TilePiston.class, new TileRanstonePistonRenderer());
         ClientRegistry.bindTileEntitySpecialRenderer(TileSticker.class, new TileStickerRenderer());
