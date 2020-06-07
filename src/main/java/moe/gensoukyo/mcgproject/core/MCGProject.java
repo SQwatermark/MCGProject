@@ -100,7 +100,9 @@ public class MCGProject {
     @Mod.EventHandler
     public void serverLoad(FMLServerStartingEvent event) {
         SERVER = event.getServer();
+
         event.registerServerCommand(new BackpackCore.BackpackCommand());
+        event.registerServerCommand(new BackpackCore.PackAdminCommand());
         event.registerServerCommand(new BackpackCore.BackpackManageCommand());
         event.registerServerCommand(new TileSticker.RefreshCommand());
         event.registerServerCommand(new NPCSpawnerConfig.CommandRefreshNPCSpawner());
