@@ -59,7 +59,7 @@ public class GRMotor extends AbsMotor {
 
     @Override
     public float getMaxCartSpeedOnRail() {
-        return 3.0F;
+        return (float) (40 / 3.6 / 20);
     }
 
     @Override

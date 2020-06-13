@@ -247,7 +247,7 @@ public class BlockElevator extends BlockContainer {
                                     @Nonnull EntityPlayer player, @Nonnull EnumHand hand, @Nonnull EnumFacing facing, float x, float y, float z) {
 
         Item item = player.getHeldItem(hand).getItem();
-        if (item.equals(ITEM)) {
+        if (item.equals(ITEM) && facing == EnumFacing.UP) {
             if (!world.isRemote) {
                 state = world.getBlockState(pos);
                 boolean old = state.getValue(IS_DIR);

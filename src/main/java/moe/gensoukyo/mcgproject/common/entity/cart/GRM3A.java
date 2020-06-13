@@ -60,7 +60,7 @@ public class GRM3A extends AbsMetro {
     @Nonnull
     @Override
     public AxisAlignedBB getRenderBoundingBox() {
-        return super.getRenderBoundingBox().expand(7, 1, 7).expand(-7, 0, -7);
+        return super.getRenderBoundingBox().grow(8, 2, 8);
     }
 
     @Override
@@ -103,6 +103,8 @@ public class GRM3A extends AbsMetro {
 
         return super.processInitialInteract(player, hand);
     }
+
+    public void setColorDamage(byte damage) { dataManager.set(COLOR_DAMAGE, (byte) (damage & 0xF)); }
 
     public byte getColorDamage() { return dataManager.get(COLOR_DAMAGE); }
 

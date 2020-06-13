@@ -3,10 +3,10 @@ package moe.gensoukyo.mcgproject.common.feature.backpack;
 import com.google.common.collect.Lists;
 import moe.gensoukyo.mcgproject.common.network.BackpackPacket;
 import moe.gensoukyo.mcgproject.common.network.NetworkWrapper;
+import moe.gensoukyo.mcgproject.common.network.PackAdminPacket;
 import moe.gensoukyo.mcgproject.core.MCGProject;
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.ICommandSender;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Items;
@@ -82,15 +82,19 @@ public class BackpackCore {
             return NonNullList.withSize(Math.min(size, SIZE), ItemStack.EMPTY);
         }
 
+        public static class Backpacks extends LinkedHashMap<String, LinkedHashMap<String, NonNullList<ItemStack>>> {
+            public Backpacks() { super(); }
+        }
+
         private static final String NBT_TAG = "mcg.backpack";
 
         public static class SaveData extends WorldSavedData {
 
-            public LinkedHashMap<String, LinkedHashMap<String, NonNullList<ItemStack>>> backpacks;
+            public Backpacks backpacks;
 
             public SaveData(String mapName) {
                 super(mapName);
-                backpacks = new LinkedHashMap<>();
+                backpacks = new Backpacks();
             }
 
             @Nonnull
@@ -427,6 +431,76 @@ public class BackpackCore {
         @Override
         public boolean checkPermission(MinecraftServer server, ICommandSender sender) {
             return true;
+        }
+
+        @Override
+        @Nonnull
+        public List<String> getTabCompletions(MinecraftServer server, ICommandSender sender, String[] args, @Nullable BlockPos targetPos) {
+            return Collections.emptyList();
+        }
+
+    }
+
+    public static class PackAdminCommand extends CommandBase {
+
+        public PackAdminCommand(){
+            aliases = Lists.newArrayList("pacman");
+        }
+
+        private final List<String> aliases;
+
+        @Override
+        @Nonnull
+        public String getName() {
+            return "pacman";
+        }
+
+        @Override
+        @Nonnull
+        public String getUsage(@Nonnull ICommandSender sender) {
+            return " execute \"/pacman\" to open gensoBackpack Admin Panel";
+        }
+
+        @Override
+        @Nonnull
+        public List<String> getAliases() {
+            return aliases;
+        }
+
+        @Override
+        public void execute(@Nonnull MinecraftServer server, @Nonnull ICommandSender sender, @Nonnull String[] args) {
+            if (!(sender instanceof EntityPlayerMP)) {
+                sender.sendMessage(new TextComponentString(
+                        TextFormatting.RED + "[ERROR] This command can only be executed by player!"));
+                return;
+            }
+
+            EntityPlayerMP player = (EntityPlayerMP) sender;
+            World world = server.getWorld(player.dimension);
+            PackAdminPacket packet = new PackAdminPacket();
+            BackpackRepo.Backpacks backpacks = BackpackRepo.getData(world).backpacks;
+            for (Map.Entry<String, LinkedHashMap<String, NonNullList<ItemStack>>> i : backpacks.entrySet()) {
+                String[] types = i.getValue().keySet().toArray(new String[0]);
+                packet.put(i.getKey(), types);
+            }
+            NetworkWrapper.INSTANCE.sendTo(packet, player);
+            player.sendMessage(new TextComponentString(TextFormatting.DARK_PURPLE + "PackAdmin loading..."));
+        }
+
+        @Override
+        public boolean checkPermission(MinecraftServer server, ICommandSender sender) {
+            if (sender instanceof EntityPlayer) {
+                EntityPlayer player = (EntityPlayer) sender;
+                if (server.isDedicatedServer()) {
+                    UserListOps listOps = server.getPlayerList().getOppedPlayers();
+                    ArrayList<String> list = Lists.newArrayList(listOps.getKeys());
+                    return list.contains(player.getName());
+                } else {
+                    return player.isCreative();
+                }
+            }
+
+            return false;
         }
 
         @Override
