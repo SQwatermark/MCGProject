@@ -16,6 +16,7 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.*;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.*;
 import net.minecraft.util.math.AxisAlignedBB;
@@ -41,6 +42,7 @@ public class BlockElevator extends BlockContainer {
 
     public static final int SCAN_LIMIT = 256;
     public static final int SCAN_AREA = 3;
+    public static final int COOL_DOWN = 500;
 
     public static BlockElevator BLOCK;
     public static Item ITEM;
@@ -312,7 +314,11 @@ public class BlockElevator extends BlockContainer {
                         targetFacing = getTargetFromEntityLivingBase(e);
                         if (targetFacing != null) {
                             BlockPos target = findElevator(world, pos, targetFacing);
-                            if (target != null) {
+                            final String TAG = "prevElevatorUse";
+                            long prevElevatorUse = e.getEntityData().getLong(TAG);
+                            long nowTime = MinecraftServer.getCurrentTimeMillis();
+                            if (target != null && (nowTime - prevElevatorUse) > COOL_DOWN) {
+                                e.getEntityData().setLong(TAG, nowTime);
                                 Vec3d offset = new Vec3d(target.subtract(pos));
                                 Vec3d vec = e.getPositionVector().add(offset);
                                 if (isDir)
