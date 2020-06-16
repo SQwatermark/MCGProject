@@ -31,7 +31,7 @@ public class MCGProject {
 
     public static final String ID = "mcgproject";
     public static final String NAME = "MCGProject";
-    public static final String VERSION = "1.2.0";
+    public static final String VERSION = "1.2.1";
 
     public static Logger logger;
     public static File modConfigDi;
@@ -123,5 +123,6 @@ public class MCGProject {
     //TODO: 恐龙的模型
     //TODO：试图渡过三途川的玩家会下沉
     //TODO: 旅行者地图的指令，服务端执行，给客户端添加导航点（客户端应该有防止被添加导航点的选项）
+    //TODO: 游戏萌澄果图标改成资源包，把forge文件换回去
 
 }

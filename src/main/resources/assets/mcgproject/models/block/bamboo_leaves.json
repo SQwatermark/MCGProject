@@ -25,6 +25,7 @@
 			"name": "大01",
 			"from": [-16, 0, -16],
 			"to": [32, 0, 32],
+			"shade": false,
 			"rotation": {"angle": 22.5, "axis": "x", "origin": [8, 0, 32]},
 			"faces": {
 				"north": {"uv": [2.375, 2, 13.875, 14], "texture": "#3"},

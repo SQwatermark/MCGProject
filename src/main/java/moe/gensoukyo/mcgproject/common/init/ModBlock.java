@@ -300,10 +300,10 @@ public class ModBlock {
             );
         }
         else for (int r = 0; r < maxMeta+1; r++) {
-                String blockState = Block.getBlockFromItem(i).getStateFromMeta(r).toString();
-                String variantIn = blockState.substring(blockState.indexOf("[")+1, blockState.indexOf("]"));
-                ModelLoader.setCustomModelResourceLocation(i, r,
-                        new ModelResourceLocation(Objects.requireNonNull(i.getRegistryName()), variantIn));
+            String blockState = Block.getBlockFromItem(i).getStateFromMeta(r).toString();
+            String variantIn = blockState.substring(blockState.indexOf("[")+1, blockState.indexOf("]"));
+            ModelLoader.setCustomModelResourceLocation(i, r,
+                    new ModelResourceLocation(Objects.requireNonNull(i.getRegistryName()), variantIn));
         }
     }
 
