@@ -3,8 +3,11 @@ package moe.gensoukyo.mcgproject.core;
 import moe.gensoukyo.mcgproject.cilent.feature.CustomMainMenu;
 import moe.gensoukyo.mcgproject.cilent.feature.ItitFeatures;
 import moe.gensoukyo.mcgproject.cilent.feature.SimpleAntiHack;
+import moe.gensoukyo.mcgproject.cilent.gui.PackAdmin;
 import moe.gensoukyo.mcgproject.cilent.init.ModelMapper;
 import moe.gensoukyo.mcgproject.common.feature.rsgauges.ModRsGauges;
+import net.minecraft.client.Minecraft;
+import net.minecraftforge.client.ClientCommandHandler;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -45,6 +48,14 @@ public class ClientProxy extends CommonProxy {
     public void postInit(FMLPostInitializationEvent event) {
         super.postInit(event);
         ModRsGauges.client.postInit(event);
+
+        PackAdmin.setInvoke(((name, type) -> {
+            Minecraft mc = Minecraft.getMinecraft();
+            mc.addScheduledTask(() -> {
+                String cmd = "/mcgPack show " + name + " " + type;
+                mc.player.sendChatMessage(cmd);
+            });
+        }));
     }
 
 }
