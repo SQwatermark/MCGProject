@@ -279,7 +279,6 @@ public class BlockElevator extends BlockContainer {
 
                 state = world.getBlockState(pos);
                 boolean isDir = state.getValue(IS_DIR);
-                float angle = state.getValue(FACING).getHorizontalAngle();
 
                 EnumFacing targetFacing = null;
                 if (elevator.hasUpCtl() || elevator.hasDownCtl()) {
@@ -288,6 +287,7 @@ public class BlockElevator extends BlockContainer {
                     if (targetFacing != null) {
                         BlockPos target = findElevator(world, pos, targetFacing);
                         if (target != null) {
+                            float angle = world.getBlockState(target).getValue(FACING).getHorizontalAngle();
                             Vec3d offset = new Vec3d(target.subtract(pos));
                             List<Entity> entityList = world.getEntitiesWithinAABB(Entity.class, new AxisAlignedBB(pos.up()).expand(0, SCAN_AREA - 1, 0));
                             for (Entity e : entityList) {
@@ -318,6 +318,7 @@ public class BlockElevator extends BlockContainer {
                             long prevElevatorUse = e.getEntityData().getLong(TAG);
                             long nowTime = MinecraftServer.getCurrentTimeMillis();
                             if (target != null && (nowTime - prevElevatorUse) > COOL_DOWN) {
+                                float angle = world.getBlockState(target).getValue(FACING).getHorizontalAngle();
                                 e.getEntityData().setLong(TAG, nowTime);
                                 Vec3d offset = new Vec3d(target.subtract(pos));
                                 Vec3d vec = e.getPositionVector().add(offset);
