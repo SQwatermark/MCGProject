@@ -7,7 +7,6 @@ import moe.gensoukyo.mcgproject.cilent.gui.PackAdmin;
 import moe.gensoukyo.mcgproject.cilent.init.ModelMapper;
 import moe.gensoukyo.mcgproject.common.feature.rsgauges.ModRsGauges;
 import net.minecraft.client.Minecraft;
-import net.minecraftforge.client.ClientCommandHandler;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;

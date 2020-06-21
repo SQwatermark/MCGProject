@@ -3,7 +3,23 @@
   "defaults": {"model": "cross"},
   "variants": {
     "inventory": [{}],
-    "meta=0": [{"textures": {"cross": "mcgproject:blocks/nature/mushroom_0"}}],
-    "meta=1": [{"textures": {"cross": "mcgproject:blocks/nature/mushroom_0"}}]
+    "meta": {
+      "0": {"textures": {"cross": "mcgproject:blocks/nature/mushroom_0"}},
+      "1": {"textures": {"cross": "mcgproject:items/food/pic56"}},
+      "2": {"textures": {"cross": "mcgproject:items/food/pic42"}},
+      "3": {"textures": {"cross": "mcgproject:items/food/pic43"}},
+      "4": {"textures": {"cross": "mcgproject:items/food/pic44"}},
+      "5": {"textures": {"cross": "mcgproject:items/food/pic45"}},
+      "6": {"textures": {"cross": "mcgproject:items/food/pic46"}},
+      "7": {"textures": {"cross": "mcgproject:items/food/pic47"}},
+      "8": {"textures": {"cross": "mcgproject:items/food/pic55"}},
+      "9": {"textures": {"cross": "mcgproject:items/food/pic49"}},
+      "10": {"textures": {"cross": "mcgproject:items/food/pic50"}},
+      "11": {"textures": {"cross": "mcgproject:items/food/pic51"}},
+      "12": {"textures": {"cross": "mcgproject:items/food/pic52"}},
+      "13": {"textures": {"cross": "mcgproject:items/food/pic53"}},
+      "14": {"textures": {"cross": "mcgproject:items/food/pic57"}},
+      "15": {"textures": {"cross": "mcgproject:items/food/pic55"}}
+    }
   }
 }

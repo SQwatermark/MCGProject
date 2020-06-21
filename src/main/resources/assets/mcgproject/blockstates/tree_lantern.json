@@ -1,0 +1,17 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "cross",
+    "textures": {"cross": "mcgproject:blocks/nature/tree_lantern"}
+  },
+  "variants": {
+    "inventory": [{}],
+    "normal": [{}],
+    "stem": {
+      "true": {
+        "textures": {"cross": "mcgproject:blocks/nature/tree_lantern_stem"}
+      },
+      "false": {}
+    }
+  }
+}

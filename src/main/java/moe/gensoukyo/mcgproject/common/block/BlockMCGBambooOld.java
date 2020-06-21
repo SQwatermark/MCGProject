@@ -1,7 +1,9 @@
 package moe.gensoukyo.mcgproject.common.block;
 
+import moe.gensoukyo.mcgproject.common.creativetab.MCGTabs;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
+import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyInteger;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
@@ -22,13 +24,12 @@ import org.jetbrains.annotations.NotNull;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-public class BlockBambooOld extends BlockMCGBush {
+public class BlockMCGBambooOld extends BlockMCGCrossed {
 
     public static PropertyInteger META = PropertyInteger.create("meta", 0, 2);
 
-    public BlockBambooOld(String registryName) {
-        super(registryName);
-        this.setSoundType(SoundType.WOOD);
+    public BlockMCGBambooOld(String registryName) {
+        super(Material.WOOD, registryName, MCGTabs.NATURE, SoundType.WOOD);
     }
 
     @NotNull

@@ -19,13 +19,13 @@ import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.NotNull;
 
-public class BlockMCGMushroom extends BlockMCGCrossed {
+public class BlockMCGFNFlower extends BlockMCGCrossed {
 
-    public static PropertyInteger META = PropertyInteger.create("meta", 0, 14);
-
-    public BlockMCGMushroom(String registryName) {
+    public BlockMCGFNFlower(String registryName) {
         super(Material.PLANTS, registryName, MCGTabs.NATURE, SoundType.PLANT);
     }
+
+    public static PropertyInteger META = PropertyInteger.create("meta", 0, 8);
 
     @Override
     protected BlockStateContainer createBlockState() {
