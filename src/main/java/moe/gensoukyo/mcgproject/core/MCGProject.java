@@ -6,6 +6,7 @@ import moe.gensoukyo.mcgproject.common.feature.customnpcs.CommandKillNPCs;
 import moe.gensoukyo.mcgproject.common.feature.customnpcs.NPCSpawnerConfig;
 import moe.gensoukyo.mcgproject.common.feature.rsgauges.ModRsGauges;
 import moe.gensoukyo.mcgproject.common.feature.sticker.TileSticker;
+import moe.gensoukyo.mcgproject.common.util.NashornPool;
 import net.minecraft.server.MinecraftServer;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fluids.FluidRegistry;
@@ -107,6 +108,8 @@ public class MCGProject {
         event.registerServerCommand(new TileSticker.RefreshCommand());
         event.registerServerCommand(new NPCSpawnerConfig.CommandRefreshNPCSpawner());
         event.registerServerCommand(new CommandKillNPCs());
+
+        NashornPool.refresh(); // 加载对象池
     }
 
     @Mod.EventHandler

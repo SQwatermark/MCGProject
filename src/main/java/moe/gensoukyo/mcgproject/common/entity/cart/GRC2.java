@@ -70,6 +70,9 @@ public class GRC2 extends AbsCart {
     }
 
     @Override
+    public int getMaxPassengerSize() { return 2; }
+
+    @Override
     public void passengerUpdate(@Nonnull Entity passenger) {
         double x = this.posX, z = this.posZ;
         double y = this.posY + this.getMountedYOffset() + passenger.getYOffset();
