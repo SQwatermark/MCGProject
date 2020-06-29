@@ -19,6 +19,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.client.event.RenderHandEvent;
 import net.minecraftforge.fluids.BlockFluidClassic;
@@ -49,6 +50,11 @@ public class BlockFluidSludge extends BlockFluidClassic {
                 }
             }
         }
+    }
+
+    @Override
+    public boolean isReplaceable(IBlockAccess worldIn, BlockPos pos) {
+        return true;
     }
 
     public static boolean isEntityInsideBlock(Entity entity, Block block) {

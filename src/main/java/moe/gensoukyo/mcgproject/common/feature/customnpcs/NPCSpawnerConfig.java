@@ -137,7 +137,7 @@ public class NPCSpawnerConfig {
         try {
             int tab = mobJson.get("tab").getAsInt();
             String mobName = mobJson.get("name").getAsString();
-            int weight = mobJson.get("weight").getAsInt();
+            double weight = mobJson.get("weight").getAsDouble();
             return new NPCMob(tab, mobName, weight);
         } catch (Exception e) {
             MCGProject.logger.error("MCGProject：刷怪配置解析错误！怪物信息不符合规范！已跳过该怪物！");

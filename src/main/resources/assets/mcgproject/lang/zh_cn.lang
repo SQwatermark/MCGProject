@@ -488,6 +488,7 @@ item.mcgproject.mcg_drink_14.name=国士无双药剂
 item.mcgproject.mcg_drink_15.name=恶魔之血
 item.mcgproject.mcg_drink_16.name=毒药剂
 item.mcgproject.mcg_drink_17.name=药剂
+item.mcgproject.mcg_drink_18.name=血袋
 
 item.mcgproject.mcg_prop_0.name=伊露基尼
 item.mcgproject.mcg_prop_1.name=捕虫网
@@ -580,6 +581,10 @@ item.mcgproject.mcg_prop_87.name=木材
 item.mcgproject.mcg_prop_88.name=软木材
 item.mcgproject.mcg_prop_89.name=硬木材
 item.mcgproject.mcg_prop_90.name=叶子
+item.mcgproject.mcg_prop_91.name=蝙蝠翅膀
+item.mcgproject.mcg_prop_92.name=恶魔气息
+item.mcgproject.mcg_prop_93.name=恶魔结晶
+item.mcgproject.mcg_prop_94.name=红雾之瓶
 
 item.mcgproject.mcg_banner_pattern_0.name=丸桔梗
 item.mcgproject.mcg_banner_pattern_1.name=家纹图案
