@@ -20,9 +20,9 @@ import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.NotNull;
 
-public class BlockMCGMCGFlower extends BlockMCGCrossed {
+public class BlockMCGFlower extends BlockMCGCrossed {
 
-    public BlockMCGMCGFlower(String registryName) {
+    public BlockMCGFlower(String registryName) {
         super(Material.PLANTS, registryName, MCGTabs.NATURE, SoundType.PLANT);
     }
 

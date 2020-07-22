@@ -43,7 +43,7 @@ public class ModBlock {
 
     public static Block TILE = new BlockTile();
     public static Block NAMAKO = new BlockInteger2(Material.CLAY, "namako", MCGTabs.TOUHOU, SoundType.STONE);
-    public static Block FLOWER = new BlockMCGMCGFlower("flower");
+    public static Block FLOWER = new BlockMCGFlower("flower");
     public static Block GAP = new BlockInteger2(Material.ROCK, "gap", MCGTabs.FANTASY, SoundType.STONE).setLightLevel(0.7F);
     public static Block BLOCK_CHIREIDEN = new BlockInteger8(Material.GLASS, "glass_chireiden", MCGTabs.EUROPEAN, SoundType.GLASS).setLightLevel(0.67F);
     public static Block MARBLE = new BlockInteger2(Material.ROCK, "marble", MCGTabs.EUROPEAN, SoundType.STONE);
@@ -105,6 +105,7 @@ public class ModBlock {
         blocks1.add(new BlockBambooLeaves());
         blocks1.add(new BlockBambooShoot());
         blocks1.add(new BlockTreeLantern());
+        blocks1.add(new BlockMCG(Material.GOURD, "bone_pile", MCGTabs.NATURE, SoundType.GROUND));
 
         //幻想
         blocks2.add(GAP);
@@ -159,7 +160,7 @@ public class ModBlock {
         blocks16.add(new BlockMCGLeaves16("fn_leaves").setCreativeTab(MCGTabs.OLD));
         blocks16.add(new BlockMCGLeaves16("fn_leaves2").setCreativeTab(MCGTabs.OLD));
         blocks16.add(new BlockTransparent16(Material.GLASS, "fn_glass", MCGTabs.OLD, SoundType.GLASS));
-        blocks12.add(new BlockInteger12(Material.ROCK, "old_stone", MCGTabs.OLD, SoundType.STONE));
+        blocks13.add(new BlockInteger13(Material.ROCK, "old_stone", MCGTabs.OLD, SoundType.STONE));
         blocks1.add(new BlockMCG(Material.ROCK, "old_brick_marble", MCGTabs.OLD, SoundType.STONE));
         blocks1.add(new BlockMCGLog("old_rubber_wood", MCGTabs.OLD, SoundType.WOOD));
         blocks1.add(new BlockRotate4(Material.ROCK, "old_furnace_on", MCGTabs.OLD, SoundType.STONE));

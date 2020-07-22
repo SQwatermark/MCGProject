@@ -87,7 +87,7 @@ public class NPCSpawner {
                         try {
                             NpcAPI.Instance().getClones().spawn(place.x, place.y, place.z,
                                     mob.tab, mob.name, NpcAPI.Instance().getIWorld(((EntityPlayerMP)player).getServerWorld()));
-                            MCGProject.logger.info("MCGProject：NPC[" + mob.name + "]生成成功，位置" + place);
+                            //MCGProject.logger.info("MCGProject：NPC[" + mob.name + "]生成成功，位置" + place);
                         } catch (Exception e) {
                             MCGProject.logger.info("MCGProject：NPC[" + mob.name + "]生成失败，可能是配置文件中提供的信息有误");
                         }
