@@ -1,6 +1,8 @@
 package moe.gensoukyo.mcgproject.common.block;
 
-import net.minecraft.block.Block;
+import moe.gensoukyo.mcgproject.common.creativetab.MCGTabs;
+import net.minecraft.block.SoundType;
+import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyInteger;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
@@ -16,13 +18,14 @@ import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.NotNull;
 
-public class BlockFNFlower extends BlockMCGBush {
+public class BlockMCGMushroom2 extends BlockMCGCrossed {
 
-    public BlockFNFlower(String registryName) {
-        super(registryName);
+    public static PropertyInteger META = PropertyInteger.create("meta", 0, 2);
+
+    public BlockMCGMushroom2(String registryName) {
+        super(Material.PLANTS, registryName, MCGTabs.NATURE, SoundType.PLANT);
+        this.setLightLevel(0.5F);
     }
-
-    public static PropertyInteger META = PropertyInteger.create("meta", 0, 8);
 
     @Override
     protected BlockStateContainer createBlockState() {
@@ -62,9 +65,9 @@ public class BlockFNFlower extends BlockMCGBush {
         return new ItemStack(Item.getItemFromBlock(this), 1, this.getMetaFromState(state));
     }
 
-    public Block.EnumOffsetType getOffsetType()
+    public EnumOffsetType getOffsetType()
     {
-        return Block.EnumOffsetType.XZ;
+        return EnumOffsetType.XZ;
     }
 
 }

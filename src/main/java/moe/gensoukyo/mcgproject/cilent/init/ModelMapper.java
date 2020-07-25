@@ -9,18 +9,18 @@ import moe.gensoukyo.mcgproject.cilent.entity.fish.*;
 import moe.gensoukyo.mcgproject.cilent.tileentity.*;
 import moe.gensoukyo.mcgproject.common.block.BlockKitunebi;
 import moe.gensoukyo.mcgproject.common.entity.EntityItemMCG;
-import moe.gensoukyo.mcgproject.common.entity.cart.*;
-import moe.gensoukyo.mcgproject.common.feature.backpack.GensoChest;
-import moe.gensoukyo.mcgproject.common.feature.elevator.BlockElevator;
-import moe.gensoukyo.mcgproject.common.feature.kaginawa.EntityKaginawa;
 import moe.gensoukyo.mcgproject.common.entity.boat.EntityMCGBoat;
 import moe.gensoukyo.mcgproject.common.entity.boat.EntityRACBoat;
 import moe.gensoukyo.mcgproject.common.entity.butterfly.*;
+import moe.gensoukyo.mcgproject.common.entity.cart.*;
 import moe.gensoukyo.mcgproject.common.entity.fish.*;
+import moe.gensoukyo.mcgproject.common.feature.backpack.GensoChest;
+import moe.gensoukyo.mcgproject.common.feature.elevator.BlockElevator;
 import moe.gensoukyo.mcgproject.common.feature.farm.apple.EntityApple;
+import moe.gensoukyo.mcgproject.common.feature.farm.stone.EntityLittleRock;
+import moe.gensoukyo.mcgproject.common.feature.kaginawa.EntityKaginawa;
 import moe.gensoukyo.mcgproject.common.feature.lightbulb.BlockLightBulb;
 import moe.gensoukyo.mcgproject.common.feature.lightbulb.TileLightBulb;
-import moe.gensoukyo.mcgproject.common.feature.farm.stone.EntityLittleRock;
 import moe.gensoukyo.mcgproject.common.feature.musicplayer.EntityMusicPlayer;
 import moe.gensoukyo.mcgproject.common.feature.ranstone.*;
 import moe.gensoukyo.mcgproject.common.feature.sticker.BlockSticker;
@@ -29,7 +29,6 @@ import moe.gensoukyo.mcgproject.common.init.ModBlock;
 import moe.gensoukyo.mcgproject.common.init.ModItem;
 import moe.gensoukyo.mcgproject.core.MCGProject;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
-import net.minecraft.client.renderer.block.statemap.IStateMapper;
 import net.minecraft.client.renderer.block.statemap.StateMap;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.EnumDyeColor;
@@ -62,7 +61,6 @@ public class ModelMapper {
         RenderingRegistry.registerEntityRenderingHandler(entity, factory);
     }
 
-    @SuppressWarnings("unused")
     @SubscribeEvent
     public void registerModels(ModelRegistryEvent event) {
         MCGProject.logger.info("MCGProject: registering models");

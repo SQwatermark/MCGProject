@@ -1,7 +1,10 @@
 package moe.gensoukyo.mcgproject.common.block;
 
 import moe.gensoukyo.mcgproject.common.block.enums.EnumFlowerVariant;
+import moe.gensoukyo.mcgproject.common.creativetab.MCGTabs;
 import net.minecraft.block.Block;
+import net.minecraft.block.SoundType;
+import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
@@ -17,10 +20,10 @@ import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.NotNull;
 
-public class BlockMCGFlower extends BlockMCGBush {
+public class BlockMCGFlower extends BlockMCGCrossed {
 
     public BlockMCGFlower(String registryName) {
-        super(registryName);
+        super(Material.PLANTS, registryName, MCGTabs.NATURE, SoundType.PLANT);
     }
 
     public static final PropertyEnum<EnumFlowerVariant> VARIANT = PropertyEnum.create("variant", EnumFlowerVariant.class);

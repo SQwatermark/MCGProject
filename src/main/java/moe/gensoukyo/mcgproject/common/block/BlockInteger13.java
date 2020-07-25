@@ -1,7 +1,7 @@
 package moe.gensoukyo.mcgproject.common.block;
 
-import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
+import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyInteger;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
@@ -12,26 +12,21 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.NonNullList;
-import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
-import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.NotNull;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
+public class BlockInteger13 extends BlockMCG {
 
-public class BlockBambooOld extends BlockMCGBush {
-
-    public static PropertyInteger META = PropertyInteger.create("meta", 0, 2);
-
-    public BlockBambooOld(String registryName) {
-        super(registryName);
-        this.setSoundType(SoundType.WOOD);
+    public BlockInteger13(Material materialIn, String registryName, CreativeTabs tab, SoundType soundType)
+    {
+        super(materialIn, registryName, tab, soundType);
     }
 
-    @NotNull
+    // add properties
+    public static PropertyInteger META = PropertyInteger.create("meta", 0, 12);
+
     @Override
     protected BlockStateContainer createBlockState() {
         return new BlockStateContainer(this, META);
@@ -43,7 +38,6 @@ public class BlockBambooOld extends BlockMCGBush {
         return state.getValue(META);
     }
 
-    @NotNull
     @Override
     public IBlockState getStateFromMeta(int meta)
     {
@@ -51,7 +45,6 @@ public class BlockBambooOld extends BlockMCGBush {
                 .withProperty(META, meta);
     }
 
-    @NotNull
     @Override
     public IBlockState getStateForPlacement(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer)
     {
@@ -72,15 +65,5 @@ public class BlockBambooOld extends BlockMCGBush {
         return new ItemStack(Item.getItemFromBlock(this), 1, this.getMetaFromState(state));
     }
 
-    public Block.EnumOffsetType getOffsetType()
-    {
-        return Block.EnumOffsetType.XZ;
-    }
-
-    @Nullable
-    public AxisAlignedBB getCollisionBoundingBox(IBlockState blockState, @Nonnull IBlockAccess worldIn, @Nonnull BlockPos pos)
-    {
-        return BUSH_AABB;
-    }
-
 }
+

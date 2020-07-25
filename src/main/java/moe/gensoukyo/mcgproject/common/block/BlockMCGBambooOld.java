@@ -14,19 +14,25 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.NonNullList;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.NotNull;
 
-public class BlockMCGMushroom extends BlockMCGCrossed {
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
-    public static PropertyInteger META = PropertyInteger.create("meta", 0, 14);
+public class BlockMCGBambooOld extends BlockMCGCrossed {
 
-    public BlockMCGMushroom(String registryName) {
-        super(Material.PLANTS, registryName, MCGTabs.NATURE, SoundType.PLANT);
+    public static PropertyInteger META = PropertyInteger.create("meta", 0, 2);
+
+    public BlockMCGBambooOld(String registryName) {
+        super(Material.WOOD, registryName, MCGTabs.NATURE, SoundType.WOOD);
     }
 
+    @NotNull
     @Override
     protected BlockStateContainer createBlockState() {
         return new BlockStateContainer(this, META);
@@ -38,6 +44,7 @@ public class BlockMCGMushroom extends BlockMCGCrossed {
         return state.getValue(META);
     }
 
+    @NotNull
     @Override
     public IBlockState getStateFromMeta(int meta)
     {
@@ -45,6 +52,7 @@ public class BlockMCGMushroom extends BlockMCGCrossed {
                 .withProperty(META, meta);
     }
 
+    @NotNull
     @Override
     public IBlockState getStateForPlacement(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer)
     {
@@ -68,6 +76,12 @@ public class BlockMCGMushroom extends BlockMCGCrossed {
     public Block.EnumOffsetType getOffsetType()
     {
         return Block.EnumOffsetType.XZ;
+    }
+
+    @Nullable
+    public AxisAlignedBB getCollisionBoundingBox(IBlockState blockState, @Nonnull IBlockAccess worldIn, @Nonnull BlockPos pos)
+    {
+        return BUSH_AABB;
     }
 
 }

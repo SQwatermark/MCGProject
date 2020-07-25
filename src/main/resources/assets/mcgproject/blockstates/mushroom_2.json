@@ -1,0 +1,12 @@
+{
+  "forge_marker": 1,
+  "defaults": {"model": "cross"},
+  "variants": {
+    "inventory": [{}],
+    "meta": {
+      "0": {"textures": {"cross": "mcgproject:items/food/pic54"}},
+      "1": {"textures": {"cross": "mcgproject:items/food/pic41"}},
+      "2": {"textures": {"cross": "mcgproject:items/food/pic48"}}
+    }
+  }
+}

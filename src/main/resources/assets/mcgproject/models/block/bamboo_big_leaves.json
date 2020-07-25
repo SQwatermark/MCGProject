@@ -38,6 +38,7 @@
 		{
 			"from": [-8, -12, 32],
 			"to": [24, 17, 32],
+			"shade": false,
 			"rotation": {"angle": -45, "axis": "x", "origin": [8, -12, 32]},
 			"faces": {
 				"north": {"uv": [0, 0, 8, 8], "texture": "#1"},
@@ -51,6 +52,7 @@
 		{
 			"from": [-8, -12, -16],
 			"to": [24, -12, 13],
+			"shade": false,
 			"rotation": {"angle": -45, "axis": "x", "origin": [8, -12, -16]},
 			"faces": {
 				"north": {"uv": [0, 0, 8, 8], "rotation": 180, "texture": "#1"},

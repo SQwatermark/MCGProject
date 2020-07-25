@@ -1,6 +1,6 @@
 {
   "parent": "item/handheld",
   "textures": {
-    "layer0": "minecraft:items/wood_hoe"
+    "layer0": "mcgproject:items/wood_hoe"
   }
 }

@@ -53,7 +53,7 @@ public class ItemMCGDrink extends ItemFood {
                 items.add(new ItemStack(this, 1, i));
             }
         } else if (tab == MCGTabs.PROP) {
-            for (int i = 13; i < 18; i++) {
+            for (int i = 13; i < 19; i++) {
                 items.add(new ItemStack(this, 1, i));
             }
         }

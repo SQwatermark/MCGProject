@@ -26,6 +26,7 @@ public class ModFluid
     public static final Fluid WATER_RED = FluidMCG.singleTex("water_red");
     public static final Fluid WATER_WHITE = FluidMCG.singleTex("water_white");
     public static final Fluid WATER_YELLOW = FluidMCG.singleTex("water_yellow");
+    public static final Fluid SLUDGE = FluidMCG.singleTex("sludge");
     public static final List<Fluid> FLUIDS = new LinkedList<>();
     static
     {
@@ -39,6 +40,7 @@ public class ModFluid
         FLUIDS.add(WATER_RED);
         FLUIDS.add(WATER_WHITE);
         FLUIDS.add(WATER_YELLOW);
+        FLUIDS.add(SLUDGE);
     }
 
     public static void registerFluids()
