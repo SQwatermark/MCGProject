@@ -2,12 +2,25 @@ package moe.gensoukyo.mcgproject.common.item;
 
 import moe.gensoukyo.mcgproject.common.creativetab.MCGTabs;
 import moe.gensoukyo.mcgproject.core.MCGProject;
+import net.minecraft.client.resources.I18n;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
+import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
+import javax.annotation.Nonnull;
+import java.util.List;
+
+/**
+ * @author SQWatermark
+ * @author Chloe_koopa
+ */
 public class ItemMCGProp extends Item {
 
     public ItemMCGProp() {
@@ -22,7 +35,7 @@ public class ItemMCGProp extends Item {
 
     @Override
     public @NotNull String getTranslationKey(ItemStack stack) {
-        return "item." + MCGProject.ID + "." + "mcg_prop" +"_" + stack.getMetadata();
+        return "item." + MCGProject.ID + "." + "mcg_prop" + "_" + stack.getMetadata();
     }
 
 
@@ -33,10 +46,30 @@ public class ItemMCGProp extends Item {
                 items.add(new ItemStack(this, 1, i));
             }
         } else if (this.isInCreativeTab(tab)) {
-            for (int i = 20; i < 83; i++) {
+            for (int i = 20; i <= 83; i++) {
                 items.add(new ItemStack(this, 1, i));
             }
         }
     }
 
+    /**
+     * 翻译密钥为
+     * item.mcgproject.mcg_prop_<meta>.tooltip
+     */
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void addInformation(@Nonnull ItemStack stack,
+                               @Nonnull @Nullable World worldIn,
+                               @Nonnull List<String> tooltip,
+                               @Nonnull ITooltipFlag flagIn) {
+        String trKey = getTooltipKey(stack);
+        if (I18n.hasKey(trKey)) {
+            tooltip.add(I18n.format(trKey));
+        }
+        super.addInformation(stack, worldIn, tooltip, flagIn);
+    }
+
+    private String getTooltipKey(ItemStack stack) {
+        return this.getTranslationKey(stack) + ".tooltip";
+    }
 }
