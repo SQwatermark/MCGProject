@@ -93,7 +93,7 @@
     "80": [{"textures": {"layer0": "mcgproject:items/prop/pic80"}}],
     "81": [{"textures": {"layer0": "mcgproject:items/prop/pic81"}}],
     "82": [{"textures": {"layer0": "mcgproject:items/prop/pic82"}}],
-    "83": [{"textures": {"layer0": "mcgproject:items/prop/pic83_big_stack_of_ore"}}],
+    "83": [{"textures": {"layer0": "mcgproject:items/prop/pic83"}}],
     "84": [{"textures": {"layer0": "mcgproject:items/prop/pic84"}}],
     "85": [{"textures": {"layer0": "mcgproject:items/prop/pic85"}}],
     "86": [{"textures": {"layer0": "mcgproject:items/prop/pic86"}}],
@@ -104,6 +104,7 @@
     "91": [{"textures": {"layer0": "mcgproject:items/prop/pic91"}}],
     "92": [{"textures": {"layer0": "mcgproject:items/prop/pic92"}}],
     "93": [{"textures": {"layer0": "mcgproject:items/prop/pic93"}}],
-    "94": [{"textures": {"layer0": "mcgproject:items/prop/pic94"}}]
+    "94": [{"textures": {"layer0": "mcgproject:items/prop/pic94"}}],
+    "95": [{"textures": {"layer0": "mcgproject:items/prop/pic95_big_stack_of_ore"}}]
   }
 }
