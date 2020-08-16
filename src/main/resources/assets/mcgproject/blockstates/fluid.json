@@ -60,6 +60,12 @@
       "custom": {
         "fluid": "water_yellow"
       }
+    },
+    "sludge": {
+      "model": "forge:fluid",
+      "custom": {
+        "fluid": "sludge"
+      }
     }
   }
 }

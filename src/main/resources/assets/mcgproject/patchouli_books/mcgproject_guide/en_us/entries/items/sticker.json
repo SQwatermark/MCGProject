@@ -1,0 +1,19 @@
+{
+  "name": "贴图方块",
+  "icon": "mcgproject:sticker",
+  "category": "items",
+  "sortnum": 0,
+  "pages": [
+    {
+      "type": "spotlight",
+      "item": "mcgproject:sticker",
+      "title": "贴图方块",
+      "text": "由drzzm32开发的万能贴图方块，兼具网络相框和牌子图片的优点，还很轻量。$(li)请使用它$(li)不要使用网络相框和牌子图片"
+    },
+    {
+      "type": "text",
+      "title": "使用方法",
+      "text": "$(br2)放下贴图方块，右键，这时你的游戏窗口毫无变化，但是在游戏窗口外打开了一个对话框！$(br2)稍微尝试一下就可以掌握其操作了"
+    }
+  ]
+}

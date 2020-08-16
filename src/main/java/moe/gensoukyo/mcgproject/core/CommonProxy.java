@@ -1,16 +1,21 @@
 package moe.gensoukyo.mcgproject.core;
 
-import moe.gensoukyo.mcgproject.common.feature.kaginawa.EntityKaginawa;
 import moe.gensoukyo.mcgproject.common.feature.BetterSign;
-import moe.gensoukyo.mcgproject.common.feature.CustomNPCsHook;
 import moe.gensoukyo.mcgproject.common.feature.MoreBannerPatterns;
 import moe.gensoukyo.mcgproject.common.feature.WorldGuard;
-import moe.gensoukyo.mcgproject.common.feature.futuremc.FMBlock;
+import moe.gensoukyo.mcgproject.common.init.FMBlock;
+import moe.gensoukyo.mcgproject.common.feature.kaginawa.EntityKaginawa;
 import moe.gensoukyo.mcgproject.common.feature.musicplayer.MusicPlayerManager;
 import moe.gensoukyo.mcgproject.common.feature.musicplayer.StreamStopper;
-import moe.gensoukyo.mcgproject.common.init.*;
+import moe.gensoukyo.mcgproject.common.init.ModBlock;
+import moe.gensoukyo.mcgproject.common.init.ModEntity;
+import moe.gensoukyo.mcgproject.common.init.ModItem;
+import moe.gensoukyo.mcgproject.common.init.ModTileEntity;
 import moe.gensoukyo.mcgproject.common.network.NetworkWrapper;
 import moe.gensoukyo.mcgproject.common.util.EntityPool;
+import moe.gensoukyo.mcgproject.common.feature.customnpcs.CustomNPCsHook;
+import moe.gensoukyo.mcgproject.common.feature.customnpcs.NPCSpawner;
+import moe.gensoukyo.mcgproject.common.init.ModSound;
 import net.minecraft.entity.Entity;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Loader;
@@ -19,6 +24,7 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
+import java.nio.file.Paths;
 import java.util.WeakHashMap;
 
 public class CommonProxy {
@@ -28,6 +34,7 @@ public class CommonProxy {
 
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
+        MCGProject.modConfigDi = Paths.get(event.getModConfigurationDirectory().getAbsolutePath(), "mcgproject").toFile();
         MinecraftForge.EVENT_BUS.register(ModItem.instance());
         MinecraftForge.EVENT_BUS.register(ModBlock.instance());
         MinecraftForge.EVENT_BUS.register(FMBlock.instance());
@@ -37,10 +44,13 @@ public class CommonProxy {
         MinecraftForge.EVENT_BUS.register(EntityPool.instance());
         MinecraftForge.EVENT_BUS.register(WorldGuard.instance());
         MinecraftForge.EVENT_BUS.register(StreamStopper.instance());
+        MinecraftForge.EVENT_BUS.register(ModSound.instance());
         new NetworkWrapper(event);
         if (Loader.isModLoaded("customnpcs")) {
             MCGProject.logger.info("Register CustomNPCs Hook");
             MinecraftForge.EVENT_BUS.register(CustomNPCsHook.instance());
+            MCGProject.logger.info("Register NPCSpawner");
+            MinecraftForge.EVENT_BUS.register(NPCSpawner.instance());
         }
     }
 

@@ -9,13 +9,15 @@ import javax.swing.*;
 public class ShouterThread extends Thread {
 
     private String message;
+    private String title;
 
-    public ShouterThread(String message) {
+    public ShouterThread(String message, String title) {
         this.message = message;
+        this.title = title;
     }
 
     @Override
     public void run() {
-        JOptionPane.showMessageDialog(null, message, "Java version issue", JOptionPane.WARNING_MESSAGE);
+        JOptionPane.showMessageDialog(null, message, title, JOptionPane.WARNING_MESSAGE);
     }
 }

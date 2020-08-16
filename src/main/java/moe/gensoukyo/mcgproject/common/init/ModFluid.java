@@ -1,13 +1,11 @@
 package moe.gensoukyo.mcgproject.common.init;
 
 import moe.gensoukyo.mcgproject.common.fluid.FluidMCG;
-import moe.gensoukyo.mcgproject.common.fluid.OverlayWater;
 import moe.gensoukyo.mcgproject.core.MCGProject;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fml.common.Mod;
 
-import java.awt.*;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -19,15 +17,16 @@ import java.util.List;
 public class ModFluid
 {
     public static final Fluid INTERSTICE = FluidMCG.singleTex("interstice");
-    public static final Fluid WATER_BLACK = new OverlayWater("water_black", Color.BLACK);
-    public static final Fluid WATER_BLUE = new OverlayWater("water_blue", Color.BLUE.brighter());
-    public static final Fluid WATER_CYAN = new OverlayWater("water_cyan", Color.CYAN.brighter());
-    public static final Fluid WATER_GREEN = new OverlayWater("water_green", Color.GREEN.brighter());
-    public static final Fluid WATER_ORANGE = new OverlayWater("water_orange" ,Color.ORANGE);
-    public static final Fluid WATER_PURPLE = new OverlayWater("water_purple", new Color(255, 0, 255).brighter());
-    public static final Fluid WATER_RED = new OverlayWater("water_red", Color.RED.brighter());
-    public static final Fluid WATER_WHITE = new OverlayWater("water_white", Color.WHITE.brighter());
-    public static final Fluid WATER_YELLOW = new OverlayWater("water_yellow", Color.YELLOW.brighter());
+    public static final Fluid WATER_BLACK = FluidMCG.singleTex("water_black");
+    public static final Fluid WATER_BLUE = FluidMCG.singleTex("water_blue");
+    public static final Fluid WATER_CYAN = FluidMCG.singleTex("water_cyan");
+    public static final Fluid WATER_GREEN = FluidMCG.singleTex("water_green");
+    public static final Fluid WATER_ORANGE = FluidMCG.singleTex("water_orange");
+    public static final Fluid WATER_PURPLE = FluidMCG.singleTex("water_purple");
+    public static final Fluid WATER_RED = FluidMCG.singleTex("water_red");
+    public static final Fluid WATER_WHITE = FluidMCG.singleTex("water_white");
+    public static final Fluid WATER_YELLOW = FluidMCG.singleTex("water_yellow");
+    public static final Fluid SLUDGE = FluidMCG.singleTex("sludge");
     public static final List<Fluid> FLUIDS = new LinkedList<>();
     static
     {
@@ -41,6 +40,7 @@ public class ModFluid
         FLUIDS.add(WATER_RED);
         FLUIDS.add(WATER_WHITE);
         FLUIDS.add(WATER_YELLOW);
+        FLUIDS.add(SLUDGE);
     }
 
     public static void registerFluids()

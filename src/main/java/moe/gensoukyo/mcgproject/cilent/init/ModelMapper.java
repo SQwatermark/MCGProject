@@ -4,28 +4,32 @@ import moe.gensoukyo.mcgproject.cilent.entity.*;
 import moe.gensoukyo.mcgproject.cilent.entity.boat.RenderMCGBoat;
 import moe.gensoukyo.mcgproject.cilent.entity.boat.RenderRACBoat;
 import moe.gensoukyo.mcgproject.cilent.entity.butterfly.*;
+import moe.gensoukyo.mcgproject.cilent.entity.cart.*;
 import moe.gensoukyo.mcgproject.cilent.entity.fish.*;
-import moe.gensoukyo.mcgproject.cilent.tileentity.TileLightBulbLightRenderer;
-import moe.gensoukyo.mcgproject.cilent.tileentity.TileRanstoneLampLightRenderer;
-import moe.gensoukyo.mcgproject.cilent.tileentity.TileRanstonePistonRenderer;
-import moe.gensoukyo.mcgproject.cilent.tileentity.TileStickerRenderer;
+import moe.gensoukyo.mcgproject.cilent.tileentity.*;
+import moe.gensoukyo.mcgproject.common.block.BlockKitunebi;
 import moe.gensoukyo.mcgproject.common.entity.EntityItemMCG;
-import moe.gensoukyo.mcgproject.common.feature.kaginawa.EntityKaginawa;
 import moe.gensoukyo.mcgproject.common.entity.boat.EntityMCGBoat;
 import moe.gensoukyo.mcgproject.common.entity.boat.EntityRACBoat;
 import moe.gensoukyo.mcgproject.common.entity.butterfly.*;
+import moe.gensoukyo.mcgproject.common.entity.cart.*;
 import moe.gensoukyo.mcgproject.common.entity.fish.*;
+import moe.gensoukyo.mcgproject.common.feature.backpack.GensoChest;
+import moe.gensoukyo.mcgproject.common.feature.elevator.BlockElevator;
 import moe.gensoukyo.mcgproject.common.feature.farm.apple.EntityApple;
+import moe.gensoukyo.mcgproject.common.feature.farm.stone.EntityLittleRock;
+import moe.gensoukyo.mcgproject.common.feature.kaginawa.EntityKaginawa;
 import moe.gensoukyo.mcgproject.common.feature.lightbulb.BlockLightBulb;
 import moe.gensoukyo.mcgproject.common.feature.lightbulb.TileLightBulb;
-import moe.gensoukyo.mcgproject.common.feature.farm.stone.EntityLittleRock;
 import moe.gensoukyo.mcgproject.common.feature.musicplayer.EntityMusicPlayer;
 import moe.gensoukyo.mcgproject.common.feature.ranstone.*;
 import moe.gensoukyo.mcgproject.common.feature.sticker.BlockSticker;
 import moe.gensoukyo.mcgproject.common.feature.sticker.TileSticker;
+import moe.gensoukyo.mcgproject.common.init.ModBlock;
 import moe.gensoukyo.mcgproject.common.init.ModItem;
 import moe.gensoukyo.mcgproject.core.MCGProject;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.client.renderer.block.statemap.StateMap;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.Item;
@@ -57,7 +61,6 @@ public class ModelMapper {
         RenderingRegistry.registerEntityRenderingHandler(entity, factory);
     }
 
-    @SuppressWarnings("unused")
     @SubscribeEvent
     public void registerModels(ModelRegistryEvent event) {
         MCGProject.logger.info("MCGProject: registering models");
@@ -78,6 +81,7 @@ public class ModelMapper {
         registerModel(ModItem.ITEM_MUSIC_PLAYER);
         registerModel(ModItem.ITEM_LITTLE_STONE);
         registerModel(ModItem.ITEM_ROU_KAN_KEN);
+        registerModel(ModItem.ITEM_MCG_HOE);
 
         registerColoredModel(RanstoneLamp.ITEM, "");
         registerColoredModel(RanstoneLamp.ITEM_ALWAYS, "");
@@ -91,11 +95,27 @@ public class ModelMapper {
 
         registerModel(BlockSticker.ITEM);
         registerModel(BlockSticker.ITEM_LIT);
+        registerModel(BlockElevator.ITEM);
+
+        registerModel(ModItem.ITEM_GRM_3A);
+        registerModel(ModItem.ITEM_GRM_3AF);
+        registerModel(ModItem.ITEM_GRM_3B);
+        registerModel(ModItem.ITEM_GRM_3BF);
+        registerModel(ModItem.ITEM_GRW_4);
+        registerModel(ModItem.ITEM_GRW_4M);
+        registerModel(ModItem.ITEM_GRC_2);
+        registerModel(ModItem.ITEM_GRC_2M);
+        registerModel(ModItem.ITEM_GRH_2);
+        registerModel(ModItem.ITEM_GRH_2M);
+
+        ModelLoader.setCustomStateMapper(ModBlock.KITUNEBI, new StateMap.Builder().ignore(BlockKitunebi.LIGHT).build());
 
         ClientRegistry.bindTileEntitySpecialRenderer(RanstonePiston.TilePiston.class, new TileRanstonePistonRenderer());
         ClientRegistry.bindTileEntitySpecialRenderer(TileSticker.class, new TileStickerRenderer());
         ClientRegistry.bindTileEntitySpecialRenderer(RanstoneLamp.TileRanstoneLamp.class, new TileRanstoneLampLightRenderer());
         ClientRegistry.bindTileEntitySpecialRenderer(TileLightBulb.class, new TileLightBulbLightRenderer());
+        ClientRegistry.bindTileEntitySpecialRenderer(BlockKitunebi.TileKitunebi.class, new TileKitunebiRenderer());
+        ClientRegistry.bindTileEntitySpecialRenderer(GensoChest.TileGensoChest.class, new TileGensoChestRenderer());
     }
 
     @SubscribeEvent
@@ -150,6 +170,19 @@ public class ModelMapper {
         renderEntity.put(EntityApple.class, RenderApple.FACTORY);
         renderEntity.put(EntityItemMCG.class, RenderItemMCG.FACTORY);
         renderEntity.put(EntityLittleRock.class, RenderLittleStone.FACTORY);
+
+        renderEntity.put(GRBogie.class, RenderGRBogie.FACTORY);
+        renderEntity.put(GRMotor.class, RenderGRMotor.FACTORY);
+        renderEntity.put(GRM3A.class, RenderGRM3A.FACTORY);
+        renderEntity.put(GRM3B.class, RenderGRM3B.FACTORY);
+        renderEntity.put(GRW4.class, RenderGRW4.FACTORY);
+        renderEntity.put(GRW4.Basket.class, RenderGRW4.BASKET);
+        renderEntity.put(GRW4M.class, RenderGRW4M.FACTORY);
+        renderEntity.put(GRW4M.Basket.class, RenderGRW4M.BASKET);
+        renderEntity.put(GRC2.class, RenderGRC2.FACTORY);
+        renderEntity.put(GRC2M.class, RenderGRC2M.FACTORY);
+        renderEntity.put(GRH2.class, RenderGRH2.FACTORY);
+        renderEntity.put(GRH2M.class, RenderGRH2M.FACTORY);
     }
 
 }

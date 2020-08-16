@@ -31,20 +31,23 @@ public class BlockRockSpawner extends Block {
     public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {
         if (ForgeHooks.onCropsGrowPre(worldIn, pos, state, rand.nextInt(5) == 0)) {
             List<Entity> entities = worldIn.getEntitiesWithinAABB(EntityItemMCG.class, new AxisAlignedBB(pos.up(15).east(15).north(15), pos.down(15).west(15).south(15)));
-            int i = 0;
-            for (Entity entity : entities) {
-                if (entity instanceof EntityItemMCG) i++;
-            }
-            if (i > 4) return;
-            int x = pos.getX() + rand.nextInt(30) - 15;
-            int z = pos.getZ() + rand.nextInt(30) - 15;
+            if(entities.size() > 3) return;
+            int x = pos.getX() + rand.nextInt(20) - 10;
+            int z = pos.getZ() + rand.nextInt(20) - 10;
             int y = worldIn.getHeight(x, z);
             EntityItemMCG stone;
-            if (worldIn.getBlockState(new BlockPos(x, y - 1, z)).isOpaqueCube()) {
+            MCGProject.logger.info(canSpawn(worldIn, x, y - 1, z));
+            if (canSpawn(worldIn, x, y - 1, z)) {
                 stone = new EntityItemMCG(worldIn, x, y, z, new ItemStack(Blocks.GRAVEL));
                 worldIn.spawnEntity(stone);
             }
             ForgeHooks.onCropsGrowPost(worldIn, pos, state, worldIn.getBlockState(pos));
         }
     }
+
+    private boolean canSpawn(World world, int x, int y, int z) {
+        Block block = world.getBlockState(new BlockPos(x, y, z)).getBlock();
+        return block == Blocks.STONE || block == Blocks.GRAVEL || block == Blocks.GRASS || block == Blocks.DIRT;
+    }
+
 }

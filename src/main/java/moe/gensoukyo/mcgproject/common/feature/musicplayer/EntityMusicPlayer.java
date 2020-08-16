@@ -119,6 +119,8 @@ public class EntityMusicPlayer extends EntityMinecart {
             if (!this.isPlaying && this.dataManager.get(IS_PLAYING)) {
                 this.streamURL = this.dataManager.get(URL);
                 this.startStream();
+            } else if (this.isPlaying && !this.dataManager.get(IS_PLAYING)){
+                this.stopStream();
             }
             if ((Minecraft.getMinecraft().player != null) && (this.mp3Player != null)) {
                 volume = dataManager.get(VOLUME);
@@ -173,7 +175,7 @@ public class EntityMusicPlayer extends EntityMinecart {
             this.isPlaying = true;
             if (world.isRemote) {
                 if (this.mp3Player != null) this.mp3Player.requestStop();
-                this.mp3Player = MCGProject.proxy.playerManager.getNewPlayer(this.streamURL, 100);
+                this.mp3Player = MCGProject.proxy.playerManager.getNewPlayer(this.streamURL);
                 mp3Player.setVolume(0);
             }
         }

@@ -25,8 +25,8 @@ public class NetworkWrapper {
         INSTANCE.registerMessage(StickerRefreshHandler.class, StickerRefreshPacket.class, 4, Side.CLIENT);
         INSTANCE.registerMessage(MusicPlayerHandler.class, MusicPlayerPacket.class, 5, Side.SERVER);
         INSTANCE.registerMessage(MusicPlayerGuiHandler.class, MusicPlayerGuiPacket.class, 6, Side.CLIENT);
-        ModRsGauges.INSTANCE.initNetwork(INSTANCE, 7);
-
+        INSTANCE.registerMessage(PacketAdminHandler.class, PackAdminPacket.class, 7, Side.CLIENT);
+        ModRsGauges.INSTANCE.initNetwork(INSTANCE, 42);
     }
 
 }

@@ -15,7 +15,8 @@
       "8": {"textures": {"all": "mcgproject:blocks/old/ruby"}},
       "9": {"textures": {"all": "mcgproject:blocks/old/sapphire"}},
       "10": {"textures": {"all": "mcgproject:blocks/old/silver"}},
-      "11": {"textures": {"all": "mcgproject:blocks/old/tin"}}
+      "11": {"textures": {"all": "mcgproject:blocks/old/tin"}},
+      "12": {"textures": {"all": "mcgproject:blocks/old/tin"}}
     }
   }
 }

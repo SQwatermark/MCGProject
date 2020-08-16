@@ -1,6 +1,6 @@
 package moe.gensoukyo.mcgproject.cilent.model.butterfly;
 
-import moe.gensoukyo.mcgproject.common.util.MathMCG;
+import moe.gensoukyo.mcgproject.common.util.math.MathMCG;
 import moe.gensoukyo.mcgproject.core.Information;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;

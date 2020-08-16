@@ -10,7 +10,7 @@ buildscript {
 apply plugin: 'net.minecraftforge.gradle.forge'
 //Only edit below this line, the above code adds and enables the necessary things for Forge to be setup.
 
-version = "1.1.6"
+version = "1.2.4"
 group = "moe.gensoukyo" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "mcgproject"
 
@@ -44,6 +44,7 @@ dependencies {
     deobfCompile('noppes.npcs:CustomNPCs_1.12.2-(01Oct19)')
     deobfCompile('vazkii:Patchouli-1.0-20')
     deobfCompile('team:CTM-MC1.12.2-0.3.3.22')
+    deobfCompile('club.nsdn:NSCP-v2-dev')
 
     // you may put jars on which you depend on in ./libs
     // or you may define them like so..
@@ -85,8 +86,8 @@ processResources {
     from(sourceSets.main.resources.srcDirs) {
         exclude 'mcmod.info'
     }
+}
 
-    tasks.withType(JavaCompile){
-        options.encoding = 'UTF-8'
-    }
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
 }

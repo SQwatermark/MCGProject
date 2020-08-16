@@ -4,6 +4,7 @@ import moe.gensoukyo.mcgproject.common.feature.kaginawa.ItemKaginawa;
 import moe.gensoukyo.mcgproject.common.feature.farm.stone.ItemLittleRock;
 import moe.gensoukyo.mcgproject.common.feature.musicplayer.ItemMusicPlayer;
 import moe.gensoukyo.mcgproject.common.item.*;
+import moe.gensoukyo.mcgproject.common.item.cart.*;
 import moe.gensoukyo.mcgproject.core.MCGProject;
 import net.minecraft.item.Item;
 import net.minecraftforge.event.RegistryEvent;
@@ -34,6 +35,18 @@ public class ModItem {
     public static ItemMCGBannerPattern ITEM_MCG_BANNER_PATTERN;
     public static ItemLittleRock ITEM_LITTLE_STONE;
     public static ItemRouKanKen ITEM_ROU_KAN_KEN;
+    public static ItemMCGHoe ITEM_MCG_HOE;
+
+    public static ItemGRM3A ITEM_GRM_3A;
+    public static ItemGRM3AF ITEM_GRM_3AF;
+    public static ItemGRM3B ITEM_GRM_3B;
+    public static ItemGRM3BF ITEM_GRM_3BF;
+    public static ItemGRW4 ITEM_GRW_4;
+    public static ItemGRW4M ITEM_GRW_4M;
+    public static ItemGRC2 ITEM_GRC_2;
+    public static ItemGRC2M ITEM_GRC_2M;
+    public static ItemGRH2 ITEM_GRH_2;
+    public static ItemGRH2M ITEM_GRH_2M;
 
     /**
      * 注册所有物品
@@ -56,9 +69,21 @@ public class ModItem {
         ITEM_MCG_BANNER_PATTERN = new ItemMCGBannerPattern();
         ITEM_LITTLE_STONE = new ItemLittleRock();
         ITEM_ROU_KAN_KEN = new ItemRouKanKen();
+        ITEM_MCG_HOE = new ItemMCGHoe();
 
-        event.getRegistry().register(ITEM_MCG_BOAT);
-        event.getRegistry().register(ITEM_RAC_BOAT);
+        ITEM_GRM_3A = new ItemGRM3A();
+        ITEM_GRM_3AF = new ItemGRM3AF();
+        ITEM_GRM_3B = new ItemGRM3B();
+        ITEM_GRM_3BF = new ItemGRM3BF();
+        ITEM_GRW_4 = new ItemGRW4();
+        ITEM_GRW_4M = new ItemGRW4M();
+        ITEM_GRC_2 = new ItemGRC2();
+        ITEM_GRC_2M = new ItemGRC2M();
+        ITEM_GRH_2 = new ItemGRH2();
+        ITEM_GRH_2M = new ItemGRH2M();
+
+        event.getRegistry().registerAll(ITEM_MCG_BOAT, ITEM_RAC_BOAT);
+
         event.getRegistry().register(ITEM_META_CHANGER);
         event.getRegistry().register(ITEM_GEN_BIG_OAK);
         event.getRegistry().register(ITEM_KAGINAWA);
@@ -70,5 +95,11 @@ public class ModItem {
         event.getRegistry().register(ITEM_MCG_BANNER_PATTERN);
         event.getRegistry().register(ITEM_LITTLE_STONE);
         event.getRegistry().register(ITEM_ROU_KAN_KEN);
+
+        event.getRegistry().registerAll(ITEM_GRM_3A, ITEM_GRM_3AF, ITEM_GRM_3B, ITEM_GRM_3BF);
+        event.getRegistry().registerAll(ITEM_GRW_4, ITEM_GRW_4M);
+        event.getRegistry().registerAll(ITEM_GRC_2, ITEM_GRC_2M, ITEM_GRH_2, ITEM_GRH_2M);
+
+        event.getRegistry().register(ITEM_MCG_HOE);
     }
 }

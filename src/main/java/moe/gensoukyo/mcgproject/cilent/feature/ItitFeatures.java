@@ -22,7 +22,7 @@ public class ItitFeatures {
     public static void yellAtJava32x() {
         if (!Minecraft.getMinecraft().isJava64bit()) {
             MCGProject.logger.error("正在使用32位java");
-            ShouterThread st = new ShouterThread("你正在使用32位java，请使用64位java，可在QQ群中下载");
+            ShouterThread st = new ShouterThread("你正在使用32位java，请使用64位java，可在QQ群中下载", "Java version issue");
             st.start();
         }
     }

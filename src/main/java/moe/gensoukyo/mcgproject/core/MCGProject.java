@@ -1,9 +1,12 @@
 package moe.gensoukyo.mcgproject.core;
 
-import moe.gensoukyo.mcgproject.common.feature.NoRecipeBook;
+import moe.gensoukyo.mcgproject.cilent.feature.NoRecipeBook;
 import moe.gensoukyo.mcgproject.common.feature.backpack.BackpackCore;
+import moe.gensoukyo.mcgproject.common.feature.customnpcs.CommandKillNPCs;
+import moe.gensoukyo.mcgproject.common.feature.customnpcs.NPCSpawnerConfig;
 import moe.gensoukyo.mcgproject.common.feature.rsgauges.ModRsGauges;
 import moe.gensoukyo.mcgproject.common.feature.sticker.TileSticker;
+import moe.gensoukyo.mcgproject.common.util.NashornPool;
 import net.minecraft.server.MinecraftServer;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fluids.FluidRegistry;
@@ -29,13 +32,21 @@ public class MCGProject {
 
     public static final String ID = "mcgproject";
     public static final String NAME = "MCGProject";
-    public static final String VERSION = "1.1.6";
+    public static final String VERSION = "1.2.4";
 
     public static Logger logger;
     public static File modConfigDi;
 
     //服务端事件用
-    private MinecraftServer server;
+    public static MinecraftServer SERVER = null;
+
+    public static boolean isServer() {
+        try {
+            Class.forName("net.minecraft.client.Minecraft");
+            return false;
+        } catch (Exception ignored) { }
+        return SERVER != null;
+    }
 
     @SuppressWarnings("unused")
     public static final String[] CODERS = {"SQwatermark", "drzzm32", "Chloe_koopa"};
@@ -74,14 +85,6 @@ public class MCGProject {
     }
 
     @Mod.EventHandler
-    public void serverLoad(FMLServerStartingEvent event) {
-        server = event.getServer();
-        event.registerServerCommand(new BackpackCore.BackpackCommand());
-        event.registerServerCommand(new BackpackCore.BackpackManageCommand());
-        event.registerServerCommand(new TileSticker.RefreshCommand());
-    }
-
-    @Mod.EventHandler
     @SideOnly(Side.CLIENT)
     public void loadComplete(FMLLoadCompleteEvent event) {
         //设置窗口标题（加载完成时）
@@ -96,20 +99,34 @@ public class MCGProject {
     }
 
     @Mod.EventHandler
+    public void serverLoad(FMLServerStartingEvent event) {
+        SERVER = event.getServer();
+
+        event.registerServerCommand(new BackpackCore.BackpackCommand());
+        event.registerServerCommand(new BackpackCore.PackAdminCommand());
+        event.registerServerCommand(new BackpackCore.BackpackManageCommand());
+        event.registerServerCommand(new TileSticker.RefreshCommand());
+        event.registerServerCommand(new NPCSpawnerConfig.CommandRefreshNPCSpawner());
+        event.registerServerCommand(new CommandKillNPCs());
+
+        NashornPool.refresh(); // 加载对象池
+    }
+
+    @Mod.EventHandler
     public void serverStop(FMLServerStoppingEvent event) {
-        if (server.isDedicatedServer()) { //独立服务端关闭处理
+        if (SERVER.isDedicatedServer()) { //独立服务端关闭处理
             MCGProject.logger.info("Closing something...");
 
+            SERVER = null;
         }
-
     }
 
     //TODO: 音效方块
     //TODO: 图书馆
     //TODO：荆棘（玩家碰到会掉血）
-    //TODO: 玩家在其中会下陷的泥巴（沼泽）
-    //TODO: 水子的石头
-    //TODO: 恐龙和普通生物的模型
-    //TODO: 狐火
+    //TODO: 恐龙的模型
+    //TODO：试图渡过三途川的玩家会下沉
+    //TODO: 旅行者地图的指令，服务端执行，给客户端添加导航点（客户端应该有防止被添加导航点的选项）
+    //TODO: 游戏萌澄果图标改成资源包，把forge文件换回去
 
 }

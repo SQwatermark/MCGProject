@@ -30,7 +30,7 @@ public class BackpackGuiHandler implements IMessageHandler<BackpackPacket, IMess
         if (context.side == Side.CLIENT) {
             // 客户端显示个空包GUI，然后游戏自己会同步物品
             BackpackCore.Backpack backpack = packet.getBackpack();
-            showBackpack(packet.getWindowId(), new BackpackCore.Backpack(backpack.id, backpack.type));
+            showBackpack(packet.getWindowId(), backpack);
         }
 
         return null;

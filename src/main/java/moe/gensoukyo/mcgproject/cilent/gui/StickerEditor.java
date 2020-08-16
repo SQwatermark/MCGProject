@@ -103,6 +103,7 @@ public class StickerEditor extends JFrame {
                 JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
 
         this.setLocationRelativeTo(null);
+        this.setAlwaysOnTop(true);
         this.setResizable(false);
         this.setVisible(true);
 
@@ -125,6 +126,8 @@ public class StickerEditor extends JFrame {
         frameHeight.setText(String.format("%d", sticker.frameHeight));
         frameTime.setText(String.format("%d", sticker.frameTime));
         frameExtend.setText(String.format("%d", sticker.frameExtend));
+
+        this.setAlwaysOnTop(false);
     }
 
     private long getLong(String str, long def) {

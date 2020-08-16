@@ -23,9 +23,14 @@ import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
 
+/**
+ * 掉落物实体
+ */
 @MCGEntity("item_mcg")
 public class EntityItemMCG extends Entity {
     private static final DataParameter<ItemStack> ITEM = EntityDataManager.createKey(EntityItemMCG.class, DataSerializers.ITEM_STACK);
+    private int age = 6000;
+    private ItemStack itemStack = null;
 
     public EntityItemMCG(World worldIn, double x, double y, double z) {
         super(worldIn);
@@ -43,6 +48,12 @@ public class EntityItemMCG extends Entity {
         stack.getItem();
     }
 
+    public EntityItemMCG(World worldIn) {
+        super(worldIn);
+        this.setSize(0.25F, 0.25F);
+        this.setItem(ItemStack.EMPTY);
+    }
+
     /**
      * returns if this entity triggers Block.onEntityWalking on the blocks they walk on. used for spiders and wolves to
      * prevent them from trampling crops
@@ -51,14 +62,12 @@ public class EntityItemMCG extends Entity {
         return false;
     }
 
-    public EntityItemMCG(World worldIn) {
-        super(worldIn);
-        this.setSize(0.25F, 0.25F);
-        this.setItem(ItemStack.EMPTY);
-    }
-
     protected void entityInit() {
         this.getDataManager().register(ITEM, ItemStack.EMPTY);
+    }
+
+    public void setAge(int age) {
+        this.age = age;
     }
 
     /**
@@ -66,7 +75,9 @@ public class EntityItemMCG extends Entity {
      */
     public void onUpdate()
     {
-        if (this.getItem().isEmpty())
+        //TODO: 优化这里的逻辑
+        if (this.ticksExisted > age) this.setDead();
+        if (itemStack == null || itemStack.isEmpty())
         {
             this.setDead();
         }
@@ -95,7 +106,7 @@ public class EntityItemMCG extends Entity {
                 this.noClip = this.pushOutOfBlocks(this.posX, (this.getEntityBoundingBox().minY + this.getEntityBoundingBox().maxY) / 2.0D, this.posZ);
             }
 
-            this.move(MoverType.SELF, this.motionX, this.motionY, this.motionZ);
+            if (motionY != 0) this.move(MoverType.SELF, this.motionX, this.motionY, this.motionZ);
             boolean flag = (int)this.prevPosX != (int)this.posX || (int)this.prevPosY != (int)this.posY || (int)this.prevPosZ != (int)this.posZ;
 
             if (flag || this.ticksExisted % 25 == 0)
@@ -142,13 +153,6 @@ public class EntityItemMCG extends Entity {
                     this.isAirBorne = true;
                 }
             }
-
-            ItemStack item = this.getItem();
-
-            if (item.isEmpty())
-            {
-                this.setDead();
-            }
         }
     }
 
@@ -176,8 +180,8 @@ public class EntityItemMCG extends Entity {
      * (abstract) Protected helper method to write subclass entity data to NBT.
      */
     public void writeEntityToNBT(NBTTagCompound compound) {
-        if (!this.getItem().isEmpty()) {
-            compound.setTag("Item", this.getItem().writeToNBT(new NBTTagCompound()));
+        if (!itemStack.isEmpty()) {
+            compound.setTag("Item", itemStack.writeToNBT(new NBTTagCompound()));
         }
     }
 
@@ -188,22 +192,23 @@ public class EntityItemMCG extends Entity {
         NBTTagCompound nbttagcompound = compound.getCompoundTag("Item");
         this.setItem(new ItemStack(nbttagcompound));
 
-        if (this.getItem().isEmpty()) {
+        if (itemStack.isEmpty()) {
             this.setDead();
         }
     }
 
     public String getName() {
-        return this.hasCustomName() ? this.getCustomNameTag() : I18n.translateToLocal("item." + this.getItem().getTranslationKey());
+        return this.hasCustomName() ? this.getCustomNameTag() : I18n.translateToLocal("item." + itemStack.getTranslationKey());
     }
 
     public ItemStack getItem() {
-        return this.getDataManager().get(ITEM);
+        return this.itemStack;
     }
 
     public void setItem(ItemStack stack) {
         this.getDataManager().set(ITEM, stack);
         this.getDataManager().setDirty(ITEM);
+        this.itemStack = stack;
     }
 
     @Override
@@ -229,10 +234,10 @@ public class EntityItemMCG extends Entity {
 
     public boolean dropItem() {
         if (!world.isRemote) {
-            ItemStack itemStack = this.getItem();
-            Block block = Block.getBlockFromItem(this.getItem().getItem());
-            if (block == Blocks.STONE || block == Blocks.GRAVEL) itemStack = new ItemStack(ModItem.ITEM_LITTLE_STONE);
-            this.entityDropItem(itemStack, 0);
+            Block block = Block.getBlockFromItem(itemStack.getItem());
+            if (block == Blocks.STONE || block == Blocks.GRAVEL)
+                this.entityDropItem(new ItemStack(ModItem.ITEM_LITTLE_STONE), 0);
+            else this.entityDropItem(itemStack, 0);
             this.setDead();
         }
         return true;

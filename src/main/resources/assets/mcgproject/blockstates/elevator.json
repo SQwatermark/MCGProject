@@ -1,0 +1,24 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "mcgproject:elevator",
+    "textures": {
+      "base": "mcgproject:blocks/fantasy/elevator_base",
+      "top": "mcgproject:blocks/fantasy/elevator_base"
+    }
+  },
+  "variants": {
+    "normal": [{}],
+    "inventory": [{}],
+    "dir": {
+      "true": {"textures": {"top": "mcgproject:blocks/fantasy/elevator_dir"}},
+      "false": {}
+    },
+    "facing": {
+      "north": {  },
+      "east": { "y": 90 },
+      "south": { "y": 180 },
+      "west": { "y": 270 }
+    }
+  }
+}

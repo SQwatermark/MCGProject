@@ -1,0 +1,29 @@
+{
+  "name": "音乐矿车",
+  "icon": "mcgproject:music_player",
+  "category": "items",
+  "sortnum": 0,
+  "pages": [
+    {
+      "type": "spotlight",
+      "item": "mcgproject:music_player",
+      "title": "音乐矿车",
+      "text": "可以播放外链音乐的矿车，右键矿车即可打开GUI"
+    },
+    {
+      "type": "text",
+      "title": "锁定",
+      "text": "$(br2)点击GUI界面左上角的“未锁定”可以锁定音乐矿车，只有车主和管理员可以打开GUI和破坏"
+    },
+    {
+      "type": "text",
+      "title": "播放",
+      "text": "$(br2)文本框内可以直接输入任何有效的外链，也可以输入网易云音乐的音乐id或地址$(br2)点击随机，将会获得一份私货"
+    },
+    {
+      "type": "text",
+      "title": "沉浸模式",
+      "text": "$(br2)在沉浸模式下，矿车变得不可见，也不可用正常方式推动$(br2)但是在手持音乐矿车时，可以看到隐形的音乐矿车"
+    }
+  ]
+}

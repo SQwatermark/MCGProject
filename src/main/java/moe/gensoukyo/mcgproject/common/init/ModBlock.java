@@ -3,12 +3,16 @@ package moe.gensoukyo.mcgproject.common.init;
 import moe.gensoukyo.mcgproject.common.block.*;
 import moe.gensoukyo.mcgproject.common.block.enums.EnumTileColor;
 import moe.gensoukyo.mcgproject.common.creativetab.MCGTabs;
-import moe.gensoukyo.mcgproject.common.feature.farm.apple.BlockMCGApple;
 import moe.gensoukyo.mcgproject.common.feature.backpack.GensoChest;
+import moe.gensoukyo.mcgproject.common.feature.customnpcs.BlockNPCSpawnerConsole;
+import moe.gensoukyo.mcgproject.common.feature.elevator.BlockElevator;
+import moe.gensoukyo.mcgproject.common.feature.farm.BlockBambooShoot;
+import moe.gensoukyo.mcgproject.common.feature.farm.apple.BlockMCGApple;
 import moe.gensoukyo.mcgproject.common.feature.farm.stone.BlockRockSpawner;
 import moe.gensoukyo.mcgproject.common.feature.lightbulb.BlockLightBulb;
 import moe.gensoukyo.mcgproject.common.feature.ranstone.*;
 import moe.gensoukyo.mcgproject.common.feature.sticker.BlockSticker;
+import moe.gensoukyo.mcgproject.common.fluid.blocks.BlockFluidSludge;
 import moe.gensoukyo.mcgproject.common.item.ItemBlockWithMeta;
 import moe.gensoukyo.mcgproject.common.item.ItemMCGBlock;
 import moe.gensoukyo.mcgproject.core.MCGProject;
@@ -40,7 +44,7 @@ public class ModBlock {
     public static Block TILE = new BlockTile();
     public static Block NAMAKO = new BlockInteger2(Material.CLAY, "namako", MCGTabs.TOUHOU, SoundType.STONE);
     public static Block FLOWER = new BlockMCGFlower("flower");
-    public static Block GAP = new BlockMCG(Material.WOOD, "gap", MCGTabs.FANTASY);
+    public static Block GAP = new BlockInteger2(Material.ROCK, "gap", MCGTabs.FANTASY, SoundType.STONE).setLightLevel(0.7F);
     public static Block BLOCK_CHIREIDEN = new BlockInteger8(Material.GLASS, "glass_chireiden", MCGTabs.EUROPEAN, SoundType.GLASS).setLightLevel(0.67F);
     public static Block MARBLE = new BlockInteger2(Material.ROCK, "marble", MCGTabs.EUROPEAN, SoundType.STONE);
     public static Block WOOL_GLOWING = new BlockInteger16(Material.CLOTH, "wool_glowing", MCGTabs.NORMAL, SoundType.CLOTH).setLightLevel(1.0F);
@@ -48,6 +52,9 @@ public class ModBlock {
     public static Block TEST2 = new BlockRotate4(Material.ROCK, "test_block_2", MCGTabs.OLD, SoundType.STONE);
     public static Block BLOCK_APPLE = new BlockMCGApple();
     public static Block BLOCK_CHISEL_STONE = new BlockInteger16(Material.ROCK, "chisel_stone", MCGTabs.OLD, SoundType.STONE);
+    public static Block KITUNEBI = new BlockKitunebi();
+    public static Block BLOCK_FLUID_SLUDGE;
+
     /**
      * 实例化方块，并将实例化的方块分配到相应链表
      */
@@ -82,22 +89,30 @@ public class ModBlock {
         //自然与农业
         blocks1.add(new BlockMCGLog("log_sakura"));
         blocks5.add(FLOWER);
-        blocks2.add(new BlockMCGMushroom("mushroom"));
+        blocks15.add(new BlockMCGMushroom("mushroom"));
+        blocks3.add(new BlockMCGMushroom2("mushroom_2"));
         blocks1.add(new BlockTranslucent(Material.CLOTH, "cloud", MCGTabs.NATURE, SoundType.CLOTH));
         blocks16.add(new BlockMCGLeaves16("leaves_sakura_glowing").setLightLevel(0.3F));
         blocks8.add(new BlockMCGLeaves8("leaves_mcg"));
-        blocks3.add(new BlockBambooOld("bamboo_old"));
+        blocks3.add(new BlockMCGBambooOld("bamboo_old"));
         blocks2.add(new BlockInteger2(Material.CAKE, "mooncake", MCGTabs.NATURE, SoundType.SNOW));
         blocks1.add(new BlockMCG(Material.GROUND, "shit", MCGTabs.NATURE, SoundType.GROUND));
         blocks1.add(new BlockMCGLog("straw", MCGTabs.NATURE, SoundType.PLANT));
         blocks1.add(new BlockMCG(Material.LEAVES, "leaves_vine", MCGTabs.NATURE, SoundType.PLANT));
         blocks1.add(new BlockSpecialLeaves("leaves_special"));
         blocks1.add(BLOCK_APPLE);
+        blocks3.add(new BlockBamboo());
+        blocks1.add(new BlockBambooLeaves());
+        blocks1.add(new BlockBambooShoot());
+        blocks1.add(new BlockTreeLantern());
+        blocks1.add(new BlockMCG(Material.GOURD, "bone_pile", MCGTabs.NATURE, SoundType.GROUND));
 
         //幻想
-        blocks1.add(GAP);
+        blocks2.add(GAP);
         blocks1.add(new GensoChest());
         blocks1.add(new BlockRealm());
+        blocks1.add(KITUNEBI);
+        blocks1.add(new BlockNPCSpawnerConsole());
 
         //西方
         blocks8.add(BLOCK_CHIREIDEN);
@@ -141,11 +156,11 @@ public class ModBlock {
         blocks16.add(new BlockInteger16(Material.WOOD, "fn_plank", MCGTabs.OLD, SoundType.WOOD));
         blocks6.add(new BlockInteger6(Material.WOOD, "fn_plank2", MCGTabs.OLD, SoundType.WOOD));
         blocks8.add(new BlockInteger8(Material.ROCK, "fn_bricks", MCGTabs.OLD, SoundType.STONE));
-        blocks9.add(new BlockFNFlower("fn_flower").setCreativeTab(MCGTabs.OLD));
+        blocks9.add(new BlockMCGFNFlower("fn_flower").setCreativeTab(MCGTabs.OLD));
         blocks16.add(new BlockMCGLeaves16("fn_leaves").setCreativeTab(MCGTabs.OLD));
         blocks16.add(new BlockMCGLeaves16("fn_leaves2").setCreativeTab(MCGTabs.OLD));
         blocks16.add(new BlockTransparent16(Material.GLASS, "fn_glass", MCGTabs.OLD, SoundType.GLASS));
-        blocks12.add(new BlockInteger12(Material.ROCK, "old_stone", MCGTabs.OLD, SoundType.STONE));
+        blocks13.add(new BlockInteger13(Material.ROCK, "old_stone", MCGTabs.OLD, SoundType.STONE));
         blocks1.add(new BlockMCG(Material.ROCK, "old_brick_marble", MCGTabs.OLD, SoundType.STONE));
         blocks1.add(new BlockMCGLog("old_rubber_wood", MCGTabs.OLD, SoundType.WOOD));
         blocks1.add(new BlockRotate4(Material.ROCK, "old_furnace_on", MCGTabs.OLD, SoundType.STONE));
@@ -205,6 +220,8 @@ public class ModBlock {
         event.getRegistry().registerAll(BlockSticker.BLOCK, BlockSticker.BLOCK_LIT);
         BlockLightBulb.initBlock();
         event.getRegistry().registerAll(BlockLightBulb.BLOCK, BlockLightBulb.BLOCK_LIT);
+        BlockElevator.initBlock();
+        event.getRegistry().register(BlockElevator.BLOCK);
     }
 
     /**
@@ -241,6 +258,8 @@ public class ModBlock {
         event.getRegistry().registerAll(BlockSticker.ITEM, BlockSticker.ITEM_LIT);
         BlockLightBulb.initItem();
         event.getRegistry().register(BlockLightBulb.ITEM);
+        BlockElevator.initItem();
+        event.getRegistry().register(BlockElevator.ITEM);
     }
 
     @SubscribeEvent
@@ -249,9 +268,15 @@ public class ModBlock {
         ModFluid.registerFluids();
         ModFluid.FLUIDS.forEach(fluid ->
         {
-            BlockFluidClassic blockFluid = (BlockFluidClassic)
+            BlockFluidClassic blockFluid;
+            if (fluid == ModFluid.SLUDGE) {
+                blockFluid = new BlockFluidSludge(fluid);
+                BLOCK_FLUID_SLUDGE = blockFluid;
+            } else {
+                blockFluid = (BlockFluidClassic)
                     new BlockFluidClassic(fluid, Material.WATER)
                             .setRegistryName(MCGProject.ID, fluid.getName());
+            }
             event.getRegistry().register(blockFluid);
             CS4_FLUIDS.add(blockFluid);
         });
@@ -274,16 +299,22 @@ public class ModBlock {
 
     //模型注册的执行
     private void setLocation(Item i, int maxMeta) {
-        if(maxMeta == 0) {
+        if(Block.getBlockFromItem(i) instanceof BlockBamboo) {
+            for (int r = 0; r < maxMeta+1; r++) {
+                ModelLoader.setCustomModelResourceLocation(i, r,
+                        new ModelResourceLocation(Objects.requireNonNull(i.getRegistryName()), String.valueOf(r)));
+            }
+        }
+        else if(maxMeta == 0) {
             ModelLoader.setCustomModelResourceLocation(i, 0,
                     new ModelResourceLocation(Objects.requireNonNull(i.getRegistryName()), "inventory")
             );
         }
         else for (int r = 0; r < maxMeta+1; r++) {
-                String blockState = Block.getBlockFromItem(i).getStateFromMeta(r).toString();
-                String variantIn = blockState.substring(blockState.indexOf("[")+1, blockState.indexOf("]"));
-                ModelLoader.setCustomModelResourceLocation(i, r,
-                        new ModelResourceLocation(Objects.requireNonNull(i.getRegistryName()), variantIn));
+            String blockState = Block.getBlockFromItem(i).getStateFromMeta(r).toString();
+            String variantIn = blockState.substring(blockState.indexOf("[")+1, blockState.indexOf("]"));
+            ModelLoader.setCustomModelResourceLocation(i, r,
+                    new ModelResourceLocation(Objects.requireNonNull(i.getRegistryName()), variantIn));
         }
     }
 
