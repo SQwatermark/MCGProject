@@ -54,7 +54,7 @@ public class ItemMCGProp extends Item {
 
     /**
      * 翻译密钥为
-     * item.mcgproject.mcg_prop_<meta>.tooltip
+     * item.mcgproject.mcg_prop_<meta>.tooltip.行数
      */
     @Override
     @SideOnly(Side.CLIENT)
@@ -62,14 +62,20 @@ public class ItemMCGProp extends Item {
                                @Nonnull @Nullable World worldIn,
                                @Nonnull List<String> tooltip,
                                @Nonnull ITooltipFlag flagIn) {
-        String trKey = getTooltipKey(stack);
-        if (I18n.hasKey(trKey)) {
-            tooltip.add(I18n.format(trKey));
+        final String trKey = getTooltipKey(stack);
+        int i = 1;
+        while (true) {
+            String key = trKey + i;
+            if (!I18n.hasKey(key)) {
+                break;
+            }
+            tooltip.add(I18n.format(key));
+            i++;
         }
         super.addInformation(stack, worldIn, tooltip, flagIn);
     }
 
     private String getTooltipKey(ItemStack stack) {
-        return this.getTranslationKey(stack) + ".tooltip";
+        return this.getTranslationKey(stack) + ".tooltip.";
     }
 }

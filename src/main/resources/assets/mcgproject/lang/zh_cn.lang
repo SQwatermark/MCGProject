@@ -537,8 +537,9 @@ item.mcgproject.mcg_prop_79.name=泛黄的纸张
 item.mcgproject.mcg_prop_80.name=调查凭证
 item.mcgproject.mcg_prop_81.name=七曜粉末
 item.mcgproject.mcg_prop_82.name=试管
-item.mcgproject.mcg_prop_83.name=玄武泽的遗物
-item.mcgproject.mcg_prop_83.tooltip=成堆的矿石，这么多矿石能锻造出很多装备吧
+item.mcgproject.mcg_prop_83.name=玄武泽毛玉的遗物
+item.mcgproject.mcg_prop_83.tooltip.1=成堆的矿石，这么多矿石能锻造出很多装备吧
+item.mcgproject.mcg_prop_83.tooltip.2=§8遗物？就这？
 
 item.mcgproject.mcg_banner_pattern_0.name=丸桔梗
 item.mcgproject.mcg_banner_pattern_1.name=

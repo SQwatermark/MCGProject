@@ -537,7 +537,8 @@ item.mcgproject.mcg_prop_80.name=撕下的书页
 item.mcgproject.mcg_prop_81.name=七曜粉末
 item.mcgproject.mcg_prop_82.name=试管
 item.mcgproject.mcg_prop_83.name=玄武泽的遗物
-item.mcgproject.mcg_prop_83.tooltip=null
+item.mcgproject.mcg_prop_83.tooltip.1=null
+item.mcgproject.mcg_prop_83.tooltip.2=null
 
 item.mcgproject.mcg_banner_pattern_0.name=丸桔梗
 item.mcgproject.mcg_banner_pattern_1.name=
