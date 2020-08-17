@@ -45,7 +45,7 @@ public class ItemMCGDrink extends ItemFood {
         return "item." + MCGProject.ID + "." + "mcg_drink" +"_" + stack.getMetadata();
     }
 
-
+    public static final int MAX_META = 40;
     @Override
     public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> items) {
         if (this.isInCreativeTab(tab)) {
@@ -53,7 +53,7 @@ public class ItemMCGDrink extends ItemFood {
                 items.add(new ItemStack(this, 1, i));
             }
         } else if (tab == MCGTabs.PROP) {
-            for (int i = 13; i < 19; i++) {
+            for (int i = 13; i <= MAX_META; i++) {
                 items.add(new ItemStack(this, 1, i));
             }
         }
