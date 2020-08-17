@@ -38,7 +38,7 @@ public class ItemMCGProp extends Item {
         return "item." + MCGProject.ID + "." + "mcg_prop" + "_" + stack.getMetadata();
     }
     
-    public static final int MAX_SUB_ITEMS = 95;
+    public static final int MAX_META = 150;
 
     @Override
     public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> items) {
@@ -47,7 +47,7 @@ public class ItemMCGProp extends Item {
                 items.add(new ItemStack(this, 1, i));
             }
         } else if (this.isInCreativeTab(tab)) {
-            for (int i = 20; i <= MAX_SUB_ITEMS; i++) {
+            for (int i = 20; i <= MAX_META; i++) {
                 items.add(new ItemStack(this, 1, i));
             }
         }

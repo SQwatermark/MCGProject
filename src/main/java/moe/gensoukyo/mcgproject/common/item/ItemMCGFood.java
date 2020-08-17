@@ -35,7 +35,7 @@ public class ItemMCGFood extends ItemFood {
     }
 
     @Override
-    public EnumAction getItemUseAction(ItemStack stack)
+    public @NotNull EnumAction getItemUseAction(ItemStack stack)
     {
         return EnumAction.EAT;
     }
@@ -53,11 +53,11 @@ public class ItemMCGFood extends ItemFood {
         return super.getHealAmount(stack);
     }
 
-    public static final int MAX_SUB_ITEM = 80;
+    public static final int MAX_META = 120;
     @Override
     public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> items) {
         if (this.isInCreativeTab(tab)) {
-            for (int i = 0; i <= MAX_SUB_ITEM; i++) {
+            for (int i = 0; i <= MAX_META; i++) {
                 items.add(new ItemStack(this, 1, i));
             }
         }
