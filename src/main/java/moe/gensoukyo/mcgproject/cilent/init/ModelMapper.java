@@ -27,6 +27,7 @@ import moe.gensoukyo.mcgproject.common.feature.sticker.BlockSticker;
 import moe.gensoukyo.mcgproject.common.feature.sticker.TileSticker;
 import moe.gensoukyo.mcgproject.common.init.ModBlock;
 import moe.gensoukyo.mcgproject.common.init.ModItem;
+import moe.gensoukyo.mcgproject.common.item.ItemMCGProp;
 import moe.gensoukyo.mcgproject.core.MCGProject;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.renderer.block.statemap.StateMap;
@@ -76,7 +77,7 @@ public class ModelMapper {
         registerModel(ModItem.ITEM_BLOCK_INFO);
         registerModel(ModItem.ITEM_MCG_FOOD, 94);
         registerModel(ModItem.ITEM_MCG_DRINK, 30);
-        registerModel(ModItem.ITEM_MCG_PROP, 94);
+        registerModel(ModItem.ITEM_MCG_PROP, ItemMCGProp.MAX_SUB_ITEMS);
         registerModel(ModItem.ITEM_MCG_BANNER_PATTERN, 16);
         registerModel(ModItem.ITEM_MUSIC_PLAYER);
         registerModel(ModItem.ITEM_LITTLE_STONE);

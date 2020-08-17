@@ -37,7 +37,8 @@ public class ItemMCGProp extends Item {
     public @NotNull String getTranslationKey(ItemStack stack) {
         return "item." + MCGProject.ID + "." + "mcg_prop" + "_" + stack.getMetadata();
     }
-
+    
+    public static final int MAX_SUB_ITEMS = 95;
 
     @Override
     public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> items) {
@@ -46,7 +47,7 @@ public class ItemMCGProp extends Item {
                 items.add(new ItemStack(this, 1, i));
             }
         } else if (this.isInCreativeTab(tab)) {
-            for (int i = 20; i <= 95; i++) {
+            for (int i = 20; i <= MAX_SUB_ITEMS; i++) {
                 items.add(new ItemStack(this, 1, i));
             }
         }
