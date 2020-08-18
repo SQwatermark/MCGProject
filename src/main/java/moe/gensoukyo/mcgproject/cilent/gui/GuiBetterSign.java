@@ -24,6 +24,8 @@ import java.util.List;
 
 /**
  * 可以分别按行编辑的牌子 GUI
+ * @author Vazkii
+ * @author SQwatermark
  */
 @Information(author = {"Vazkii", "SQwatermark"}, licence = "CC BY-NC-SA 3.0", source = "https://github.com/Vazkii/Quark")
 @SideOnly(Side.CLIENT)
