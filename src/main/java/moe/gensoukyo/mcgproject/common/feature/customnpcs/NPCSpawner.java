@@ -106,7 +106,7 @@ public class NPCSpawner {
     public NPCMob chooseAMobToSpawn(NPCRegion.MobSpawnRegion mobSpawnRegion) {
         ArrayList<Integer> weights = new ArrayList<>();
         for (NPCMob mob : mobSpawnRegion.mobs) {
-            weights.add((int)mob.weight * 100);
+            weights.add((int)(mob.weight * 100));
         }
         return mobSpawnRegion.mobs.get(MathMCG.random(weights));
     }
