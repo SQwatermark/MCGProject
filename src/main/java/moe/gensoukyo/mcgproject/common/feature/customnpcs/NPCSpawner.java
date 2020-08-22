@@ -36,7 +36,7 @@ public class NPCSpawner {
         random = new Random();
     }
 
-    @SubscribeEvent
+    //@SubscribeEvent
     public void tick(TickEvent.WorldTickEvent event) {
         if (random.nextInt(config.interval) == 0)
             tryToSpawnAMob((WorldServer) event.world);

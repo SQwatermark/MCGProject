@@ -1,7 +1,9 @@
 package moe.gensoukyo.mcgproject.common.item;
 
+import moe.gensoukyo.mcgproject.cilent.util.AutoTooltipHandler;
 import moe.gensoukyo.mcgproject.common.creativetab.MCGTabs;
 import moe.gensoukyo.mcgproject.core.MCGProject;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumAction;
@@ -12,7 +14,13 @@ import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.NonNullList;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
+import javax.annotation.Nonnull;
+import java.util.List;
 
 public class ItemMCGDrink extends ItemFood {
 
@@ -57,5 +65,19 @@ public class ItemMCGDrink extends ItemFood {
                 items.add(new ItemStack(this, 1, i));
             }
         }
+    }
+
+    /**
+     * 自动tooltip
+     * item.mcgproject.mcg_drink_<meta>.tooltip.行数
+     */
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void addInformation(@Nonnull ItemStack stack,
+                               @Nonnull @Nullable World worldIn,
+                               @Nonnull List<String> tooltip,
+                               @Nonnull ITooltipFlag flagIn) {
+        AutoTooltipHandler.addTooltip(stack, tooltip);
+        super.addInformation(stack, worldIn, tooltip, flagIn);
     }
 }
