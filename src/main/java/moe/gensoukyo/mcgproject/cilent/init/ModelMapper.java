@@ -131,8 +131,8 @@ public class ModelMapper {
     }
 
     private static void registerModel(Item item) {
-        ModelLoader.setCustomModelResourceLocation(item, 0, 
-                new ModelResourceLocation(Objects.requireNonNull(item.getRegistryName()), 
+        ModelLoader.setCustomModelResourceLocation(item, 0,
+                new ModelResourceLocation(Objects.requireNonNull(item.getRegistryName()),
                         "inventory"));
     }
 
