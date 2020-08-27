@@ -3,19 +3,14 @@ package moe.gensoukyo.mcgproject.core;
 import moe.gensoukyo.mcgproject.common.feature.BetterSign;
 import moe.gensoukyo.mcgproject.common.feature.MoreBannerPatterns;
 import moe.gensoukyo.mcgproject.common.feature.WorldGuard;
-import moe.gensoukyo.mcgproject.common.init.FMBlock;
+import moe.gensoukyo.mcgproject.common.feature.customnpcs.CustomNPCsHook;
+import moe.gensoukyo.mcgproject.common.feature.customnpcs.NPCSpawner;
 import moe.gensoukyo.mcgproject.common.feature.kaginawa.EntityKaginawa;
 import moe.gensoukyo.mcgproject.common.feature.musicplayer.MusicPlayerManager;
 import moe.gensoukyo.mcgproject.common.feature.musicplayer.StreamStopper;
-import moe.gensoukyo.mcgproject.common.init.ModBlock;
-import moe.gensoukyo.mcgproject.common.init.ModEntity;
-import moe.gensoukyo.mcgproject.common.init.ModItem;
-import moe.gensoukyo.mcgproject.common.init.ModTileEntity;
+import moe.gensoukyo.mcgproject.common.init.*;
 import moe.gensoukyo.mcgproject.common.network.NetworkWrapper;
 import moe.gensoukyo.mcgproject.common.util.EntityPool;
-import moe.gensoukyo.mcgproject.common.feature.customnpcs.CustomNPCsHook;
-import moe.gensoukyo.mcgproject.common.feature.customnpcs.NPCSpawner;
-import moe.gensoukyo.mcgproject.common.init.ModSound;
 import net.minecraft.entity.Entity;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Loader;
@@ -35,6 +30,8 @@ public class CommonProxy {
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
         MCGProject.modConfigDi = Paths.get(event.getModConfigurationDirectory().getAbsolutePath(), "mcgproject").toFile();
+        MCGProject.modDi = Paths.get(event.getModConfigurationDirectory().getAbsolutePath().replace("\\config", "") + "\\mods").toFile();
+        System.out.println(MCGProject.modDi.getAbsolutePath());
         MinecraftForge.EVENT_BUS.register(ModItem.instance());
         MinecraftForge.EVENT_BUS.register(ModBlock.instance());
         MinecraftForge.EVENT_BUS.register(FMBlock.instance());

@@ -36,6 +36,7 @@ public class MCGProject {
 
     public static Logger logger;
     public static File modConfigDi;
+    public static File modDi;
 
     //服务端事件用
     public static MinecraftServer SERVER = null;

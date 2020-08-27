@@ -39,11 +39,11 @@ public class ItemMCGBannerPattern extends Item {
         list.add(I18n.format("tooltip.mcgproject.itemmcgbannerpattern"));
     }
 
+    public static final int MAX_META = 16;
     @Override
     public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> items) {
-        int maxMeta = 16;
         if (this.isInCreativeTab(tab)) {
-            for (int i = 0; i < maxMeta + 1; i++) {
+            for (int i = 0; i <= MAX_META; i++) {
                 items.add(new ItemStack(this, 1, i));
             }
         }
