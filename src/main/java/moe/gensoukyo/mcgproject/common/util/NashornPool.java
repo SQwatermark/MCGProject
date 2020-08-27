@@ -13,6 +13,7 @@ import net.minecraftforge.common.DimensionManager;
 import javax.annotation.Nonnull;
 import javax.script.Invocable;
 import javax.script.ScriptEngine;
+import javax.script.ScriptEngineFactory;
 import java.io.StringReader;
 import java.io.StringWriter;
 import java.util.LinkedHashMap;
@@ -124,8 +125,12 @@ public class NashornPool {
 
     public static LinkedHashMap<String, Object> objMap = new LinkedHashMap<>();
 
-    public static NashornScriptEngineFactory FACTORY = new NashornScriptEngineFactory();
+    public static ScriptEngineFactory FACTORY = null;
+    public static void initNashornPool(ScriptEngineFactory fac) {
+        FACTORY = fac;
+    }
     public static Object fromCode(String code) {
+        if (FACTORY == null) return null;
         ScriptEngine engine = FACTORY.getScriptEngine();
         engine.getContext().setReader(new StringReader(""));
         engine.getContext().setWriter(new StringWriter());
