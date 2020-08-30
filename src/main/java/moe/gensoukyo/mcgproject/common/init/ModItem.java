@@ -10,6 +10,8 @@ import net.minecraft.item.Item;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
+import java.util.List;
+
 /**
  * @author SQwatermark
  * @date 2020/2/14
@@ -48,6 +50,12 @@ public class ModItem {
     public static ItemGRH2 ITEM_GRH_2;
     public static ItemGRH2M ITEM_GRH_2M;
 
+    public static List<ItemMCGWeapon> ITEM_MCG_WEAPONS;
+
+    /**
+     * 八卦炉
+     */
+    public static ItemSepId HAKKERO;
     /**
      * 注册所有物品
      * @param event Item注册事件
@@ -101,5 +109,9 @@ public class ModItem {
         event.getRegistry().registerAll(ITEM_GRC_2, ITEM_GRC_2M, ITEM_GRH_2, ITEM_GRH_2M);
 
         event.getRegistry().register(ITEM_MCG_HOE);
+
+        event.getRegistry().registerAll(
+                (ITEM_MCG_WEAPONS = ItemMCGWeapon.create(47)).toArray(new Item[0]));
+        event.getRegistry().register(HAKKERO = new ItemSepId("hakkero"));
     }
 }
