@@ -7,6 +7,7 @@ import java.awt.event.*;
 import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.TreeSet;
 
 /**
  * @author drzzm32
@@ -70,6 +71,7 @@ public class PackAdmin extends JFrame {
         };
         ActionListener nameListener = e -> {
             typePanel.removeAll();
+            typePanel.repaint();
             String name = e.getActionCommand();
             int i = 0;
             for (String type : data.get(name)) {
@@ -88,7 +90,8 @@ public class PackAdmin extends JFrame {
         };
 
         int i = 0;
-        for (String name : data.keySet()) {
+        TreeSet<String> names = new TreeSet<>(data.keySet());
+        for (String name : names) {
             GridBagConstraints c = new GridBagConstraints();
             c.fill = GridBagConstraints.BOTH; c.gridy = i;
             c.gridx = 0; c.weightx = 1;

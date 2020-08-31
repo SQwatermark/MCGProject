@@ -15,6 +15,7 @@ import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.*;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import noppes.npcs.controllers.ScriptController;
 import org.apache.logging.log4j.Logger;
 import org.lwjgl.opengl.Display;
 
@@ -110,6 +111,7 @@ public class MCGProject {
         event.registerServerCommand(new NPCSpawnerConfig.CommandRefreshNPCSpawner());
         event.registerServerCommand(new CommandKillNPCs());
 
+        NashornPool.initNashornPool(ScriptController.Instance.factories.get("ecmascript"));
         NashornPool.refresh(); // 加载对象池
     }
 
