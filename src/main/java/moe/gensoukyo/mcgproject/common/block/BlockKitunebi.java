@@ -109,10 +109,9 @@ public class BlockKitunebi extends Block implements ITileEntityProvider {
 
     @Override
     public int getLightValue(IBlockState state, IBlockAccess world, BlockPos pos) {
-        state = world.getBlockState(pos);
-        if (state.getBlock() != this)
-            return state.getLightValue();
-        return state.getValue(LIGHT);
+        //Chloe_koopa 修复循环崩服
+        return (state.getBlock() == this) ? state.getValue(LIGHT)
+                : state.getBlock().getLightValue(state, world, pos);
     }
 
     @Override

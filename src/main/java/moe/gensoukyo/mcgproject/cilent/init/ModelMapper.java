@@ -86,6 +86,7 @@ public class ModelMapper {
         registerModel(ModItem.ITEM_LITTLE_STONE);
         registerModel(ModItem.ITEM_ROU_KAN_KEN);
         registerModel(ModItem.ITEM_MCG_HOE);
+        registerModel(ModItem.HAKKERO);
 
         registerColoredModel(RanstoneLamp.ITEM, "");
         registerColoredModel(RanstoneLamp.ITEM_ALWAYS, "");

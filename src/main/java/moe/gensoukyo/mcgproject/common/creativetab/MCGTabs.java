@@ -7,6 +7,10 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 
+/**
+ * @author SQWatermark
+ * @author Chloe_koopa
+ */
 public class MCGTabs {
 
     public static final CreativeTabs TOUHOU = new CreativeTabs(getLabel("touhou"))
@@ -62,6 +66,14 @@ public class MCGTabs {
         @Override
         public ItemStack createIcon() {
             return new ItemStack(ModItem.ITEM_MCG_PROP, 1, 34);
+        }
+    };
+
+    public static final CreativeTabs WEAPONS = new CreativeTabs(getLabel("weapon"))
+    {
+        @Override
+        public ItemStack createIcon() {
+            return new ItemStack(ModItem.ITEM_MCG_WEAPONS.get(0), 1, 0);
         }
     };
 
