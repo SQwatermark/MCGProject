@@ -38,7 +38,7 @@ public class MCGProject {
      * 改动build.gradle中的版本，同时不动这个版本号
      * 可以实现单侧（单服务端/单客户端）更新
      */
-    public static final String CHECKED_VERSION = "1.3.1";
+    public static final String CHECKED_VERSION = "1.3.2";
 
     public static Logger logger;
     public static File modConfigDi;
