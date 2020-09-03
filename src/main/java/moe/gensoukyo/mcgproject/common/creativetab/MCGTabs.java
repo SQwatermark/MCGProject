@@ -2,10 +2,16 @@ package moe.gensoukyo.mcgproject.common.creativetab;
 
 import moe.gensoukyo.mcgproject.common.init.ModBlock;
 import moe.gensoukyo.mcgproject.common.init.ModItem;
+import moe.gensoukyo.mcgproject.common.item.ItemMCGWeapon;
 import moe.gensoukyo.mcgproject.core.MCGProject;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.NonNullList;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
+
+import javax.annotation.Nonnull;
 
 /**
  * @author SQWatermark
@@ -72,8 +78,17 @@ public class MCGTabs {
     public static final CreativeTabs WEAPONS = new CreativeTabs(getLabel("weapon"))
     {
         @Override
+        @SideOnly(Side.CLIENT)
         public ItemStack createIcon() {
             return new ItemStack(ModItem.ITEM_MCG_WEAPONS.get(0), 1, 0);
+        }
+
+        @Override
+        @SideOnly(Side.CLIENT)
+        public void displayAllRelevantItems(@Nonnull NonNullList<ItemStack> items) {
+            ItemMCGWeapon.getInstances().forEach(weapon -> items.add(
+                    new ItemStack(weapon, 1, 0)
+            ));
         }
     };
 

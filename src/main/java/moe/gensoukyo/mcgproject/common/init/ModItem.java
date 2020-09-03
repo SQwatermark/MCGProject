@@ -111,7 +111,7 @@ public class ModItem {
         event.getRegistry().register(ITEM_MCG_HOE);
 
         event.getRegistry().registerAll(
-                (ITEM_MCG_WEAPONS = ItemMCGWeapon.create(101)).toArray(new Item[0]));
+                (ITEM_MCG_WEAPONS = ItemMCGWeapon.create(201)).toArray(new Item[0]));
         event.getRegistry().register(HAKKERO = new ItemSepId("hakkero"));
     }
 }
