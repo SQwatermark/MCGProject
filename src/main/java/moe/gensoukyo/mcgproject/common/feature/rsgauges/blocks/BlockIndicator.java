@@ -10,14 +10,15 @@
  */
 package moe.gensoukyo.mcgproject.common.feature.rsgauges.blocks;
 
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.IBlockAccess;
 import moe.gensoukyo.mcgproject.common.feature.rsgauges.detail.ModAuxiliaries;
 import moe.gensoukyo.mcgproject.common.feature.rsgauges.detail.ModResources;
-import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.properties.PropertyBool;
+import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.IBlockAccess;
+
 import javax.annotation.Nullable;
 
 

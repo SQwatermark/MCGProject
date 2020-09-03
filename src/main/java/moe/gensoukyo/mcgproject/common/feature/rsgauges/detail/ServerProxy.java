@@ -9,9 +9,9 @@
 package moe.gensoukyo.mcgproject.common.feature.rsgauges.detail;
 
 import moe.gensoukyo.mcgproject.common.feature.rsgauges.ModRsGauges;
-import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
 public class ServerProxy implements ModRsGauges.IProxy
 {

@@ -1,7 +1,6 @@
 package moe.gensoukyo.mcgproject.common.feature.lightbulb;
 
 import moe.gensoukyo.mcgproject.common.tileentity.AbstractTileEntity;
-import moe.gensoukyo.mcgproject.core.MCGProject;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumFacing;

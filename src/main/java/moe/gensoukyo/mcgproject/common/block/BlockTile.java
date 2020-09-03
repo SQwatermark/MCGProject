@@ -1,6 +1,5 @@
 package moe.gensoukyo.mcgproject.common.block;
 
-import moe.gensoukyo.mcgproject.common.block.BlockMCG;
 import moe.gensoukyo.mcgproject.common.block.enums.EnumTileColor;
 import moe.gensoukyo.mcgproject.common.creativetab.MCGTabs;
 import net.minecraft.block.material.Material;

@@ -1,7 +1,7 @@
 package moe.gensoukyo.mcgproject.common.init;
 
-import moe.gensoukyo.mcgproject.common.feature.kaginawa.ItemKaginawa;
 import moe.gensoukyo.mcgproject.common.feature.farm.stone.ItemLittleRock;
+import moe.gensoukyo.mcgproject.common.feature.kaginawa.ItemKaginawa;
 import moe.gensoukyo.mcgproject.common.feature.musicplayer.ItemMusicPlayer;
 import moe.gensoukyo.mcgproject.common.item.*;
 import moe.gensoukyo.mcgproject.common.item.cart.*;
@@ -111,7 +111,7 @@ public class ModItem {
         event.getRegistry().register(ITEM_MCG_HOE);
 
         event.getRegistry().registerAll(
-                (ITEM_MCG_WEAPONS = ItemMCGWeapon.create(47)).toArray(new Item[0]));
+                (ITEM_MCG_WEAPONS = ItemMCGWeapon.create(201)).toArray(new Item[0]));
         event.getRegistry().register(HAKKERO = new ItemSepId("hakkero"));
     }
 }

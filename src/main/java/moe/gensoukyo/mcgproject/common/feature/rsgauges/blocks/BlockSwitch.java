@@ -10,43 +10,45 @@
 package moe.gensoukyo.mcgproject.common.feature.rsgauges.blocks;
 
 import moe.gensoukyo.mcgproject.common.feature.rsgauges.ModContent;
-import moe.gensoukyo.mcgproject.common.feature.rsgauges.detail.ModConfig;
 import moe.gensoukyo.mcgproject.common.feature.rsgauges.detail.ModAuxiliaries;
+import moe.gensoukyo.mcgproject.common.feature.rsgauges.detail.ModConfig;
 import moe.gensoukyo.mcgproject.common.feature.rsgauges.detail.ModResources;
 import moe.gensoukyo.mcgproject.common.feature.rsgauges.items.ItemSwitchLinkPearl;
-import net.minecraft.world.IBlockAccess;
-import net.minecraft.world.World;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockHopper;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyBool;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Item;
-import net.minecraft.nbt.NBTBase;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.nbt.NBTTagList;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.IProjectile;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTBase;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagList;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
-import net.minecraft.util.math.*;
+import net.minecraft.world.IBlockAccess;
+import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.oredict.DyeUtils;
+
+import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.Random;
-import javax.annotation.Nullable;
 
 @SuppressWarnings("unused")
 public class BlockSwitch extends RsBlock implements ModContent.Colors.ColorTintSupport

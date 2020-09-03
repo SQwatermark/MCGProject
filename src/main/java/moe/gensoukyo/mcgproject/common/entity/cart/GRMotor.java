@@ -1,11 +1,12 @@
 package moe.gensoukyo.mcgproject.common.entity.cart;
 
-import club.nsdn.nyasamarailway.api.cart.*;
+import club.nsdn.nyasamarailway.api.cart.AbsCartBase;
+import club.nsdn.nyasamarailway.api.cart.AbsMotoCart;
+import club.nsdn.nyasamarailway.api.cart.IMobileBlocking;
 import club.nsdn.nyasamarailway.ext.AbsBogie;
 import club.nsdn.nyasamarailway.ext.AbsMotor;
 import club.nsdn.nyasamarailway.network.TrainPacket;
 import club.nsdn.nyasamarailway.util.TrainController;
-
 import moe.gensoukyo.mcgproject.common.entity.MCGEntity;
 import net.minecraft.block.BlockRailBase;
 import net.minecraft.entity.Entity;

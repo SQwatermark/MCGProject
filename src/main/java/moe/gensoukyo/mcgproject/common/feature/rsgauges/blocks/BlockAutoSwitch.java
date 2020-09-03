@@ -9,22 +9,21 @@
  */
 package moe.gensoukyo.mcgproject.common.feature.rsgauges.blocks;
 
-import moe.gensoukyo.mcgproject.common.feature.rsgauges.detail.ModConfig;
 import moe.gensoukyo.mcgproject.common.feature.rsgauges.detail.ModAuxiliaries;
+import moe.gensoukyo.mcgproject.common.feature.rsgauges.detail.ModConfig;
 import moe.gensoukyo.mcgproject.common.feature.rsgauges.detail.ModResources;
 import moe.gensoukyo.mcgproject.common.feature.rsgauges.items.ItemSwitchLinkPearl;
-import net.minecraft.world.World;
-import net.minecraft.world.IBlockAccess;
-import net.minecraft.block.state.IBlockState;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.item.EntityItem;
-import net.minecraft.entity.passive.*;
-import net.minecraft.entity.monster.*;
-import net.minecraft.tileentity.TileEntity;
+import net.minecraft.entity.monster.EntityMob;
+import net.minecraft.entity.passive.EntityAnimal;
+import net.minecraft.entity.passive.EntityVillager;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.math.AxisAlignedBB;
@@ -33,6 +32,9 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
+import net.minecraft.world.IBlockAccess;
+import net.minecraft.world.World;
+
 import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;

@@ -3,7 +3,6 @@ package moe.gensoukyo.mcgproject.common.entity.cart;
 import club.nsdn.nyasamarailway.api.cart.CartPart;
 import club.nsdn.nyasamarailway.api.cart.CartUtil;
 import club.nsdn.nyasamarailway.api.cart.IHighSpeedCart;
-import club.nsdn.nyasamarailway.ext.AbsCart;
 import club.nsdn.nyasamarailway.ext.AbsLoco;
 import club.nsdn.nyasamarailway.network.TrainPacket;
 import club.nsdn.nyasamarailway.util.TrainController;

@@ -8,13 +8,14 @@
  */
 package moe.gensoukyo.mcgproject.common.feature.rsgauges.detail;
 
-import moe.gensoukyo.mcgproject.common.feature.rsgauges.ModRsGauges;
-import net.minecraftforge.fml.common.FMLCommonHandler;
-import net.minecraftforge.common.util.ModFixs;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.datafix.IFixableData;
-import net.minecraft.util.datafix.FixTypes;
 import com.google.common.collect.Maps;
+import moe.gensoukyo.mcgproject.common.feature.rsgauges.ModRsGauges;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.datafix.FixTypes;
+import net.minecraft.util.datafix.IFixableData;
+import net.minecraftforge.common.util.ModFixs;
+import net.minecraftforge.fml.common.FMLCommonHandler;
+
 import java.util.Map;
 
 public class DataFixing

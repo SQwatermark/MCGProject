@@ -1,6 +1,5 @@
 package moe.gensoukyo.mcgproject.common.block;
 
-import moe.gensoukyo.mcgproject.common.block.BlockDecoration4x4;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;

@@ -1,7 +1,6 @@
 package moe.gensoukyo.mcgproject.common.feature.lightbulb;
 
 import moe.gensoukyo.mcgproject.common.creativetab.MCGTabs;
-import moe.gensoukyo.mcgproject.core.MCG;
 import moe.gensoukyo.mcgproject.core.MCGProject;
 import net.minecraft.block.*;
 import net.minecraft.block.material.Material;

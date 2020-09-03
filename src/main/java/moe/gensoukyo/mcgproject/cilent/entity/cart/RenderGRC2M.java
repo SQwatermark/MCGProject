@@ -4,7 +4,6 @@ import club.nsdn.nyasamarailway.renderer.entity.AbsCartRenderer;
 import club.nsdn.nyasamatelecom.api.render.RendererHelper;
 import cn.ac.nya.forgeobj.WavefrontObject;
 import moe.gensoukyo.mcgproject.core.MCGProject;
-import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.entity.item.EntityMinecart;
 import net.minecraft.util.ResourceLocation;

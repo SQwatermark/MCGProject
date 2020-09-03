@@ -1,8 +1,6 @@
 package moe.gensoukyo.mcgproject.cilent.entity.cart;
 
-import club.nsdn.nyasamarailway.entity.cart.NSBT2;
 import club.nsdn.nyasamarailway.renderer.entity.AbsCartRenderer;
-import club.nsdn.nyasamarailway.renderer.entity.NSBT2Renderer;
 import cn.ac.nya.forgeobj.WavefrontObject;
 import moe.gensoukyo.mcgproject.common.entity.cart.GRBogie;
 import moe.gensoukyo.mcgproject.core.MCGProject;

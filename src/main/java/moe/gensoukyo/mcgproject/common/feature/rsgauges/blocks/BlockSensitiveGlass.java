@@ -9,8 +9,8 @@
  */
 package moe.gensoukyo.mcgproject.common.feature.rsgauges.blocks;
 
-import moe.gensoukyo.mcgproject.common.feature.rsgauges.ModRsGauges;
 import moe.gensoukyo.mcgproject.common.feature.rsgauges.ModContent;
+import moe.gensoukyo.mcgproject.common.feature.rsgauges.ModRsGauges;
 import moe.gensoukyo.mcgproject.common.feature.rsgauges.detail.ModAuxiliaries;
 import moe.gensoukyo.mcgproject.common.feature.rsgauges.detail.ModConfig;
 import net.minecraft.block.Block;
@@ -32,9 +32,10 @@ import net.minecraft.world.World;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+
 import javax.annotation.Nullable;
-import java.util.Random;
 import java.util.List;
+import java.util.Random;
 
 
 public class BlockSensitiveGlass extends Block implements ModContent.Colors.ColorTintSupport

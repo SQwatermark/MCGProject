@@ -25,7 +25,7 @@ import java.io.File;
  * @author SQwatermark
  * @date 2020/2/14
  */
-@Mod(modid = MCGProject.ID, name = MCGProject.NAME, version = MCGProject.VERSION)
+@Mod(modid = MCGProject.ID, name = MCGProject.NAME, version = MCGProject.CHECKED_VERSION)
 public class MCGProject {
 
     @Mod.Instance(MCGProject.ID)
@@ -33,7 +33,12 @@ public class MCGProject {
 
     public static final String ID = "mcgproject";
     public static final String NAME = "MCGProject";
-    public static final String VERSION = "1.3.0";
+    /**
+     * forge 模组版本匹配检测用到的版本号
+     * 改动build.gradle中的版本，同时不动这个版本号
+     * 可以实现单侧（单服务端/单客户端）更新
+     */
+    public static final String CHECKED_VERSION = "1.3.2";
 
     public static Logger logger;
     public static File modConfigDi;

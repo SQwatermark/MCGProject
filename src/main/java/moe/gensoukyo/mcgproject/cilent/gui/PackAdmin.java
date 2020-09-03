@@ -2,8 +2,10 @@ package moe.gensoukyo.mcgproject.cilent.gui;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
-
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.List;

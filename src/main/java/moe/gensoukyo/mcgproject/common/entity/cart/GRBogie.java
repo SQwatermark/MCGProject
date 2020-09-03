@@ -1,7 +1,6 @@
 package moe.gensoukyo.mcgproject.common.entity.cart;
 
 import club.nsdn.nyasamarailway.ext.AbsBogie;
-
 import moe.gensoukyo.mcgproject.common.entity.MCGEntity;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityMinecart;
