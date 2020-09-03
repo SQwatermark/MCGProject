@@ -1,14 +1,14 @@
 package moe.gensoukyo.mcgproject.common.init;
 
 import moe.gensoukyo.mcgproject.common.entity.EntityItemMCG;
-import moe.gensoukyo.mcgproject.common.entity.cart.*;
-import moe.gensoukyo.mcgproject.common.feature.farm.apple.EntityApple;
-import moe.gensoukyo.mcgproject.common.feature.kaginawa.EntityKaginawa;
 import moe.gensoukyo.mcgproject.common.entity.MCGEntity;
 import moe.gensoukyo.mcgproject.common.entity.boat.EntityMCGBoat;
 import moe.gensoukyo.mcgproject.common.entity.boat.EntityRACBoat;
 import moe.gensoukyo.mcgproject.common.entity.butterfly.*;
+import moe.gensoukyo.mcgproject.common.entity.cart.*;
 import moe.gensoukyo.mcgproject.common.entity.fish.*;
+import moe.gensoukyo.mcgproject.common.feature.farm.apple.EntityApple;
+import moe.gensoukyo.mcgproject.common.feature.kaginawa.EntityKaginawa;
 import moe.gensoukyo.mcgproject.common.feature.musicplayer.EntityMusicPlayer;
 import moe.gensoukyo.mcgproject.core.MCGProject;
 import net.minecraft.entity.Entity;

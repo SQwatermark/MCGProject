@@ -9,18 +9,18 @@
  */
 package moe.gensoukyo.mcgproject.common.feature.rsgauges.detail;
 
-import net.minecraft.item.ItemBlock;
 import moe.gensoukyo.mcgproject.common.feature.rsgauges.ModRsGauges;
 import moe.gensoukyo.mcgproject.common.feature.rsgauges.blocks.*;
-import moe.gensoukyo.mcgproject.common.feature.rsgauges.items.*;
+import moe.gensoukyo.mcgproject.common.feature.rsgauges.items.ItemSwitchLinkPearl;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemBlock;
 import net.minecraftforge.common.config.Config;
 import net.minecraftforge.common.config.ConfigManager;
+import net.minecraftforge.fml.client.event.ConfigChangedEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.fml.client.event.ConfigChangedEvent;
 
 import java.util.ArrayList;
 

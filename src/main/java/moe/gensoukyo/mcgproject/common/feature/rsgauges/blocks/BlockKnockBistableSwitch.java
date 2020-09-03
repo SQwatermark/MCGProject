@@ -9,14 +9,16 @@
 package moe.gensoukyo.mcgproject.common.feature.rsgauges.blocks;
 
 
-import net.minecraft.util.EnumFacing;
 import moe.gensoukyo.mcgproject.common.feature.rsgauges.detail.ModResources;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.minecraft.util.math.*;
+
 import javax.annotation.Nullable;
 
 public class BlockKnockBistableSwitch extends BlockSwitch implements IRsNeighbourInteractionSensitive

@@ -1,6 +1,5 @@
 package moe.gensoukyo.mcgproject.common.util;
 
-import jdk.nashorn.api.scripting.NashornScriptEngineFactory;
 import jdk.nashorn.internal.runtime.ScriptFunction;
 import moe.gensoukyo.mcgproject.core.MCGProject;
 import net.minecraft.nbt.NBTTagCompound;

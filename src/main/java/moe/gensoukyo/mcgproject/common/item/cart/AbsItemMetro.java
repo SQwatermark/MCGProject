@@ -1,7 +1,6 @@
 package moe.gensoukyo.mcgproject.common.item.cart;
 
 import club.nsdn.nyasamarailway.ext.AbsMetro;
-
 import moe.gensoukyo.mcgproject.common.creativetab.MCGTabs;
 import moe.gensoukyo.mcgproject.common.entity.cart.GRBogie;
 import moe.gensoukyo.mcgproject.common.entity.cart.GRMotor;

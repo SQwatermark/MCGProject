@@ -8,24 +8,26 @@
  */
 package moe.gensoukyo.mcgproject.common.feature.rsgauges.blocks;
 
-import net.minecraft.block.material.Material;
-
 import moe.gensoukyo.mcgproject.common.feature.rsgauges.detail.ModAuxiliaries;
 import moe.gensoukyo.mcgproject.common.feature.rsgauges.detail.ModConfig;
 import moe.gensoukyo.mcgproject.common.feature.rsgauges.detail.ModResources;
-import net.minecraft.inventory.IInventory;
-import net.minecraft.util.EnumFacing;
-import net.minecraftforge.items.CapabilityItemHandler;
-import net.minecraftforge.items.IItemHandler;
+import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.IInventory;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
+import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.text.TextComponentString;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import net.minecraft.util.text.TextFormatting;
-import net.minecraft.util.math.*;
-import net.minecraft.tileentity.TileEntity;
+import net.minecraftforge.items.CapabilityItemHandler;
+import net.minecraftforge.items.IItemHandler;
+
 import javax.annotation.Nullable;
 import java.util.ArrayList;
 

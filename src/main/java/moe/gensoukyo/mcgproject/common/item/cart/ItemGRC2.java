@@ -3,7 +3,6 @@ package moe.gensoukyo.mcgproject.common.item.cart;
 import moe.gensoukyo.mcgproject.common.entity.cart.GRC2;
 import moe.gensoukyo.mcgproject.core.MCGProject;
 import net.minecraft.entity.item.EntityMinecart;
-
 import net.minecraft.world.World;
 
 public class ItemGRC2 extends AbsItemCart {

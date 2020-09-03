@@ -1,6 +1,5 @@
 package moe.gensoukyo.mcgproject.common.block;
 
-import moe.gensoukyo.mcgproject.common.block.BlockMCGSlab;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
