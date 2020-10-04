@@ -1,0 +1,11 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "cube_all",
+    "textures": {"all": "mcgproject:blocks/touhou/tile_gray"}
+  },
+  "variants": {
+    "inventory": [{}],
+    "normal": [{}]
+  }
+}

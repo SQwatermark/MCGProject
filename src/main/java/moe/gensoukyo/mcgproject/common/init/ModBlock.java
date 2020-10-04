@@ -54,6 +54,7 @@ public class ModBlock {
     public static Block BLOCK_CHISEL_STONE = new BlockInteger16(Material.ROCK, "chisel_stone", MCGTabs.OLD, SoundType.STONE);
     public static Block KITUNEBI = new BlockKitunebi();
     public static Block BLOCK_FLUID_SLUDGE;
+    public static Block TILE_GRAY_SNOW = new BlockMCG(Material.ROCK, "tile_gray_snow", MCGTabs.TOUHOU, SoundType.STONE);
 
     /**
      * 实例化方块，并将实例化的方块分配到相应链表
@@ -85,6 +86,23 @@ public class ModBlock {
             blocks1.add(new BlockMCGStairs(TILE.getDefaultState(), String.format("stairs_tile_%s", color.getName()), MCGTabs.TOUHOU, SoundType.STONE));
             blocks1.add(new BlockMCGSlab(TILE, color.getMeta(), String.format("slab_tile_%s", color.getName())));
         }
+
+        blocks1.add(TILE_GRAY_SNOW);
+        blocks1.add(new BlockMCG(Material.ROCK, "tile_gray_snow_full", MCGTabs.TOUHOU, SoundType.STONE));
+        blocks1.add(new BlockRotate4(Material.ROCK, "tile_gray_snow_half", MCGTabs.TOUHOU, SoundType.STONE));
+
+        blocks1.add(new BlockMCGSlab(TILE_GRAY_SNOW, 0, "tile_gray_slab_snow", MCGTabs.TOUHOU));
+        blocks1.add(new BlockMCGSlab(TILE_GRAY_SNOW, 0, "tile_gray_slab_snow_full", MCGTabs.TOUHOU));
+        blocks1.add(new BlockMCGSlab(TILE_GRAY_SNOW, 0, "tile_gray_slab_snow_half1", MCGTabs.TOUHOU));
+        blocks1.add(new BlockMCGSlab(TILE_GRAY_SNOW, 0, "tile_gray_slab_snow_half2", MCGTabs.TOUHOU));
+        blocks1.add(new BlockMCGSlab(TILE_GRAY_SNOW, 0, "tile_gray_slab_snow_half3", MCGTabs.TOUHOU));
+        blocks1.add(new BlockMCGSlab(TILE_GRAY_SNOW, 0, "tile_gray_slab_snow_half4", MCGTabs.TOUHOU));
+
+        blocks1.add(new BlockMCGStairs(TILE_GRAY_SNOW.getDefaultState(), "tile_gray_stairs_snow", MCGTabs.TOUHOU, SoundType.STONE));
+        blocks1.add(new BlockMCGStairs(TILE_GRAY_SNOW.getDefaultState(), "tile_gray_stairs_snow_full", MCGTabs.TOUHOU, SoundType.STONE));
+        blocks1.add(new BlockMCGStairs(TILE_GRAY_SNOW.getDefaultState(), "tile_gray_stairs_snow_half", MCGTabs.TOUHOU, SoundType.STONE));
+        blocks1.add(new BlockMCGStairs(TILE_GRAY_SNOW.getDefaultState(), "tile_gray_stairs_snow1", MCGTabs.TOUHOU, SoundType.STONE));
+        blocks1.add(new BlockMCGStairs(TILE_GRAY_SNOW.getDefaultState(), "tile_gray_stairs_snow2", MCGTabs.TOUHOU, SoundType.STONE));
 
         //自然与农业
         blocks1.add(new BlockMCGLog("log_sakura"));
