@@ -2,7 +2,7 @@
   "forge_marker": 1,
   "defaults": {
     "model": "mcgproject:slab_half",
-    "textures": {"all": "mcgproject:blocks/touhou/tile_gray"}
+    "textures": {"all": "mcgproject:blocks/roof/4"}
   },
   "variants": {
     "inventory": [{}],
